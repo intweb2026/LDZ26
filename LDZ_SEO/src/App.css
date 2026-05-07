@@ -3,11 +3,11 @@
 @tailwind utilities; */
 
 :root {
-  --primary-color: #f6b000;
-  --secondary-color: #080808;
-  --dark-color: #dd9f04;
+  --primary-color: #278dff;
+  --secondary-color: #0f0f0f;
+  --dark-color: #2177d8;
   --light-color: #ffffff;
-  --linearGradient-color: linear-gradient(107deg, rgba(0, 0, 0, 0.60) -2.13%, rgba(0, 0, 0, 0.60) 35.42%, rgba(39, 141, 255, 0.60) 77.97%, rgba(39, 141, 255, 0.60) 125.13%)
+  --linearGradient-color: linear-gradient(107deg, rgba(0, 0, 0, 0.60) -2.13%, rgba(0, 0, 0, 0.60) 35.42%, rgba(39, 141, 255, 0.60) 77.97%, rgba(39, 141, 255, 0.60) 125.13%);
 }
 
 * {
