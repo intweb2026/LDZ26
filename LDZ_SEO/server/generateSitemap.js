@@ -56,7 +56,7 @@ const STATIC_ROUTES = [
     { url: "/who-should-attend", changefreq: "monthly", priority: "0.7" },
     { url: "/faq", changefreq: "monthly", priority: "0.6" },
     { url: "/speakers", changefreq: "weekly", priority: "0.8" },
-    { url: "/featured-Speakers", changefreq: "weekly", priority: "0.8" },
+    { url: "/featured-speakers", changefreq: "weekly", priority: "0.8" },
     { url: "/sponsor-packages", changefreq: "monthly", priority: "0.7" },
     { url: "/news", changefreq: "daily", priority: "0.8" },
     { url: "/attendees", changefreq: "monthly", priority: "0.6" },

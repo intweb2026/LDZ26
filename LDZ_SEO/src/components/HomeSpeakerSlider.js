@@ -87,7 +87,7 @@ const HomeSpeakerSlider = () => {
         </h2> */}
         <button
           style={{ color: "var(--primary-color)" }}
-          onClick={() => navigate("/featured-Speakers")}
+          onClick={() => navigate("/featured-speakers")}
         >
           show all speakers
           <svg width="24" height="16" viewBox="0 0 24 16" fill="none" xmlns="http://www.w3.org/2000/svg">
