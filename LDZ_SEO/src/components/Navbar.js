@@ -517,10 +517,7 @@ const Navbar = ({ disableScrollEffect = false, forceScrolled = false }) => {
                 width={200}
                 loading="lazy"
               />
-            ) : (
-              // Show loading placeholder while fetching
-              <div style={{ width: 200, height: 50, backgroundColor: showWhiteNavbar ? '#f0f0f0' : 'rgba(255,255,255,0.1)' }} />
-            )}
+            ) : null}
           </a>
         </div>
         {sponsorList.map((group) => (
