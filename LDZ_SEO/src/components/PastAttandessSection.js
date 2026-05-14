@@ -82,96 +82,96 @@ const PastAttandessSection = () => {
       });
   };
 
-  const submitBtnClk = (e) => {
+    // ✅ Subscription email function
+  async function sendSubscriptionEmail(email) {
+    const htmlContent = `
+      <p><strong>Thank you for subscribing!</strong></p>
+      <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
+      <p><u><strong>Quick Access</strong></u><br/>
+      Link: <a href="https://www.linq-staging-site.com">https://www.linq-staging-site.com</a></p>
+    `;
+
+    const emailPayload = {
+      toemail: email,
+      cc: "",
+      subject: `SUBSCRIPTION: ${eventDetails?.eventName}`,
+      html: htmlContent,
+    };
+
+    try {
+      const emailResponse = await fetch(
+        "https://www.linq-staging-site.com/admin1/sendmail",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(emailPayload),
+        }
+      );
+      const emailResult = await emailResponse.json();
+      if (emailResult.status === "success") {
+        console.log("✅ Subscription email sent successfully");
+      } else {
+        console.error("❌ Subscription email sending failed:", emailResult.message);
+      }
+    } catch (error) {
+      console.error("❌ Error sending subscription email:", error);
+    }
+  }
+
+    // ✅ Made async to await API + email
+  const submitBtnClk = async (e) => {
     e.preventDefault();
+
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     setSubscriberEmailError(false);
     setSubscriberNameError(false);
     setSubscriberErrorMessage("");
-    // if (subscriberName === "") {
-    //   setSubscriberErrorMessage("Name is Required")
-    //   // toast.error("Name is Required", {
-    //   //   position: "top-right",
-    //   //   autoClose: 5000,
-    //   //   hideProgressBar: false,
-    //   //   closeOnClick: true,
-    //   //   pauseOnHover: true,
-    //   //   draggable: true,
-    //   //   progress: undefined,
-    //   // });
-    //   setSubscriberNameError('minimum 3 characters is Required!');
-    // } else if (subscriberName?.length < 3) {
-    //   setSubscriberErrorMessage(<p style={{ color: 'red', fontSize: '14px', fontWeight: 500, textAlign: 'left', marginTop: '2px', position: 'absolute' }}>minimum 3 characters is Required!</p>)
-    //   // toast.error("minimum 3 characters is Required!", {
-    //   //   position: "top-right",
-    //   //   autoClose: 5000,
-    //   //   hideProgressBar: false,
-    //   //   closeOnClick: true,
-    //   //   pauseOnHover: true,
-    //   //   draggable: true,
-    //   //   progress: undefined,
-    //   // });
-    //   setSubscriberNameError(true);
-    // } else 
-    if (subscriberEmail === "") {
-      setSubscriberErrorMessage(<p style={{ color: 'red', fontSize: '14px', fontWeight: 500, textAlign: 'left', marginTop: '2px', position: 'absolute' }}>Email address is required</p>)
-      // toast.error("Email is Required", {
-      //   position: "top-right",
-      //   autoClose: 5000,
-      //   hideProgressBar: false,
-      //   closeOnClick: true,
-      //   pauseOnHover: true,
-      //   draggable: true,
-      //   progress: undefined,
-      // });
-      setSubscriberEmailError(true);
-    } else if (!emailRegex.test(subscriberEmail)) {
-      setSubscriberErrorMessage(<p style={{ color: 'red', fontSize: '14px', fontWeight: 500, textAlign: 'left', marginTop: '2px', position: 'absolute' }}>Email address is required</p>)
-      setSubscriberEmailError(true);
-    } else {
-      setSubscriberErrorMessage(<p style={{ color: 'green' }}>Subscribed Successfully</p>)
-      setTimeout(() => {
-        setSubscriberErrorMessage("");
-      }, 5000);
-      const finalData = new FormData();
-      finalData.append("subscriberName", subscriberName);
-      finalData.append("subscriberEmail", subscriberEmail);
 
-      const requestOptions = {
-        method: "POST",
-        body: finalData,
-      };
-      fetch("https://www.linq-staging-site.com/admin1/addsubscriber", requestOptions)
-        .then((response) => response.json())
-        .then((data) => {
-          if (data.status) {
-            // toast.success("Record Added Successfully.", {
-            //   position: "top-right",
-            //   autoClose: 5000,
-            //   hideProgressBar: false,
-            //   closeOnClick: true,
-            //   pauseOnHover: true,
-            //   draggable: true,
-            //   progress: undefined,
-            // });
-            setSubscriberEmail("");
-            setSubscriberName("");
-          } else {
-            // toast.error(data?.message);
-          }
-        })
-        .catch((error) => {
-          console.log("error: ", error);
-          // toast.error("There was an error, Please try again later.", {
-          //   position: "top-right",
-          //   autoClose: 5000,
-          //   hideProgressBar: false,
-          //   closeOnClick: true,
-          //   pauseOnHover: true,
-          //   draggable: true,
-          //   progress: undefined,
-          // });
-        });
+    if (subscriberEmail === "") {
+      setSubscriberErrorMessage(
+        <p style={{ color: 'red', fontSize: '14px', fontWeight: 500, textAlign: 'left', marginTop: '2px', position: 'absolute' }}>
+          Email address is required
+        </p>
+      );
+      setSubscriberEmailError(true);
+      return;
+    } else if (!emailRegex.test(subscriberEmail)) {
+      setSubscriberErrorMessage(
+        <p style={{ color: 'red', fontSize: '14px', fontWeight: 500, textAlign: 'left', marginTop: '2px', position: 'absolute' }}>
+          Invalid email address
+        </p>
+      );
+      setSubscriberEmailError(true);
+      return;
+    }
+
+    const finalData = new FormData();
+    finalData.append("subscriberName", subscriberName);
+    finalData.append("subscriberEmail", subscriberEmail);
+
+    try {
+      const response = await fetch(
+        "https://www.linq-staging-site.com/admin1/addsubscriber",
+        { method: "POST", body: finalData }
+      );
+      const data = await response.json();
+
+      if (data.status) {
+        // ✅ Send confirmation email only on success
+        await sendSubscriptionEmail(subscriberEmail);
+
+        setSubscriberErrorMessage(
+          <p style={{ color: 'green' }}>Subscribed Successfully</p>
+        );
+        setTimeout(() => setSubscriberErrorMessage(""), 5000);
+
+        setSubscriberEmail("");
+        setSubscriberName("");
+      } else {
+        // toast.error(data?.message);
+      }
+    } catch (error) {
+      console.log("error: ", error);
     }
   };
 
