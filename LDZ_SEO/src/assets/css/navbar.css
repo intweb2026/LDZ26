@@ -624,11 +624,8 @@
     }
 
     .NewNavbar_wholeContainer__z2zti .NewNavbar_container__dGANs .NewNavbar_logo__D1qkF img {
-        width: 145px;
-    }
-
-    .NewNavbar_wholeContainerWhite__QY0eF .NewNavbar_container__dGANs .NewNavbar_logo__D1qkF img {
-        width: 145px;
+        width: 100%;
+        /* width: 145px; */
     }
 
     .NewNavbar_wholeContainerWhite__QY0eF .NewNavbar_container__dGANs .NewNavbar_logo__D1qkF img {
@@ -685,7 +682,8 @@
     }
 
     .NewNavbar_wholeContainer__z2zti .NewNavbar_container__dGANs .NewNavbar_logo__D1qkF img {
-        width: 135px;
+        width: 90%;
+        /* width: 135px; */
     }
 
     .NewNavbar_wholeContainer__z2zti .NewNavbar_container__dGANs .NewNavbar_register__UET28 button {
@@ -779,6 +777,10 @@
 
     .NewNavbar_wholeContainerWhite__QY0eF .NewNavbar_container__dGANs .NewNavbar_logo__D1qkF img {
         width: 120px;
+    }
+
+    .NewNavbar_wholeContainer__z2zti .NewNavbar_container__dGANs .NewNavbar_logo__D1qkF img {
+        width: 90%;
     }
 
     .NewNavbar_wholeContainer__z2zti .NewNavbar_container__dGANs .NewNavbar_sponsorBar__\+QUFr {
@@ -1012,6 +1014,10 @@
 
     .NewNavbar_wholeContainerWhite__QY0eF .NewNavbar_container__dGANs .NewNavbar_logo__D1qkF img {
         width: 110px;
+    }
+
+    .NewNavbar_wholeContainer__z2zti .NewNavbar_container__dGANs .NewNavbar_logo__D1qkF img {
+        width: 95%;
     }
 
     .NewNavbar_wholeContainer__z2zti .NewNavbar_container__dGANs .NewNavbar_sponsorBar__\+QUFr .NewNavbar_imageContainer__wGvkD {

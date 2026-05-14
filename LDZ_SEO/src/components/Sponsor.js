@@ -976,7 +976,7 @@ const Sponsors = () => {
               <TestimonialCarousel />
               <LogoCarousel />
               <div className="SponsorsScreen_contactContainer__c6iss">
-                <h2>Get in touch to Book Your Trade Show Booth</h2>
+                <h2>GET IN TOUCH TO BOOK YOUR BOOTH</h2>
                 {/* <h2>be visible in the room with the decision makers</h2> */}
                 <div>
                   {mediaPageHelpersList.map((item, index) => (
