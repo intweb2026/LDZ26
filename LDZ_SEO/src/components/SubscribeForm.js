@@ -41,11 +41,11 @@ const SubscribeForm = () => {
 `;
 
     const emailPayload = {
-  toemail: subscriberEmail,
-  cc: "",
-  subject: `SUBSCRIPTION: ${eventDetails?.eventName}`,
-  html: htmlContent,
-};
+      toemail: subscriberEmail,
+      cc: "",
+      subject: `SUBSCRIPTION: ${eventDetails?.eventName}`,
+      html: htmlContent,
+    };
 
     try {
       const emailResponse = await fetch(
@@ -124,7 +124,7 @@ const SubscribeForm = () => {
         <div>
           <h2>SUBSCRIBE FOR UPDATES</h2>
           <p>By submitting, you agree to receive email communications from the event organizers, including upcoming promotions and discounted tickets, new, and access to related events.</p>
-          <form className="WDRM_2025_subscribe_form row g-3 needs-validation subForm form_WDRM" encType="multipart/form-data" method="POST" data-hs-cf-bound="true" onSubmit={submitBtnClk}>
+          <form id="LDZ-(Subscribe For Updates 2026)" encType="multipart/form-data" method="POST" data-hs-cf-bound="true" onSubmit={submitBtnClk}>
             <div className="SubscribeforUpdates_from__REPoW">
               <input
                 name="name"

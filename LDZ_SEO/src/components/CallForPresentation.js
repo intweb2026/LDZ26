@@ -769,7 +769,7 @@ const CallForPresentation = () => {
             <div>
               <h2>quick proposal</h2>
               <form
-                className="WDRM_2025_sponsor_form Form_form__nhNBc form_WDRM"
+                id="LDZ-(Quick Proposal 2026)"
                 method="POST"
                 data-hs-cf-bound="true"
                 onSubmit={submitBtnClk}

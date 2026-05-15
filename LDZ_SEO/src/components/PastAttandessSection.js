@@ -82,7 +82,7 @@ const PastAttandessSection = () => {
       });
   };
 
-    // ✅ Subscription email function
+  // ✅ Subscription email function
   async function sendSubscriptionEmail(email) {
     const htmlContent = `
       <p><strong>Thank you for subscribing!</strong></p>
@@ -118,7 +118,7 @@ const PastAttandessSection = () => {
     }
   }
 
-    // ✅ Made async to await API + email
+  // ✅ Made async to await API + email
   const submitBtnClk = async (e) => {
     e.preventDefault();
 
@@ -463,7 +463,7 @@ const PastAttandessSection = () => {
           <div className="HomeScreen_card__eORgl">
             <h3>subscribe for updates</h3>
             <form
-              className="WDRM_2025_subscribe_form HomeScreen_subscribeForm__t-7s7 row g-3 needs-validation subForm form_WDRM"
+              id="LDZ-(Subscribe For Updates 2026)"
               enctype="multipart/form-data"
               method="POST"
               data-hs-cf-bound="true"

@@ -441,7 +441,7 @@ const SponsorDescription = () => {
               <div>
                 <h2>quick proposal</h2>
                 <form
-                  className="AFS_2026_sponsor_form Form_form__nhNBc form_AFS"
+                  id="LDZ-(Quick Proposal 2026)"
                   method="POST"
                   data-hs-cf-bound="true"
                   onSubmit={submitBtnClk}
