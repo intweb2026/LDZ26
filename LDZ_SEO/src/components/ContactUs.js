@@ -909,64 +909,24 @@ const ContactUs = () => {
                 }}
               ></p>
               <div className="ContactUs_emailCardContainer__Kg2ym">
-                <div className="ContactUs_emailCard__YpEIv">
-                  <h5>Delegate Registrations:</h5>
-                  <h6>Delegates Support Team</h6>
-                  <p style={{ visibility: "hidden" }}>Hidden</p>
-                  <a href="mailto:delegates@iq-hub.com?subject=Lithium &amp; Downstream Summit 2026">
-                    <img
-                      src={emailIcon}
-                      alt="Email Icon"
-                      height="12"
-                      width="18"
-                    ></img>
-                    delegates@iq-hub.com
-                  </a>
-                </div>
-                <div className="ContactUs_emailCard__YpEIv">
-                  <h5>Group Sales Team:</h5>
-                  <h6>Ethan Mitchell</h6>
-                  <p style={{ visibility: "visible" }}>Group Sales Director</p>
-                  <a href="mailto:ethan.mitchell@iq-hub.com?subject=Lithium Downstream Summit 2026">
-                    <img
-                      src={emailIcon}
-                      alt="Email Icon"
-                      height="12"
-                      width="18"
-                    ></img>
-                    ethan.mitchell@iq-hub.com
-                  </a>
-                </div>
-                <div className="ContactUs_emailCard__YpEIv">
-                  <h5>Sponsorship & Media Partners:</h5>
-                  <h6>VINCE ROJAS</h6>
-                  <p style={{ visibility: "visible" }}>
-                    Event & Marketing Manager
-                  </p>
-                  <a href="mailto:vince.rojas@iq-hub.com?subject=Lithium Downstream Summit 2026">
-                    <img
-                      src={emailIcon}
-                      alt="Email Icon"
-                      height="12"
-                      width="18"
-                    ></img>
-                    vince.rojas@iq-hub.com
-                  </a>
-                </div>
-                <div className="ContactUs_emailCard__YpEIv">
-                  <h5>Conference Content & Speaking:</h5>
-                  <h6>Sean Collins</h6>
-                  <p style={{ visibility: "visible" }}>Conference Producer</p>
-                  <a href="mailto:sean.collins@iq-hub.com?subject=Lithium Downstream Summit 2026">
-                    <img
-                      src={emailIcon}
-                      alt="Email Icon"
-                      height="12"
-                      width="18"
-                    ></img>
-                    sean.collins@iq-hub.com
-                  </a>
-                </div>
+                {helpersList.map((helper, index) => (
+                  <div className="ContactUs_emailCard__YpEIv">
+                    <h5>{helper?.reasonToHelp}:</h5>
+                    <h6>{helper?.helpingPersonName}</h6>
+                    <p style={{ visibility: helper?.helpingPersonDesignation ? "visible" : "hidden" }}>
+                      {!helper?.helpingPersonDesignation ? "Hidden" : helper?.helpingPersonDesignation}
+                    </p>
+                    <a href={`mailto:${helper?.helpingPersonEmail}?subject=Lithium Downstream Summit 2026`}>
+                      <img
+                        src={emailIcon}
+                        alt="Email Icon"
+                        height="12"
+                        width="18"
+                      ></img>
+                      {helper?.helpingPersonEmail}
+                    </a>
+                  </div>
+                ))}
               </div>
             </section>
             <SubscribeForm />

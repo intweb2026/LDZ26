@@ -43,19 +43,21 @@ const AddContactUsHelper = (props) => {
       });
       setVisible(false);
       setHelpSubjectErr(true);
-    } else if (helpingPersonDesignation === "") {
-      toast.error("Person Designation is Required", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
-      setVisible(false);
-      setHelpingPersonDesignationErr(true);
-    } else if (helperMail === "") {
+    } 
+    // else if (helpingPersonDesignation === "") {
+    //   toast.error("Person Designation is Required", {
+    //     position: "top-right",
+    //     autoClose: 5000,
+    //     hideProgressBar: false,
+    //     closeOnClick: true,
+    //     pauseOnHover: true,
+    //     draggable: true,
+    //     progress: undefined,
+    //   });
+    //   setVisible(false);
+    //   setHelpingPersonDesignationErr(true);
+    // } 
+    else if (helperMail === "") {
       toast.error("Person Email is Required", {
         position: "top-right",
         autoClose: 5000,
@@ -207,7 +209,7 @@ const AddContactUsHelper = (props) => {
               <div className="col-md-6">
                 <div>
                   <Label htmlFor="customername-field" className="form-label">
-                    Person Designation <span className="required_span">*</span>
+                    Person Designation
                   </Label>
                   <Input
                     type="text"
