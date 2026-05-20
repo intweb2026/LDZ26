@@ -315,6 +315,7 @@ urlpatterns = [
     path('gettheme',views.getThemeFun),
     path('sendmail',views.send_booking_email),
     path('sendtozoho',views.send_to_zoho),
+    path('sendtocrm',views.send_to_crm),
 
     path('getagenda', views.agendaListFun),
     path('addagenda', views.add_agenda),

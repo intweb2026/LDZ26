@@ -5581,6 +5581,30 @@ def send_booking_email(request):
         'message': 'Invalid request method'
     }, status=400)
 
+#---------------------------- Api For Send Data to CRM----------------------------#
+
+@api_view(['POST'])
+@permission_classes((AllowAny,))
+def send_to_crm(request):
+    try:
+        response = requests.post(
+            settings.CRM_WEBHOOK_URL,
+            json=request.data,
+            headers={
+                'Content-Type': 'application/json',
+                'X-CRM-API-KEY': settings.CRM_API_KEY,
+            }
+        )
+        return JsonResponse({
+            "status": "success",
+            "crm_response": response.text
+        })
+    except Exception as e:
+        return JsonResponse({
+            "status": "error",
+            "message": str(e)
+        }, status=500)
+
 #---------------------------- Api For Send Data to Zoho----------------------------#
 
 @api_view(['POST'])

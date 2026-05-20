@@ -97,21 +97,27 @@ const AddSponsorDelegateForm = () => {
   const [discountPercent, setDiscountPercent] = useState(0);
   const [discountData, setDiscountData] = useState("");
   const [activeDelPackageData, setActiveDelPackageData] = useState([]);
+  console.log('activeDelPackageData: ', activeDelPackageData);
   const [windowWidth, setWindowWidth] = useState(
     typeof window !== "undefined" ? window.innerWidth : 1200,
   );
 
   const [iconSrcs, setIconSrcs] = useState({
-    plusIcon: '', closeBtn: '', toggle: '', cardLabel: '', lockIcon: '',
+    plusIcon: "",
+    closeBtn: "",
+    toggle: "",
+    cardLabel: "",
+    lockIcon: "",
   });
   useEffect(() => {
     setIconSrcs({
-      plusIcon: plusIcon?.default || plusIcon || '',
-      closeBtn: closeBtn?.default || closeBtn || '',
-      toggle: toggle?.default || toggle || '',
-      cardLabel: cardLabel?.default || cardLabel || '',
-      lockIcon: lockIcon?.default || lockIcon || '',
+      plusIcon: plusIcon?.default || plusIcon || "",
+      closeBtn: closeBtn?.default || closeBtn || "",
+      toggle: toggle?.default || toggle || "",
+      cardLabel: cardLabel?.default || cardLabel || "",
+      lockIcon: lockIcon?.default || lockIcon || "",
     });
+    callGetActiveDelPackageApi();
   }, []);
 
   const portalId = "4000965";
@@ -354,10 +360,143 @@ const AddSponsorDelegateForm = () => {
         }
       }
 
+      async function submitToZoho() {
+        const today = new Date();
+        const dateFormatted = today.toLocaleDateString("en-US", {
+          month: "short",
+          day: "2-digit",
+          year: "numeric",
+        });
+
+        const pacPrice = activeDelPackageData[0]?.deligatePackagePrice || 0;
+        const numDelegates = delegates?.length || 0;
+        const preTaxAmount = pacPrice * numDelegates;
+
+        const taxPercent = parseFloat(
+          eventGeneralSettings?.purchaseTaxPercent || 0,
+        );
+
+        const taxAmount = (preTaxAmount * taxPercent) / 100;
+        const totalAmount = preTaxAmount + taxAmount;
+
+        const zohoPayload = {
+          webhookTrigger: {
+            payload: {
+              StateRegion: formData.company.state || "",
+              Discount: "0",
+              Address: formData.company.address || "-",
+              DelegateCompanyName: formData.company.companyName || "",
+              PreTaxAmount: preTaxAmount,
+              PostalCode: formData.company.postalCode || "0",
+              CompanyWebAddress: formData.company.webAddress || "",
+              City: formData.company.city || "",
+              DiscountCode: "",
+              TotalAmount: totalAmount,
+              Date: dateFormatted,
+              TaxAmount: taxAmount,
+              Packages: activeDelPackageData[0]?.deligatePackageName || "",
+              Currency: `${eventGeneralSettings?.currencySymbol}`,
+              Eventname: `${eventDetails?.eventName}`,
+              Country: formData.company.country || "",
+              Delegates: formData.delegates.map((delegate) => ({
+                Email: delegate.email,
+                Position: delegate.position || "-",
+                FirstName: delegate.firstName,
+                PhoneNumber: delegate.mobile,
+                LastName: delegate.lastName,
+              })),
+              TotalAmountFormatted: totalAmount,
+              InvoiceNumber: invoiceNumber,
+              FormName: "Booking Form",
+              FormURL: "https://www.linq-staging-site.com/sponsor-booking",
+              AddOnsTotalAmount: "0",
+              Eventcode: `${eventDetails?.eventShortCode}`,
+            },
+          },
+        };
+
+        const CrmPayload = {
+          webhookTrigger: {
+            payload: {
+              StateRegion: formData.company.state || "",
+              Discount: "0",
+              Address: formData.company.address || "-",
+              DelegateCompanyName: formData.company.companyName || "",
+              PreTaxAmount: preTaxAmount,
+              PostalCode: formData.company.postalCode || "0",
+              CompanyWebAddress: formData.company.webAddress || "",
+              City: formData.company.city || "",
+              DiscountCode: "",
+              TotalAmount: totalAmount,
+              Date: dateFormatted,
+              TaxAmount: taxAmount,
+              Packages:
+                activeDelPackageData[0]?.deligatePackageName === "Super Early Bird"
+                  ? "SEB"
+                  : activeDelPackageData[0]?.deligatePackageName === "Early Bird"
+                    ? "EB"
+                    : activeDelPackageData[0]?.deligatePackageName === "Regular Price"
+                      ? "Regular"
+                      : "",
+              Currency: `${eventGeneralSettings?.currencySymbol}`,
+              Eventname: `${eventDetails?.eventName}`,
+              Country: formData.company.country || "",
+              Delegates: formData.delegates.map((delegate) => ({
+                Email: delegate.email,
+                Position: delegate.position || "-",
+                FirstName: delegate.firstName,
+                PhoneNumber: delegate.mobile,
+                LastName: delegate.lastName,
+              })),
+              TotalAmountFormatted: totalAmount,
+              InvoiceNumber: invoiceNumber,
+              FormName: "Booking Form",
+              FormURL: "https://www.linq-staging-site.com/sponsor-booking",
+              AddOnsTotalAmount: "0",
+              Eventcode: `${eventDetails?.eventShortCode}`,
+            },
+          },
+        };
+
+        fetch("https://www.linq-staging-site.com/admin1/sendtocrm", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(CrmPayload),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Sync Success:", data);
+          })
+          .catch((error) => {
+            console.error("Sync Error:", error);
+          });
+
+        try {
+          const zohoResponse = await fetch(
+            "https://www.linq-staging-site.com/admin1/sendtozoho",
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(zohoPayload.webhookTrigger.payload), // 👈 just this
+            },
+          );
+
+          if (!zohoResponse.ok) {
+            throw new Error("Zoho API failed");
+          }
+
+          const zohoResult = await zohoResponse.json();
+          console.log("✅ Zoho submission successful:", zohoResult);
+        } catch (error) {
+          console.error("❌ Error submitting to Zoho:", error);
+        }
+      }
+
       try {
         await Promise.all([
           submitCompanyDelegatesToHubSpot(formData),
           sendBookingEmail(),
+          submitToZoho(),
         ]);
 
         setStep2Data({
@@ -747,16 +886,16 @@ const AddSponsorDelegateForm = () => {
           const marketingLiteratureAddOns = allAddOns.filter(
             (addon) =>
               addon.addOnTypeDetails.addOnTypeName ===
-              "Pre-event Marketing Add-ons" ||
+                "Pre-event Marketing Add-ons" ||
               addon.addOnTypeDetails.addOnTypeName ===
-              "Literature Distribution Add-ons",
+                "Literature Distribution Add-ons",
           );
           const sessionOnSiteAddOns = allAddOns.filter(
             (addon) =>
               addon.addOnTypeDetails.addOnTypeName ===
-              "Session Branding Add-ons" ||
+                "Session Branding Add-ons" ||
               addon.addOnTypeDetails.addOnTypeName ===
-              "On Site Branding Add-ons",
+                "On Site Branding Add-ons",
           );
           setMarketingAndLiterature(groupByType(marketingLiteratureAddOns));
           setSessionAndOnSite(groupByType(sessionOnSiteAddOns));
@@ -826,8 +965,8 @@ const AddSponsorDelegateForm = () => {
       parseFloat(activeDelPackageData[0]?.deligatePackagePrice || 0);
     const taxPercent = parseFloat(
       eventGeneralSettings?.purchaseTaxPercantage ||
-      eventGeneralSettings?.purchaseTaxPercent ||
-      0,
+        eventGeneralSettings?.purchaseTaxPercent ||
+        0,
     );
     const sponsorPackagePrice = packagePrice;
     const discountAmount =
@@ -1120,7 +1259,9 @@ const AddSponsorDelegateForm = () => {
                 style={{ maxWidth: "1070px" }}
               >
                 <img
-                  onClick={() => { window.location.href = "/"; }}
+                  onClick={() => {
+                    window.location.href = "/";
+                  }}
                   src={navLogos?.whiteLogo}
                   alt="Site logo"
                 ></img>
@@ -1160,9 +1301,7 @@ const AddSponsorDelegateForm = () => {
                                 <div>
                                   <p>
                                     Date:
-                                    <span>
-                                      {eventDetails?.eventDate || ""}
-                                    </span>
+                                    <span>{eventDetails?.eventDate || ""}</span>
                                   </p>
                                   <p>
                                     Location:
@@ -1300,7 +1439,9 @@ const AddSponsorDelegateForm = () => {
                 style={{ maxWidth: "1280px" }}
               >
                 <img
-                  onClick={() => { window.location.href = "/"; }}
+                  onClick={() => {
+                    window.location.href = "/";
+                  }}
                   src={navLogos?.whiteLogo}
                   alt="Site logo"
                 ></img>
@@ -1418,7 +1559,12 @@ const AddSponsorDelegateForm = () => {
                     <div className="SponsorFormV2_paymentOptionsInner__K64qJ">
                       <div className="SponsorFormV2_imagesContainer__CE3+9">
                         <p>We accept all major credit and debit cards.</p>
-                        {iconSrcs.cardLabel && <img src={iconSrcs.cardLabel} alt="credit card logo" />}
+                        {iconSrcs.cardLabel && (
+                          <img
+                            src={iconSrcs.cardLabel}
+                            alt="credit card logo"
+                          />
+                        )}
                       </div>
                       <div>
                         <div className="stripe-input-container">
@@ -1443,7 +1589,9 @@ const AddSponsorDelegateForm = () => {
                             onClick={handlePaymentClick}
                             disabled={paymentFormRef.current?.isProcessing}
                           >
-                            {iconSrcs.lockIcon && <img src={iconSrcs.lockIcon} alt="" />}
+                            {iconSrcs.lockIcon && (
+                              <img src={iconSrcs.lockIcon} alt="" />
+                            )}
                             {paymentFormRef.current?.isProcessing
                               ? "Processing..."
                               : "Pay Securely Now"}
@@ -1504,7 +1652,9 @@ const AddSponsorDelegateForm = () => {
               style={{ maxWidth: "1070px" }}
             >
               <img
-                onClick={() => { window.location.href = "/"; }}
+                onClick={() => {
+                  window.location.href = "/";
+                }}
                 src={navLogos?.whiteLogo}
                 alt="site logo"
               ></img>
@@ -1848,7 +1998,9 @@ const AddSponsorDelegateForm = () => {
                                 className="SponsorFormV2_delBtn__tsq7H"
                                 onClick={() => removeDelegate(delegate.id)}
                               >
-                                {iconSrcs.closeBtn && <img src={iconSrcs.closeBtn} alt="closeBtn" />}
+                                {iconSrcs.closeBtn && (
+                                  <img src={iconSrcs.closeBtn} alt="closeBtn" />
+                                )}
                               </Button>
                             </div>
                           )}
@@ -2183,7 +2335,9 @@ const AddSponsorDelegateForm = () => {
                       className="SponsorFormV2_delBtn__tsq7H"
                       onClick={addDelegate}
                     >
-                      {iconSrcs.plusIcon && <img src={iconSrcs.plusIcon} alt="plusIcon" />}
+                      {iconSrcs.plusIcon && (
+                        <img src={iconSrcs.plusIcon} alt="plusIcon" />
+                      )}
                       Add Delegate
                     </Button>
                   </div>

@@ -60,15 +60,19 @@ const CompanyRegistrationForm = () => {
   );
 
   const [iconSrcs, setIconSrcs] = useState({
-    plusIcon: '', closeBtn: '', toggle: '', cardLabel: '', lockIcon: '',
+    plusIcon: "",
+    closeBtn: "",
+    toggle: "",
+    cardLabel: "",
+    lockIcon: "",
   });
   useEffect(() => {
     setIconSrcs({
-      plusIcon: plusIcon?.default || plusIcon || '',
-      closeBtn: closeBtn?.default || closeBtn || '',
-      toggle: toggle?.default || toggle || '',
-      cardLabel: cardLabel?.default || cardLabel || '',
-      lockIcon: lockIcon?.default || lockIcon || '',
+      plusIcon: plusIcon?.default || plusIcon || "",
+      closeBtn: closeBtn?.default || closeBtn || "",
+      toggle: toggle?.default || toggle || "",
+      cardLabel: cardLabel?.default || cardLabel || "",
+      lockIcon: lockIcon?.default || lockIcon || "",
     });
   }, []);
 
@@ -483,8 +487,8 @@ const CompanyRegistrationForm = () => {
               Date: dateFormatted,
               TaxAmount: taxAmount,
               Packages: selectedPackage?.deligatePackageName || "",
-              Currency: "USD",
-              Eventname: "Litihium Downstream Summit 2026",
+              Currency: `${eventGeneralSettings?.currencySymbol}`,
+              Eventname: `${eventDetails?.eventName}`,
               Country: formData.company.country || "",
               Delegates: formData.delegates.map((delegate) => ({
                 Email: delegate.email,
@@ -503,13 +507,62 @@ const CompanyRegistrationForm = () => {
           },
         };
 
+        const CrmPayload = {
+          webhookTrigger: {
+            payload: {
+              StateRegion: formData.company.state || "",
+              Discount: "0",
+              Address: formData.company.address || "-",
+              DelegateCompanyName: formData.company.companyName || "",
+              PreTaxAmount: preTaxAmount,
+              PostalCode: formData.company.postalCode || "0",
+              CompanyWebAddress: formData.company.webAddress || "",
+              City: formData.company.city || "",
+              DiscountCode: "",
+              TotalAmount: totalAmount,
+              Date: dateFormatted,
+              TaxAmount: taxAmount,
+              Packages: selectedPackage?.deligatePackageName === "Super Early Bird" ? "SEB" : selectedPackage?.deligatePackageName === "Early Bird" ? "EB" : selectedPackage?.deligatePackageName === "Regular Price" ? "Regular" : "",
+              Currency: `${eventGeneralSettings?.currencySymbol}`,
+              Eventname: `${eventDetails?.eventName}`,
+              Country: formData.company.country || "",
+              Delegates: formData.delegates.map((delegate) => ({
+                Email: delegate.email,
+                Position: delegate.position || "-",
+                FirstName: delegate.firstName,
+                PhoneNumber: delegate.mobile,
+                LastName: delegate.lastName,
+              })),
+              TotalAmountFormatted: totalAmount,
+              InvoiceNumber: invoiceNumber,
+              FormName: "Booking Form",
+              FormURL: "https://www.linq-staging-site.com/booking-form",
+              AddOnsTotalAmount: "0",
+              Eventcode: `${eventDetails?.eventShortCode}`,
+            },
+          },
+        };
+
+        fetch("https://www.linq-staging-site.com/admin1/sendtocrm", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(CrmPayload),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Sync Success:", data);
+          })
+          .catch((error) => {
+            console.error("Sync Error:", error);
+          });
+
         try {
           const zohoResponse = await fetch(
             "https://www.linq-staging-site.com/admin1/sendtozoho",
             {
               method: "POST",
               headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(zohoPayload.webhookTrigger.payload) // 👈 just this
+              body: JSON.stringify(zohoPayload.webhookTrigger.payload), // 👈 just this
             },
           );
 
@@ -1200,7 +1253,9 @@ const CompanyRegistrationForm = () => {
                 style={{ maxWidth: "1070px" }}
               >
                 <img
-                  onClick={() => { window.location.href = "/"; }}
+                  onClick={() => {
+                    window.location.href = "/";
+                  }}
                   src={navLogos?.whiteLogo}
                   alt="Site logo"
                 ></img>
@@ -1222,7 +1277,10 @@ const CompanyRegistrationForm = () => {
 
                       {/* Render one card per delegate */}
                       {delegates.map((delegate, index) => (
-                        <div key={delegate.id} className="BookingFormV2_cardContainer__YEc1F">
+                        <div
+                          key={delegate.id}
+                          className="BookingFormV2_cardContainer__YEc1F"
+                        >
                           <div className="BookingFormV2_card__nZKbg">
                             <div className="BookingFormV2_cutout__YBhQ4"></div>
                             <div className="BookingFormV2_content__MGbbj">
@@ -1241,7 +1299,9 @@ const CompanyRegistrationForm = () => {
                                   </p>
                                   <p>
                                     Location:
-                                    <span>{eventDetails?.eventShortLocation || ""}</span>
+                                    <span>
+                                      {eventDetails?.eventShortLocation || ""}
+                                    </span>
                                   </p>
                                 </div>
                                 <div>
@@ -1373,7 +1433,9 @@ const CompanyRegistrationForm = () => {
                 style={{ maxWidth: "1280px" }}
               >
                 <img
-                  onClick={() => { window.location.href = "/"; }}
+                  onClick={() => {
+                    window.location.href = "/";
+                  }}
                   src={navLogos?.whiteLogo}
                   alt="site logo"
                 ></img>
@@ -1448,7 +1510,12 @@ const CompanyRegistrationForm = () => {
                     <div className="BookingFormV2_paymentOptionsInner__YVwZU">
                       <div className="BookingFormV2_imagesContainer__Ko5GY">
                         <p>We accept all major credit and debit cards.</p>
-                        {iconSrcs.cardLabel && <img src={iconSrcs.cardLabel} alt="credit card logo" />}
+                        {iconSrcs.cardLabel && (
+                          <img
+                            src={iconSrcs.cardLabel}
+                            alt="credit card logo"
+                          />
+                        )}
                       </div>
                       <div>
                         <div className="stripe-input-container">
@@ -1473,7 +1540,9 @@ const CompanyRegistrationForm = () => {
                             onClick={handlePaymentClick}
                             disabled={paymentFormRef.current?.isProcessing}
                           >
-                            {iconSrcs.lockIcon && <img src={iconSrcs.lockIcon} alt="" />}
+                            {iconSrcs.lockIcon && (
+                              <img src={iconSrcs.lockIcon} alt="" />
+                            )}
                             {paymentFormRef.current?.isProcessing
                               ? "Processing..."
                               : "Pay Securely Now"}
@@ -1531,9 +1600,7 @@ const CompanyRegistrationForm = () => {
                   </span>
                   <span className="PageForm_divide__vwhn0">|</span>
                   <span
-                    onClick={() =>
-                      window.open("https://iq-hub.com/", "_blank")
-                    }
+                    onClick={() => window.open("https://iq-hub.com/", "_blank")}
                   >
                     IQ International PTe.LTD
                   </span>
@@ -1559,7 +1626,9 @@ const CompanyRegistrationForm = () => {
               style={{ maxWidth: "1070px" }}
             >
               <img
-                onClick={() => { window.location.href = "/"; }}
+                onClick={() => {
+                  window.location.href = "/";
+                }}
                 src={navLogos?.whiteLogo}
                 alt="site logo"
               ></img>
@@ -1905,7 +1974,9 @@ const CompanyRegistrationForm = () => {
                                 className="BookingFormV2_delBtn__3MPla"
                                 onClick={() => removeDelegate(delegate.id)}
                               >
-                                {iconSrcs.closeBtn && <img src={iconSrcs.closeBtn} alt="closeBtn" />}
+                                {iconSrcs.closeBtn && (
+                                  <img src={iconSrcs.closeBtn} alt="closeBtn" />
+                                )}
                               </Button>
                             </div>
                           )}
@@ -2240,7 +2311,9 @@ const CompanyRegistrationForm = () => {
                       className="BookingFormV2_delBtn__3MPla"
                       onClick={addDelegate}
                     >
-                      {iconSrcs.plusIcon && <img src={iconSrcs.plusIcon} alt="plusIcon" />}
+                      {iconSrcs.plusIcon && (
+                        <img src={iconSrcs.plusIcon} alt="plusIcon" />
+                      )}
                       Add Delegate
                     </Button>
                   </div>

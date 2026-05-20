@@ -186,6 +186,9 @@ STRIPE_SECRET_KEY = 'sk_test_51S3c3THQBCGmReEP5KAgrZgnPTOH1neneuz9cmEQrWU6jk6PFz
 
 ZOHO_WEBHOOK_URL = 'https://flow.zoho.in/60060817867/flow/webhook/incoming?zapikey=1001.48c7ec6c66f3417f5e4e55f29dce369f.58f387aa65dfaa387287d049417d8d54&isdebug=false'
 
+CRM_WEBHOOK_URL = 'https://app.iq-hub.com/api/webhooks/ingest/'
+CRM_API_KEY = 'crm_live_rLhe2UmMLd9R9XARSavPBi6QaZIdfS690-1NqkWs7jQ0OKHa'
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
