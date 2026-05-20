@@ -965,7 +965,7 @@ def contatusDataFun(request):
 @permission_classes((AllowAny,))
 @api_view(['GET'])
 def contatusHelpersDataFun(request):
-    contactsUsHelperData_list = contactUsHelpData.objects.all().filter(isDelete='No')
+    contactsUsHelperData_list = contactUsHelpData.objects.all().filter(isDelete='No').order_by('id')
     contactUsHelperDataList = []
     for helperData in contactsUsHelperData_list:
         x={
