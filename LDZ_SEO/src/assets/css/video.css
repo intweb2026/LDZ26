@@ -203,7 +203,7 @@ body .home-banner-container .innerContainer .upper .graphic .text:before {
 }
 
 .home-banner-container .innerContainer .lower .lowerContainer .buttonContainer .button:hover h4 img {
-    content: url('https://www.desalination-resource-recovery.com/images/icons/up-arrow-hover.png');
+    content: url('../WebCommonImages//up-arrow-hover.png');
 }
 
 .home-banner-container .innerContainer .lower .lowerContainer .buttonContainer .button p {
@@ -311,6 +311,12 @@ body .home-banner-container .innerContainer .upper .graphic .text span {
 }
 
 @media only screen and (max-width: 1023px) {
+    .home-banner-container {
+        height: max-content;
+        padding-bottom: 30px;
+        padding-top: 75px;
+    }
+
     .home-banner-container .innerContainer {
         height: auto;
         min-height: 665px;

@@ -207,7 +207,7 @@ body .home-banner-container .innerContainer .upper .graphic .text:before {
 }
 
 .home-banner-container .innerContainer .lower .lowerContainer .buttonContainer .button:hover h4 img {
-    content: url('https://www.desalination-resource-recovery.com/images/icons/up-arrow-hover.png');
+    content: url('../../src/assets/WebCommonImages/up-arrow-hover.png');
 }
 
 .home-banner-container .innerContainer .lower .lowerContainer .buttonContainer .button p {

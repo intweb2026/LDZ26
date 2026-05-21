@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import "../../src/assets/css/video.css";
 import { useApiData } from "../../src/common/ApiContext";
@@ -25,6 +25,12 @@ const VideoSection = () => {
     eventGeneralSettings,
     themeSettings,
   } = useApiData();
+
+  const [arrowSrc, setArrowSrc] = useState('');
+
+  useEffect(() => {
+    setArrowSrc(arrowIcon?.default || arrowIcon || '');
+  }, []);
 
   return (
     <>
@@ -105,12 +111,12 @@ const VideoSection = () => {
                 <div className="button" onClick={() => goTo("/agenda-page")}>
                   <h4>
                     view program
-                    <img
-                      src={arrowIcon}
+                    {arrowSrc && <img
+                      src={arrowSrc}
                       alt="arrow icon"
                       width={15}
                       loading="lazy"
-                    />
+                    />}
                   </h4>
                   <p>Discover the highlights of the event</p>
                 </div>
@@ -118,12 +124,12 @@ const VideoSection = () => {
                 <div className="button" onClick={() => goTo("/contact-us")}>
                   <h4>
                     connect with us
-                    <img
-                      src={arrowIcon}
+                    {arrowSrc && <img
+                      src={arrowSrc}
                       alt="arrow icon"
                       width={15}
                       loading="lazy"
-                    />
+                    />}
                   </h4>
                   <p>Get your questions answered by our team</p>
                 </div>
@@ -131,12 +137,12 @@ const VideoSection = () => {
                 <div className="button" onClick={() => goTo("/sponsors")}>
                   <h4>
                     become a partner
-                    <img
-                      src={arrowIcon}
+                    {arrowSrc && <img
+                      src={arrowSrc}
                       alt="arrow icon"
                       width={15}
                       loading="lazy"
-                    />
+                    />}
                   </h4>
                   <p>Join as a sponsor and reserve your booth</p>
                 </div>
@@ -150,4 +156,3 @@ const VideoSection = () => {
 };
 
 export default VideoSection;
-
