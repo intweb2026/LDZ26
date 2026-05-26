@@ -11,12 +11,12 @@ import "react-toastify/dist/ReactToastify.css";
 import Slider from "react-slick";
 import Popup from "reactjs-popup";
 import { Helmet } from "react-helmet-async";
-import benefitsBg from "../assets/WebImages/benefits-who-should-attend.webp";
-import ketTakewaysBg from "../assets/WebImages/keytakeaways-who-should-attend.webp";
-import arrowUpIcon from "../assets/WebCommonImages/accordion-arrow-up.png";
-import arrowDownIcon from "../assets/WebCommonImages/arrow-down-black.png";
 import { usePageSeo } from "../common/usePageSeo";
 import "../assets/css/popUp.css";
+const benefitsBg = "/images/WebImages/benefits-who-should-attend.webp";
+const ketTakewaysBg = "/images/WebImages/keytakeaways-who-should-attend.webp";
+const arrowUpIcon = "/images/WebCommonImages/accordion-arrow-up.png";
+const arrowDownIcon = "/images/WebCommonImages/arrow-down-black.png";
 // const arrowUpIcon =
 //   "https://www.desalination-resource-recovery.com/images/icons/accordion-arrow-up.png";
 // const arrowDownIcon =

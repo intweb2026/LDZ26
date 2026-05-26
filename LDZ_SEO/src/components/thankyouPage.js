@@ -4,8 +4,8 @@ import { useLocation, Navigate } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer from "../Footer";
 import '../../src/assets/css/thankYouPage.css'
-import checkIcon from '../assets/images/checked.png'
-import leftArrowIcon from '../assets/WebCommonImages/icon-arrow-left.png'
+const checkIcon = "/images/checked.png";
+const leftArrowIcon = "/images/WebCommonImages/icon-arrow-left.png";
 
 const ThankYouPage = () => {
     const location = useLocation();

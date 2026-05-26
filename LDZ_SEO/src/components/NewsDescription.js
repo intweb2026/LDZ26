@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useLocation, useParams, useNavigate, Link } from "react-router-dom";
-import Newsimg from "../../src/assets/images/News/1749734953604.jpg";
 import "../../src/assets/css/NewsDescription.css";
 import Navbar from "./Navbar";
 import SubscribeForm from "./SubscribeForm";
@@ -10,10 +9,10 @@ import "react-toastify/dist/ReactToastify.css";
 import Error404 from "./Error404";
 import { Helmet } from "react-helmet-async";
 import { useSSRData } from "../common/useSSRData";
-import linkedInLogo from '../assets/WebCommonImages/share-linkedIn.png'
-import whatsappLogo from '../assets/WebCommonImages/share-whatsapp.png'
-import emailLogo from '../assets/WebCommonImages/share-email.png'
-import copyLogo from '../assets/WebCommonImages/share-copy.png'
+const linkedInLogo = "/images/WebCommonImages/share-linkedIn.png";
+const whatsappLogo = "/images/WebCommonImages/share-whatsapp.png";
+const emailLogo = "/images/WebCommonImages/share-email.png";
+const copyLogo = "/images/WebCommonImages/share-copy.png";
 
 const toSlug = (str = "") => {
   return str

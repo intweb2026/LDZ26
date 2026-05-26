@@ -14,9 +14,9 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Helmet } from "react-helmet-async";
 import { useSSRData } from "../common/useSSRData";
-import leftArrowIcon from "../assets/WebCommonImages/icon-arrow-left.png";
-import rightArrowIcon from "../assets/WebCommonImages/icon-arrow-right.png";
 import { useApiData } from "../common/ApiContext";
+const leftArrowIcon = "/images/WebCommonImages/icon-arrow-left.png";
+const rightArrowIcon = "/images/WebCommonImages/icon-arrow-right.png";
 
 const allTopics = [
   {

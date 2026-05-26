@@ -6,10 +6,10 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../assets/css/contactUs.css";
 import { Helmet } from "react-helmet-async";
-import emailImage from "../assets/WebCommonImages/icon-email.png";
-import emailIcon from "../assets/WebCommonImages/msg.png";
 import { usePageSeo } from "../common/usePageSeo";
 import "../assets/css/form.css";
+const emailImage = "/images/WebCommonImages/icon-email.png";
+const emailIcon = "/images/WebCommonImages/msg.png";
 
 const ContactUs = () => {
   const [windowWidth, setWindowWidth] = useState(

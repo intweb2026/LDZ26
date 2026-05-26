@@ -8,10 +8,10 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useSSRData } from "../common/useSSRData";
 import { Helmet } from "react-helmet-async";
-import toggle from "../../src/assets/WebCommonImages/toggle.png";
-import cardLabel from "../../src/assets/WebCommonImages/card-labels.png";
-import lockIcon from "../../src/assets/WebCommonImages/lock.png";
 import { usePageSeo } from "../common/usePageSeo";
+const toggle = "/images/WebCommonImages/toggle.png";
+const cardLabel = "/images/WebCommonImages/card-labels.png";
+const lockIcon = "/images/WebCommonImages/lock.png";
 
 const SponsorBookingForm = () => {
   const navigate = useNavigate();

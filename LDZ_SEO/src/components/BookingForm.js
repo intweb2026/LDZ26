@@ -6,9 +6,9 @@ import { useApiData } from "../../src/common/ApiContext";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useSSRData } from "../common/useSSRData";
-import toggle from "../assets/WebCommonImages/toggle.png";
-import cardLabel from "../assets/WebCommonImages/card-labels.png";
-import lockIcon from "../assets/WebCommonImages/lock.png";
+const toggle = "/images/WebCommonImages/toggle.png";
+const cardLabel = "/images/WebCommonImages/card-labels.png";
+const lockIcon = "/images/WebCommonImages/lock.png";
 const BookingForm = () => {
   const navigate = useNavigate();
   const location = useLocation();

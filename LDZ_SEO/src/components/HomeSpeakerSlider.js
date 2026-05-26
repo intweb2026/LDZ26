@@ -7,9 +7,9 @@ import "slick-carousel/slick/slick-theme.css";
 import "../../src/assets/css/homeSpeakerSlider.css";
 import { useNavigate } from "react-router-dom";
 import { useSSRData } from "../common/useSSRData";
-import plusIcon from '../assets/WebCommonImages/plus-white.png'
-import closeIcon from '../assets/WebCommonImages/close-slider.png'
-import arrowRed from '../assets/WebCommonImages/arrow-red.png'
+const plusIcon = "/images/WebCommonImages/plus-white.png";
+const closeIcon = "/images/WebCommonImages/close-slider.png";
+const arrowRed = "/images/WebCommonImages/arrow-red.png";
 
 // const plusIcon =
 //   "https://www.desalination-resource-recovery.com/images/icons/plus-white.png";

@@ -361,9 +361,9 @@ import { useNavigate, useLocation } from "react-router-dom";
 import "../assets/css/navbar.css";
 import GoogleTranslate from "./GoogleTranslate";
 import { useSSRData } from "../common/useSSRData";
-import closeBtn from '../assets/WebCommonImages/close-white.png'
-import hamburger from '../assets/WebCommonImages/navbar-toggle.png'
-import leftArrowIcon from '../assets/WebCommonImages/icon-arrow-left.png'
+const closeBtn = '/images/WebCommonImages/close-white.png';
+const hamburger = '/images/WebCommonImages/navbar-toggle.png';
+const leftArrowIcon = '/images/WebCommonImages/icon-arrow-left.png';
 
 // const closeBtn =
 //   "https://www.desalination-resource-recovery.com/images/icons/close-white.png";

@@ -6,11 +6,11 @@ import SubscribeForm from "./SubscribeForm";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Helmet } from "react-helmet-async";
-import mediaImage1 from "../assets/WebImages/media1.webp";
-import mediaImage2 from "../assets/WebImages/media-res2.webp";
-import emailIcon from "../assets/WebCommonImages/msg.png";
-import phoneIcon from "../assets/WebCommonImages/phone-call.png";
 import { usePageSeo } from "../common/usePageSeo";
+const mediaImage1 = "/images/WebImages/media1.webp";
+const mediaImage2 = "/images/WebImages/media-res2.webp";
+const emailIcon = "/images/WebCommonImages/msg.png";
+const phoneIcon = "/images/WebCommonImages/phone-call.png";
 // const mediaImage1 =
 //   "https://www.europe.autonomous-vehicles-conference.com/static/media/media.8d91a0418af8c33f6344.webp"
 // const mediaImage2 =

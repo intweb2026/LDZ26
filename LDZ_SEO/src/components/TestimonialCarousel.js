@@ -1,23 +1,19 @@
 import { useState, useEffect } from "react";
-import Testimonials3 from "../../src/assets/images/testominal/testominal.webp";
-import Testimonials4 from "../../src/assets/images/testominal/testominal2.webp";
-import Testimonials5 from "../../src/assets/images/testominal/testominal3.webp";
-import Testimonials6 from "../../src/assets/images/testominal/testominal4.webp";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import '../assets/css/TestimonialCarousel.css'
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import testimonialImg1 from '../assets/WebImages/testimonial-top-1.webp'
-import testimonialImg2 from '../assets/WebImages/testimonial-top-2.webp'
-import testimonialImg3 from '../assets/WebImages/testimonial-center-left-1.webp'
-import testimonialImg4 from '../assets/WebImages/testimonial-center-left-2.webp'
-import testimonialImg5 from '../assets/WebImages/testimonial-center-right-1.webp'
-import testimonialImg6 from '../assets/WebImages/testimonial-center-right-2.webp'
-import testimonialImg7 from '../assets/WebImages/testimonial-bottom-1.webp'
-import testimonialImg8 from '../assets/WebImages/testimonial-bottom-2.webp'
-import quotationIcon from '../assets/WebCommonImages/icon-quotation.png'
+const testimonialImg1 = "/images/WebImages/testimonial-top-1.webp";
+const testimonialImg2 = "/images/WebImages/testimonial-top-2.webp";
+const testimonialImg3 = "/images/WebImages/testimonial-center-left-1.webp";
+const testimonialImg4 = "/images/WebImages/testimonial-center-left-2.webp";
+const testimonialImg5 = "/images/WebImages/testimonial-center-right-1.webp";
+const testimonialImg6 = "/images/WebImages/testimonial-center-right-2.webp";
+const testimonialImg7 = "/images/WebImages/testimonial-bottom-1.webp";
+const testimonialImg8 = "/images/WebImages/testimonial-bottom-2.webp";
+const quotationIcon = "/images/WebCommonImages/icon-quotation.png";
 
 // const testimonialImg1 = "https://www.desalination-resource-recovery.com/static/media/top%201.ddc129db141f72b2086a.webp"
 // const testimonialImg2 = "https://www.desalination-resource-recovery.com/static/media/top%202.3c8b10699a330d7a8730.webp"

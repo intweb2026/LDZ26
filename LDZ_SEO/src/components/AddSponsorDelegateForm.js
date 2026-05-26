@@ -18,13 +18,13 @@ import { useApiData } from "../common/ApiContext";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Helmet } from "react-helmet-async";
-import plusIcon from "../assets/WebCommonImages/plus.png";
-import closeBtn from "../assets/WebCommonImages/del-cross.png";
-import toggle from "../assets/WebCommonImages/toggle.png";
-import cardLabel from "../assets/WebCommonImages/card-labels.png";
-import lockIcon from "../assets/WebCommonImages/lock.png";
-import barcodeImage from "../assets/WebCommonImages/hash_code.png";
 import { usePageSeo } from "../common/usePageSeo";
+const plusIcon = "/images/WebCommonImages/plus.png";
+const closeBtn = "/images/WebCommonImages/del-cross.png";
+const toggle = "/images/WebCommonImages/toggle.png";
+const cardLabel = "/images/WebCommonImages/card-labels.png";
+const lockIcon = "/images/WebCommonImages/lock.png";
+const barcodeImage = "/images/WebCommonImages/hash_code.png";
 
 const countries = getNames();
 
@@ -102,21 +102,7 @@ const AddSponsorDelegateForm = () => {
     typeof window !== "undefined" ? window.innerWidth : 1200,
   );
 
-  const [iconSrcs, setIconSrcs] = useState({
-    plusIcon: "",
-    closeBtn: "",
-    toggle: "",
-    cardLabel: "",
-    lockIcon: "",
-  });
   useEffect(() => {
-    setIconSrcs({
-      plusIcon: plusIcon?.default || plusIcon || "",
-      closeBtn: closeBtn?.default || closeBtn || "",
-      toggle: toggle?.default || toggle || "",
-      cardLabel: cardLabel?.default || cardLabel || "",
-      lockIcon: lockIcon?.default || lockIcon || "",
-    });
     callGetActiveDelPackageApi();
   }, []);
 
@@ -1042,13 +1028,11 @@ const AddSponsorDelegateForm = () => {
       </div>
       <div className="SponsorFormV2_summary__wdcGC">
         <div className="SponsorFormV2_toggle__Weatl">
-          {iconSrcs.toggle && (
-            <img
-              src={iconSrcs.toggle}
+          <img
+              src={toggle}
               alt="toggle icon"
               style={{ cursor: "pointer", transform: "rotate3D(0deg)" }}
             />
-          )}
         </div>
         <div className="SponsorFormV2_table__wnZwq">
           <div>
@@ -1559,12 +1543,10 @@ const AddSponsorDelegateForm = () => {
                     <div className="SponsorFormV2_paymentOptionsInner__K64qJ">
                       <div className="SponsorFormV2_imagesContainer__CE3+9">
                         <p>We accept all major credit and debit cards.</p>
-                        {iconSrcs.cardLabel && (
-                          <img
-                            src={iconSrcs.cardLabel}
+                        <img
+                            src={cardLabel}
                             alt="credit card logo"
                           />
-                        )}
                       </div>
                       <div>
                         <div className="stripe-input-container">
@@ -1589,9 +1571,7 @@ const AddSponsorDelegateForm = () => {
                             onClick={handlePaymentClick}
                             disabled={paymentFormRef.current?.isProcessing}
                           >
-                            {iconSrcs.lockIcon && (
-                              <img src={iconSrcs.lockIcon} alt="" />
-                            )}
+                            <img src={lockIcon} alt="" />
                             {paymentFormRef.current?.isProcessing
                               ? "Processing..."
                               : "Pay Securely Now"}
@@ -1998,9 +1978,7 @@ const AddSponsorDelegateForm = () => {
                                 className="SponsorFormV2_delBtn__tsq7H"
                                 onClick={() => removeDelegate(delegate.id)}
                               >
-                                {iconSrcs.closeBtn && (
-                                  <img src={iconSrcs.closeBtn} alt="closeBtn" />
-                                )}
+                                <img src={closeBtn} alt="closeBtn" />
                               </Button>
                             </div>
                           )}
@@ -2335,9 +2313,7 @@ const AddSponsorDelegateForm = () => {
                       className="SponsorFormV2_delBtn__tsq7H"
                       onClick={addDelegate}
                     >
-                      {iconSrcs.plusIcon && (
-                        <img src={iconSrcs.plusIcon} alt="plusIcon" />
-                      )}
+                      <img src={plusIcon} alt="plusIcon" />
                       Add Delegate
                     </Button>
                   </div>

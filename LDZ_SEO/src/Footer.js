@@ -25,12 +25,6 @@ const Footer = () => {
   const trends = useSSRData("trends") || [];
   const [footerNavOptions, setFooterNavOptions] = useState([]);
   const { eventDetails, eventGeneralSettings, navLogos } = useApiData();
-  const [logoSrc, setLogoSrc] = useState('');
-
-  useEffect(() => {
-    setLogoSrc(navLogos?.whiteLogo || '');
-  }, [navLogos]);
-
   const iqHubRef = useRef(null);
   const IQ_HUB_URL = "https://iq-hub.com/";
 
@@ -184,11 +178,11 @@ const Footer = () => {
           <div className="Footer_footerLogo__6mJFB">
             <div className="lazyload-wrapper ">
               <a href="/" style={{ textDecoration: "none", color: "inherit" }}>
-                {logoSrc && <img
-                  src={logoSrc}
+                <img
+                  src={navLogos?.whiteLogo}
                   alt="LDZ Logo"
                   height={64}
-                />}
+                />
               </a>
             </div>
           </div>

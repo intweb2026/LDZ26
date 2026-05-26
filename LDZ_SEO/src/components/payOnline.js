@@ -8,13 +8,13 @@ import LogoCarousel from "./LogoCarousel";
 import "react-phone-input-2/lib/style.css";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import cardLabel from "../../src/assets/images/card-labels.png";
 import SimpleStripeForm from "./PaymentForm";
 import { Helmet } from "react-helmet-async";
 import { useSSRData } from "../common/useSSRData";
 import { useApiData } from "../common/ApiContext";
 import { usePageSeo } from "../common/usePageSeo";
-const lockIcon = "https://img.icons8.com/ios-filled/50/ffffff/lock.png";
+const lockIcon = "/images/WebCommonImages/payment-lock.png";
+const cardLabel = "/images/WebCommonImages/card-labels.png";
 
 const PayOnline = () => {
   const {

@@ -14,12 +14,12 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import TestimonialCarousel from "./TestimonialCarousel";
 import { useSSRData } from "../common/useSSRData";
-import leftArrowIcon from "../assets/WebCommonImages/icon-arrow-left.png";
-import rightArrowIcon from "../assets/WebCommonImages/icon-arrow-right.png";
-import emailIcon from "../assets/WebCommonImages/msg.png";
-import phoneIcon from "../assets/WebCommonImages/phone-call.png";
 import { usePageSeo } from "../common/usePageSeo";
 import { useApiData } from "../common/ApiContext";
+const leftArrowIcon = "/images/WebCommonImages/icon-arrow-left.png";
+const rightArrowIcon = "/images/WebCommonImages/icon-arrow-right.png";
+const emailIcon = "/images/WebCommonImages/msg.png";
+const phoneIcon = "/images/WebCommonImages/phone-call.png";
 
 const Sponsors = () => {
   const sliderRef = useRef(null);

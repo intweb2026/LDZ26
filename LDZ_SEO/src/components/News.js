@@ -8,10 +8,10 @@ import "../../src/assets/css/News.css";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Helmet } from "react-helmet-async";
-import leftArrowIcon from '../assets/WebCommonImages/icon-arrow-left.png'
-import rightArrowIcon from '../assets/WebCommonImages/icon-arrow-right.png'
 import { usePageSeo } from "../common/usePageSeo";
 import { useApiData } from "../common/ApiContext";
+const leftArrowIcon = "/images/WebCommonImages/icon-arrow-left.png";
+const rightArrowIcon = "/images/WebCommonImages/icon-arrow-right.png";
 
 const News = () => {
   const navigate = useNavigate();

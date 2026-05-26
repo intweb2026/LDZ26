@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../src/assets/css/ExhibitorPackages.css";
-import Sponsors7 from "../../src/assets/images/Sponsor/sponsor-image (1).png";
 import Navbar from "./Navbar";
 import LogoCarousel from "./LogoCarousel";
 import SubscribeForm from "./SubscribeForm";
@@ -10,46 +9,19 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../../src/assets/css/logoslider.css";
-import Testimonials3 from "../../src/assets/images/testominal/testominal.webp";
-import Testimonials4 from "../../src/assets/images/testominal/testominal2.webp";
-import Testimonials5 from "../../src/assets/images/testominal/testominal3.webp";
-import Testimonials6 from "../../src/assets/images/testominal/testominal4.webp";
-import partner1 from "../../src/assets/images/partners/partner1.png";
-import partner2 from "../../src/assets/images/partners/partner2.png";
-import partner3 from "../../src/assets/images/partners/partner3.png";
-import partner4 from "../../src/assets/images/partners/partner4.png";
-import partner5 from "../../src/assets/images/partners/partner5.png";
-import partner6 from "../../src/assets/images/partners/partner6.png";
-import partner7 from "../../src/assets/images/partners/partner7.png";
-import partner8 from "../../src/assets/images/partners/partner8.png";
-import partner9 from "../../src/assets/images/partners/partner9.png";
-import partner10 from "../../src/assets/images/partners/partner10.png";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import TestimonialCarousel from "./TestimonialCarousel";
 import { Helmet } from "react-helmet-async";
 import { useApiData } from "../common/ApiContext";
-import leftArrowIcon from "../assets/WebCommonImages/icon-arrow-left.png";
-import rightArrowIcon from "../assets/WebCommonImages/icon-arrow-right.png";
-import emailIcon from "../assets/WebCommonImages/msg.png";
-import phoneIcon from "../assets/WebCommonImages/phone-call.png";
-import tickImg from "../assets/WebCommonImages/tick.png";
-import arrowUp from "../assets/WebCommonImages/accordion-arrow-up-white.png";
-import arrowDown from "../assets/WebCommonImages/accordion-arrow-down-white.png";
 import { usePageSeo } from "../common/usePageSeo";
-
-const logos = [
-  partner1,
-  partner2,
-  partner3,
-  partner4,
-  partner5,
-  partner6,
-  partner7,
-  partner8,
-  partner9,
-  partner10,
-];
+const leftArrowIcon = "/images/WebCommonImages/icon-arrow-left.png";
+const rightArrowIcon = "/images/WebCommonImages/icon-arrow-right.png";
+const emailIcon = "/images/WebCommonImages/msg.png";
+const phoneIcon = "/images/WebCommonImages/phone-call.png";
+const tickImg = "/images/WebCommonImages/tick.png";
+const arrowUp = "/images/WebCommonImages/accordion-arrow-up-white.png";
+const arrowDown = "/images/WebCommonImages/accordion-arrow-down-white.png";
 
 const ExhibitorPackages = () => {
   const navigate = useNavigate();
@@ -318,177 +290,6 @@ const ExhibitorPackages = () => {
       },
     ],
   };
-
-  const sponsorPackages = [
-    {
-      title: "Lanyard Sponsor",
-      price: "AU$ 1750",
-      description:
-        "Your logo on every lanyard creating constant brand presence all around the venue.",
-    },
-    {
-      title: "Name Badge Sponsor",
-      price: "AU$ 1450",
-      description:
-        "Place your brand front and center on every attendee badge for high visibility.",
-    },
-    {
-      title: "Exclusive Email Blast",
-      price: "AU$ 1750",
-      description:
-        "Send your message directly to delegates with exclusive exposure.",
-    },
-    {
-      title: "Pull-up Banner Placement",
-      price: "AU$ 750",
-      description:
-        "Get seen in high-traffic zones with bold, upright branding.",
-    },
-    {
-      title: "Drinks Reception Sponsor",
-      price: "AU$ 1450",
-      description:
-        "Toast to your brand during the most social part of the event.",
-    },
-    {
-      title: "Luncheon Sponsor",
-      price: "AU$ 1250",
-      description:
-        "Feature your brand alongside the buffet everyone looks forward to.",
-    },
-    {
-      title: "Break Sponsor",
-      price: "AU$ 500",
-      description: "Be the name they see when they grab coffee or snack.",
-    },
-    {
-      title: "Raffle Draw Sponsor",
-      price: "AU$ 950",
-      description: "Create buzz and get noticed while attendees win prizes.",
-    },
-    {
-      title: "Delegate Pack Sponsor",
-      price: "AU$ 1250",
-      description:
-        "Stay top of mind with your logo on materials everyone receives.",
-    },
-    {
-      title: "Insertion in Delegate Packs",
-      price: "AU$ 750",
-      description: "Put your flyer, promo or gift directly into every hands.",
-    },
-    {
-      title: "Placement on Seats",
-      price: "AU$ 950",
-      description: "Your brand gets noticed before the session even begins.",
-    },
-    {
-      title: "Larger Logo on Website",
-      price: "AU$ 500",
-      description:
-        "Stand out online with a bigger, more prominent logo placement.",
-    },
-  ];
-
-  const testimonialImage = [
-    Testimonials3,
-    Testimonials4,
-    Testimonials5,
-    Testimonials6,
-  ];
-
-  const testimonials = [
-    {
-      name: "Cor Merks",
-      company: "Ramboll",
-      quote: "Very on-topic approach. Excellent networking opportunities.",
-    },
-    {
-      name: "Kelbij star",
-      company: "Deltares",
-      quote: "I met new parties that were active in this sector.",
-    },
-    {
-      name: "Steve Kaye",
-      company: "UKWIR",
-      quote:
-        "It was a great showcase of cutting-edge technologies, with chances to network globally.",
-    },
-    {
-      name: "Matthijs Stel",
-      company: "Evides",
-      quote:
-        "It offered ideas for applying new technologies across the entire water industry value chain.",
-    },
-    {
-      name: "Przemysław Zakościelny",
-      company: "vonRoll Infratec (services) AG",
-      quote:
-        "It was an excellent opportunity to explore solutions and participate in meaningful discussions.",
-    },
-    {
-      name: "David Hurley",
-      company: "AVK UK",
-      quote:
-        "It proved fantastic for sharing knowledge and discovering innovative products.",
-    },
-  ];
-
-  const allowedRow1and3Indexes = [0, 3]; // Testimonials3 & Testimonials6
-  const allowedRow2Indexes = [1, 2]; // Testimonials4 & Testimonials5
-
-  const [index13, setIndex13] = useState(0); // For row 1 and 3
-  const [row2Left, setRow2Left] = useState(0);
-  const [row2Right, setRow2Right] = useState(1);
-
-  useEffect(() => {
-    // Row 1 and 3 update every 5s
-    const interval13 = setInterval(() => {
-      setIndex13((prev) => (prev + 1) % allowedRow1and3Indexes.length);
-    }, 5000);
-
-    // Row 2 starts after 5s, then updates every 8s
-    const timeout2 = setTimeout(() => {
-      const updateRow2 = () => {
-        let left = Math.floor(Math.random() * allowedRow2Indexes.length);
-        let right;
-        do {
-          right = Math.floor(Math.random() * allowedRow2Indexes.length);
-        } while (right === left); // Ensure different images
-
-        setRow2Left(left);
-        setRow2Right(right);
-      };
-
-      updateRow2(); // Initial update at 5s
-
-      const interval2 = setInterval(updateRow2, 8000); // Every 8s after that
-
-      // Cleanup interval2 only
-      const cleanup = () => clearInterval(interval2);
-      window.addEventListener("beforeunload", cleanup);
-      return cleanup;
-    }, 5000);
-
-    // Cleanup both timers
-    return () => {
-      clearInterval(interval13);
-      clearTimeout(timeout2);
-    };
-  }, []);
-
-  const row1Index = allowedRow1and3Indexes[index13];
-  const row3Index =
-    allowedRow1and3Indexes[(index13 + 1) % allowedRow1and3Indexes.length];
-
-  const row1 = testimonials[row1Index];
-  const row3 = testimonials[row3Index];
-  const row2 = testimonials[allowedRow2Indexes[row2Left]];
-
-  const row1Image = testimonialImage[row1Index];
-  const row2ImageLeft = testimonialImage[allowedRow2Indexes[row2Left]];
-  const row2ImageRight = testimonialImage[allowedRow2Indexes[row2Right]];
-  const row3Image = testimonialImage[row3Index];
 
   const [windowWidth, setWindowWidth] = useState(
     typeof window !== "undefined" ? window.innerWidth : 1200,

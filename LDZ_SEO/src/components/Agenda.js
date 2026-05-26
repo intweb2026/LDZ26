@@ -10,10 +10,10 @@ import FeaturedSpeaker from "./FeaturedSpeaker";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { useApiData } from "../common/ApiContext";
-import speakerDummy from "../../src/assets/images/Speaker_photos/Speaker_dummy.jpg";
-import companyDummy from "../../src/assets/images/Speaker_photos/companyLogo_dummy.png";
 import { usePageSeo } from "../common/usePageSeo";
 import "../../src/assets/css/form.css";
+const speakerDummy = "/images/WebCommonImages/Speaker_dummy.jpg";
+const companyDummy = "/images/WebCommonImages/companyLogo_dummy.png";
 const Agenda = () => {
   const navigate = useNavigate();
   const [agendaList, setAgendaList] = useState(null);

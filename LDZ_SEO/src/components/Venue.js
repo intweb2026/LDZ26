@@ -11,11 +11,11 @@ import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
 import { useSSRData } from "../common/useSSRData";
-import bgImage from "../assets/WebImages/venue-main-image.webp";
-import locationIcon from "../assets/WebCommonImages/location-pin.png";
-import phoneIcon from "../assets/WebCommonImages/icon-phone.png";
-import webIcon from "../assets/WebCommonImages/icon-web.png";
 import { usePageSeo } from "../common/usePageSeo";
+const bgImage = "/images/WebImages/venue-main-image.webp";
+const locationIcon = "/images/WebCommonImages/location-pin.png";
+const phoneIcon = "/images/WebCommonImages/icon-phone.png";
+const webIcon = "/images/WebCommonImages/icon-web.png";
 // const bgImage =
 //   "https://www.middleeast.carbon-capture-conference.com/static/media/venue.577468d061be4cf8216b.webp";
 // const locationIcon =

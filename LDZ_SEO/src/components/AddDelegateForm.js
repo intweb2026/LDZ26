@@ -16,14 +16,14 @@ import "../../src/assets/css/BookingForm.css";
 import SimpleStripeForm from "./PaymentForm";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import plusIcon from "../assets/WebCommonImages/plus.png";
-import closeBtn from "../assets/WebCommonImages/del-cross.png";
-import toggle from "../assets/WebCommonImages/toggle.png";
-import cardLabel from "../assets/WebCommonImages/card-labels.png";
-import lockIcon from "../assets/WebCommonImages/lock.png";
-import barcodeImage from "../../src/assets/WebCommonImages/hash_code.png";
 import { Helmet } from "react-helmet-async";
 import { usePageSeo } from "../common/usePageSeo";
+const plusIcon = "/images/WebCommonImages/plus.png";
+const closeBtn = "/images/WebCommonImages/del-cross.png";
+const toggle = "/images/WebCommonImages/toggle.png";
+const cardLabel = "/images/WebCommonImages/card-labels.png";
+const lockIcon = "/images/WebCommonImages/lock.png";
+const barcodeImage = "/images/WebCommonImages/hash_code.png";
 const countries = getNames();
 
 const CompanyRegistrationForm = () => {
@@ -59,22 +59,6 @@ const CompanyRegistrationForm = () => {
     typeof window !== "undefined" ? window.innerWidth : 1200,
   );
 
-  const [iconSrcs, setIconSrcs] = useState({
-    plusIcon: "",
-    closeBtn: "",
-    toggle: "",
-    cardLabel: "",
-    lockIcon: "",
-  });
-  useEffect(() => {
-    setIconSrcs({
-      plusIcon: plusIcon?.default || plusIcon || "",
-      closeBtn: closeBtn?.default || closeBtn || "",
-      toggle: toggle?.default || toggle || "",
-      cardLabel: cardLabel?.default || cardLabel || "",
-      lockIcon: lockIcon?.default || lockIcon || "",
-    });
-  }, []);
 
   const createDelegate = (id) => ({
     id,
@@ -1046,13 +1030,11 @@ const CompanyRegistrationForm = () => {
       </div>
       <div className="BookingFormV2_summary__t3Eo5">
         <div className="BookingFormV2_toggle__ZtkTL">
-          {iconSrcs.toggle && (
-            <img
-              src={iconSrcs.toggle}
+          <img
+              src={toggle}
               alt="toggle icon"
               style={{ cursor: "pointer", transform: "rotate3D(0deg)" }}
             />
-          )}
         </div>
         <div className="BookingFormV2_table__yNoVS">
           <div>
@@ -1510,12 +1492,10 @@ const CompanyRegistrationForm = () => {
                     <div className="BookingFormV2_paymentOptionsInner__YVwZU">
                       <div className="BookingFormV2_imagesContainer__Ko5GY">
                         <p>We accept all major credit and debit cards.</p>
-                        {iconSrcs.cardLabel && (
-                          <img
-                            src={iconSrcs.cardLabel}
+                        <img
+                            src={cardLabel}
                             alt="credit card logo"
                           />
-                        )}
                       </div>
                       <div>
                         <div className="stripe-input-container">
@@ -1540,9 +1520,7 @@ const CompanyRegistrationForm = () => {
                             onClick={handlePaymentClick}
                             disabled={paymentFormRef.current?.isProcessing}
                           >
-                            {iconSrcs.lockIcon && (
-                              <img src={iconSrcs.lockIcon} alt="" />
-                            )}
+                            <img src={lockIcon} alt="" />
                             {paymentFormRef.current?.isProcessing
                               ? "Processing..."
                               : "Pay Securely Now"}
@@ -1974,9 +1952,7 @@ const CompanyRegistrationForm = () => {
                                 className="BookingFormV2_delBtn__3MPla"
                                 onClick={() => removeDelegate(delegate.id)}
                               >
-                                {iconSrcs.closeBtn && (
-                                  <img src={iconSrcs.closeBtn} alt="closeBtn" />
-                                )}
+                                <img src={closeBtn} alt="closeBtn" />
                               </Button>
                             </div>
                           )}
@@ -2311,9 +2287,7 @@ const CompanyRegistrationForm = () => {
                       className="BookingFormV2_delBtn__3MPla"
                       onClick={addDelegate}
                     >
-                      {iconSrcs.plusIcon && (
-                        <img src={iconSrcs.plusIcon} alt="plusIcon" />
-                      )}
+                      <img src={plusIcon} alt="plusIcon" />
                       Add Delegate
                     </Button>
                   </div>

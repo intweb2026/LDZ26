@@ -4,10 +4,10 @@ import "../../src/assets/css/relatedevent.css";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Slider from "react-slick";
-import leftArrowIcon from "../assets/WebCommonImages/icon-arrow-left.png";
-import rightArrowIcon from "../assets/WebCommonImages/icon-arrow-right.png";
-import calenderIcon from "../assets/WebCommonImages/icon-calendar.png";
-import locationIcon from "../assets/WebCommonImages/icon-location.png";
+const leftArrowIcon = "/images/WebCommonImages/icon-arrow-left.png";
+const rightArrowIcon = "/images/WebCommonImages/icon-arrow-right.png";
+const calenderIcon = "/images/WebCommonImages/icon-calendar.png";
+const locationIcon = "/images/WebCommonImages/icon-location.png";
 
 // const leftArrowIcon =
 //   "https://www.desalination-resource-recovery.com/images/icons/icon-arrow-left.png";

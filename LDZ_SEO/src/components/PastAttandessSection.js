@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import ticket_img from "../../src/assets/images/bg.png";
-import bg_img from "../../src/assets/images/bg_img2.png";
 import { Pointer } from "lucide-react";
 import "../assets/css/PastAttandessSection.css";
 import { toast } from "react-toastify";
