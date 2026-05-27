@@ -47,7 +47,6 @@ const SpeakerProfile = () => {
     // Reset for every navigation so stale data never shows
     setSpeakerData([]);
     setIsNotFound(false);
-    pendingRef.current = 1;
 
     // Client-side navigation always has state.id — use it directly
     if (state?.id) {
