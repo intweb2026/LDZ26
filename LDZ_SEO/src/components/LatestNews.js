@@ -88,7 +88,7 @@ const LatestNews = () => {
                   <h3>{featuredLatestArticle?.newsTitle}</h3>
                   <img
                     src={featuredLatestArticle?.newsImage}
-                    alt={featuredLatestArticle?.newsTitle}
+                    alt={featuredLatestArticle?.newsImageAltText}
                     loading="lazy"
                     style={{ maxWidth: "100%", height: "auto", objectFit: "cover" }}
                   />

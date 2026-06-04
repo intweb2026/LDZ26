@@ -273,7 +273,7 @@ const News = () => {
                       <div className="NewsCard_upperContainer__FPKzO">
                         <img
                           src={featuredArticle?.newsImage}
-                          alt={featuredArticle?.newsTitle}
+                          alt={featuredArticle?.newsImageAltText}
                         />
                       </div>
                       <div className="NewsCard_lowerContainer__Jsamo">
@@ -312,7 +312,7 @@ const News = () => {
                           <div className="NewsCard_upperContainer__FPKzO">
                             <img
                               src={news?.newsImage}
-                              alt={news?.newsTitle}
+                              alt={news?.newsImageAltText}
                               style={{ height: "208px" }}
                               loading="lazy"
                             />
@@ -374,7 +374,7 @@ const News = () => {
                           <h3>{featuredLatestArticle?.newsTitle}</h3>
                           <img
                             src={featuredLatestArticle?.newsImage}
-                            alt={featuredLatestArticle?.newsTitle}
+                            alt={featuredLatestArticle?.newsImageAltText}
                             loading="lazy"
                             style={{
                               maxWidth: "100%",
@@ -416,7 +416,7 @@ const News = () => {
                   <div className="NewsListingCard_left__qswsn">
                     <img
                       src={article.newsImage}
-                      alt={article.newsTitle}
+                      alt={article.newsImageAltText}
                       loading="lazy"
                     ></img>
                   </div>
