@@ -64,7 +64,7 @@ const EditSlideShareAttandee = ({
       method: "GET",
     };
     fetch(
-      `https://www.linq-staging-site.com/admin1/eventprojects`,
+      `https://www.australia.lithium-downstream-summit.com/admin1/eventprojects`,
       requestOptions,
     )
       .then((response) => response.json())
@@ -163,7 +163,7 @@ const EditSlideShareAttandee = ({
         body: finalData,
       };
       fetch(
-        "https://www.linq-staging-site.com/admin1/editslideShareAttandee",
+        "https://www.australia.lithium-downstream-summit.com/admin1/editslideShareAttandee",
         requestOptions,
       )
         .then((response) => response.json())

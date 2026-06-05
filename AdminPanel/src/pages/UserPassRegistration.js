@@ -66,7 +66,7 @@ const UserPassRegistration = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.linq-staging-site.com/admin1/usrpassresponses`, requestOptions)
+    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/usrpassresponses`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (
@@ -191,7 +191,7 @@ const UserPassRegistration = () => {
         body: finalData,
       };
       fetch(
-        "https://www.linq-staging-site.com/admin1/deleteuserpassrequest",
+        "https://www.australia.lithium-downstream-summit.com/admin1/deleteuserpassrequest",
         requestOptions
       )
         .then((response) => response.json())

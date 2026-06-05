@@ -59,7 +59,7 @@ const AddSlideShare = (props) => {
       method: "GET",
     };
     fetch(
-      `https://www.linq-staging-site.com/admin1/eventprojects`,
+      `https://www.australia.lithium-downstream-summit.com/admin1/eventprojects`,
       requestOptions,
     )
       .then((response) => response.json())
@@ -117,7 +117,7 @@ const AddSlideShare = (props) => {
 
     try {
       const response = await fetch(
-        "https://www.linq-staging-site.com/admin1/upload",
+        "https://www.australia.lithium-downstream-summit.com/admin1/upload",
         requestOptions,
       );
       const data = await response.json();
@@ -283,7 +283,7 @@ const AddSlideShare = (props) => {
         body: finalData,
       };
       fetch(
-        "https://www.linq-staging-site.com/admin1/addslideShare",
+        "https://www.australia.lithium-downstream-summit.com/admin1/addslideShare",
         requestOptions,
       )
         .then((response) => response.json())

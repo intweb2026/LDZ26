@@ -97,7 +97,7 @@ const Tagline_Contain = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.linq-staging-site.com/admin1/taglinedata`, requestOptions)
+    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/taglinedata`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (
@@ -226,7 +226,7 @@ const Tagline_Contain = () => {
   //       body: finalData,
   //     };
   //     fetch(
-  //       'https://www.linq-staging-site.com/admin1/deletesponsor',
+  //       'https://www.australia.lithium-downstream-summit.com/admin1/deletesponsor',
   //       requestOptions
   //     )
   //       .then((response) => response.json())

@@ -46,7 +46,7 @@ const AddSponsorAddOnType = (props) => {
         body: finalData,
       };
       fetch(
-        "https://www.linq-staging-site.com/admin1/addsponsoraddontype",
+        "https://www.australia.lithium-downstream-summit.com/admin1/addsponsoraddontype",
         requestOptions
       )
         .then((response) => response.json())

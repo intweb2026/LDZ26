@@ -55,7 +55,7 @@ const EditLogo = ({
 
     try {
       const response = await fetch(
-        "https://www.linq-staging-site.com/admin1/upload",
+        "https://www.australia.lithium-downstream-summit.com/admin1/upload",
         requestOptions
       );
       const data = await response.json();
@@ -107,7 +107,7 @@ const EditLogo = ({
         body: finalData,
       };
       fetch(
-        "https://www.linq-staging-site.com/admin1/edithomepagecompanies",
+        "https://www.australia.lithium-downstream-summit.com/admin1/edithomepagecompanies",
         requestOptions
       )
         .then((response) => response.json())

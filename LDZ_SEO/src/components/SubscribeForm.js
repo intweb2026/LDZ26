@@ -37,7 +37,7 @@ const SubscribeForm = () => {
   <p><strong>Thank you for subscribing!</strong></p>
   <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
   <p><u><strong>Quick Access</strong></u><br/>
-  Link: <a href="https://www.linq-staging-site.com">https://www.linq-staging-site.com</a></p>
+  Link: <a href="https://www.australia.lithium-downstream-summit.com">https://www.australia.lithium-downstream-summit.com</a></p>
 `;
 
     const emailPayload = {
@@ -49,7 +49,7 @@ const SubscribeForm = () => {
 
     try {
       const emailResponse = await fetch(
-        "https://www.linq-staging-site.com/admin1/sendmail",
+        "https://www.australia.lithium-downstream-summit.com/admin1/sendmail",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -95,7 +95,7 @@ const SubscribeForm = () => {
     finalData.append("subscriberEmail", subscriberEmail);
 
     try {
-      const response = await fetch("https://www.linq-staging-site.com/admin1/addsubscriber", {
+      const response = await fetch("https://www.australia.lithium-downstream-summit.com/admin1/addsubscriber", {
         method: "POST",
         body: finalData,
       });

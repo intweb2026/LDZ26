@@ -73,7 +73,7 @@ const Attandees = () => {
       method: "GET",
     };
     fetch(
-      `https://www.linq-staging-site.com/admin1/getagenda`,
+      `https://www.australia.lithium-downstream-summit.com/admin1/getagenda`,
       requestOptions,
     )
       .then((response) => response.json())
@@ -129,7 +129,7 @@ const Attandees = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.linq-staging-site.com/admin1/pastAttandeelist`, requestOptions)
+    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/pastAttandeelist`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (
@@ -164,7 +164,7 @@ const Attandees = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.linq-staging-site.com/admin1/eventleaderlist`, requestOptions)
+    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/eventleaderlist`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (
@@ -354,7 +354,7 @@ const Attandees = () => {
         <meta name="twitter:title" content={seoTitle} />
         <meta name="twitter:description" content={seoDesc} />
         {seoImage && <meta name="twitter:image" content={seoImage} />}
-        <link rel="canonical" href="https://www.linq-staging-site.com/attendees" />
+        <link rel="canonical" href="https://www.australia.lithium-downstream-summit.com/attendees" />
       </Helmet>
       <Navbar forceScrolled />
       <div style={{ opacity: 1 }}>

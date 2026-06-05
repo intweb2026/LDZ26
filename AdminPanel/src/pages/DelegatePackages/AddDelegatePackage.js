@@ -124,7 +124,7 @@ const AddDelegatePackage = (props) => {
         method: "POST",
         body: finalData,
       };
-      fetch("https://www.linq-staging-site.com/admin1/adddelegatepackage", requestOptions)
+      fetch("https://www.australia.lithium-downstream-summit.com/admin1/adddelegatepackage", requestOptions)
         .then((response) => response.json())
         .then((data) => {
           if (

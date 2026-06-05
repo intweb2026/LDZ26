@@ -71,7 +71,7 @@ const ContactUsHelpers = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.linq-staging-site.com/admin1/contactushelpers`, requestOptions)
+    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/contactushelpers`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (
@@ -189,7 +189,7 @@ const ContactUsHelpers = () => {
         body: finalData,
       };
       fetch(
-        'https://www.linq-staging-site.com/admin1/deletecontactuspagehelper',
+        'https://www.australia.lithium-downstream-summit.com/admin1/deletecontactuspagehelper',
         requestOptions
       )
         .then((response) => response.json())

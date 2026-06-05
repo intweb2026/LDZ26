@@ -37,7 +37,7 @@ const EditRolePermissions = () => {
   }, [id]);
 
   const fetchRoleData = () => {
-    fetch(`https://www.linq-staging-site.com/admin1/rolepermissions?id=${id}`)
+    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/rolepermissions?id=${id}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.status) {
@@ -48,7 +48,7 @@ const EditRolePermissions = () => {
   };
 
   const fetchPermissionList = () => {
-    fetch("https://www.linq-staging-site.com/admin1/permissionlist")
+    fetch("https://www.australia.lithium-downstream-summit.com/admin1/permissionlist")
       .then((res) => res.json())
       .then((data) => {
         if (data.status) {
@@ -86,7 +86,7 @@ const EditRolePermissions = () => {
   };
 
   const handleSave = () => {
-    fetch("https://www.linq-staging-site.com/admin1/updaterolepermissions", {
+    fetch("https://www.australia.lithium-downstream-summit.com/admin1/updaterolepermissions", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

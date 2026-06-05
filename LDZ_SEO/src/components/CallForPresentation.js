@@ -382,7 +382,7 @@ const CallForPresentation = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.linq-staging-site.com/admin1/getspeakerpagedata`, requestOptions)
+    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/getspeakerpagedata`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (data && data.status) {
@@ -559,7 +559,7 @@ const CallForPresentation = () => {
       body: finalData,
     };
     fetch(
-      "https://www.linq-staging-site.com/admin1/addquickproposalrequest",
+      "https://www.australia.lithium-downstream-summit.com/admin1/addquickproposalrequest",
       requestOptions,
     )
       .then((response) => response.json())
@@ -602,7 +602,7 @@ const CallForPresentation = () => {
         <meta name="twitter:title" content={seoTitle} />
         <meta name="twitter:description" content={seoDesc} />
         {seoImage && <meta name="twitter:image" content={seoImage} />}
-        <link rel="canonical" href="https://www.linq-staging-site.com/speakers" />
+        <link rel="canonical" href="https://www.australia.lithium-downstream-summit.com/speakers" />
       </Helmet>
       <Navbar forceScrolled />
       <div style={{ marginTop: windowWidth > 1024 ? "120px" : "" }}>
@@ -682,7 +682,7 @@ const CallForPresentation = () => {
                           setAddToCalendarSuccessMessage("");
                         }, 5000);
                         await fetch(
-                          "https://www.linq-staging-site.com/admin1/addcalendersubscriber",
+                          "https://www.australia.lithium-downstream-summit.com/admin1/addcalendersubscriber",
                           {
                             method: "POST",
                             headers: { "Content-Type": "application/json" },

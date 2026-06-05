@@ -34,7 +34,7 @@ const AddPastAttandee = (props) => {
 
     try {
       const response = await fetch(
-        "https://www.linq-staging-site.com/admin1/upload",
+        "https://www.australia.lithium-downstream-summit.com/admin1/upload",
         requestOptions
       );
       const data = await response.json();
@@ -108,7 +108,7 @@ const AddPastAttandee = (props) => {
         method: "POST",
         body: finalData,
       };
-      fetch("https://www.linq-staging-site.com/admin1/addpastattandee", requestOptions)
+      fetch("https://www.australia.lithium-downstream-summit.com/admin1/addpastattandee", requestOptions)
         .then((response) => response.json())
         .then((data) => {
           if (

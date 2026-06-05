@@ -46,7 +46,7 @@ const AddHomePastAttandee = (props) => {
         body: finalData,
       };
       fetch(
-        "https://www.linq-staging-site.com/admin1/addhomepastattandee",
+        "https://www.australia.lithium-downstream-summit.com/admin1/addhomepastattandee",
         requestOptions
       )
         .then((response) => response.json())

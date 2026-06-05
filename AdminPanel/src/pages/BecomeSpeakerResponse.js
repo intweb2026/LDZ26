@@ -71,7 +71,7 @@ const BecomeSpeakerResponse = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.linq-staging-site.com/admin1/becomespeakerresponses`, requestOptions)
+    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/becomespeakerresponses`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (
@@ -182,7 +182,7 @@ const BecomeSpeakerResponse = () => {
         body: finalData,
       };
       fetch(
-        "https://www.linq-staging-site.com/admin1/deletebecomespeakerrequest",
+        "https://www.australia.lithium-downstream-summit.com/admin1/deletebecomespeakerrequest",
         requestOptions
       )
         .then((response) => response.json())

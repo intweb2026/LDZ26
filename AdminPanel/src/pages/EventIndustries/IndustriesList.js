@@ -72,7 +72,7 @@ const IndustriesList = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.linq-staging-site.com/admin1/eventparticipatedindustries`, requestOptions)
+    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/eventparticipatedindustries`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (
@@ -172,7 +172,7 @@ const IndustriesList = () => {
         body: finalData,
       };
       fetch(
-        'https://www.linq-staging-site.com/admin1/deleteeventparticipatedindustry',
+        'https://www.australia.lithium-downstream-summit.com/admin1/deleteeventparticipatedindustry',
         requestOptions
       )
         .then((response) => response.json())

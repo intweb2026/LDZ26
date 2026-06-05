@@ -54,7 +54,7 @@ const Speakers = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.linq-staging-site.com/admin1/eventspeakers`, requestOptions)
+    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/eventspeakers`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (
@@ -216,7 +216,7 @@ const Speakers = () => {
       body: finalData,
     };
     fetch(
-      "https://www.linq-staging-site.com/admin1/addquickproposalrequest",
+      "https://www.australia.lithium-downstream-summit.com/admin1/addquickproposalrequest",
       requestOptions,
     )
       .then((response) => response.json())
@@ -288,7 +288,7 @@ const Speakers = () => {
   //       body: finalData,
   //     };
   //     fetch(
-  //       "https://www.linq-staging-site.com/admin1/addbecomespeakerrequest",
+  //       "https://www.australia.lithium-downstream-summit.com/admin1/addbecomespeakerrequest",
   //       requestOptions
   //     )
   //       .then((response) => response.json())
@@ -346,7 +346,7 @@ const Speakers = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={seoTitle} />
         <meta name="twitter:description" content={seoDescription} />
-        <link rel="canonical" href="https://www.linq-staging-site.com/featured-speakers" />
+        <link rel="canonical" href="https://www.australia.lithium-downstream-summit.com/featured-speakers" />
       </Helmet>
       <Navbar forceScrolled />
       <div style={{ marginTop: windowWidth > 1024 ? "120px" : "" }}>

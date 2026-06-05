@@ -61,7 +61,7 @@ const EditBlockDomain = ({
                 method: "POST",
                 body: finalData,
             };
-            fetch("https://www.linq-staging-site.com/admin1/editblockdomain", requestOptions)
+            fetch("https://www.australia.lithium-downstream-summit.com/admin1/editblockdomain", requestOptions)
                 .then((response) => response.json())
                 .then((data) => {
                     if (

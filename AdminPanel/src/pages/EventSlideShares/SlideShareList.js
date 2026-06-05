@@ -82,7 +82,7 @@ const SlideShareList = () => {
         const requestOptions = {
             method: "GET",
         };
-        fetch(`https://www.linq-staging-site.com/admin1/getslideShare`, requestOptions)
+        fetch(`https://www.australia.lithium-downstream-summit.com/admin1/getslideShare`, requestOptions)
             .then((response) => response.json())
             .then((data) => {
                 if (
@@ -214,7 +214,7 @@ const SlideShareList = () => {
                 body: finalData,
             };
             fetch(
-                'https://www.linq-staging-site.com/admin1/deleteslideShare',
+                'https://www.australia.lithium-downstream-summit.com/admin1/deleteslideShare',
                 requestOptions
             )
                 .then((response) => response.json())

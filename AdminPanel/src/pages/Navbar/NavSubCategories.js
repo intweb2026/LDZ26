@@ -77,7 +77,7 @@ const NavSubCategories = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.linq-staging-site.com/admin1/navsubcategories`, requestOptions)
+    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/navsubcategories`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (
@@ -189,7 +189,7 @@ const NavSubCategories = () => {
         method: "POST",
         body: finalData,
       };
-      fetch("https://www.linq-staging-site.com/admin1/deletenavsubcategory", requestOptions)
+      fetch("https://www.australia.lithium-downstream-summit.com/admin1/deletenavsubcategory", requestOptions)
         .then((response) => response.json())
         .then((data) => {
           if (

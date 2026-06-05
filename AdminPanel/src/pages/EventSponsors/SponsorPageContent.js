@@ -60,7 +60,7 @@ const SponsorPageContent = () => {
       method: "GET",
     };
     fetch(
-      `https://www.linq-staging-site.com/admin1/getsponsorpagedata`,
+      `https://www.australia.lithium-downstream-summit.com/admin1/getsponsorpagedata`,
       requestOptions
     )
       .then((response) => response.json())

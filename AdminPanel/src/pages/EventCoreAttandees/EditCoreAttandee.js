@@ -74,7 +74,7 @@ const EditCoreAttandee = ({
         body: finalData,
       };
       fetch(
-        "https://www.linq-staging-site.com/admin1/editeventcoreattandee",
+        "https://www.australia.lithium-downstream-summit.com/admin1/editeventcoreattandee",
         requestOptions
       )
         .then((response) => response.json())

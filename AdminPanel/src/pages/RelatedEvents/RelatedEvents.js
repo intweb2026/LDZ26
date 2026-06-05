@@ -71,7 +71,7 @@ const RelatedEvents = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.linq-staging-site.com/admin1/relatedevents`, requestOptions)
+    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/relatedevents`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (
@@ -190,7 +190,7 @@ const RelatedEvents = () => {
         body: finalData,
       };
       fetch(
-        'https://www.linq-staging-site.com/admin1/deleterelatedevent',
+        'https://www.australia.lithium-downstream-summit.com/admin1/deleterelatedevent',
         requestOptions
       )
         .then((response) => response.json())

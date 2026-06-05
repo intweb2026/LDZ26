@@ -13,7 +13,7 @@ const override = css`
   color: black;
 `;
 
-const BASE_URL = "https://www.linq-staging-site.com/admin1";
+const BASE_URL = "https://www.australia.lithium-downstream-summit.com/admin1";
 
 const PAGES = [
   { label: "Home", key: "home" },

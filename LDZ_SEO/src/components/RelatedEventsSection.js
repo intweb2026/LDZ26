@@ -82,7 +82,7 @@ const RelatedEventsSection = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.linq-staging-site.com/admin1/relatedevents`, requestOptions)
+    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/relatedevents`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (data && data.status) {

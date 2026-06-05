@@ -26,7 +26,7 @@ const Agenda = () => {
       method: "GET",
     };
     fetch(
-      `https://www.linq-staging-site.com/admin1/getagenda`,
+      `https://www.australia.lithium-downstream-summit.com/admin1/getagenda`,
       requestOptions,
     )
       .then((response) => response.json())
@@ -100,7 +100,7 @@ const Agenda = () => {
 
     try {
       const response = await fetch(
-        "https://www.linq-staging-site.com/admin1/verifyemaildomain",
+        "https://www.australia.lithium-downstream-summit.com/admin1/verifyemaildomain",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -112,7 +112,7 @@ const Agenda = () => {
 
       // ✅ Save entry in DB regardless of blocked or valid
       await fetch(
-        "https://www.linq-staging-site.com/admin1/addagendasubscriber",
+        "https://www.australia.lithium-downstream-summit.com/admin1/addagendasubscriber",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -168,7 +168,7 @@ const Agenda = () => {
         {seoImage && <meta name="twitter:image" content={seoImage} />}
         <link
           rel="canonical"
-          href="https://www.linq-staging-site.com/agenda-page"
+          href="https://www.australia.lithium-downstream-summit.com/agenda-page"
         />
       </Helmet>
       <Navbar forceScrolled />

@@ -75,7 +75,7 @@ const VenueContain = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.linq-staging-site.com/admin1/getvenuedata`, requestOptions)
+    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/getvenuedata`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (
@@ -113,7 +113,7 @@ const VenueContain = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.linq-staging-site.com/admin1/venuegalleryimages`, requestOptions)
+    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/venuegalleryimages`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (

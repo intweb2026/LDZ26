@@ -81,7 +81,7 @@ const EditSlideShare = ({
       method: "GET",
     };
     fetch(
-      `https://www.linq-staging-site.com/admin1/eventprojects`,
+      `https://www.australia.lithium-downstream-summit.com/admin1/eventprojects`,
       requestOptions,
     )
       .then((response) => response.json())
@@ -145,7 +145,7 @@ const EditSlideShare = ({
 
     try {
       const response = await fetch(
-        "https://www.linq-staging-site.com/admin1/upload",
+        "https://www.australia.lithium-downstream-summit.com/admin1/upload",
         requestOptions,
       );
       const data = await response.json();
@@ -311,7 +311,7 @@ const EditSlideShare = ({
         body: finalData,
       };
       fetch(
-        "https://www.linq-staging-site.com/admin1/editslideShare",
+        "https://www.australia.lithium-downstream-summit.com/admin1/editslideShare",
         requestOptions,
       )
         .then((response) => response.json())

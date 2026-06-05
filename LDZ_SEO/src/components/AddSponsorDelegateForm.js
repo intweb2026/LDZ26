@@ -115,7 +115,7 @@ const AddSponsorDelegateForm = () => {
   const seoTitle = pageSeo.pageMetaTitle;
   const seoDesc = pageSeo.pageMetaDescription;
   const seoImage = pageSeo.pageOgImage || null;
-  const canonicalUrl = "https://www.linq-staging-site.com/sponsor-booking";
+  const canonicalUrl = "https://www.australia.lithium-downstream-summit.com/sponsor-booking";
 
   const handleCompanyDataChange = (field, value) => {
     setCompanyData((prev) => ({ ...prev, [field]: value }));
@@ -233,7 +233,7 @@ const AddSponsorDelegateForm = () => {
       let invoiceNumber;
       try {
         const invoiceRes = await fetch(
-          "https://www.linq-staging-site.com/admin1/generate-invoice-no",
+          "https://www.australia.lithium-downstream-summit.com/admin1/generate-invoice-no",
         );
         const invoiceData = await invoiceRes.json();
         invoiceNumber = invoiceData.invoiceNo;
@@ -328,7 +328,7 @@ const AddSponsorDelegateForm = () => {
         };
         try {
           const emailResponse = await fetch(
-            "https://www.linq-staging-site.com/admin1/sendmail",
+            "https://www.australia.lithium-downstream-summit.com/admin1/sendmail",
             {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -394,7 +394,7 @@ const AddSponsorDelegateForm = () => {
               TotalAmountFormatted: totalAmount,
               InvoiceNumber: invoiceNumber,
               FormName: "Booking Form",
-              FormURL: "https://www.linq-staging-site.com/sponsor-booking",
+              FormURL: "https://www.australia.lithium-downstream-summit.com/sponsor-booking",
               AddOnsTotalAmount: "0",
               Eventcode: `${eventDetails?.eventShortCode}`,
             },
@@ -437,14 +437,14 @@ const AddSponsorDelegateForm = () => {
               TotalAmountFormatted: totalAmount,
               InvoiceNumber: invoiceNumber,
               FormName: "Booking Form",
-              FormURL: "https://www.linq-staging-site.com/sponsor-booking",
+              FormURL: "https://www.australia.lithium-downstream-summit.com/sponsor-booking",
               AddOnsTotalAmount: "0",
               Eventcode: `${eventDetails?.eventShortCode}`,
             },
           },
         };
 
-        fetch("https://www.linq-staging-site.com/admin1/sendtocrm", {
+        fetch("https://www.australia.lithium-downstream-summit.com/admin1/sendtocrm", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(CrmPayload),
@@ -459,7 +459,7 @@ const AddSponsorDelegateForm = () => {
 
         try {
           const zohoResponse = await fetch(
-            "https://www.linq-staging-site.com/admin1/sendtozoho",
+            "https://www.australia.lithium-downstream-summit.com/admin1/sendtozoho",
             {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -619,7 +619,7 @@ const AddSponsorDelegateForm = () => {
 
       try {
         const emailResponse = await fetch(
-          "https://www.linq-staging-site.com/admin1/sendmail",
+          "https://www.australia.lithium-downstream-summit.com/admin1/sendmail",
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -753,7 +753,7 @@ const AddSponsorDelegateForm = () => {
 
       try {
         const emailResponse = await fetch(
-          "https://www.linq-staging-site.com/admin1/sendmail",
+          "https://www.australia.lithium-downstream-summit.com/admin1/sendmail",
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -808,7 +808,7 @@ const AddSponsorDelegateForm = () => {
       finalData.append("totalPaidAmount", prices.finalTotal);
       finalData.append("transectionId", stripeResponse.paymentIntentId);
 
-      fetch("https://www.linq-staging-site.com/admin1/addnewsponsor", {
+      fetch("https://www.australia.lithium-downstream-summit.com/admin1/addnewsponsor", {
         method: "POST",
         body: finalData,
       })
@@ -842,7 +842,7 @@ const AddSponsorDelegateForm = () => {
   };
 
   const callSponsorAddOnsApi = () => {
-    fetch(`https://www.linq-staging-site.com/admin1/sponsoraddons`)
+    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/sponsoraddons`)
       .then((response) => response.json())
       .then((data) => {
         if (data && data.status) {
@@ -890,7 +890,7 @@ const AddSponsorDelegateForm = () => {
   };
 
   const callGetActiveDelPackageApi = () => {
-    fetch(`https://www.linq-staging-site.com/admin1/getactivedelegatepackage`)
+    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/getactivedelegatepackage`)
       .then((response) => response.json())
       .then((data) => {
         if (data && data.status) {
@@ -916,7 +916,7 @@ const AddSponsorDelegateForm = () => {
     }
     let formData = new FormData();
     formData.append("couponCode", code);
-    fetch(`https://www.linq-staging-site.com/admin1/sponsoroffercouponbycode`, {
+    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/sponsoroffercouponbycode`, {
       method: "POST",
       body: formData,
     })

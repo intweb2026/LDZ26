@@ -71,7 +71,7 @@ const EventPastAttandeeList = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.linq-staging-site.com/admin1/pastAttandeelist`, requestOptions)
+    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/pastAttandeelist`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (
@@ -192,7 +192,7 @@ const EventPastAttandeeList = () => {
         body: finalData,
       };
       fetch(
-        'https://www.linq-staging-site.com/admin1/deletepastattandee',
+        'https://www.australia.lithium-downstream-summit.com/admin1/deletepastattandee',
         requestOptions
       )
         .then((response) => response.json())

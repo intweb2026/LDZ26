@@ -77,7 +77,7 @@ const MediaPageHelpers = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.linq-staging-site.com/admin1/mediapagehelpers`, requestOptions)
+    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/mediapagehelpers`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (
@@ -190,7 +190,7 @@ const MediaPageHelpers = () => {
         body: finalData,
       };
       fetch(
-        "https://www.linq-staging-site.com/admin1/deletemediapagehelpers",
+        "https://www.australia.lithium-downstream-summit.com/admin1/deletemediapagehelpers",
         requestOptions
       )
         .then((response) => response.json())

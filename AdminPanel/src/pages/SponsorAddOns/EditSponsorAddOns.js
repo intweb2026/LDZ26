@@ -63,7 +63,7 @@ const EditSponsorAddOns = ({
       method: "GET",
     };
     fetch(
-      `https://www.linq-staging-site.com/admin1/sponsorpackageaddontypes`,
+      `https://www.australia.lithium-downstream-summit.com/admin1/sponsorpackageaddontypes`,
       requestOptions
     )
       .then((response) => response.json())
@@ -162,7 +162,7 @@ const EditSponsorAddOns = ({
         body: finalData,
       };
       fetch(
-        "https://www.linq-staging-site.com/admin1/editsponsoraddons",
+        "https://www.australia.lithium-downstream-summit.com/admin1/editsponsoraddons",
         requestOptions
       )
         .then((response) => response.json())

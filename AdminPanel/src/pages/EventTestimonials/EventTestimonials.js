@@ -74,7 +74,7 @@ const EventTestimonials = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.linq-staging-site.com/admin1/eventtestimonials`, requestOptions)
+    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/eventtestimonials`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (
@@ -195,7 +195,7 @@ const EventTestimonials = () => {
         body: finalData,
       };
       fetch(
-        'https://www.linq-staging-site.com/admin1/deletetestimonial',
+        'https://www.australia.lithium-downstream-summit.com/admin1/deletetestimonial',
         requestOptions
       )
         .then((response) => response.json())

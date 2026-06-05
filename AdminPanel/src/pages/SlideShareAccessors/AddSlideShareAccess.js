@@ -42,7 +42,7 @@ const AddSlideShareAccess = (props) => {
       method: "GET",
     };
     fetch(
-      `https://www.linq-staging-site.com/admin1/eventprojects`,
+      `https://www.australia.lithium-downstream-summit.com/admin1/eventprojects`,
       requestOptions,
     )
       .then((response) => response.json())
@@ -142,7 +142,7 @@ const AddSlideShareAccess = (props) => {
         body: finalData,
       };
       fetch(
-        "https://www.linq-staging-site.com/admin1/addslideShareAccess",
+        "https://www.australia.lithium-downstream-summit.com/admin1/addslideShareAccess",
         requestOptions,
       )
         .then((response) => response.json())

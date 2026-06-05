@@ -37,7 +37,7 @@ const EditTagline_Contain = (props) => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.linq-staging-site.com/admin1/taglinedata`, requestOptions)
+    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/taglinedata`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (
@@ -90,7 +90,7 @@ const EditTagline_Contain = (props) => {
 
     try {
       const response = await fetch(
-        "https://www.linq-staging-site.com/admin1/upload",
+        "https://www.australia.lithium-downstream-summit.com/admin1/upload",
         requestOptions
       );
       const data = await response.json();
@@ -159,7 +159,7 @@ const EditTagline_Contain = (props) => {
         body: finalData,
       };
       fetch(
-        "https://www.linq-staging-site.com/admin1/addhomethirdsectiondata",
+        "https://www.australia.lithium-downstream-summit.com/admin1/addhomethirdsectiondata",
         requestOptions
       )
         .then((response) => response.json())

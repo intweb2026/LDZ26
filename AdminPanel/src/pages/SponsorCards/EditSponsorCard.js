@@ -106,7 +106,7 @@ const EditSponsorCard = ({
         body: finalData,
       };
       fetch(
-        "https://www.linq-staging-site.com/admin1/editsponsorcard",
+        "https://www.australia.lithium-downstream-summit.com/admin1/editsponsorcard",
         requestOptions,
       )
         .then((response) => response.json())

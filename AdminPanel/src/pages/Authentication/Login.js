@@ -18,7 +18,7 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        "https://www.linq-staging-site.com" + "/admin1/customlogin", { email, password });
+        "https://www.australia.lithium-downstream-summit.com" + "/admin1/customlogin", { email, password });
 
       // Note: api_helper.js interceptor unwraps response.data, so response here IS the data
       if (response.status) {
@@ -31,7 +31,7 @@ const Login = () => {
 
         // Fetch and store navbar data
         try {
-          const navResponse = await axios.get("https://www.linq-staging-site.com" + "/admin1/getnavbardata");
+          const navResponse = await axios.get("https://www.australia.lithium-downstream-summit.com" + "/admin1/getnavbardata");
           if (navResponse.status) {
             localStorage.setItem("navbarData", JSON.stringify(navResponse.navbarData));
           }

@@ -71,7 +71,7 @@ const QuickProposalResponse = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.linq-staging-site.com/admin1/quickproposalresponses`, requestOptions)
+    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/quickproposalresponses`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (
@@ -182,7 +182,7 @@ const QuickProposalResponse = () => {
         body: finalData,
       };
       fetch(
-        "https://www.linq-staging-site.com/admin1/deletequickproposalrequest",
+        "https://www.australia.lithium-downstream-summit.com/admin1/deletequickproposalrequest",
         requestOptions
       )
         .then((response) => response.json())

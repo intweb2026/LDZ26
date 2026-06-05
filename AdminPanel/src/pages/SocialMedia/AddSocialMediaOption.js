@@ -52,7 +52,7 @@ const AddSocialMediaOption = () => {
       method: "GET",
     };
     fetch(
-      `https://www.linq-staging-site.com/admin1/footersocialmediaoptions`,
+      `https://www.australia.lithium-downstream-summit.com/admin1/footersocialmediaoptions`,
       requestOptions
     )
       .then((response) => response.json())
@@ -110,7 +110,7 @@ const AddSocialMediaOption = () => {
       method: "POST",
       body: formDataObj,
     };
-    fetch("https://www.linq-staging-site.com/admin1/addfootersocialmediaoptions", requestOptions)
+    fetch("https://www.australia.lithium-downstream-summit.com/admin1/addfootersocialmediaoptions", requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (data.status) {

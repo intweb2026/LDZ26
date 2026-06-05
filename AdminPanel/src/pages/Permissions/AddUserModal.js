@@ -25,7 +25,7 @@ const AddUserModal = ({ show, onCloseClick, onSuccess }) => {
     }, [show]);
 
     const fetchRoles = () => {
-        fetch("https://www.linq-staging-site.com/admin1/rolelist")
+        fetch("https://www.australia.lithium-downstream-summit.com/admin1/rolelist")
             .then((res) => res.json())
             .then((data) => {
                 if (data.status) {
@@ -56,7 +56,7 @@ const AddUserModal = ({ show, onCloseClick, onSuccess }) => {
             formData.append("password", values.password);
             formData.append("role_id", values.role_id);
 
-            fetch("https://www.linq-staging-site.com/admin1/adduser", {
+            fetch("https://www.australia.lithium-downstream-summit.com/admin1/adduser", {
                 method: "POST",
                 body: formData,
             })
