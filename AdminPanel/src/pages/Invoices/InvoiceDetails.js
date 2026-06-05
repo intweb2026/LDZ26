@@ -4,7 +4,7 @@ import BreadCrumb from "../../Components/Common/BreadCrumb";
 import { Link } from "react-router-dom";
 
 import logoDark from "../../assets/images/logo-dark.png";
-import logoLight from "../../assets/images/logo-light.png";
+import logoLight from "../../assets/images/adminpanel-logo.png";
 
 const InvoiceDetails = () => {
   //Print the Invoice

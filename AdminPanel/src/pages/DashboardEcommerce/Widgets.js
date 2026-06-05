@@ -7,7 +7,7 @@ import { ecomWidgets } from "../../common/data";
 const Widgets = () => {
     return (
         <React.Fragment>
-            {ecomWidgets.map((item, key) => (
+            {/* {ecomWidgets.map((item, key) => (
                 <Col xl={3} md={6} key={key}>
                     <Card className="card-animate">
                         <CardBody>
@@ -44,7 +44,8 @@ const Widgets = () => {
                             </div>
                         </CardBody>
                     </Card>
-                </Col>))}
+                </Col>))} */}
+                <p className='text-center' style={{marginTop:"20px", fontSize:"40px", fontWeight:600}}>Welcome to IQ HUB Admin Dashboard</p>
         </React.Fragment>
     );
 };

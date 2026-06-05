@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Card, CardBody, Col, Container, Input, Label, Row, Button, Form, Alert } from "reactstrap";
 import { Link, useNavigate } from "react-router-dom";
 import ParticlesAuth from "../AuthenticationInner/ParticlesAuth";
-import logoLight from "../../assets/images/logo-light.png";
+import logoLight from "../../assets/images/adminpanel-logo.png";
 import axios from "axios";
 import { api } from "../../config";
 

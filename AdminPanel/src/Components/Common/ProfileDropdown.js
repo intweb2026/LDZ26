@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Dropdown, DropdownItem, DropdownMenu, DropdownToggle } from 'reactstrap';
 //import images
-import avatar1 from "../../assets/images/users/avatar-1.jpg";
+import avatar1 from "../../assets/images/users/user-dummy-img.jpg";
 
 const ProfileDropdown = () => {
 

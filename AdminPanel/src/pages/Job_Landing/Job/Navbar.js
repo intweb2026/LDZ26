@@ -8,7 +8,7 @@ import {
   NavLink,
 } from "reactstrap";
 import LogoDark from "../../../assets/images/logo-dark.png";
-import LogoLight from "../../../assets/images/logo-light.png";
+import LogoLight from "../../../assets/images/adminpanel-logo.png";
 const Navbar = () => {
   const [isOpenMenu, setisOpenMenu] = useState(false);
   const [navClass, setnavClass] = useState("");
