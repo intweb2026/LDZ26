@@ -6,7 +6,7 @@ import Scrollspy from "react-scrollspy";
 
 //import Images
 import logodark from "../../../assets/images/logo-dark.png";
-import logolight from "../../../assets/images/logo-light.png";
+import logolight from "../../../assets/images/adminpanel-logo.png";
 
 const Navbar = () => {
     const [navClass, setnavClass] = useState("");

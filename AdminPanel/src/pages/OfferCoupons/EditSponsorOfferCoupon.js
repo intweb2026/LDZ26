@@ -77,7 +77,7 @@ const EditSponsorOfferCoupon = ({
         method: "POST",
         body: finalData,
       };
-      fetch("https://www.linq-staging-site.com/admin1/editsponsoroffercoupon", requestOptions)
+      fetch("https://www.australia.lithium-downstream-summit.com/admin1/editsponsoroffercoupon", requestOptions)
         .then((response) => response.json())
         .then((data) => {
           if (

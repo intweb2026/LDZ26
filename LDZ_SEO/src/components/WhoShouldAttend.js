@@ -52,7 +52,7 @@ const WhoShouldAttend = () => {
       method: "GET",
     };
     fetch(
-      `https://www.linq-staging-site.com/admin1/whoshouldattendpagedata`,
+      `https://www.australia.lithium-downstream-summit.com/admin1/whoshouldattendpagedata`,
       requestOptions,
     )
       .then((response) => response.json())
@@ -82,7 +82,7 @@ const WhoShouldAttend = () => {
       method: "GET",
     };
     fetch(
-      `https://www.linq-staging-site.com/admin1/eventtestimonials`,
+      `https://www.australia.lithium-downstream-summit.com/admin1/eventtestimonials`,
       requestOptions,
     )
       .then((response) => response.json())
@@ -111,7 +111,7 @@ const WhoShouldAttend = () => {
       method: "GET",
     };
     fetch(
-      `https://www.linq-staging-site.com/admin1/eventcoreattandees`,
+      `https://www.australia.lithium-downstream-summit.com/admin1/eventcoreattandees`,
       requestOptions,
     )
       .then((response) => response.json())
@@ -140,7 +140,7 @@ const WhoShouldAttend = () => {
       method: "GET",
     };
     fetch(
-      `https://www.linq-staging-site.com/admin1/eventparticipatedindustries`,
+      `https://www.australia.lithium-downstream-summit.com/admin1/eventparticipatedindustries`,
       requestOptions,
     )
       .then((response) => response.json())
@@ -318,7 +318,7 @@ const WhoShouldAttend = () => {
         <meta name="twitter:description" content={seoDescription} />
         <link
           rel="canonical"
-          href="https://www.linq-staging-site.com/who-should-attend"
+          href="https://www.australia.lithium-downstream-summit.com/who-should-attend"
         />
       </Helmet>
       <Navbar forceScrolled />
@@ -440,7 +440,7 @@ const WhoShouldAttend = () => {
                               setAddToCalendarSuccessMessage("");
                             }, 5000);
                             await fetch(
-                              "https://www.linq-staging-site.com/admin1/addcalendersubscriber",
+                              "https://www.australia.lithium-downstream-summit.com/admin1/addcalendersubscriber",
                               {
                                 method: "POST",
                                 headers: { "Content-Type": "application/json" },

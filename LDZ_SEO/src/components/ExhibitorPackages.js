@@ -47,7 +47,7 @@ const ExhibitorPackages = () => {
       method: "GET",
     };
     fetch(
-      `https://www.linq-staging-site.com/admin1/homepagecompanieslogo`,
+      `https://www.australia.lithium-downstream-summit.com/admin1/homepagecompanieslogo`,
       requestOptions,
     )
       .then((response) => response.json())
@@ -76,7 +76,7 @@ const ExhibitorPackages = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.linq-staging-site.com/admin1/sponsorcards`, requestOptions)
+    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/sponsorcards`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (data && data.status) {
@@ -162,7 +162,7 @@ const ExhibitorPackages = () => {
       method: "GET",
     };
     fetch(
-      `https://www.linq-staging-site.com/admin1/mediapagehelpers`,
+      `https://www.australia.lithium-downstream-summit.com/admin1/mediapagehelpers`,
       requestOptions,
     )
       .then((response) => response.json())
@@ -192,7 +192,7 @@ const ExhibitorPackages = () => {
       method: "GET",
     };
     fetch(
-      `https://www.linq-staging-site.com/admin1/sponsorpackages`,
+      `https://www.australia.lithium-downstream-summit.com/admin1/sponsorpackages`,
       requestOptions,
     )
       .then((response) => response.json())
@@ -222,7 +222,7 @@ const ExhibitorPackages = () => {
       method: "GET",
     };
     fetch(
-      `https://www.linq-staging-site.com/admin1/getsponsorpagedata`,
+      `https://www.australia.lithium-downstream-summit.com/admin1/getsponsorpagedata`,
       requestOptions,
     )
       .then((response) => response.json())
@@ -392,7 +392,7 @@ const ExhibitorPackages = () => {
         {seoImage && <meta name="twitter:image" content={seoImage} />}
         <link
           rel="canonical"
-          href="https://www.linq-staging-site.com/sponsor-packages"
+          href="https://www.australia.lithium-downstream-summit.com/sponsor-packages"
         />
       </Helmet>
       <Navbar forceScrolled />

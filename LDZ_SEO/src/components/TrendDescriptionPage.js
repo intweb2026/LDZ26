@@ -103,7 +103,7 @@ const TrendDescriptionPage = () => {
       method: "GET",
     };
     fetch(
-      `https://www.linq-staging-site.com/admin1/getagenda`,
+      `https://www.australia.lithium-downstream-summit.com/admin1/getagenda`,
       requestOptions,
     )
       .then((response) => response.json())
@@ -162,7 +162,7 @@ const TrendDescriptionPage = () => {
   const fetchTrendDetailClient = (id) => {
     const formData = new FormData();
     formData.append("trendId", id);
-    fetch(`https://www.linq-staging-site.com/admin1/trendbyid`, {
+    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/trendbyid`, {
       method: "POST",
       body: formData,
     })
@@ -298,7 +298,7 @@ const TrendDescriptionPage = () => {
     activeTrend?.trendTitle ||
     "Bitcoin Conference 2026";
   const seoDesc = activeTrend?.trendMetaDescription || "";
-  const canonicalUrl = `https://www.linq-staging-site.com/trend/${slug}`;
+  const canonicalUrl = `https://www.australia.lithium-downstream-summit.com/trend/${slug}`;
 
   return (
     <>

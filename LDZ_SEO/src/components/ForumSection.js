@@ -19,7 +19,7 @@ const ForumSection = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.linq-staging-site.com/admin1/taglinedata`, requestOptions)
+    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/taglinedata`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (data && data.status) {

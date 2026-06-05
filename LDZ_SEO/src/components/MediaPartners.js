@@ -45,7 +45,7 @@ const MediaPartners = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.linq-staging-site.com/admin1/mediapagehelpers`, requestOptions)
+    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/mediapagehelpers`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (data && data.status) {
@@ -86,7 +86,7 @@ const MediaPartners = () => {
         <meta name="twitter:title" content={seoTitle} />
         <meta name="twitter:description" content={seoDesc} />
         {seoImage && <meta name="twitter:image" content={seoImage} />}
-        <link rel="canonical" href="https://www.linq-staging-site.com/media-partners" />
+        <link rel="canonical" href="https://www.australia.lithium-downstream-summit.com/media-partners" />
       </Helmet>
       <Navbar forceScrolled />
       <div style={{ opacity: 1 }}>

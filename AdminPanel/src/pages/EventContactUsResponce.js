@@ -71,7 +71,7 @@ const EventContactUsResponse = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.linq-staging-site.com/admin1/contactsofcontactus`, requestOptions)
+    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/contactsofcontactus`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (
@@ -188,7 +188,7 @@ const EventContactUsResponse = () => {
         body: finalData,
       };
       fetch(
-        "https://www.linq-staging-site.com/admin1/deletecontactuscontact",
+        "https://www.australia.lithium-downstream-summit.com/admin1/deletecontactuscontact",
         requestOptions
       )
         .then((response) => response.json())

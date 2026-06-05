@@ -71,7 +71,7 @@ const SponsorAddOnTypes = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.linq-staging-site.com/admin1/sponsorpackageaddontypes`, requestOptions)
+    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/sponsorpackageaddontypes`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (
@@ -171,7 +171,7 @@ const SponsorAddOnTypes = () => {
         body: finalData,
       };
       fetch(
-        'https://www.linq-staging-site.com/admin1/deletesponsoraddontype',
+        'https://www.australia.lithium-downstream-summit.com/admin1/deletesponsoraddontype',
         requestOptions
       )
         .then((response) => response.json())

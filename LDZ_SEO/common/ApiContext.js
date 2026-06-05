@@ -46,7 +46,7 @@
 //       method: "GET",
 //     };
 
-//     fetch(`https://www.linq-staging-site.com/admin1/homepagedata`, requestOptions)
+//     fetch(`https://www.australia.lithium-downstream-summit.com/admin1/homepagedata`, requestOptions)
 //       .then((response) => response.json())
 //       .then((data) => {
 //         if (

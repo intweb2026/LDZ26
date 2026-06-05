@@ -71,7 +71,7 @@ const OfferCouponList = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.linq-staging-site.com/admin1/offercoupons`, requestOptions)
+    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/offercoupons`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (
@@ -177,7 +177,7 @@ const OfferCouponList = () => {
         body: finalData,
       };
       fetch(
-        'https://www.linq-staging-site.com/admin1/deleteoffercoupon',
+        'https://www.australia.lithium-downstream-summit.com/admin1/deleteoffercoupon',
         requestOptions
       )
         .then((response) => response.json())

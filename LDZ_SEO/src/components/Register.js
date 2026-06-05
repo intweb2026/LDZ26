@@ -68,7 +68,7 @@
 //     const requestOptions = {
 //       method: "GET",
 //     };
-//     fetch(`https://www.linq-staging-site.com/admin1/deligatepackageslist`, requestOptions)
+//     fetch(`https://www.australia.lithium-downstream-summit.com/admin1/deligatepackageslist`, requestOptions)
 //       .then((response) => response.json())
 //       .then((data) => {
 //         if (data && data.status) {
@@ -195,7 +195,7 @@
 //       body: finalData,
 //     };
 
-//     fetch("https://www.linq-staging-site.com/admin1/adduserpassrequest", requestOptions)
+//     fetch("https://www.australia.lithium-downstream-summit.com/admin1/adduserpassrequest", requestOptions)
 //       .then((response) => response.json())
 //       .then((data) => {
 //         if (data.status) {
@@ -710,7 +710,7 @@ const Register = () => {
   // (window.__INITIAL_DATA__ is not updated on React Router client-side navigation)
   useEffect(() => {
     if (delegatePackageList.length > 0) return; // already populated from SSR
-    fetch("https://www.linq-staging-site.com/admin1/deligatepackageslist")
+    fetch("https://www.australia.lithium-downstream-summit.com/admin1/deligatepackageslist")
       .then((r) => r.json())
       .then((data) => {
         if (data?.status && data.delegatePackages) {
@@ -804,7 +804,7 @@ const Register = () => {
 
     setTimeout(() => {
       setIsSubmittedMessage(true);
-      fetch("https://www.linq-staging-site.com/admin1/adduserpassrequest", {
+      fetch("https://www.australia.lithium-downstream-summit.com/admin1/adduserpassrequest", {
         method: "POST",
         body: finalData,
       })
@@ -914,7 +914,7 @@ const Register = () => {
         <meta name="twitter:title" content={seoTitle} />
         <meta name="twitter:description" content={seoDesc} />
         {seoImage && <meta name="twitter:image" content={seoImage} />}
-        <link rel="canonical" href="https://www.linq-staging-site.com/booking" />
+        <link rel="canonical" href="https://www.australia.lithium-downstream-summit.com/booking" />
       </Helmet>
       <Navbar forceScrolled />
       <div style={{ marginTop: windowWidth > 1024 ? "120px" : "" }}>

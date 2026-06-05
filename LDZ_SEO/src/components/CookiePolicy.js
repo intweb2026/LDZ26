@@ -24,7 +24,7 @@ const CookiePolicy = () => {
   const seoTitle = pageSeo.pageMetaTitle;
   const seoDesc = pageSeo.pageMetaDescription;
   const seoImage = pageSeo.pageOgImage || null;
-  const canonicalUrl = "https://www.linq-staging-site.com/cookie-policy";
+  const canonicalUrl = "https://www.australia.lithium-downstream-summit.com/cookie-policy";
 
   return (
     <>

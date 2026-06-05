@@ -72,7 +72,7 @@ const DelegatePackageList = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.linq-staging-site.com/admin1/deligatepackageslist`, requestOptions)
+    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/deligatepackageslist`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (
@@ -200,7 +200,7 @@ const DelegatePackageList = () => {
         body: finalData,
       };
       fetch(
-        "https://www.linq-staging-site.com/admin1/deletedelegatepackage",
+        "https://www.australia.lithium-downstream-summit.com/admin1/deletedelegatepackage",
         requestOptions
       )
         .then((response) => response.json())

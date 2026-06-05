@@ -71,7 +71,7 @@ const EventLeaders = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.linq-staging-site.com/admin1/eventleaderlist`, requestOptions)
+    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/eventleaderlist`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (
@@ -192,7 +192,7 @@ const EventLeaders = () => {
         body: finalData,
       };
       fetch(
-        'https://www.linq-staging-site.com/admin1/deleteeventleader',
+        'https://www.australia.lithium-downstream-summit.com/admin1/deleteeventleader',
         requestOptions
       )
         .then((response) => response.json())

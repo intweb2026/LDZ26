@@ -23,8 +23,8 @@ const Error404 = () => {
   const seoTitle = '404 - Page Not Found';
   const seoDesc = 'The page you are looking for does not exist.';
   const canonicalUrl = slug
-    ? `https://www.linq-staging-site.com/${slug}`
-    : "https://www.linq-staging-site.com/404";
+    ? `https://www.australia.lithium-downstream-summit.com/${slug}`
+    : "https://www.australia.lithium-downstream-summit.com/404";
 
 
   return (

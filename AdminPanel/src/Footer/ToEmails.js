@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const BASE_URL = "https://www.linq-staging-site.com/admin1";
+const BASE_URL = "https://www.australia.lithium-downstream-summit.com/admin1";
 
 const ToEmails = () => {
   const [emailInput, setEmailInput] = useState("");

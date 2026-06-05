@@ -67,7 +67,7 @@ const JoinedSponsors = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.linq-staging-site.com/admin1/joinedsponsorcompanies`, requestOptions)
+    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/joinedsponsorcompanies`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (
@@ -197,7 +197,7 @@ const JoinedSponsors = () => {
         method: "POST",
         body: finalData,
       };
-      fetch("https://www.linq-staging-site.com/admin1/deletefaq", requestOptions)
+      fetch("https://www.australia.lithium-downstream-summit.com/admin1/deletefaq", requestOptions)
         .then((response) => response.json())
         .then((data) => {
           if (

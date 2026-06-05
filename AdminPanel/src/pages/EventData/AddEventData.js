@@ -78,7 +78,7 @@
 //     const requestOptions = {
 //       method: "GET",
 //     };
-//     fetch(`https://www.linq-staging-site.com/admin1/homepagedata`, requestOptions)
+//     fetch(`https://www.australia.lithium-downstream-summit.com/admin1/homepagedata`, requestOptions)
 //       .then((response) => response.json())
 //       .then((data) => {
 //         if (
@@ -173,7 +173,7 @@
 
 //     try {
 //       const response = await fetch(
-//         "https://www.linq-staging-site.com/admin1/upload",
+//         "https://www.australia.lithium-downstream-summit.com/admin1/upload",
 //         requestOptions
 //       );
 //       const data = await response.json();
@@ -257,7 +257,7 @@
 //       method: "POST",
 //       body: formDataObj,
 //     };
-//     fetch("https://www.linq-staging-site.com/admin1/addeventdata", requestOptions)
+//     fetch("https://www.australia.lithium-downstream-summit.com/admin1/addeventdata", requestOptions)
 //       .then((response) => response.json())
 //       .then((data) => {
 //         if (data.status) {
@@ -951,7 +951,7 @@ const AddEventData = () => {
     setloading(true);
     const requestOptions = { method: "GET" };
     fetch(
-      `https://www.linq-staging-site.com/admin1/homepagedata`,
+      `https://www.australia.lithium-downstream-summit.com/admin1/homepagedata`,
       requestOptions,
     )
       .then((response) => response.json())
@@ -1095,7 +1095,7 @@ const AddEventData = () => {
     const requestOptions = { method: "POST", body: finalData };
     try {
       const response = await fetch(
-        "https://www.linq-staging-site.com/admin1/upload",
+        "https://www.australia.lithium-downstream-summit.com/admin1/upload",
         requestOptions,
       );
       const data = await response.json();
@@ -1202,7 +1202,7 @@ const AddEventData = () => {
 
     const requestOptions = { method: "POST", body: formDataObj };
     fetch(
-      "https://www.linq-staging-site.com/admin1/addeventdata",
+      "https://www.australia.lithium-downstream-summit.com/admin1/addeventdata",
       requestOptions,
     )
       .then((response) => response.json())

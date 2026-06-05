@@ -20,7 +20,7 @@ import BreadCrumb from "../../Components/Common/BreadCrumb";
 import Select from "react-select";
 
 import logoDark from "../../assets/images/logo-dark.png";
-import logoLight from "../../assets/images/logo-light.png";
+import logoLight from "../../assets/images/adminpanel-logo.png";
 
 //formik
 import { useFormik } from "formik";

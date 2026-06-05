@@ -34,7 +34,7 @@ const UserManagement = () => {
 
     const fetchUsers = () => {
         setLoading(true);
-        fetch("https://www.linq-staging-site.com/admin1/userlist")
+        fetch("https://www.australia.lithium-downstream-summit.com/admin1/userlist")
             .then((res) => res.json())
             .then((data) => {
                 if (data.status) {
@@ -56,7 +56,7 @@ const UserManagement = () => {
 
     const handleDeleteUser = (id) => {
         if (window.confirm("Are you sure you want to delete this user?")) {
-            fetch("https://www.linq-staging-site.com/admin1/deleteuser", {
+            fetch("https://www.australia.lithium-downstream-summit.com/admin1/deleteuser", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ id }),

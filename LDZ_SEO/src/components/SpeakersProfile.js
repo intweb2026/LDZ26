@@ -86,7 +86,7 @@ const SpeakerProfile = () => {
       formData.append("speakerId", speakerId);
 
       const response = await fetch(
-        `https://www.linq-staging-site.com/admin1/speakerbyid`,
+        `https://www.australia.lithium-downstream-summit.com/admin1/speakerbyid`,
         {
           method: "POST",
           body: formData,
@@ -108,7 +108,7 @@ const SpeakerProfile = () => {
   const fetchSpeakerBySlug = async (slug) => {
     try {
       const response = await fetch(
-        `https://www.linq-staging-site.com/admin1/eventspeakers`
+        `https://www.australia.lithium-downstream-summit.com/admin1/eventspeakers`
       );
       const data = await response.json();
 
@@ -266,7 +266,7 @@ const SpeakerProfile = () => {
       body: finalData,
     };
     fetch(
-      "https://www.linq-staging-site.com/admin1/addquickproposalrequest",
+      "https://www.australia.lithium-downstream-summit.com/admin1/addquickproposalrequest",
       requestOptions,
     )
       .then((response) => response.json())
@@ -297,8 +297,8 @@ const SpeakerProfile = () => {
   const seoTitle = speaker?.eventSpeakerMetaTitle;
   const seoDesc = speaker?.eventSpeakerMetaDescription;
   const canonicalUrl = slug
-    ? `https://www.linq-staging-site.com/speaker/${slug}`
-    : "https://www.linq-staging-site.com/featured-speakers";
+    ? `https://www.australia.lithium-downstream-summit.com/speaker/${slug}`
+    : "https://www.australia.lithium-downstream-summit.com/featured-speakers";
 
   return (
     <>

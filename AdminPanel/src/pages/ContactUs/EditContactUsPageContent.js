@@ -34,7 +34,7 @@ const EditContactUsPageContent = (props) => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.linq-staging-site.com/admin1/contactusstaticdata`, requestOptions)
+    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/contactusstaticdata`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (
@@ -97,7 +97,7 @@ const EditContactUsPageContent = (props) => {
         body: finalData,
       };
       fetch(
-        "https://www.linq-staging-site.com/admin1/addcontactuspagestaticdata",
+        "https://www.australia.lithium-downstream-summit.com/admin1/addcontactuspagestaticdata",
         requestOptions
       )
         .then((response) => response.json())

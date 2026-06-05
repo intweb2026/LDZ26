@@ -142,7 +142,7 @@ const EditEventKeyPoint = ({
 
     setloading(true); // Set loading before API call
 
-    fetch("https://www.linq-staging-site.com/admin1/editkeypoint", requestOptions)
+    fetch("https://www.australia.lithium-downstream-summit.com/admin1/editkeypoint", requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (

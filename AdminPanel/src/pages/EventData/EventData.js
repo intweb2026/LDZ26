@@ -137,7 +137,7 @@ const EventData = () => {
       method: "GET",
     };
     fetch(
-      `https://www.linq-staging-site.com/admin1/homepagedata`,
+      `https://www.australia.lithium-downstream-summit.com/admin1/homepagedata`,
       requestOptions,
     )
       .then((response) => response.json())

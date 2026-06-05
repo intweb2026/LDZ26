@@ -45,7 +45,7 @@ const AddNavSubCategory = (props) => {
       method: "GET",
     };
     fetch(
-      `https://www.linq-staging-site.com/admin1/navmaincategories`,
+      `https://www.australia.lithium-downstream-summit.com/admin1/navmaincategories`,
       requestOptions
     )
       .then((response) => response.json())
@@ -143,7 +143,7 @@ const AddNavSubCategory = (props) => {
         body: finalData,
       };
       fetch(
-        "https://www.linq-staging-site.com/admin1/addnavsubcategory",
+        "https://www.australia.lithium-downstream-summit.com/admin1/addnavsubcategory",
         requestOptions
       )
         .then((response) => response.json())

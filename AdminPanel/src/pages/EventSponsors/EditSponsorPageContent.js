@@ -45,7 +45,7 @@ const EditSponsorPageContent = (props) => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.linq-staging-site.com/admin1/getsponsorpagedata`, requestOptions)
+    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/getsponsorpagedata`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (
@@ -126,7 +126,7 @@ const EditSponsorPageContent = (props) => {
         body: finalData,
       };
       fetch(
-        "https://www.linq-staging-site.com/admin1/addsponsorpagestaticdata",
+        "https://www.australia.lithium-downstream-summit.com/admin1/addsponsorpagestaticdata",
         requestOptions
       )
         .then((response) => response.json())

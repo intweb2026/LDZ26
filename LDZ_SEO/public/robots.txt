@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.linq-staging-site.com/sitemap.xml
+Sitemap: https://www.australia.lithium-downstream-summit.com/sitemap.xml

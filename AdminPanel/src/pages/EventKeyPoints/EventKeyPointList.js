@@ -43,7 +43,7 @@ const EventKeyPointList = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.linq-staging-site.com/admin1/eventkeypoints`, requestOptions)
+    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/eventkeypoints`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (
@@ -153,7 +153,7 @@ const EventKeyPointList = () => {
         method: "POST",
         body: finalData,
       };
-      fetch("https://www.linq-staging-site.com/admin1/deletekeypoint", requestOptions)
+      fetch("https://www.australia.lithium-downstream-summit.com/admin1/deletekeypoint", requestOptions)
         .then((response) => response.json())
         .then((data) => {
           if (

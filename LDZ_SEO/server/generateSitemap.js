@@ -4,8 +4,8 @@
 
 const fetch = require("node-fetch");
 
-const BASE_URL = "https://www.linq-staging-site.com/admin1";
-const DOMAIN = "https://www.linq-staging-site.com";
+const BASE_URL = "https://www.australia.lithium-downstream-summit.com/admin1";
+const DOMAIN = "https://www.australia.lithium-downstream-summit.com";
 
 /* -------- helpers -------- */
 async function get(endpoint) {

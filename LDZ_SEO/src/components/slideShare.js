@@ -109,7 +109,7 @@ const SlideShare = () => {
     // ─── API calls ───────────────────────────────────────────────────────────────
 
     const callSlideShareListApi = () => {
-        fetch(`https://www.linq-staging-site.com/admin1/getslideShare`)
+        fetch(`https://www.australia.lithium-downstream-summit.com/admin1/getslideShare`)
             .then((res) => res.json())
             .then((data) => {
                 if (data?.detail === "The Token is expired" || data?.message === "Invalid token") {
@@ -131,7 +131,7 @@ const SlideShare = () => {
     };
 
     const callSlideShareAttandeeListApi = () => {
-        fetch(`https://www.linq-staging-site.com/admin1/getslideShareAttandee`)
+        fetch(`https://www.australia.lithium-downstream-summit.com/admin1/getslideShareAttandee`)
             .then((res) => res.json())
             .then((data) => {
                 if (data?.detail === "The Token is expired" || data?.message === "Invalid token") {
@@ -158,7 +158,7 @@ const SlideShare = () => {
         setIsLoggingIn(true);
         try {
             const response = await fetch(
-                `https://www.linq-staging-site.com/admin1/securelogin`,
+                `https://www.australia.lithium-downstream-summit.com/admin1/securelogin`,
                 {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
@@ -233,7 +233,7 @@ const SlideShare = () => {
                 <meta name="twitter:title" content={seoTitle} />
                 <link
                     rel="canonical"
-                    href="https://www.linq-staging-site.com/sponsors"
+                    href="https://www.australia.lithium-downstream-summit.com/sponsors"
                 />
             </Helmet> */}
 

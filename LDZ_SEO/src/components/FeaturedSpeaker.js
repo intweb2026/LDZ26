@@ -35,7 +35,7 @@ const FeaturedSpeaker = ({ title }) => {
   // (window.__INITIAL_DATA__ is not updated on SPA route changes, so SSR data may be empty)
   useEffect(() => {
     if (ssrSpeakerList?.length > 0) return;
-    fetch("https://www.linq-staging-site.com/admin1/eventspeakers")
+    fetch("https://www.australia.lithium-downstream-summit.com/admin1/eventspeakers")
       .then((res) => res.json())
       .then((data) => {
         if (data?.status && Array.isArray(data.eventSpeakersList)) {

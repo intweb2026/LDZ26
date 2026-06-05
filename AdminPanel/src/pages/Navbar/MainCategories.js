@@ -77,7 +77,7 @@ const MainCategories = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.linq-staging-site.com/admin1/navmaincategories`, requestOptions)
+    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/navmaincategories`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (
@@ -187,7 +187,7 @@ const MainCategories = () => {
         body: finalData,
       };
       fetch(
-        'https://www.linq-staging-site.com/admin1/deletenavmaincategory',
+        'https://www.australia.lithium-downstream-summit.com/admin1/deletenavmaincategory',
         requestOptions
       )
         .then((response) => response.json())

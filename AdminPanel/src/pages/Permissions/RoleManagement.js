@@ -42,7 +42,7 @@ const RoleManagement = () => {
 
     const fetchRoles = () => {
         setLoading(true);
-        fetch("https://www.linq-staging-site.com/admin1/rolelist")
+        fetch("https://www.australia.lithium-downstream-summit.com/admin1/rolelist")
             .then((res) => res.json())
             .then((data) => {
                 if (data.status) {
@@ -69,7 +69,7 @@ const RoleManagement = () => {
         onSubmit: (values) => {
             const formData = new FormData();
             formData.append("name", values.name);
-            fetch("https://www.linq-staging-site.com/admin1/addrole", {
+            fetch("https://www.australia.lithium-downstream-summit.com/admin1/addrole", {
                 method: "POST",
                 body: formData,
             })
@@ -89,7 +89,7 @@ const RoleManagement = () => {
 
     const handleDeleteRole = (id) => {
         if (window.confirm("Are you sure you want to delete this role?")) {
-            fetch("https://www.linq-staging-site.com/admin1/deleterole", {
+            fetch("https://www.australia.lithium-downstream-summit.com/admin1/deleterole", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ id }),

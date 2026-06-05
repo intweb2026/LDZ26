@@ -44,7 +44,7 @@ const AddRelatedEvent = (props) => {
 
     try {
       const response = await fetch(
-        "https://www.linq-staging-site.com/admin1/upload",
+        "https://www.australia.lithium-downstream-summit.com/admin1/upload",
         requestOptions
       );
       const data = await response.json();
@@ -177,7 +177,7 @@ const AddRelatedEvent = (props) => {
         method: "POST",
         body: finalData,
       };
-      fetch("https://www.linq-staging-site.com/admin1/addrelatedevent", requestOptions)
+      fetch("https://www.australia.lithium-downstream-summit.com/admin1/addrelatedevent", requestOptions)
         .then((response) => response.json())
         .then((data) => {
           if (

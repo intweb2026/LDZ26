@@ -74,7 +74,7 @@ const EventSponsorList = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.linq-staging-site.com/admin1/eventsponsors`, requestOptions)
+    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/eventsponsors`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (
@@ -201,7 +201,7 @@ const EventSponsorList = () => {
         body: finalData,
       };
       fetch(
-        'https://www.linq-staging-site.com/admin1/deletesponsor',
+        'https://www.australia.lithium-downstream-summit.com/admin1/deletesponsor',
         requestOptions
       )
         .then((response) => response.json())

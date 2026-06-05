@@ -46,7 +46,7 @@ const AddNewsCategory = (props) => {
         body: finalData,
       };
       fetch(
-        "https://www.linq-staging-site.com/admin1/addnewscategory",
+        "https://www.australia.lithium-downstream-summit.com/admin1/addnewscategory",
         requestOptions
       )
         .then((response) => response.json())

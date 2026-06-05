@@ -71,7 +71,7 @@ const ExpertSpeakers = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.linq-staging-site.com/admin1/expertspeakers`, requestOptions)
+    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/expertspeakers`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (
@@ -177,7 +177,7 @@ const ExpertSpeakers = () => {
         body: finalData,
       };
       fetch(
-        'https://www.linq-staging-site.com/admin1/deleteexpertspeaker',
+        'https://www.australia.lithium-downstream-summit.com/admin1/deleteexpertspeaker',
         requestOptions
       )
         .then((response) => response.json())

@@ -40,7 +40,7 @@ const EditWhoShouldAttendContent = (props) => {
       method: "GET",
     };
     fetch(
-      `https://www.linq-staging-site.com/admin1/whoshouldattendpagedata`,
+      `https://www.australia.lithium-downstream-summit.com/admin1/whoshouldattendpagedata`,
       requestOptions
     )
       .then((response) => response.json())
@@ -190,7 +190,7 @@ const EditWhoShouldAttendContent = (props) => {
         body: finalData,
       };
       fetch(
-        "https://www.linq-staging-site.com/admin1/addwhoshouldattendpagestaticdata",
+        "https://www.australia.lithium-downstream-summit.com/admin1/addwhoshouldattendpagestaticdata",
         requestOptions
       )
         .then((response) => response.json())

@@ -45,7 +45,7 @@ const AddSponsorAddOns = (props) => {
       method: "GET",
     };
     fetch(
-      `https://www.linq-staging-site.com/admin1/sponsorpackageaddontypes`,
+      `https://www.australia.lithium-downstream-summit.com/admin1/sponsorpackageaddontypes`,
       requestOptions
     )
       .then((response) => response.json())
@@ -143,7 +143,7 @@ const AddSponsorAddOns = (props) => {
         body: finalData,
       };
       fetch(
-        "https://www.linq-staging-site.com/admin1/addsponsoraddons",
+        "https://www.australia.lithium-downstream-summit.com/admin1/addsponsoraddons",
         requestOptions
       )
         .then((response) => response.json())
