@@ -572,8 +572,9 @@ class AdminUser(models.Model):
     detailed_permissions = models.JSONField(default=dict, blank=True)
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
-
     isDelete = models.CharField(default="No", max_length=10)
+    otp_code = models.CharField(max_length=6, null=True, blank=True)
+    otp_created_at = models.DateTimeField(null=True, blank=True)
 
     objects = AdminUserManager()
 
