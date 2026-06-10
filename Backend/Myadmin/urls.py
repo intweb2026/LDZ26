@@ -334,6 +334,7 @@ urlpatterns = [
     path('rolepermissions', views.getRolePermissionsFun),
     path('updaterolepermissions', views.updateRolePermissionsFun),
     path('customlogin', views.customLoginFun),
+    path('verifyotp', views.verifyOTPFun),
     path('getnavbardata', views.getNavbarDataFun),
 
     path('getslideShare', views.slideShareListFun),

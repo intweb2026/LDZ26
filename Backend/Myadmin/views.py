@@ -5992,50 +5992,103 @@ def customLoginFun(request):
     try:
         user = AdminUser.objects.get(email=email, isDelete="No")
         if check_password(password, user.password):
-            # Step 1: Start with role permissions as base
-            detailed = {}
-            if user.role:
-                detailed = user.role.detailed_permissions.copy()
+            otp = str(random.randint(100000, 999999))
+            user.otp_code = otp
+            user.otp_created_at = datetime.now()
+            user.save(update_fields=['otp_code', 'otp_created_at'])
 
-            # Step 2: User-level permissions override/extend role permissions
-            for k, v in user.detailed_permissions.items():
-                if k in detailed:
-                    detailed[k] = list(set(detailed[k] + v))
-                else:
-                    detailed[k] = v
+            html_content = f"""
+            <div style="font-family: Arial, sans-serif; max-width: 480px; margin: auto; padding: 24px; border: 1px solid #e0e0e0; border-radius: 8px;">
+                <h2 style="color: #333;">Admin Panel Login OTP</h2>
+                <p style="color: #555;">Use the OTP below to complete your login. It expires in <strong>10 minutes</strong>.</p>
+                <div style="font-size: 36px; font-weight: bold; letter-spacing: 8px; color: #1a73e8; margin: 24px 0;">{otp}</div>
+                <p style="color: #999; font-size: 12px;">If you did not request this, please ignore this email.</p>
+            </div>
+            """
+            text_content = f"Your admin panel login OTP is: {otp}. It expires in 10 minutes."
+            msg = EmailMultiAlternatives(
+                subject="Admin Panel Login OTP",
+                body=text_content,
+                from_email='int.web@iq-hub.com',
+                to=[user.email],
+            )
+            msg.attach_alternative(html_content, "text/html")
+            msg.send()
 
-            # Step 3: Fill in any system permissions missing from role/user
-            # These are new keys added after the role was last saved
-            all_submodules = SidebarSubModule.objects.filter(isDelete="No")
-            all_modules = SidebarModule.objects.filter(isDelete="No")
-
-            system_keys = set()
-            for sm in all_submodules:
-                if sm.id_attr:
-                    system_keys.add(sm.id_attr)
-            for m in all_modules:
-                if m.id_attr and not m.submodules.filter(isDelete="No").exists():
-                    system_keys.add(m.id_attr)
-
-            for key in system_keys:
-                if key not in detailed:
-                    detailed[key] = []  # No access by default for missing keys
-
-            return JsonResponse({
-                'status': True,
-                'user': {
-                    'id': user.id,
-                    'name': user.name,
-                    'username': user.username,
-                    'email': user.email,
-                    'role': user.role.name if user.role else "No Role"
-                },
-                'detailed_permissions': detailed
-            })
+            return JsonResponse({'status': True, 'otp_sent': True, 'user_id': user.id})
         else:
             return JsonResponse({'status': False, 'message': 'Invalid password'}, status=401)
     except AdminUser.DoesNotExist:
         return JsonResponse({'status': False, 'message': 'User not found'}, status=404)
+
+
+@api_view(['POST'])
+@permission_classes((AllowAny,))
+def verifyOTPFun(request):
+    user_id = request.data.get('user_id')
+    otp = request.data.get('otp')
+
+    if not user_id or not otp:
+        return JsonResponse({'status': False, 'message': 'user_id and otp are required'}, status=400)
+
+    try:
+        user = AdminUser.objects.get(id=user_id, isDelete="No")
+    except AdminUser.DoesNotExist:
+        return JsonResponse({'status': False, 'message': 'User not found'}, status=404)
+
+    if not user.otp_code or not user.otp_created_at:
+        return JsonResponse({'status': False, 'message': 'No OTP requested. Please login again.'}, status=400)
+
+    expiry = user.otp_created_at + timedelta(minutes=10)
+    if datetime.now() > expiry:
+        user.otp_code = None
+        user.otp_created_at = None
+        user.save(update_fields=['otp_code', 'otp_created_at'])
+        return JsonResponse({'status': False, 'message': 'OTP has expired. Please login again.'}, status=400)
+
+    if user.otp_code != str(otp):
+        return JsonResponse({'status': False, 'message': 'Invalid OTP'}, status=400)
+
+    user.otp_code = None
+    user.otp_created_at = None
+    user.save(update_fields=['otp_code', 'otp_created_at'])
+
+    detailed = {}
+    if user.role:
+        detailed = user.role.detailed_permissions.copy()
+
+    for k, v in user.detailed_permissions.items():
+        if k in detailed:
+            detailed[k] = list(set(detailed[k] + v))
+        else:
+            detailed[k] = v
+
+    all_submodules = SidebarSubModule.objects.filter(isDelete="No")
+    all_modules = SidebarModule.objects.filter(isDelete="No")
+
+    system_keys = set()
+    for sm in all_submodules:
+        if sm.id_attr:
+            system_keys.add(sm.id_attr)
+    for m in all_modules:
+        if m.id_attr and not m.submodules.filter(isDelete="No").exists():
+            system_keys.add(m.id_attr)
+
+    for key in system_keys:
+        if key not in detailed:
+            detailed[key] = []
+
+    return JsonResponse({
+        'status': True,
+        'user': {
+            'id': user.id,
+            'name': user.name,
+            'username': user.username,
+            'email': user.email,
+            'role': user.role.name if user.role else "No Role"
+        },
+        'detailed_permissions': detailed
+    })
 
 @api_view(['GET'])
 @permission_classes((AllowAny,))
