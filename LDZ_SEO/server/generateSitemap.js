@@ -62,6 +62,9 @@ const STATIC_ROUTES = [
     { url: "/news", changefreq: "daily", priority: "0.8" },
     { url: "/attendees", changefreq: "monthly", priority: "0.6" },
     { url: "/booking", changefreq: "monthly", priority: "0.7" },
+    { url: "/booking-form", changefreq: "weekly", priority: "0.7" },
+    { url: "/pay-online", changefreq: "weekly", priority: "0.8" },
+    { url: "/remind-me-later", changefreq: "monthly", priority: "0.7" },
     { url: "/contact-us", changefreq: "monthly", priority: "0.6" },
     { url: "/sponsor-booking", changefreq: "monthly", priority: "0.6" },
     { url: "/privacy-policy", changefreq: "yearly", priority: "0.3" },
@@ -136,7 +139,7 @@ async function fetchNavbarNavigationSlugs() {
         .map((s) => ({
             url: `/venue`,
             changefreq: "monthly",
-            priority: "0.5",
+            priority: "0.8",
         }));
 }
 
