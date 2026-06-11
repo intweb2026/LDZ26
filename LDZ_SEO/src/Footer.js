@@ -6,9 +6,9 @@ import "react-toastify/dist/ReactToastify.css";
 import { useSSRData } from "./common/useSSRData";
 import { useApiData } from "../src/common/ApiContext";
 const emailImage =
-  "https://www.desalination-resource-recovery.com/images/icons/icon-mail.png";
+  "/images/WebCommonImages/icon-mail.png";
 const linkedInIcon =
-  "https://www.desalination-resource-recovery.com/images/icons/icon-linkedin.png";
+  "/images/WebCommonImages/icon-linkedin.png";
 
 const Footer = () => {
   const navigate = useNavigate();

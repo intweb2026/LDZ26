@@ -889,11 +889,13 @@
 
     .NewNavbar_wholeContainer__z2zti .NewNavbar_container__dGANs .NewNavbar_navLinksContainer__s15t3 .NewNavbar_linksContainer__tbm-r ul li {
         display: flex;
+        margin-right: 0;
         width: 100%;
     }
 
     .NewNavbar_wholeContainerWhite__QY0eF .NewNavbar_container__dGANs .NewNavbar_navLinksContainer__s15t3 .NewNavbar_linksContainer__tbm-r ul li {
         display: flex;
+        margin-right: 0;
         width: 100%;
     }
 
@@ -910,8 +912,8 @@
         margin: 0 0 10px;
         padding: 5px 20px 0;
         text-shadow: none;
+        white-space: nowrap;
         width: 100%;
-        cursor: pointer;
     }
 
     .NewNavbar_wholeContainerWhite__QY0eF .NewNavbar_container__dGANs .NewNavbar_navLinksContainer__s15t3 .NewNavbar_linksContainer__tbm-r ul li>a {
@@ -927,8 +929,8 @@
         margin: 0 0 10px;
         padding: 5px 20px 0;
         text-shadow: none;
+        white-space: nowrap;
         width: 100%;
-        cursor: pointer;
     }
 
     .NewNavbar_wholeContainer__z2zti .NewNavbar_container__dGANs .NewNavbar_navLinksContainer__s15t3 .NewNavbar_linksContainer__tbm-r>button {

@@ -404,7 +404,7 @@ const ExhibitorPackages = () => {
                 <div
                   className="DetailsContainer_imageContainer__ncJwH"
                   style={{
-                    backgroundImage: `url(https://www.desalination-resource-recovery.com/images/sponsor-landing.png)`,
+                    backgroundImage: `url(/images/WebImages/sponsor-landing.png)`,
                     backgroundSize: "cover",
                   }}
                 ></div>

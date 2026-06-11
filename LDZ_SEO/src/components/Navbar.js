@@ -500,8 +500,8 @@ const Navbar = ({ disableScrollEffect = false, forceScrolled = false }) => {
     setActiveModule(active ? active.name : null);
   }, [location.pathname, navItems]);
 
-  const sponsorLogoWhite = "https://www.direct-lithium-extraction-show.com/api/images/sponsor/1760958766497-923906797.png"
-  const sponsorLogoBlack = "https://www.direct-lithium-extraction-show.com/api/images/sponsor/1760958766497-534741386.png"
+  const sponsorLogoWhite = "https://www.australia.lithium-downstream-summit.com/api/images/sponsor/1760958766497-923906797.png"
+  const sponsorLogoBlack = "https://www.australia.lithium-downstream-summit.com/api/images/sponsor/1760958766497-534741386.png"
 
   return (
     <header
