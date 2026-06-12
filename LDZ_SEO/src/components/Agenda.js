@@ -1696,7 +1696,7 @@ const Agenda = () => {
                   <h3>The agenda will be released soon</h3>
                   <p>
                     Interested in speaking at this event? Reach out to{' '}
-                    <a href="mailto:sean.collins@iq-hub.com?subject=Lorem ipsum dolor Sit Amet dolore magna aliqua enim 2026">sean.collins@iq-hub.com</a>
+                    <a href="mailto:sean.collins@iq-hub.com?subject=Lithium Downstream Summit 2026">sean.collins@iq-hub.com</a>
                     {' '}with the event name in the subject line.
                   </p>
                 </div>
@@ -1708,7 +1708,7 @@ const Agenda = () => {
                   <div className="AgendaScreen_releaseSoon__K1RT9">
                     <h3>Program 2026: Rolling Out Soon</h3>
                     <p>Interested in speaking at this event? Reach out to
-                      <a href="mailto:sean.collins@iq-hub.com?subject=BioAg%20Congress%202026"> sean.collins@iq-hub.com </a>
+                      <a href="mailto:sean.collins@iq-hub.com?subject=Lithium Downstream Summit 2026"> sean.collins@iq-hub.com </a>
                       with the event name in the subject line.
                     </p>
                   </div>
