@@ -34,8 +34,7 @@ def upload_media(request):
         fs = FileSystemStorage()
         location = "media"
         filename = fs.save(location + myfile.name, myfile)
-        uploaded_file_url = fs.url(filename)
-        uploaded_file_url = settings.SITE_DOMAIN + uploaded_file_url
+        uploaded_file_url = fs.url(filename)   # e.g. /media/filename.jpg — domain-free
     return JsonResponse({'status': True, "message": "Record Updated Successfully", "uploadedURL": uploaded_file_url})
 
 #---------------------------- Api For Home Page Data ----------------------------#
