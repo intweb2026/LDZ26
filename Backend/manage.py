@@ -4,8 +4,22 @@ import os
 import sys
 
 
+def load_env():
+    env_path = os.path.join(os.path.dirname(__file__), '.env')
+    try:
+        with open(env_path) as f:
+            for line in f:
+                line = line.strip()
+                if line and not line.startswith('#') and '=' in line:
+                    key, _, value = line.partition('=')
+                    os.environ.setdefault(key.strip(), value.strip())
+    except FileNotFoundError:
+        pass
+
+
 def main():
     """Run administrative tasks."""
+    load_env()
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Backend.settings')
     try:
         from django.core.management import execute_from_command_line

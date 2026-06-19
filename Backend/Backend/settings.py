@@ -16,30 +16,28 @@ from datetime import timedelta
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+SITE_DOMAIN = os.environ.get('SITE_DOMAIN', 'https://www.australia.lithium-downstream-summit.com')
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-6wah=7zu&)w61o5eul1s8!926*&t&g+)2h$^we2jzy3^tmdodt'
+SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:8000','http://localhost:3000',"https://nolan123.pythonanywhere.com","http://nolan123.pythonanywhere.com","https://wdrm-linq.onrender.com","http://127.0.0.1:3000","https://www.australia.lithium-downstream-summit.com"]
+CSRF_TRUSTED_ORIGINS = [h.strip() for h in os.environ.get('CSRF_TRUSTED_ORIGINS', '').split(',') if h.strip()]
 CORS_ORIGIN_ALLOW_ALL = True
 SESSION_COOKIE_SECURE = True
 CORS_ALLOW_CREDENTIALS = True
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",  # React dev server
-    "http://127.0.0.1:8000",
-    "https://www.australia.lithium-downstream-summit.com"
-]
+CORS_ALLOWED_ORIGINS = [h.strip() for h in os.environ.get('CORS_ALLOWED_ORIGINS', '').split(',') if h.strip()]
 
 # JWT SETTINGS
 # ─────────────────────────────────────────────
-JWT_SECRET_KEY = "c2aff4bb1821311e3259c94ec069c50862da0130e69ab175d52b805d9cf923a43e38229b85fb526c0eb039848fcbde418fe62c7ae6afe23b3510505554b4e5b2"  # Use env var in prod
+JWT_SECRET_KEY = os.environ.get('JWT_SECRET_KEY', '')
 JWT_ALGORITHM = "HS256"
 JWT_EXPIRATION_HOURS = 2  # Token expires in 2 hours
 # Application definition
@@ -120,11 +118,11 @@ REST_FRAMEWORK = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ldz_event',
-        'USER': 'postgres',
-        'PASSWORD': '1902',
-        'HOST': '87.99.135.169',
-        'PORT': '5432',
+        'NAME': os.environ.get('DB_NAME', 'ldz_event'),
+        'USER': os.environ.get('DB_USER', 'postgres'),
+        'PASSWORD': os.environ.get('DB_PASSWORD', ''),
+        'HOST': os.environ.get('DB_HOST', 'localhost'),
+        'PORT': os.environ.get('DB_PORT', '5432'),
     }
 }
 
@@ -175,19 +173,18 @@ DATA_UPLOAD_MAX_NUMBER_FIELDS = 52428800
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-STRIPE_PUBLISHABLE_KEY ='pk_test_51S3c3THQBCGmReEPZ3J0tA2mP81BvQxY9PptsUir5PYeqjj9XW7GveKj04umPQYxbaYiXix4avRlloUdo3ITsBsz00zfBxr700'
-STRIPE_SECRET_KEY = 'sk_test_51S3c3THQBCGmReEP5KAgrZgnPTOH1neneuz9cmEQrWU6jk6PFzj7Kt1BccJnmMzVW2hkZJsFgAXqmmHfcWIGUyBV00UPZkNyv1'
+STRIPE_PUBLISHABLE_KEY = os.environ.get('STRIPE_PUBLISHABLE_KEY', '')
+STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY', '')
 
-ZOHO_WEBHOOK_URL = 'https://flow.zoho.in/60060817867/flow/webhook/incoming?zapikey=1001.48c7ec6c66f3417f5e4e55f29dce369f.58f387aa65dfaa387287d049417d8d54&isdebug=false'
+ZOHO_WEBHOOK_URL = os.environ.get('ZOHO_WEBHOOK_URL', '')
 
-CRM_WEBHOOK_URL = 'https://app.iq-hub.com/api/webhooks/ingest/'
-CRM_API_KEY = 'crm_live_rLhe2UmMLd9R9XARSavPBi6QaZIdfS690-1NqkWs7jQ0OKHa'
+CRM_WEBHOOK_URL = os.environ.get('CRM_WEBHOOK_URL', '')
+CRM_API_KEY = os.environ.get('CRM_API_KEY', '')
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'int.web@iq-hub.com'
-EMAIL_HOST_PASSWORD = 'uxsijwfsbuvoshso'
-EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', '')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
 EMAIL_USE_SSL = False
