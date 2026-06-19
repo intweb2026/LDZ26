@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
+﻿import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Modal, ModalHeader, ModalBody, Form, Label, Input, Spinner } from "reactstrap";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ClipLoader from "react-spinners/ClipLoader";
-
-const BASE_URL = "https://www.australia.lithium-downstream-summit.com/admin1";
+import API_BASE_URL from "../config/apiConfig";
 
 const FooterNavigation = () => {
   const navigate = useNavigate();
@@ -39,7 +38,7 @@ const FooterNavigation = () => {
   // ── Fetch ──────────────────────────────────────────────────────────────────
   const fetchData = () => {
     setLoading(true);
-    fetch(`${BASE_URL}/footeroptions`)
+    fetch(`${API_BASE_URL}/admin1/footeroptions`)
       .then((res) => res.json())
       .then((data) => {
         const list = data?.footerOptions || [];
@@ -96,7 +95,7 @@ const FooterNavigation = () => {
     finalData.append("footerOptionsName", addFooterOptionsName);
     finalData.append("footerOptionsPath", addFooterOptionsPath);
 
-    fetch(`${BASE_URL}/addfooteroption`, { method: "POST", body: finalData })
+    fetch(`${API_BASE_URL}/admin1/addfooteroption`, { method: "POST", body: finalData })
       .then((res) => res.json())
       .then((data) => {
         if (data && (data.detail === "The Token is expired" || data.message === "Invalid token")) {
@@ -140,7 +139,7 @@ const FooterNavigation = () => {
     finalData.append("footerOptionsName", editFooterOptionsName);
     finalData.append("footerOptionsPath", editFooterOptionsPath);
 
-    fetch(`${BASE_URL}/editfooteroption`, { method: "POST", body: finalData })
+    fetch(`${API_BASE_URL}/admin1/editfooteroption`, { method: "POST", body: finalData })
       .then((res) => res.json())
       .then((data) => {
         if (data && (data.detail === "The Token is expired" || data.message === "Invalid token")) {
@@ -173,7 +172,7 @@ const FooterNavigation = () => {
     finalData.append("id", deleteId);
     finalData.append("isDelete", "Yes");
 
-    fetch(`${BASE_URL}/deletefooteroption`, { method: "POST", body: finalData })
+    fetch(`${API_BASE_URL}/admin1/deletefooteroption`, { method: "POST", body: finalData })
       .then((res) => res.json())
       .then((data) => {
         if (data.status) {
@@ -209,7 +208,7 @@ const FooterNavigation = () => {
     const finalData = new FormData();
     finalData.append("footerOptions", JSON.stringify(footerPayload));
 
-    fetch(`${BASE_URL}/savefootercheckstatus`, { method: "POST", body: finalData })
+    fetch(`${API_BASE_URL}/admin1/savefootercheckstatus`, { method: "POST", body: finalData })
       .then((res) => res.json())
       .then((data) => {
         if (data.status) {

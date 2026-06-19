@@ -1,4 +1,4 @@
-import React from "react";
+﻿import React from "react";
 import { useState, useEffect, useCallback } from "react";
 import Navbar from "./Navbar";
 import SubscribeForm from "./SubscribeForm";
@@ -13,6 +13,7 @@ import Popup from "reactjs-popup";
 import { Helmet } from "react-helmet-async";
 import { usePageSeo } from "../common/usePageSeo";
 import "../assets/css/popUp.css";
+import API_BASE_URL from '../config/apiConfig';
 const benefitsBg = "/images/WebImages/benefits-who-should-attend.webp";
 const ketTakewaysBg = "/images/WebImages/keytakeaways-who-should-attend.webp";
 const arrowUpIcon = "/images/WebCommonImages/accordion-arrow-up.png";
@@ -52,7 +53,7 @@ const WhoShouldAttend = () => {
       method: "GET",
     };
     fetch(
-      `https://www.australia.lithium-downstream-summit.com/admin1/whoshouldattendpagedata`,
+      `${API_BASE_URL}/admin1/whoshouldattendpagedata`,
       requestOptions,
     )
       .then((response) => response.json())
@@ -82,7 +83,7 @@ const WhoShouldAttend = () => {
       method: "GET",
     };
     fetch(
-      `https://www.australia.lithium-downstream-summit.com/admin1/eventtestimonials`,
+      `${API_BASE_URL}/admin1/eventtestimonials`,
       requestOptions,
     )
       .then((response) => response.json())
@@ -111,7 +112,7 @@ const WhoShouldAttend = () => {
       method: "GET",
     };
     fetch(
-      `https://www.australia.lithium-downstream-summit.com/admin1/eventcoreattandees`,
+      `${API_BASE_URL}/admin1/eventcoreattandees`,
       requestOptions,
     )
       .then((response) => response.json())
@@ -140,7 +141,7 @@ const WhoShouldAttend = () => {
       method: "GET",
     };
     fetch(
-      `https://www.australia.lithium-downstream-summit.com/admin1/eventparticipatedindustries`,
+      `${API_BASE_URL}/admin1/eventparticipatedindustries`,
       requestOptions,
     )
       .then((response) => response.json())
@@ -318,7 +319,7 @@ const WhoShouldAttend = () => {
         <meta name="twitter:description" content={seoDescription} />
         <link
           rel="canonical"
-          href="https://www.australia.lithium-downstream-summit.com/who-should-attend"
+          href=`${API_BASE_URL}/who-should-attend`
         />
       </Helmet>
       <Navbar forceScrolled />
@@ -440,7 +441,7 @@ const WhoShouldAttend = () => {
                               setAddToCalendarSuccessMessage("");
                             }, 5000);
                             await fetch(
-                              "https://www.australia.lithium-downstream-summit.com/admin1/addcalendersubscriber",
+                              `${API_BASE_URL}/admin1/addcalendersubscriber`,
                               {
                                 method: "POST",
                                 headers: { "Content-Type": "application/json" },

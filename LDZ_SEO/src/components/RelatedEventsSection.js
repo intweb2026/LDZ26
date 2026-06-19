@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
+﻿import React, { useState, useEffect, useRef } from "react";
 import img from "../../src/assets/images/last.jpg"; // Ensure this path points to your actual image file
 import "../../src/assets/css/relatedevent.css";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Slider from "react-slick";
+import API_BASE_URL from '../config/apiConfig';
 const leftArrowIcon = "/images/WebCommonImages/icon-arrow-left.png";
 const rightArrowIcon = "/images/WebCommonImages/icon-arrow-right.png";
 const calenderIcon = "/images/WebCommonImages/icon-calendar.png";
@@ -82,7 +83,7 @@ const RelatedEventsSection = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/relatedevents`, requestOptions)
+    fetch(`${API_BASE_URL}/admin1/relatedevents`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (data && data.status) {

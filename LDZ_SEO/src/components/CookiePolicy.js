@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
+﻿import { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import Footer from "../Footer";
 import "../assets/css/CookiePolicy.css";
 import { Helmet } from "react-helmet-async";
 import { usePageSeo } from "../common/usePageSeo";
+import API_BASE_URL from '../config/apiConfig';
 // import CookieBanner from "./cookieBanner";
 
 const CookiePolicy = () => {
@@ -24,7 +25,7 @@ const CookiePolicy = () => {
   const seoTitle = pageSeo.pageMetaTitle;
   const seoDesc = pageSeo.pageMetaDescription;
   const seoImage = pageSeo.pageOgImage || null;
-  const canonicalUrl = "https://www.australia.lithium-downstream-summit.com/cookie-policy";
+  const canonicalUrl = `${API_BASE_URL}/cookie-policy`;
 
   return (
     <>

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+﻿import React, { useState, useRef, useEffect } from "react";
 import { Link, useLocation, useParams, useNavigate } from "react-router-dom";
 import ".././assets/css/News.css";
 import Navbar from "./Navbar";
@@ -10,6 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { Helmet } from "react-helmet-async";
 import { usePageSeo } from "../common/usePageSeo";
 import { useApiData } from "../common/ApiContext";
+import API_BASE_URL from '../config/apiConfig';
 const leftArrowIcon = "/images/WebCommonImages/icon-arrow-left.png";
 const rightArrowIcon = "/images/WebCommonImages/icon-arrow-right.png";
 
@@ -33,7 +34,7 @@ const News = () => {
       method: "GET",
     };
     fetch(
-      `https://www.australia.lithium-downstream-summit.com/admin1/getagenda`,
+      `${API_BASE_URL}/admin1/getagenda`,
       requestOptions,
     )
       .then((response) => response.json())
@@ -70,7 +71,7 @@ const News = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/generalnews`, requestOptions)
+    fetch(`${API_BASE_URL}/admin1/generalnews`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (data && data.status) {
@@ -253,7 +254,7 @@ const News = () => {
         <meta name="twitter:title" content={seoTitle} />
         <meta name="twitter:description" content={seoDesc} />
         {seoImage && <meta name="twitter:image" content={seoImage} />}
-        <link rel="canonical" href="https://www.australia.lithium-downstream-summit.com/news" />
+        <link rel="canonical" href=`${API_BASE_URL}/news` />
       </Helmet>
       <Navbar forceScrolled />
       <div style={{ marginTop: windowWidth > 1024 ? "120px" : "" }}>

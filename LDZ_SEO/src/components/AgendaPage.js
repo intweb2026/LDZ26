@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+﻿import React, { useState, useEffect } from "react";
 import "../../src/assets/css/agenda.css";
 import Navbar from "./Navbar";
 import SubscribeForm from "./SubscribeForm";
@@ -14,6 +14,7 @@ import speakerDummy from "../../src/assets/images/Speaker_photos/Speaker_dummy.j
 import companyDummy from "../../src/assets/images/Speaker_photos/companyLogo_dummy.png";
 import { usePageSeo } from "../common/usePageSeo";
 import "../../src/assets/css/form.css";
+import API_BASE_URL from '../config/apiConfig';
 const Agenda = () => {
   const navigate = useNavigate();
   const [agendaList, setAgendaList] = useState(null);
@@ -26,7 +27,7 @@ const Agenda = () => {
       method: "GET",
     };
     fetch(
-      `https://www.australia.lithium-downstream-summit.com/admin1/getagenda`,
+      `${API_BASE_URL}/admin1/getagenda`,
       requestOptions,
     )
       .then((response) => response.json())
@@ -100,7 +101,7 @@ const Agenda = () => {
 
     try {
       const response = await fetch(
-        "https://www.australia.lithium-downstream-summit.com/admin1/verifyemaildomain",
+        `${API_BASE_URL}/admin1/verifyemaildomain`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -112,7 +113,7 @@ const Agenda = () => {
 
       // ✅ Save entry in DB regardless of blocked or valid
       await fetch(
-        "https://www.australia.lithium-downstream-summit.com/admin1/addagendasubscriber",
+        `${API_BASE_URL}/admin1/addagendasubscriber`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -168,7 +169,7 @@ const Agenda = () => {
         {seoImage && <meta name="twitter:image" content={seoImage} />}
         <link
           rel="canonical"
-          href="https://www.australia.lithium-downstream-summit.com/agenda-page"
+          href=`${API_BASE_URL}/agenda-page`
         />
       </Helmet>
       <Navbar forceScrolled />

@@ -1,4 +1,4 @@
-// server/sitemapRoute.js
+﻿// server/sitemapRoute.js
 // Mounts a /sitemap.xml route on the Express app.
 // The sitemap is generated fresh on first request and cached for 24 hours.
 // Import and use in server.js BEFORE the catch-all SSR route.
@@ -8,6 +8,7 @@
 //   mountSitemapRoute(app);   // <-- add this before app.get("*", ...)
 
 const { generateSitemap } = require("./generateSitemap");
+const { DOMAIN } = require("./config");
 
 let cachedXml = null;
 let cacheTimestamp = 0;
@@ -50,7 +51,6 @@ function mountSitemapRoute(app) {
 
     /* ---------- /sitemap-index.xml (optional - points to main sitemap) ---------- */
     app.get("/sitemap-index.xml", (req, res) => {
-        const DOMAIN = "https://www.australia.lithium-downstream-summit.com";
         const today = new Date().toISOString().split("T")[0];
         const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -65,7 +65,6 @@ function mountSitemapRoute(app) {
 
     /* ---------- /robots.txt ---------- */
     app.get("/robots.txt", (req, res) => {
-        const DOMAIN = "https://www.australia.lithium-downstream-summit.com";
         const txt = `User-agent: *
 Allow: /
 

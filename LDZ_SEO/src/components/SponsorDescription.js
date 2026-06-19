@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+﻿import { useState, useEffect } from "react";
 import { useLocation, useParams, useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 import SubscribeForm from "./SubscribeForm";
@@ -12,6 +12,7 @@ import LogoCarousel from "./LogoCarousel";
 import Error404 from "./Error404";
 import { useSSRData } from "../common/useSSRData";
 import { Helmet } from "react-helmet-async";
+import API_BASE_URL from '../config/apiConfig';
 
 const toSlug = (str = "") =>
   str
@@ -37,8 +38,8 @@ const SponsorDescription = () => {
   const metaDesc = activeSponsor?.eventSponsorMetaDescription?.trim();
 
   const canonicalUrl = slug
-    ? `https://www.australia.lithium-downstream-summit.com/sponsor/${slug}`
-    : "https://www.australia.lithium-downstream-summit.com/sponsors";
+    ? `${API_BASE_URL}/sponsor/${slug}`
+    : `${API_BASE_URL}/sponsors`;
   const [fullName, setFullName] = useState("");
   const [fullNameErr, setFullNameErr] = useState(false);
   const [companyName, setCompanyName] = useState("");
@@ -91,7 +92,7 @@ const SponsorDescription = () => {
       const formData = new FormData();
       formData.append("sponsorId", sponsorId);
 
-      const response = await fetch(`https://www.australia.lithium-downstream-summit.com/admin1/sponsorbyid`, {
+      const response = await fetch(`${API_BASE_URL}/admin1/sponsorbyid`, {
         method: "POST",
         body: formData,
       });
@@ -110,7 +111,7 @@ const SponsorDescription = () => {
   const fetchSponsorBySlug = async (slug) => {
     try {
       const response = await fetch(
-        `https://www.australia.lithium-downstream-summit.com/admin1/eventsponsors`
+        `${API_BASE_URL}/admin1/eventsponsors`
       );
       const data = await response.json();
 
@@ -265,7 +266,7 @@ const SponsorDescription = () => {
       body: finalData,
     };
     fetch(
-      "https://www.australia.lithium-downstream-summit.com/admin1/addquickproposalrequest",
+      `${API_BASE_URL}/admin1/addquickproposalrequest`,
       requestOptions,
     )
       .then((response) => response.json())
@@ -336,7 +337,7 @@ const SponsorDescription = () => {
   //       body: finalData,
   //     };
   //     fetch(
-  //       "https://www.australia.lithium-downstream-summit.com/admin1/addquickproposalrequest",
+  //       `${API_BASE_URL}/admin1/addquickproposalrequest`,
   //       requestOptions
   //     )
   //       .then((response) => response.json())

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+﻿import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer from "../Footer";
@@ -16,6 +16,7 @@ import Slider from "react-slick";
 import { Helmet } from "react-helmet-async";
 import { usePageSeo } from "../common/usePageSeo";
 import { useApiData } from "../common/ApiContext";
+import API_BASE_URL from '../config/apiConfig';
 
 const allTopics = [
   {
@@ -73,7 +74,7 @@ const Attandees = () => {
       method: "GET",
     };
     fetch(
-      `https://www.australia.lithium-downstream-summit.com/admin1/getagenda`,
+      `${API_BASE_URL}/admin1/getagenda`,
       requestOptions,
     )
       .then((response) => response.json())
@@ -129,7 +130,7 @@ const Attandees = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/pastAttandeelist`, requestOptions)
+    fetch(`${API_BASE_URL}/admin1/pastAttandeelist`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (
@@ -164,7 +165,7 @@ const Attandees = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/eventleaderlist`, requestOptions)
+    fetch(`${API_BASE_URL}/admin1/eventleaderlist`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (
@@ -354,7 +355,7 @@ const Attandees = () => {
         <meta name="twitter:title" content={seoTitle} />
         <meta name="twitter:description" content={seoDesc} />
         {seoImage && <meta name="twitter:image" content={seoImage} />}
-        <link rel="canonical" href="https://www.australia.lithium-downstream-summit.com/attendees" />
+        <link rel="canonical" href=`${API_BASE_URL}/attendees` />
       </Helmet>
       <Navbar forceScrolled />
       <div style={{ opacity: 1 }}>

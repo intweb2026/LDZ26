@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+﻿import React, { useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
@@ -14,6 +14,7 @@ import { FormControl, FormHelperText } from "@mui/material";
 import { Helmet } from "react-helmet-async";
 import { useApiData } from "../common/ApiContext";
 import { usePageSeo } from "../common/usePageSeo";
+import API_BASE_URL from '../config/apiConfig';
 const countries = getNames();
 
 const RemindMeLater = () => {
@@ -291,7 +292,7 @@ const RemindMeLater = () => {
         <meta name="twitter:title" content={seoTitle} />
         <meta name="twitter:description" content={seoDesc} />
         {seoImage && <meta name="twitter:image" content={seoImage} />}
-        <link rel="canonical" href="https://www.australia.lithium-downstream-summit.com/remind-me-later" />
+        <link rel="canonical" href=`${API_BASE_URL}/remind-me-later` />
       </Helmet>
       <div className="PageForm_container__NA5Wr">
         <div className="PageForm_header__7W2Cz">

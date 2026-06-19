@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+﻿import { useState, useEffect } from "react";
 import "../../src/assets/css/MediaPartners.css";
 import Footer from "../Footer";
 import Navbar from "./Navbar";
@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Helmet } from "react-helmet-async";
 import { usePageSeo } from "../common/usePageSeo";
+import API_BASE_URL from '../config/apiConfig';
 const mediaImage1 = "/images/WebImages/media1.webp";
 const mediaImage2 = "/images/WebImages/media-res2.webp";
 const emailIcon = "/images/WebCommonImages/msg.png";
@@ -45,7 +46,7 @@ const MediaPartners = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/mediapagehelpers`, requestOptions)
+    fetch(`${API_BASE_URL}/admin1/mediapagehelpers`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (data && data.status) {
@@ -86,7 +87,7 @@ const MediaPartners = () => {
         <meta name="twitter:title" content={seoTitle} />
         <meta name="twitter:description" content={seoDesc} />
         {seoImage && <meta name="twitter:image" content={seoImage} />}
-        <link rel="canonical" href="https://www.australia.lithium-downstream-summit.com/media-partners" />
+        <link rel="canonical" href=`${API_BASE_URL}/media-partners` />
       </Helmet>
       <Navbar forceScrolled />
       <div style={{ opacity: 1 }}>

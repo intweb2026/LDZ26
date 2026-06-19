@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+﻿import React, { useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import "react-phone-number-input/style.css";
 import { useNavigate } from "react-router-dom";
@@ -18,6 +18,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Helmet } from "react-helmet-async";
 import { usePageSeo } from "../common/usePageSeo";
+import API_BASE_URL from '../config/apiConfig';
 const plusIcon = "/images/WebCommonImages/plus.png";
 const closeBtn = "/images/WebCommonImages/del-cross.png";
 const toggle = "/images/WebCommonImages/toggle.png";
@@ -126,7 +127,7 @@ const CompanyRegistrationForm = () => {
   const seoTitle = pageSeo.pageMetaTitle;
   const seoDesc = pageSeo.pageMetaDescription;
   const seoImage = pageSeo.pageOgImage || null;
-  const canonicalUrl = "https://www.australia.lithium-downstream-summit.com/booking-form";
+  const canonicalUrl = `${API_BASE_URL}/booking-form`;
 
   const handleCompanyDataChange = (field, value) => {
     setCompanyData((prev) => ({
@@ -258,7 +259,7 @@ const CompanyRegistrationForm = () => {
       let invoiceNumber;
       try {
         const invoiceRes = await fetch(
-          "https://www.australia.lithium-downstream-summit.com/admin1/generate-invoice-no",
+          `${API_BASE_URL}/admin1/generate-invoice-no`,
         );
         const invoiceData = await invoiceRes.json();
         invoiceNumber = invoiceData.invoiceNo;
@@ -349,7 +350,7 @@ const CompanyRegistrationForm = () => {
         };
         try {
           const emailResponse = await fetch(
-            "https://www.australia.lithium-downstream-summit.com/admin1/sendmail",
+            `${API_BASE_URL}/admin1/sendmail`,
             {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -412,7 +413,7 @@ const CompanyRegistrationForm = () => {
       //         TotalAmountFormatted: { totalAmount },
       //         InvoiceNumber: invoiceNumber,
       //         FormName: "Booking Form",
-      //         FormURL: "https://www.australia.lithium-downstream-summit.com/booking-form",
+      //         FormURL: `${API_BASE_URL}/booking-form`,
       //         AddOnsTotalAmount: "0",
       //         // Eventcode: `${eventDetails?.eventShortCode}`,
       //         Eventcode: "WSE",
@@ -423,7 +424,7 @@ const CompanyRegistrationForm = () => {
 
       //   try {
       //     const zohoResponse = await fetch(
-      //       "https://www.australia.lithium-downstream-summit.com/admin1/sendtozoho",
+      //       `${API_BASE_URL}/admin1/sendtozoho`,
       //       {
       //         method: "POST",
       //         headers: { "Content-Type": "application/json" },
@@ -484,7 +485,7 @@ const CompanyRegistrationForm = () => {
               TotalAmountFormatted: totalAmount,
               InvoiceNumber: invoiceNumber,
               FormName: "Booking Form",
-              FormURL: "https://www.australia.lithium-downstream-summit.com/booking-form",
+              FormURL: `${API_BASE_URL}/booking-form`,
               AddOnsTotalAmount: "0",
               Eventcode: `${eventDetails?.eventShortCode}`,
             },
@@ -520,14 +521,14 @@ const CompanyRegistrationForm = () => {
               TotalAmountFormatted: totalAmount,
               InvoiceNumber: invoiceNumber,
               FormName: "Booking Form",
-              FormURL: "https://www.australia.lithium-downstream-summit.com/booking-form",
+              FormURL: `${API_BASE_URL}/booking-form`,
               AddOnsTotalAmount: "0",
               Eventcode: `${eventDetails?.eventShortCode}`,
             },
           },
         };
 
-        fetch("https://www.australia.lithium-downstream-summit.com/admin1/sendtocrm", {
+        fetch(`${API_BASE_URL}/admin1/sendtocrm`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(CrmPayload),
@@ -542,7 +543,7 @@ const CompanyRegistrationForm = () => {
 
         try {
           const zohoResponse = await fetch(
-            "https://www.australia.lithium-downstream-summit.com/admin1/sendtozoho",
+            `${API_BASE_URL}/admin1/sendtozoho`,
             {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -628,7 +629,7 @@ const CompanyRegistrationForm = () => {
   }, [showStep2]);
 
   const callDelegateAddOnsApi = () => {
-    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/delegatepackageaddons`)
+    fetch(`${API_BASE_URL}/admin1/delegatepackageaddons`)
       .then((response) => response.json())
       .then((data) => {
         if (data && data.status) {
@@ -654,7 +655,7 @@ const CompanyRegistrationForm = () => {
     }
     let formData = new FormData();
     formData.append("couponCode", code);
-    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/offercouponbycode`, {
+    fetch(`${API_BASE_URL}/admin1/offercouponbycode`, {
       method: "POST",
       body: formData,
     })
@@ -776,7 +777,7 @@ const CompanyRegistrationForm = () => {
       };
       try {
         const emailResponse = await fetch(
-          "https://www.australia.lithium-downstream-summit.com/admin1/sendmail",
+          `${API_BASE_URL}/admin1/sendmail`,
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -905,7 +906,7 @@ const CompanyRegistrationForm = () => {
       };
       try {
         const emailResponse = await fetch(
-          "https://www.australia.lithium-downstream-summit.com/admin1/sendmail",
+          `${API_BASE_URL}/admin1/sendmail`,
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -950,7 +951,7 @@ const CompanyRegistrationForm = () => {
       finalData.append("totalPaidAmount", prices.finalTotal);
       finalData.append("transectionId", stripeResponse.paymentIntentId);
 
-      fetch("https://www.australia.lithium-downstream-summit.com/admin1/addnewdelegate", {
+      fetch(`${API_BASE_URL}/admin1/addnewdelegate`, {
         method: "POST",
         body: finalData,
       })

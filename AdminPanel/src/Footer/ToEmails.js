@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+﻿import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
-const BASE_URL = "https://www.australia.lithium-downstream-summit.com/admin1";
+import API_BASE_URL from "../config/apiConfig";
 
 const ToEmails = () => {
   const [emailInput, setEmailInput] = useState("");
@@ -27,7 +26,7 @@ const ToEmails = () => {
 
   const fetchToEmails = () => {
     setFetching(true);
-    fetch(`${BASE_URL}/toemails`, { method: "GET" })
+    fetch(`${API_BASE_URL}/admin1/toemails`, { method: "GET" })
       .then((res) => res.json())
       .then((data) => {
         if (data && data.status) {
@@ -83,7 +82,7 @@ const ToEmails = () => {
     };
 
     setLoading(true);
-    fetch(`${BASE_URL}/savetoemails`, {
+    fetch(`${API_BASE_URL}/admin1/savetoemails`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),

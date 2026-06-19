@@ -1,11 +1,11 @@
-// server/ssrDataFetcher.js
+﻿// server/ssrDataFetcher.js
 // Centralised SSR data fetcher — fetches ALL page data on the server before React renders.
 // No read-only API calls will happen client-side when this data is available.
 
 const fetch = require("node-fetch");
+const { BASE_URL, DOMAIN } = require('./config');
 // AbortController is a global in Node.js v15+ — no import needed
 
-const BASE_URL = "https://www.australia.lithium-downstream-summit.com/admin1";
 
 // How long to wait for a single API call before giving up (ms)
 const FETCH_TIMEOUT_MS = 4000;

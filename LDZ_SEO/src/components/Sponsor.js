@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+﻿import React, { useState, useEffect, useRef } from "react";
 import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
 import "../../src/assets/css/sponsor.css";
@@ -16,6 +16,7 @@ import TestimonialCarousel from "./TestimonialCarousel";
 import { useSSRData } from "../common/useSSRData";
 import { usePageSeo } from "../common/usePageSeo";
 import { useApiData } from "../common/ApiContext";
+import API_BASE_URL from '../config/apiConfig';
 const leftArrowIcon = "/images/WebCommonImages/icon-arrow-left.png";
 const rightArrowIcon = "/images/WebCommonImages/icon-arrow-right.png";
 const emailIcon = "/images/WebCommonImages/msg.png";
@@ -182,7 +183,7 @@ const Sponsors = () => {
       method: "POST",
       body: finalData,
     };
-    fetch("https://www.australia.lithium-downstream-summit.com/admin1/addcrowdformrequest", requestOptions)
+    fetch(`${API_BASE_URL}/admin1/addcrowdformrequest`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (data.status) {
@@ -411,7 +412,7 @@ const Sponsors = () => {
   }, []);
 
   const sponsorLogoBlack =
-    "https://www.australia.lithium-downstream-summit.com/api/images/sponsor/1757675931045-678212680.png";
+    `${API_BASE_URL}/api/images/sponsor/1757675931045-678212680.png`;
 
   const pageSeo = usePageSeo("sponsors");
   const seoTitle = pageSeo.pageMetaTitle;
@@ -428,7 +429,7 @@ const Sponsors = () => {
           <meta property="og:type" content="website" />
           <meta name="twitter:card" content="summary" />
           <meta name="twitter:title" content={seoTitle} />
-          <link rel="canonical" href="https://www.australia.lithium-downstream-summit.com/sponsors" />
+          <link rel="canonical" href=`${API_BASE_URL}/sponsors` />
         </Helmet>
         <Navbar forceScrolled />
         <div style={{ opacity: 1 }}>

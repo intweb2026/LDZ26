@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+﻿import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import Navbar from "./Navbar";
@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Modal from "react-modal";
 import { useApiData } from "../../src/common/ApiContext";
+import API_BASE_URL from '../config/apiConfig';
 const TOKEN_KEY = "slideShareToken";
 const EMAIL_KEY = "slideShareEmail";
 const EXPIRY_KEY = "slideShareExpiry";
@@ -109,7 +110,7 @@ const SlideShare = () => {
     // ─── API calls ───────────────────────────────────────────────────────────────
 
     const callSlideShareListApi = () => {
-        fetch(`https://www.australia.lithium-downstream-summit.com/admin1/getslideShare`)
+        fetch(`${API_BASE_URL}/admin1/getslideShare`)
             .then((res) => res.json())
             .then((data) => {
                 if (data?.detail === "The Token is expired" || data?.message === "Invalid token") {
@@ -131,7 +132,7 @@ const SlideShare = () => {
     };
 
     const callSlideShareAttandeeListApi = () => {
-        fetch(`https://www.australia.lithium-downstream-summit.com/admin1/getslideShareAttandee`)
+        fetch(`${API_BASE_URL}/admin1/getslideShareAttandee`)
             .then((res) => res.json())
             .then((data) => {
                 if (data?.detail === "The Token is expired" || data?.message === "Invalid token") {
@@ -158,7 +159,7 @@ const SlideShare = () => {
         setIsLoggingIn(true);
         try {
             const response = await fetch(
-                `https://www.australia.lithium-downstream-summit.com/admin1/securelogin`,
+                `${API_BASE_URL}/admin1/securelogin`,
                 {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
@@ -233,7 +234,7 @@ const SlideShare = () => {
                 <meta name="twitter:title" content={seoTitle} />
                 <link
                     rel="canonical"
-                    href="https://www.australia.lithium-downstream-summit.com/sponsors"
+                    href=`${API_BASE_URL}/sponsors`
                 />
             </Helmet> */}
 

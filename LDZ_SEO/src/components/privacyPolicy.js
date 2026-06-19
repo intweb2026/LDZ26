@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
+﻿import { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import Footer from "../Footer";
 import "../assets/css/privacyPolicy.css";
 import { Helmet } from "react-helmet-async";
 import { usePageSeo } from "../common/usePageSeo";
+import API_BASE_URL from '../config/apiConfig';
 const PrivacyPolicy = () => {
   const [windowWidth, setWindowWidth] = useState(
     typeof window !== "undefined" ? window.innerWidth : 1200
@@ -36,7 +37,7 @@ const PrivacyPolicy = () => {
         <meta name="twitter:title" content={seoTitle} />
         <meta name="twitter:description" content={seoDesc} />
         {seoImage && <meta name="twitter:image" content={seoImage} />}
-        <link rel="canonical" href="https://www.australia.lithium-downstream-summit.com/privacy-policy" />
+        <link rel="canonical" href=`${API_BASE_URL}/privacy-policy` />
       </Helmet>
       <div style={{ marginTop: windowWidth > 1024 ? "120px" : "" }}>
         <Navbar forceScrolled />

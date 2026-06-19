@@ -1,4 +1,4 @@
-// code upto SSR working
+﻿// code upto SSR working
 // import React, { useState, useEffect } from "react";
 // import { useNavigate } from "react-router-dom";
 // import { Menu, X } from "lucide-react";
@@ -79,7 +79,7 @@
 //     const requestOptions = {
 //       method: "GET",
 //     };
-//     fetch(`https://www.australia.lithium-downstream-summit.com/admin1/getnavitems`, requestOptions)
+//     fetch(`${API_BASE_URL}/admin1/getnavitems`, requestOptions)
 //       .then((response) => response.json())
 //       .then((data) => {
 //         if (data && data.status) {
@@ -361,6 +361,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import "../assets/css/navbar.css";
 import GoogleTranslate from "./GoogleTranslate";
 import { useSSRData } from "../common/useSSRData";
+import API_BASE_URL from '../config/apiConfig';
 const closeBtn = '/images/WebCommonImages/close-white.png';
 const hamburger = '/images/WebCommonImages/navbar-toggle.png';
 const leftArrowIcon = '/images/WebCommonImages/icon-arrow-left.png';
@@ -409,7 +410,7 @@ const Navbar = ({ disableScrollEffect = false, forceScrolled = false }) => {
   // ✅ Client-side fallback: fetch navLogos if SSR data is null
   useEffect(() => {
     if (navLogos) return;
-    fetch("https://www.australia.lithium-downstream-summit.com/admin1/getnavlogos")
+    fetch(`${API_BASE_URL}/admin1/getnavlogos`)
       .then((r) => r.json())
       .then((data) => {
         if (data?.status && data.navLogos) {
@@ -500,8 +501,8 @@ const Navbar = ({ disableScrollEffect = false, forceScrolled = false }) => {
     setActiveModule(active ? active.name : null);
   }, [location.pathname, navItems]);
 
-  const sponsorLogoWhite = "https://www.australia.lithium-downstream-summit.com/api/images/sponsor/1760958766497-923906797.png"
-  const sponsorLogoBlack = "https://www.australia.lithium-downstream-summit.com/api/images/sponsor/1760958766497-534741386.png"
+  const sponsorLogoWhite = `${API_BASE_URL}/api/images/sponsor/1760958766497-923906797.png`
+  const sponsorLogoBlack = `${API_BASE_URL}/api/images/sponsor/1760958766497-534741386.png`
 
   return (
     <header

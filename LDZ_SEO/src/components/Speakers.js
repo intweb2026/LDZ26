@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+﻿import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 import SubscribeForm from "./SubscribeForm";
@@ -10,6 +10,7 @@ import "../assets/css/speakers.css";
 import "../assets/css/form.css";
 import { Helmet } from "react-helmet-async";
 import { usePageSeo } from "../common/usePageSeo";
+import API_BASE_URL from '../config/apiConfig';
 const Speakers = () => {
   const navigate = useNavigate();
   const [windowWidth, setWindowWidth] = useState(
@@ -54,7 +55,7 @@ const Speakers = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/eventspeakers`, requestOptions)
+    fetch(`${API_BASE_URL}/admin1/eventspeakers`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (
@@ -216,7 +217,7 @@ const Speakers = () => {
       body: finalData,
     };
     fetch(
-      "https://www.australia.lithium-downstream-summit.com/admin1/addquickproposalrequest",
+      `${API_BASE_URL}/admin1/addquickproposalrequest`,
       requestOptions,
     )
       .then((response) => response.json())
@@ -288,7 +289,7 @@ const Speakers = () => {
   //       body: finalData,
   //     };
   //     fetch(
-  //       "https://www.australia.lithium-downstream-summit.com/admin1/addbecomespeakerrequest",
+  //       `${API_BASE_URL}/admin1/addbecomespeakerrequest`,
   //       requestOptions
   //     )
   //       .then((response) => response.json())
@@ -346,7 +347,7 @@ const Speakers = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={seoTitle} />
         <meta name="twitter:description" content={seoDescription} />
-        <link rel="canonical" href="https://www.australia.lithium-downstream-summit.com/featured-speakers" />
+        <link rel="canonical" href=`${API_BASE_URL}/featured-speakers` />
       </Helmet>
       <Navbar forceScrolled />
       <div style={{ marginTop: windowWidth > 1024 ? "120px" : "" }}>

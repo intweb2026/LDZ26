@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+﻿import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../assets/css/keytopics.css";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import API_BASE_URL from '../config/apiConfig';
 
 const KeyTopics = () => {
   const [keyPointList, setKeyPointList] = useState([]);
@@ -15,7 +16,7 @@ const KeyTopics = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/eventkeypoints`, requestOptions)
+    fetch(`${API_BASE_URL}/admin1/eventkeypoints`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (

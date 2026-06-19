@@ -1,11 +1,10 @@
-// server/generateSitemap.js
+﻿// server/generateSitemap.js
 // Run standalone: node server/index.js --generate-sitemap
 // Or use the /sitemap.xml Express route in sitemapRoute.js
 
 const fetch = require("node-fetch");
+const { BASE_URL, DOMAIN } = require('./config');
 
-const BASE_URL = "https://www.australia.lithium-downstream-summit.com/admin1";
-const DOMAIN = "https://www.australia.lithium-downstream-summit.com";
 
 /* -------- helpers -------- */
 async function get(endpoint) {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+﻿import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../src/assets/css/ExhibitorPackages.css";
 import Navbar from "./Navbar";
@@ -15,6 +15,7 @@ import TestimonialCarousel from "./TestimonialCarousel";
 import { Helmet } from "react-helmet-async";
 import { useApiData } from "../common/ApiContext";
 import { usePageSeo } from "../common/usePageSeo";
+import API_BASE_URL from '../config/apiConfig';
 const leftArrowIcon = "/images/WebCommonImages/icon-arrow-left.png";
 const rightArrowIcon = "/images/WebCommonImages/icon-arrow-right.png";
 const emailIcon = "/images/WebCommonImages/msg.png";
@@ -47,7 +48,7 @@ const ExhibitorPackages = () => {
       method: "GET",
     };
     fetch(
-      `https://www.australia.lithium-downstream-summit.com/admin1/homepagecompanieslogo`,
+      `${API_BASE_URL}/admin1/homepagecompanieslogo`,
       requestOptions,
     )
       .then((response) => response.json())
@@ -76,7 +77,7 @@ const ExhibitorPackages = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/sponsorcards`, requestOptions)
+    fetch(`${API_BASE_URL}/admin1/sponsorcards`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (data && data.status) {
@@ -162,7 +163,7 @@ const ExhibitorPackages = () => {
       method: "GET",
     };
     fetch(
-      `https://www.australia.lithium-downstream-summit.com/admin1/mediapagehelpers`,
+      `${API_BASE_URL}/admin1/mediapagehelpers`,
       requestOptions,
     )
       .then((response) => response.json())
@@ -192,7 +193,7 @@ const ExhibitorPackages = () => {
       method: "GET",
     };
     fetch(
-      `https://www.australia.lithium-downstream-summit.com/admin1/sponsorpackages`,
+      `${API_BASE_URL}/admin1/sponsorpackages`,
       requestOptions,
     )
       .then((response) => response.json())
@@ -222,7 +223,7 @@ const ExhibitorPackages = () => {
       method: "GET",
     };
     fetch(
-      `https://www.australia.lithium-downstream-summit.com/admin1/getsponsorpagedata`,
+      `${API_BASE_URL}/admin1/getsponsorpagedata`,
       requestOptions,
     )
       .then((response) => response.json())
@@ -392,7 +393,7 @@ const ExhibitorPackages = () => {
         {seoImage && <meta name="twitter:image" content={seoImage} />}
         <link
           rel="canonical"
-          href="https://www.australia.lithium-downstream-summit.com/sponsor-packages"
+          href=`${API_BASE_URL}/sponsor-packages`
         />
       </Helmet>
       <Navbar forceScrolled />

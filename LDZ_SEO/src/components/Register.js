@@ -1,4 +1,4 @@
-// import { useState, useEffect } from "react";
+﻿// import { useState, useEffect } from "react";
 // import icon from "/images/group-icon.png";
 // import lunch from "/images/icon-luncheon.png";
 // import fullaccess from "/images/icon-full-access.png";
@@ -68,7 +68,7 @@
 //     const requestOptions = {
 //       method: "GET",
 //     };
-//     fetch(`https://www.australia.lithium-downstream-summit.com/admin1/deligatepackageslist`, requestOptions)
+//     fetch(`${API_BASE_URL}/admin1/deligatepackageslist`, requestOptions)
 //       .then((response) => response.json())
 //       .then((data) => {
 //         if (data && data.status) {
@@ -195,7 +195,7 @@
 //       body: finalData,
 //     };
 
-//     fetch("https://www.australia.lithium-downstream-summit.com/admin1/adduserpassrequest", requestOptions)
+//     fetch(`${API_BASE_URL}/admin1/adduserpassrequest`, requestOptions)
 //       .then((response) => response.json())
 //       .then((data) => {
 //         if (data.status) {
@@ -661,6 +661,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useApiData } from "../../src/common/ApiContext";
 import { useSSRData } from "../common/useSSRData";
 import { usePageSeo } from "../common/usePageSeo";
+import API_BASE_URL from '../config/apiConfig';
 const icon = "/images/WebCommonImages/group-icon.png"
 const Register = () => {
   const navigate = useNavigate();
@@ -710,7 +711,7 @@ const Register = () => {
   // (window.__INITIAL_DATA__ is not updated on React Router client-side navigation)
   useEffect(() => {
     if (delegatePackageList.length > 0) return; // already populated from SSR
-    fetch("https://www.australia.lithium-downstream-summit.com/admin1/deligatepackageslist")
+    fetch(`${API_BASE_URL}/admin1/deligatepackageslist`)
       .then((r) => r.json())
       .then((data) => {
         if (data?.status && data.delegatePackages) {
@@ -804,7 +805,7 @@ const Register = () => {
 
     setTimeout(() => {
       setIsSubmittedMessage(true);
-      fetch("https://www.australia.lithium-downstream-summit.com/admin1/adduserpassrequest", {
+      fetch(`${API_BASE_URL}/admin1/adduserpassrequest`, {
         method: "POST",
         body: finalData,
       })
@@ -914,7 +915,7 @@ const Register = () => {
         <meta name="twitter:title" content={seoTitle} />
         <meta name="twitter:description" content={seoDesc} />
         {seoImage && <meta name="twitter:image" content={seoImage} />}
-        <link rel="canonical" href="https://www.australia.lithium-downstream-summit.com/booking" />
+        <link rel="canonical" href=`${API_BASE_URL}/booking` />
       </Helmet>
       <Navbar forceScrolled />
       <div style={{ marginTop: windowWidth > 1024 ? "120px" : "" }}>

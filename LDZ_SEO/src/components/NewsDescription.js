@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+﻿import React, { useState, useEffect, useRef } from "react";
 import { useLocation, useParams, useNavigate, Link } from "react-router-dom";
 import "../../src/assets/css/NewsDescription.css";
 import Navbar from "./Navbar";
@@ -9,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Error404 from "./Error404";
 import { Helmet } from "react-helmet-async";
 import { useSSRData } from "../common/useSSRData";
+import API_BASE_URL from '../config/apiConfig';
 const linkedInLogo = "/images/WebCommonImages/share-linkedIn.png";
 const whatsappLogo = "/images/WebCommonImages/share-whatsapp.png";
 const emailLogo = "/images/WebCommonImages/share-email.png";
@@ -88,7 +89,7 @@ const NewsDescription = () => {
     formData.append("newsId", id);
     const requestOptions = { method: "POST", body: formData };
 
-    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/newsbyid`, requestOptions)
+    fetch(`${API_BASE_URL}/admin1/newsbyid`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (data && data.status && data.NewsData?.length > 0) {
@@ -117,7 +118,7 @@ const NewsDescription = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/generalnews`, requestOptions)
+    fetch(`${API_BASE_URL}/admin1/generalnews`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (data && data.status) {
@@ -255,8 +256,8 @@ Read the full article: ${currentUrl}`);
   const seoImage = activeNews?.newsImage;
 
   const canonicalUrl = slug
-    ? `https://www.australia.lithium-downstream-summit.com/news/${slug}`
-    : "https://www.australia.lithium-downstream-summit.com/news";
+    ? `${API_BASE_URL}/news/${slug}`
+    : `${API_BASE_URL}/news`;
 
   return (
     <>

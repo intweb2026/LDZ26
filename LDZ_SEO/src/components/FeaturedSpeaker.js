@@ -1,4 +1,4 @@
-// src/components/FeaturedSpeaker.js
+﻿// src/components/FeaturedSpeaker.js
 // Data now comes from SSR (window.__INITIAL_DATA__.speakers). No client-side fetch.
 import { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -7,6 +7,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../assets/css/FeaturedSpeaker.css";
 import { useSSRData } from "../common/useSSRData";
+import API_BASE_URL from '../config/apiConfig';
 const leftArrowIcon = "/images/WebCommonImages/icon-arrow-left.png";
 const rightArrowIcon = "/images/WebCommonImages/icon-arrow-right.png";
 
@@ -35,7 +36,7 @@ const FeaturedSpeaker = ({ title }) => {
   // (window.__INITIAL_DATA__ is not updated on SPA route changes, so SSR data may be empty)
   useEffect(() => {
     if (ssrSpeakerList?.length > 0) return;
-    fetch("https://www.australia.lithium-downstream-summit.com/admin1/eventspeakers")
+    fetch(`${API_BASE_URL}/admin1/eventspeakers`)
       .then((res) => res.json())
       .then((data) => {
         if (data?.status && Array.isArray(data.eventSpeakersList)) {

@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+﻿import React, { useState, useEffect } from "react";
 import "../assets/css/ForumSection.css";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import API_BASE_URL from '../config/apiConfig';
 const speakerVideo = "/images/WebVideo/iq-hub-video.mp4";
 const homePageIqHubVideo = "/images/WebVideo/iq-hub-video.mp4";
 const homePageIqHubVideoPoster = "/images/WebImages/home-video-poster.jpg";
@@ -19,7 +20,7 @@ const ForumSection = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/taglinedata`, requestOptions)
+    fetch(`${API_BASE_URL}/admin1/taglinedata`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (data && data.status) {

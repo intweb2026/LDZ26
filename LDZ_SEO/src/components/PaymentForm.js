@@ -1,4 +1,4 @@
-// PaymentForm.js - Fixed version
+﻿// PaymentForm.js - Fixed version
 import React, { useState, forwardRef, useImperativeHandle } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import {
@@ -10,6 +10,7 @@ import {
   useElements,
 } from "@stripe/react-stripe-js";
 import "../assets/css/SponsorBookingPay.css";
+import API_BASE_URL from '../config/apiConfig';
 
 const stripePromise = loadStripe(
   "pk_test_51S3c3THQBCGmReEPZ3J0tA2mP81BvQxY9PptsUir5PYeqjj9XW7GveKj04umPQYxbaYiXix4avRlloUdo3ITsBsz00zfBxr700"
@@ -65,7 +66,7 @@ const CheckoutForm = forwardRef(
 
         // STEP 2: Send payment method to your Django backend
         const response = await fetch(
-          "https://www.australia.lithium-downstream-summit.com/admin1/stripe-client-secret",
+          `${API_BASE_URL}/admin1/stripe-client-secret`,
           {
             method: "POST",
             headers: {

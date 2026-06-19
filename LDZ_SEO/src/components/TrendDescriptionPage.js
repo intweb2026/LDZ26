@@ -1,4 +1,4 @@
-// src/components/TrendDescriptionPage.js
+﻿// src/components/TrendDescriptionPage.js
 import { useState, useEffect, useRef } from "react";
 import { useLocation, useParams, useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
@@ -15,6 +15,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { Helmet } from "react-helmet-async";
 import { useSSRData } from "../common/useSSRData";
 import { useApiData } from "../common/ApiContext";
+import API_BASE_URL from '../config/apiConfig';
 const leftArrowIcon = "/images/WebCommonImages/icon-arrow-left.png";
 const rightArrowIcon = "/images/WebCommonImages/icon-arrow-right.png";
 
@@ -103,7 +104,7 @@ const TrendDescriptionPage = () => {
       method: "GET",
     };
     fetch(
-      `https://www.australia.lithium-downstream-summit.com/admin1/getagenda`,
+      `${API_BASE_URL}/admin1/getagenda`,
       requestOptions,
     )
       .then((response) => response.json())
@@ -162,7 +163,7 @@ const TrendDescriptionPage = () => {
   const fetchTrendDetailClient = (id) => {
     const formData = new FormData();
     formData.append("trendId", id);
-    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/trendbyid`, {
+    fetch(`${API_BASE_URL}/admin1/trendbyid`, {
       method: "POST",
       body: formData,
     })
@@ -298,7 +299,7 @@ const TrendDescriptionPage = () => {
     activeTrend?.trendTitle ||
     "Bitcoin Conference 2026";
   const seoDesc = activeTrend?.trendMetaDescription || "";
-  const canonicalUrl = `https://www.australia.lithium-downstream-summit.com/trend/${slug}`;
+  const canonicalUrl = `${API_BASE_URL}/trend/${slug}`;
 
   return (
     <>

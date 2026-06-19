@@ -1,10 +1,11 @@
-import React, { useMemo, useCallback, useState, useEffect } from "react";
+﻿import React, { useMemo, useCallback, useState, useEffect } from "react";
 import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
 import "../assets/css//CountSection.css";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useApiData } from "../../src/common/ApiContext";
+import API_BASE_URL from '../config/apiConfig';
 
 const CountSection = () => {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 });
@@ -24,7 +25,7 @@ const CountSection = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/eventstatatics`, requestOptions)
+    fetch(`${API_BASE_URL}/admin1/eventstatatics`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (data && data.status) {

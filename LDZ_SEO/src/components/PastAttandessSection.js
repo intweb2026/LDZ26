@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+﻿import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Pointer } from "lucide-react";
 import "../assets/css/PastAttandessSection.css";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useApiData } from "../../src/common/ApiContext";
+import API_BASE_URL from '../config/apiConfig';
 const PastAttandessSection = () => {
   const navigate = useNavigate();
   const [subscriberName, setSubscriberName] = useState("");
@@ -30,7 +31,7 @@ const PastAttandessSection = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/expertspeakers`, requestOptions)
+    fetch(`${API_BASE_URL}/admin1/expertspeakers`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (data && data.status) {
@@ -57,7 +58,7 @@ const PastAttandessSection = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/homepastattandees`, requestOptions)
+    fetch(`${API_BASE_URL}/admin1/homepastattandees`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (data && data.status) {
@@ -86,7 +87,7 @@ const PastAttandessSection = () => {
       <p><strong>Thank you for subscribing!</strong></p>
       <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
       <p><u><strong>Quick Access</strong></u><br/>
-      Link: <a href="https://www.australia.lithium-downstream-summit.com">https://www.australia.lithium-downstream-summit.com</a></p>
+      Link: <a href=`${API_BASE_URL}`>{API_BASE_URL}</a></p>
     `;
 
     const emailPayload = {
@@ -98,7 +99,7 @@ const PastAttandessSection = () => {
 
     try {
       const emailResponse = await fetch(
-        "https://www.australia.lithium-downstream-summit.com/admin1/sendmail",
+        `${API_BASE_URL}/admin1/sendmail`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -149,7 +150,7 @@ const PastAttandessSection = () => {
 
     try {
       const response = await fetch(
-        "https://www.australia.lithium-downstream-summit.com/admin1/addsubscriber",
+        `${API_BASE_URL}/admin1/addsubscriber`,
         { method: "POST", body: finalData }
       );
       const data = await response.json();

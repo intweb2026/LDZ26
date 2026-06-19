@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+﻿import { useState, useEffect, useRef } from "react";
 import "../../src/assets/css/BookingForm.css";
 import { useNavigate, useLocation } from "react-router-dom";
 import "../assets/css/SponsorBookingPay.css";
@@ -9,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useSSRData } from "../common/useSSRData";
 import { Helmet } from "react-helmet-async";
 import { usePageSeo } from "../common/usePageSeo";
+import API_BASE_URL from '../config/apiConfig';
 const toggle = "/images/WebCommonImages/toggle.png";
 const cardLabel = "/images/WebCommonImages/card-labels.png";
 const lockIcon = "/images/WebCommonImages/lock.png";
@@ -49,7 +50,7 @@ const SponsorBookingForm = () => {
   const seoTitle = pageSeo.pageMetaTitle;
   const seoDesc = pageSeo.pageMetaDescription;
   const seoImage = pageSeo.pageOgImage || null;
-  const canonicalUrl = "https://www.australia.lithium-downstream-summit.com/sponsor-booking";
+  const canonicalUrl = `${API_BASE_URL}/sponsor-booking`;
 
   const numDelegates = delegates?.length;
   const sponsorPackageDelegateQty = parseInt(selectedPackage?.delegatePassQty);
@@ -149,7 +150,7 @@ const SponsorBookingForm = () => {
 
       try {
         const emailResponse = await fetch(
-          "https://www.australia.lithium-downstream-summit.com/admin1/sendmail",
+          `${API_BASE_URL}/admin1/sendmail`,
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -437,7 +438,7 @@ const SponsorBookingForm = () => {
 
       try {
         const emailResponse = await fetch(
-          "https://www.australia.lithium-downstream-summit.com/admin1/sendmail",
+          `${API_BASE_URL}/admin1/sendmail`,
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -494,7 +495,7 @@ const SponsorBookingForm = () => {
       };
 
       fetch(
-        "https://www.australia.lithium-downstream-summit.com/admin1/addnewsponsor",
+        `${API_BASE_URL}/admin1/addnewsponsor`,
         requestOptions,
       )
         .then((response) => response.json())
@@ -543,7 +544,7 @@ const SponsorBookingForm = () => {
       method: "GET",
     };
     fetch(
-      `https://www.australia.lithium-downstream-summit.com/admin1/sponsoraddons`,
+      `${API_BASE_URL}/admin1/sponsoraddons`,
       requestOptions,
     )
       .then((response) => response.json())
@@ -608,7 +609,7 @@ const SponsorBookingForm = () => {
       method: "GET",
     };
     fetch(
-      `https://www.australia.lithium-downstream-summit.com/admin1/getactivedelegatepackage`,
+      `${API_BASE_URL}/admin1/getactivedelegatepackage`,
       requestOptions,
     )
       .then((response) => response.json())
@@ -639,7 +640,7 @@ const SponsorBookingForm = () => {
     let formData = new FormData();
     formData.append("couponCode", code);
 
-    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/sponsoroffercouponbycode`, {
+    fetch(`${API_BASE_URL}/admin1/sponsoroffercouponbycode`, {
       method: "POST",
       body: formData,
     })

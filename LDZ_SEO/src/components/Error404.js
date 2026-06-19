@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
+﻿import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer from "../Footer";
 import "./../assets/css/Error404.css";
 import { Helmet } from "react-helmet-async";
+import API_BASE_URL from '../config/apiConfig';
 
 const Error404 = () => {
   const { slug } = useParams();
@@ -23,8 +24,8 @@ const Error404 = () => {
   const seoTitle = '404 - Page Not Found';
   const seoDesc = 'The page you are looking for does not exist.';
   const canonicalUrl = slug
-    ? `https://www.australia.lithium-downstream-summit.com/${slug}`
-    : "https://www.australia.lithium-downstream-summit.com/404";
+    ? `${API_BASE_URL}/${slug}`
+    : `${API_BASE_URL}/404`;
 
 
   return (

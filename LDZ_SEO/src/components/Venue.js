@@ -1,4 +1,4 @@
-// src/components/Venue.js
+﻿// src/components/Venue.js
 // All data comes from SSR window.__INITIAL_DATA__. No client-side fetch.
 import { useState, useEffect, useRef } from "react";
 import { Helmet } from "react-helmet-async";
@@ -12,6 +12,7 @@ import "yet-another-react-lightbox/styles.css";
 import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
 import { useSSRData } from "../common/useSSRData";
 import { usePageSeo } from "../common/usePageSeo";
+import API_BASE_URL from '../config/apiConfig';
 const bgImage = "/images/WebImages/venue-main-image.webp";
 const locationIcon = "/images/WebCommonImages/location-pin.png";
 const phoneIcon = "/images/WebCommonImages/icon-phone.png";
@@ -163,7 +164,7 @@ const Venue = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={seoTitle} />
         <meta name="twitter:description" content={seoDesc} />
-        <link rel="canonical" href="https://www.australia.lithium-downstream-summit.com/venue" />
+        <link rel="canonical" href=`${API_BASE_URL}/venue` />
       </Helmet>
       <Navbar forceScrolled />
       <div style={{ opacity: 1 }}>

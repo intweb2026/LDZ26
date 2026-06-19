@@ -1,4 +1,4 @@
-import React, {
+﻿import React, {
   useMemo,
   useCallback,
   useState,
@@ -18,6 +18,7 @@ import Popup from "reactjs-popup";
 import "../assets/css/popUp.css";
 import { Helmet } from "react-helmet-async";
 import { usePageSeo } from "../common/usePageSeo";
+import API_BASE_URL from '../config/apiConfig';
 const callingSpeakerBg = "/images/WebImages/calling-all-speakers.webp";
 const beAPartOfOurBg = "/images/WebImages/be-a-part-of-our-multi-disciplined-agenda.webp";
 const iconNetwork = "/images/WebCommonImages/icon-network.png";
@@ -382,7 +383,7 @@ const CallForPresentation = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/getspeakerpagedata`, requestOptions)
+    fetch(`${API_BASE_URL}/admin1/getspeakerpagedata`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (data && data.status) {
@@ -559,7 +560,7 @@ const CallForPresentation = () => {
       body: finalData,
     };
     fetch(
-      "https://www.australia.lithium-downstream-summit.com/admin1/addquickproposalrequest",
+      `${API_BASE_URL}/admin1/addquickproposalrequest`,
       requestOptions,
     )
       .then((response) => response.json())
@@ -602,7 +603,7 @@ const CallForPresentation = () => {
         <meta name="twitter:title" content={seoTitle} />
         <meta name="twitter:description" content={seoDesc} />
         {seoImage && <meta name="twitter:image" content={seoImage} />}
-        <link rel="canonical" href="https://www.australia.lithium-downstream-summit.com/speakers" />
+        <link rel="canonical" href=`${API_BASE_URL}/speakers` />
       </Helmet>
       <Navbar forceScrolled />
       <div style={{ marginTop: windowWidth > 1024 ? "120px" : "" }}>
@@ -682,7 +683,7 @@ const CallForPresentation = () => {
                           setAddToCalendarSuccessMessage("");
                         }, 5000);
                         await fetch(
-                          "https://www.australia.lithium-downstream-summit.com/admin1/addcalendersubscriber",
+                          `${API_BASE_URL}/admin1/addcalendersubscriber`,
                           {
                             method: "POST",
                             headers: { "Content-Type": "application/json" },

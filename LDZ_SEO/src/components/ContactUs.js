@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+﻿import React, { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import SubscribeForm from "./SubscribeForm";
 import Footer from "../Footer";
@@ -10,6 +10,7 @@ import { usePageSeo } from "../common/usePageSeo";
 import "../assets/css/form.css";
 import { useSSRData } from "../common/useSSRData";
 import { useApiData } from "../../src/common/ApiContext";
+import API_BASE_URL from '../config/apiConfig';
 const emailImage = "/images/WebCommonImages/icon-email.png";
 const emailIcon = "/images/WebCommonImages/msg.png";
 
@@ -64,7 +65,7 @@ const ContactUs = () => {
       method: "GET",
     };
     fetch(
-      `https://www.australia.lithium-downstream-summit.com/admin1/contactushelpers`,
+      `${API_BASE_URL}/admin1/contactushelpers`,
       requestOptions,
     )
       .then((response) => response.json())
@@ -94,7 +95,7 @@ const ContactUs = () => {
       method: "GET",
     };
     fetch(
-      `https://www.australia.lithium-downstream-summit.com/admin1/contactusstaticdata`,
+      `${API_BASE_URL}/admin1/contactusstaticdata`,
       requestOptions,
     )
       .then((response) => response.json())
@@ -590,7 +591,7 @@ const ContactUs = () => {
       <p style="font-weight: 700">
         <span style="text-decoration: underline">Quick Access</span>
         <br />
-        Link: <a style="font-weight: 500" target="_blank" href="https://www.australia.lithium-downstream-summit.com">https://www.australia.lithium-downstream-summit.com</a>
+        Link: <a style="font-weight: 500" target="_blank" href=`${API_BASE_URL}`>{API_BASE_URL}</a>
       </p>
     `;
 
@@ -603,7 +604,7 @@ const ContactUs = () => {
 
     try {
       const emailResponse = await fetch(
-        "https://www.australia.lithium-downstream-summit.com/admin1/sendmail",
+        `${API_BASE_URL}/admin1/sendmail`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -790,7 +791,7 @@ const ContactUs = () => {
       }
 
       const response = await fetch(
-        "https://www.australia.lithium-downstream-summit.com/admin1/addcontactusrequest",
+        `${API_BASE_URL}/admin1/addcontactusrequest`,
         {
           method: "POST",
           body: finalData,
@@ -869,7 +870,7 @@ const ContactUs = () => {
         {seoImage && <meta name="twitter:image" content={seoImage} />}
         <link
           rel="canonical"
-          href="https://www.australia.lithium-downstream-summit.com/contact-us"
+          href=`${API_BASE_URL}/contact-us`
         />
       </Helmet>
       <Navbar forceScrolled />

@@ -1,8 +1,9 @@
-// ApiContext.js
+﻿// ApiContext.js
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
+import API_BASE_URL from "../../config/apiConfig";
 
 // Create the context
 const ApiDataContext = createContext();
@@ -31,7 +32,7 @@ export const ApiDataProvider = ({ children }) => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/homepagedata`, requestOptions)
+    fetch(`${API_BASE_URL}/admin1/homepagedata`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (

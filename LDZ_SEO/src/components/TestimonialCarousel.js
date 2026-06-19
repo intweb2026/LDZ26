@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
+﻿import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import '../assets/css/TestimonialCarousel.css'
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import API_BASE_URL from '../config/apiConfig';
 const testimonialImg1 = "/images/WebImages/testimonial-top-1.webp";
 const testimonialImg2 = "/images/WebImages/testimonial-top-2.webp";
 const testimonialImg3 = "/images/WebImages/testimonial-center-left-1.webp";
@@ -43,7 +44,7 @@ export default function TestimonialCarousel() {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/eventtestimonials`, requestOptions)
+    fetch(`${API_BASE_URL}/admin1/eventtestimonials`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (data && data.status) {

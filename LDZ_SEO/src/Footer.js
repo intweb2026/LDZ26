@@ -1,10 +1,11 @@
-import React, { useState, useEffect, useRef } from "react";
+﻿import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import "./assets/css/footer.css";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useSSRData } from "./common/useSSRData";
 import { useApiData } from "../src/common/ApiContext";
+import API_BASE_URL from './config/apiConfig';
 const emailImage =
   "/images/WebCommonImages/icon-mail.png";
 const linkedInIcon =
@@ -68,7 +69,7 @@ const Footer = () => {
       method: "GET",
     };
     fetch(
-      `https://www.australia.lithium-downstream-summit.com/admin1/footersocialmediaoptions`,
+      `${API_BASE_URL}/admin1/footersocialmediaoptions`,
       requestOptions,
     )
       .then((response) => response.json())
@@ -105,7 +106,7 @@ const Footer = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/relatedevents`, requestOptions)
+    fetch(`${API_BASE_URL}/admin1/relatedevents`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (data && data.status) {
@@ -129,7 +130,7 @@ const Footer = () => {
   };
 
   const callFooterOptionsApi = () => {
-    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/footeroptions`, {
+    fetch(`${API_BASE_URL}/admin1/footeroptions`, {
       method: "GET",
     })
       .then((response) => response.json())

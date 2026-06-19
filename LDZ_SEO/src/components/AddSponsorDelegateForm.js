@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+﻿import React, { useState, useEffect, useRef } from "react";
 import "react-phone-number-input/style.css";
 import countryList from "react-select-country-list";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -19,6 +19,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Helmet } from "react-helmet-async";
 import { usePageSeo } from "../common/usePageSeo";
+import API_BASE_URL from '../config/apiConfig';
 const plusIcon = "/images/WebCommonImages/plus.png";
 const closeBtn = "/images/WebCommonImages/del-cross.png";
 const toggle = "/images/WebCommonImages/toggle.png";
@@ -115,7 +116,7 @@ const AddSponsorDelegateForm = () => {
   const seoTitle = pageSeo.pageMetaTitle;
   const seoDesc = pageSeo.pageMetaDescription;
   const seoImage = pageSeo.pageOgImage || null;
-  const canonicalUrl = "https://www.australia.lithium-downstream-summit.com/sponsor-booking";
+  const canonicalUrl = `${API_BASE_URL}/sponsor-booking`;
 
   const handleCompanyDataChange = (field, value) => {
     setCompanyData((prev) => ({ ...prev, [field]: value }));
@@ -233,7 +234,7 @@ const AddSponsorDelegateForm = () => {
       let invoiceNumber;
       try {
         const invoiceRes = await fetch(
-          "https://www.australia.lithium-downstream-summit.com/admin1/generate-invoice-no",
+          `${API_BASE_URL}/admin1/generate-invoice-no`,
         );
         const invoiceData = await invoiceRes.json();
         invoiceNumber = invoiceData.invoiceNo;
@@ -328,7 +329,7 @@ const AddSponsorDelegateForm = () => {
         };
         try {
           const emailResponse = await fetch(
-            "https://www.australia.lithium-downstream-summit.com/admin1/sendmail",
+            `${API_BASE_URL}/admin1/sendmail`,
             {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -394,7 +395,7 @@ const AddSponsorDelegateForm = () => {
               TotalAmountFormatted: totalAmount,
               InvoiceNumber: invoiceNumber,
               FormName: "Booking Form",
-              FormURL: "https://www.australia.lithium-downstream-summit.com/sponsor-booking",
+              FormURL: `${API_BASE_URL}/sponsor-booking`,
               AddOnsTotalAmount: "0",
               Eventcode: `${eventDetails?.eventShortCode}`,
             },
@@ -437,14 +438,14 @@ const AddSponsorDelegateForm = () => {
               TotalAmountFormatted: totalAmount,
               InvoiceNumber: invoiceNumber,
               FormName: "Booking Form",
-              FormURL: "https://www.australia.lithium-downstream-summit.com/sponsor-booking",
+              FormURL: `${API_BASE_URL}/sponsor-booking`,
               AddOnsTotalAmount: "0",
               Eventcode: `${eventDetails?.eventShortCode}`,
             },
           },
         };
 
-        fetch("https://www.australia.lithium-downstream-summit.com/admin1/sendtocrm", {
+        fetch(`${API_BASE_URL}/admin1/sendtocrm`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(CrmPayload),
@@ -459,7 +460,7 @@ const AddSponsorDelegateForm = () => {
 
         try {
           const zohoResponse = await fetch(
-            "https://www.australia.lithium-downstream-summit.com/admin1/sendtozoho",
+            `${API_BASE_URL}/admin1/sendtozoho`,
             {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -619,7 +620,7 @@ const AddSponsorDelegateForm = () => {
 
       try {
         const emailResponse = await fetch(
-          "https://www.australia.lithium-downstream-summit.com/admin1/sendmail",
+          `${API_BASE_URL}/admin1/sendmail`,
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -753,7 +754,7 @@ const AddSponsorDelegateForm = () => {
 
       try {
         const emailResponse = await fetch(
-          "https://www.australia.lithium-downstream-summit.com/admin1/sendmail",
+          `${API_BASE_URL}/admin1/sendmail`,
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -808,7 +809,7 @@ const AddSponsorDelegateForm = () => {
       finalData.append("totalPaidAmount", prices.finalTotal);
       finalData.append("transectionId", stripeResponse.paymentIntentId);
 
-      fetch("https://www.australia.lithium-downstream-summit.com/admin1/addnewsponsor", {
+      fetch(`${API_BASE_URL}/admin1/addnewsponsor`, {
         method: "POST",
         body: finalData,
       })
@@ -842,7 +843,7 @@ const AddSponsorDelegateForm = () => {
   };
 
   const callSponsorAddOnsApi = () => {
-    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/sponsoraddons`)
+    fetch(`${API_BASE_URL}/admin1/sponsoraddons`)
       .then((response) => response.json())
       .then((data) => {
         if (data && data.status) {
@@ -890,7 +891,7 @@ const AddSponsorDelegateForm = () => {
   };
 
   const callGetActiveDelPackageApi = () => {
-    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/getactivedelegatepackage`)
+    fetch(`${API_BASE_URL}/admin1/getactivedelegatepackage`)
       .then((response) => response.json())
       .then((data) => {
         if (data && data.status) {
@@ -916,7 +917,7 @@ const AddSponsorDelegateForm = () => {
     }
     let formData = new FormData();
     formData.append("couponCode", code);
-    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/sponsoroffercouponbycode`, {
+    fetch(`${API_BASE_URL}/admin1/sponsoroffercouponbycode`, {
       method: "POST",
       body: formData,
     })

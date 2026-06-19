@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+﻿import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../src/assets/css/payOnline.css";
 import Navbar from "./Navbar";
@@ -13,6 +13,7 @@ import { Helmet } from "react-helmet-async";
 import { useSSRData } from "../common/useSSRData";
 import { useApiData } from "../common/ApiContext";
 import { usePageSeo } from "../common/usePageSeo";
+import API_BASE_URL from '../config/apiConfig';
 const lockIcon = "/images/WebCommonImages/payment-lock.png";
 const cardLabel = "/images/WebCommonImages/card-labels.png";
 
@@ -102,7 +103,7 @@ const PayOnline = () => {
 
       try {
         const emailResponse = await fetch(
-          "https://www.australia.lithium-downstream-summit.com/admin1/sendmail",
+          `${API_BASE_URL}/admin1/sendmail`,
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -127,7 +128,7 @@ const PayOnline = () => {
     finalData.append("totalPayAmount", payFormData?.amount);
     finalData.append("email", payFormData?.email);
 
-    fetch("https://www.australia.lithium-downstream-summit.com/admin1/addpayonlinerequest", {
+    fetch(`${API_BASE_URL}/admin1/addpayonlinerequest`, {
       method: "POST",
       body: finalData,
     })
@@ -198,7 +199,7 @@ const PayOnline = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={seoTitle} />
         {seoImage && <meta name="twitter:image" content={seoImage} />}
-        <link rel="canonical" href="https://www.australia.lithium-downstream-summit.com/pay-online" />
+        <link rel="canonical" href=`${API_BASE_URL}/pay-online` />
       </Helmet>
       <Navbar forceScrolled />
       <div style={{ marginTop: windowWidth > 1024 ? "120px" : "" }}>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+﻿import React, { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import SubscribeForm from "./SubscribeForm";
 import Footer from "../Footer";
@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Helmet } from "react-helmet-async";
 import { usePageSeo } from "../common/usePageSeo";
+import API_BASE_URL from '../config/apiConfig';
 const Faq = () => {
   const [faqList, setFaqList] = useState([]);
   const [activeIndex, setActiveIndex] = useState(null);
@@ -19,7 +20,7 @@ const Faq = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/eventfaqs`, requestOptions)
+    fetch(`${API_BASE_URL}/admin1/eventfaqs`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (data && data.status) {
@@ -101,7 +102,7 @@ const Faq = () => {
         <meta name="twitter:title" content={seoTitle} />
         <meta name="twitter:description" content={seoDesc} />
         {seoImage && <meta name="twitter:image" content={seoImage} />}
-        <link rel="canonical" href="https://www.australia.lithium-downstream-summit.com/faq" />
+        <link rel="canonical" href=`${API_BASE_URL}/faq` />
       </Helmet>
       <Navbar forceScrolled />
       <div style={{ marginTop: windowWidth > 1024 ? "120px" : "" }}>

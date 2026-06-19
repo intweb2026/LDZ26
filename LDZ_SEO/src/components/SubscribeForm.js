@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+﻿import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../assets/css/SubscribeForm.css"
 import { useApiData } from "../../src/common/ApiContext";
+import API_BASE_URL from '../config/apiConfig';
 const SubscribeForm = () => {
   const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
   const [subscriberName, setSubscriberName] = useState("");
@@ -37,7 +38,7 @@ const SubscribeForm = () => {
   <p><strong>Thank you for subscribing!</strong></p>
   <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
   <p><u><strong>Quick Access</strong></u><br/>
-  Link: <a href="https://www.australia.lithium-downstream-summit.com">https://www.australia.lithium-downstream-summit.com</a></p>
+  Link: <a href=`${API_BASE_URL}`>{API_BASE_URL}</a></p>
 `;
 
     const emailPayload = {
@@ -49,7 +50,7 @@ const SubscribeForm = () => {
 
     try {
       const emailResponse = await fetch(
-        "https://www.australia.lithium-downstream-summit.com/admin1/sendmail",
+        `${API_BASE_URL}/admin1/sendmail`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -95,7 +96,7 @@ const SubscribeForm = () => {
     finalData.append("subscriberEmail", subscriberEmail);
 
     try {
-      const response = await fetch("https://www.australia.lithium-downstream-summit.com/admin1/addsubscriber", {
+      const response = await fetch(`${API_BASE_URL}/admin1/addsubscriber`, {
         method: "POST",
         body: finalData,
       });
