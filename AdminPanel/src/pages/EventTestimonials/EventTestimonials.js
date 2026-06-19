@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback, useState, useEffect } from "react";
+﻿import React, { useMemo, useCallback, useState, useEffect } from "react";
 import {
   Card,
   CardBody,
@@ -21,6 +21,7 @@ import ViewTestimonial from "./ViewTestimonial";
 import EditTestimonial from "./EditTestimonial";
 import DeleteModal from "../../Components/Common/DeleteModal";
 import Tooltip from "@mui/material/Tooltip";
+import API_BASE_URL from '../../config/apiConfig';
 const override = css`
   display: block;
   margin: 0 auto;
@@ -74,7 +75,7 @@ const EventTestimonials = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/eventtestimonials`, requestOptions)
+    fetch(`${API_BASE_URL}/admin1/eventtestimonials`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (
@@ -195,7 +196,7 @@ const EventTestimonials = () => {
         body: finalData,
       };
       fetch(
-        'https://www.australia.lithium-downstream-summit.com/admin1/deletetestimonial',
+        `${API_BASE_URL}/admin1/deletetestimonial`,
         requestOptions
       )
         .then((response) => response.json())

@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect, useCallback } from "react";
+﻿import React, { useMemo, useState, useEffect, useCallback } from "react";
 import {
   Card,
   CardBody,
@@ -19,6 +19,7 @@ import "react-toastify/dist/ReactToastify.css";
 import DeleteModal from "../../src/Components/Common/DeleteModal";
 import ViewQuickProposalResponse from "./ViewQuickProposal";
 import Tooltip from "@mui/material/Tooltip";
+import API_BASE_URL from '../config/apiConfig';
 const override = css`
   display: block;
   margin: 0 auto;
@@ -71,7 +72,7 @@ const QuickProposalResponse = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/quickproposalresponses`, requestOptions)
+    fetch(`${API_BASE_URL}/admin1/quickproposalresponses`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (
@@ -182,7 +183,7 @@ const QuickProposalResponse = () => {
         body: finalData,
       };
       fetch(
-        "https://www.australia.lithium-downstream-summit.com/admin1/deletequickproposalrequest",
+        `${API_BASE_URL}/admin1/deletequickproposalrequest`,
         requestOptions
       )
         .then((response) => response.json())

@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback, useState, useEffect } from "react";
+﻿import React, { useMemo, useCallback, useState, useEffect } from "react";
 import {
   Card,
   CardBody,
@@ -20,6 +20,7 @@ import AddOfferCoupon from "./AddOfferCoupon";
 import EditOfferCoupon from "./EditOfferCoupon";
 import DeleteModal from "../../Components/Common/DeleteModal";
 import Tooltip from "@mui/material/Tooltip";
+import API_BASE_URL from '../../config/apiConfig';
 const override = css`
   display: block;
   margin: 0 auto;
@@ -71,7 +72,7 @@ const OfferCouponList = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/offercoupons`, requestOptions)
+    fetch(`${API_BASE_URL}/admin1/offercoupons`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (
@@ -177,7 +178,7 @@ const OfferCouponList = () => {
         body: finalData,
       };
       fetch(
-        'https://www.australia.lithium-downstream-summit.com/admin1/deleteoffercoupon',
+        `${API_BASE_URL}/admin1/deleteoffercoupon`,
         requestOptions
       )
         .then((response) => response.json())

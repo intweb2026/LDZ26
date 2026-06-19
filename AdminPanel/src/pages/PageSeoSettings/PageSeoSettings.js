@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+﻿import React, { useState, useEffect, useRef } from "react";
 import { Container, Row, Col, Card, CardBody, Label, Input } from "reactstrap";
 import BreadCrumb from "../../Components/Common/BreadCrumb";
 import { toast } from "react-toastify";
@@ -6,6 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import ClipLoader from "react-spinners/ClipLoader";
 import { css } from "@emotion/react";
 import { useNavigate } from "react-router-dom";
+import API_BASE_URL from '../../config/apiConfig';
 
 const override = css`
   display: block;
@@ -13,7 +14,6 @@ const override = css`
   color: black;
 `;
 
-const BASE_URL = "https://www.australia.lithium-downstream-summit.com/admin1";
 
 const PAGES = [
   { label: "Home", key: "home" },
@@ -85,7 +85,7 @@ const PageSeoSettings = () => {
 
   const fetchAllSeoData = () => {
     setListLoading(true);
-    fetch(`${BASE_URL}/pageseo`, { method: "GET" })
+    fetch(`${API_BASE_URL}/pageseo`, { method: "GET" })
       .then((r) => r.json())
       .then((data) => {
         if (checkAuth(data)) return;
@@ -133,7 +133,7 @@ const PageSeoSettings = () => {
     formData.append("media", file);
 
     try {
-      const res = await fetch(`${BASE_URL}/upload`, {
+      const res = await fetch(`${API_BASE_URL}/upload`, {
         method: "POST",
         body: formData,
       });
@@ -189,7 +189,7 @@ const PageSeoSettings = () => {
 
     if (isEdit) formData.append("id", recordId);
 
-    fetch(`${BASE_URL}/${endpoint}`, { method, body: formData })
+    fetch(`${API_BASE_URL}/${endpoint}`, { method, body: formData })
       .then((r) => r.json())
       .then((data) => {
         if (checkAuth(data)) return;

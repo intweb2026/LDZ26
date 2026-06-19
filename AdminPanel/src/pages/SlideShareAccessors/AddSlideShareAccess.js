@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+﻿import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Modal, ModalHeader, Form, ModalBody, Label, Input } from "reactstrap";
 import "../../assets/css/ApplicationMain.css";
@@ -9,6 +9,7 @@ import { css } from "@emotion/react";
 import "../../assets/css/dropzone.css";
 import "../../assets/css/ckeditor.css";
 import Select from "react-select";
+import API_BASE_URL from '../../config/apiConfig';
 const override = css`
   display: block;
   margin: 0 auto;
@@ -42,7 +43,7 @@ const AddSlideShareAccess = (props) => {
       method: "GET",
     };
     fetch(
-      `https://www.australia.lithium-downstream-summit.com/admin1/eventprojects`,
+      `${API_BASE_URL}/admin1/eventprojects`,
       requestOptions,
     )
       .then((response) => response.json())
@@ -142,7 +143,7 @@ const AddSlideShareAccess = (props) => {
         body: finalData,
       };
       fetch(
-        "https://www.australia.lithium-downstream-summit.com/admin1/addslideShareAccess",
+        `${API_BASE_URL}/admin1/addslideShareAccess`,
         requestOptions,
       )
         .then((response) => response.json())

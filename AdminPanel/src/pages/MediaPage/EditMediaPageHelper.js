@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+﻿import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Modal, ModalHeader, Form, ModalBody, Label, Input } from "reactstrap";
 import "../../assets/css/ApplicationMain.css";
@@ -11,6 +11,7 @@ import "../../assets/css/ckeditor.css";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import Select from "react-select";
+import API_BASE_URL from '../../config/apiConfig';
 const override = css`
   display: block;
   margin: 0 auto;
@@ -97,7 +98,7 @@ const EditMediaPageHelper = ({
         method: "POST",
         body: finalData,
       };
-      fetch("https://www.australia.lithium-downstream-summit.com/admin1/editmediapagehelpers", requestOptions)
+      fetch(`${API_BASE_URL}/admin1/editmediapagehelpers`, requestOptions)
         .then((response) => response.json())
         .then((data) => {
           if (

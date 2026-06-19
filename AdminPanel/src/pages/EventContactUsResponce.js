@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect, useCallback } from "react";
+﻿import React, { useMemo, useState, useEffect, useCallback } from "react";
 import {
   Card,
   CardBody,
@@ -19,6 +19,7 @@ import "react-toastify/dist/ReactToastify.css";
 import DeleteModal from "../../src/Components/Common/DeleteModal";
 import ViewContactUsResponse from "./ViewContactUsResponse";
 import Tooltip from "@mui/material/Tooltip";
+import API_BASE_URL from '../config/apiConfig';
 const override = css`
   display: block;
   margin: 0 auto;
@@ -71,7 +72,7 @@ const EventContactUsResponse = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/contactsofcontactus`, requestOptions)
+    fetch(`${API_BASE_URL}/admin1/contactsofcontactus`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (
@@ -188,7 +189,7 @@ const EventContactUsResponse = () => {
         body: finalData,
       };
       fetch(
-        "https://www.australia.lithium-downstream-summit.com/admin1/deletecontactuscontact",
+        `${API_BASE_URL}/admin1/deletecontactuscontact`,
         requestOptions
       )
         .then((response) => response.json())

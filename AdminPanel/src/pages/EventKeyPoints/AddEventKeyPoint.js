@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+﻿import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Modal, ModalHeader, Form, ModalBody, Label, Input } from "reactstrap";
 import "../../assets/css/ApplicationMain.css";
@@ -10,6 +10,7 @@ import "../../assets/css/dropzone.css";
 import "../../assets/css/ckeditor.css";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import API_BASE_URL from '../../config/apiConfig';
 const override = css`
   display: block;
   margin: 0 auto;
@@ -99,7 +100,7 @@ const AddEventKeyPoint = (props) => {
   //       method: "POST",
   //       body: finalData,
   //     };
-  //     fetch("https://www.australia.lithium-downstream-summit.com/admin1/addkeypoint", requestOptions)
+  //     fetch(`${API_BASE_URL}/admin1/addkeypoint`, requestOptions)
   //       .then((response) => response.json())
   //       .then((data) => {
   //         if (
@@ -237,7 +238,7 @@ const AddEventKeyPoint = (props) => {
 
     setloading(true); // Set loading before API call
 
-    fetch("https://www.australia.lithium-downstream-summit.com/admin1/addkeypoint", requestOptions)
+    fetch(`${API_BASE_URL}/admin1/addkeypoint`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (

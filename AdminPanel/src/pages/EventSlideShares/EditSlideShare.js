@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+﻿import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Modal, ModalHeader, Form, ModalBody, Label, Input } from "reactstrap";
 import "../../assets/css/ApplicationMain.css";
@@ -14,6 +14,7 @@ import Select from "react-select";
 import Flatpickr from "react-flatpickr";
 import moment from "moment";
 import { useApiData } from "../../../src/Components/Common/ApiContext.js";
+import API_BASE_URL from '../../config/apiConfig';
 const override = css`
   display: block;
   margin: 0 auto;
@@ -81,7 +82,7 @@ const EditSlideShare = ({
       method: "GET",
     };
     fetch(
-      `https://www.australia.lithium-downstream-summit.com/admin1/eventprojects`,
+      `${API_BASE_URL}/admin1/eventprojects`,
       requestOptions,
     )
       .then((response) => response.json())
@@ -145,7 +146,7 @@ const EditSlideShare = ({
 
     try {
       const response = await fetch(
-        "https://www.australia.lithium-downstream-summit.com/admin1/upload",
+        `${API_BASE_URL}/admin1/upload`,
         requestOptions,
       );
       const data = await response.json();
@@ -311,7 +312,7 @@ const EditSlideShare = ({
         body: finalData,
       };
       fetch(
-        "https://www.australia.lithium-downstream-summit.com/admin1/editslideShare",
+        `${API_BASE_URL}/admin1/editslideShare`,
         requestOptions,
       )
         .then((response) => response.json())

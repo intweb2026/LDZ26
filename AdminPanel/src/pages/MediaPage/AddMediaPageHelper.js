@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+﻿import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Modal, ModalHeader, Form, ModalBody, Label, Input } from "reactstrap";
 import "../../assets/css/ApplicationMain.css";
@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ClipLoader from "react-spinners/ClipLoader";
 import { css } from "@emotion/react";
+import API_BASE_URL from '../../config/apiConfig';
 const override = css`
   display: block;
   margin: 0 auto;
@@ -76,7 +77,7 @@ const AddMediaPageHelper = (props) => {
         method: "POST",
         body: finalData,
       };
-      fetch("https://www.australia.lithium-downstream-summit.com/admin1/addmediapagehelpers", requestOptions)
+      fetch(`${API_BASE_URL}/admin1/addmediapagehelpers`, requestOptions)
         .then((response) => response.json())
         .then((data) => {
           if (

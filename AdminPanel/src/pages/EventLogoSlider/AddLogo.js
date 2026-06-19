@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+﻿import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Modal, ModalHeader, Form, ModalBody, Label, Input } from "reactstrap";
 import "../../assets/css/ApplicationMain.css";
@@ -7,6 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import ClipLoader from "react-spinners/ClipLoader";
 import { css } from "@emotion/react";
 import "../../assets/css/dropzone.css";
+import API_BASE_URL from '../../config/apiConfig';
 const override = css`
   display: block;
   margin: 0 auto;
@@ -32,7 +33,7 @@ const AddLogo = (props) => {
 
     try {
       const response = await fetch(
-        "https://www.australia.lithium-downstream-summit.com/admin1/upload",
+        `${API_BASE_URL}/admin1/upload`,
         requestOptions
       );
       const data = await response.json();
@@ -81,7 +82,7 @@ const AddLogo = (props) => {
         method: "POST",
         body: finalData,
       };
-      fetch("https://www.australia.lithium-downstream-summit.com/admin1/addhomepagecompanies", requestOptions)
+      fetch(`${API_BASE_URL}/admin1/addhomepagecompanies`, requestOptions)
         .then((response) => response.json())
         .then((data) => {
           if (

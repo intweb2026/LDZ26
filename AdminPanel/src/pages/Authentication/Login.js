@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useRef } from "react";
+﻿import React, { useState, useEffect, useRef } from "react";
 import { Card, CardBody, Col, Container, Input, Label, Row, Button, Form, Alert } from "reactstrap";
 import { Link, useNavigate } from "react-router-dom";
 import ParticlesAuth from "../AuthenticationInner/ParticlesAuth";
 import logoLight from "../../assets/images/adminpanel-logo.png";
 import axios from "axios";
+import API_BASE_URL from '../../config/apiConfig';
 
-const BASE_URL = "https://www.australia.lithium-downstream-summit.com";
 const RESEND_SECONDS = 60;
 
 const Login = () => {

@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback, useState, useEffect } from "react";
+﻿import React, { useMemo, useCallback, useState, useEffect } from "react";
 import {
   Card,
   CardBody,
@@ -21,6 +21,7 @@ import ViewEventSponsor from "./ViewEventSponsor";
 import EditEventSponsor from "./EditEventSponsor";
 import DeleteModal from "../../Components/Common/DeleteModal";
 import Tooltip from "@mui/material/Tooltip";
+import API_BASE_URL from '../../config/apiConfig';
 const override = css`
   display: block;
   margin: 0 auto;
@@ -74,7 +75,7 @@ const EventSponsorList = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/eventsponsors`, requestOptions)
+    fetch(`${API_BASE_URL}/admin1/eventsponsors`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (
@@ -201,7 +202,7 @@ const EventSponsorList = () => {
         body: finalData,
       };
       fetch(
-        'https://www.australia.lithium-downstream-summit.com/admin1/deletesponsor',
+        `${API_BASE_URL}/admin1/deletesponsor`,
         requestOptions
       )
         .then((response) => response.json())

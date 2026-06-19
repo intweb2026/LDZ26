@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback, useState, useEffect } from "react";
+﻿import React, { useMemo, useCallback, useState, useEffect } from "react";
 import {
   Card,
   CardBody,
@@ -20,6 +20,7 @@ import AddMediaPageHelper from "./AddMediaPageHelper";
 import EditMediaPageHelper from "./EditMediaPageHelper";
 import DeleteModal from "../../Components/Common/DeleteModal";
 import Tooltip from "@mui/material/Tooltip";
+import API_BASE_URL from '../../config/apiConfig';
 const override = css`
   display: block;
   margin: 0 auto;
@@ -77,7 +78,7 @@ const MediaPageHelpers = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/mediapagehelpers`, requestOptions)
+    fetch(`${API_BASE_URL}/admin1/mediapagehelpers`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (
@@ -190,7 +191,7 @@ const MediaPageHelpers = () => {
         body: finalData,
       };
       fetch(
-        "https://www.australia.lithium-downstream-summit.com/admin1/deletemediapagehelpers",
+        `${API_BASE_URL}/admin1/deletemediapagehelpers`,
         requestOptions
       )
         .then((response) => response.json())

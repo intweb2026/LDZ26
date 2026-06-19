@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+﻿import React, { useState, useEffect } from "react";
 import {
     Modal,
     ModalHeader,
@@ -14,6 +14,7 @@ import {
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import { toast } from "react-toastify";
+import API_BASE_URL from '../../config/apiConfig';
 
 const AddUserModal = ({ show, onCloseClick, onSuccess }) => {
     const [roleList, setRoleList] = useState([]);
@@ -25,7 +26,7 @@ const AddUserModal = ({ show, onCloseClick, onSuccess }) => {
     }, [show]);
 
     const fetchRoles = () => {
-        fetch("https://www.australia.lithium-downstream-summit.com/admin1/rolelist")
+        fetch(`${API_BASE_URL}/admin1/rolelist`)
             .then((res) => res.json())
             .then((data) => {
                 if (data.status) {
@@ -56,7 +57,7 @@ const AddUserModal = ({ show, onCloseClick, onSuccess }) => {
             formData.append("password", values.password);
             formData.append("role_id", values.role_id);
 
-            fetch("https://www.australia.lithium-downstream-summit.com/admin1/adduser", {
+            fetch(`${API_BASE_URL}/admin1/adduser`, {
                 method: "POST",
                 body: formData,
             })

@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback, useState, useEffect } from "react";
+﻿import React, { useMemo, useCallback, useState, useEffect } from "react";
 import {
   Card,
   CardBody,
@@ -20,6 +20,7 @@ import AddDelegatePackage from "./AddDelegatePackage";
 import EditDelegatePackage from "./EditDelegatePackage";
 import DeleteModal from "../../Components/Common/DeleteModal";
 import Tooltip from "@mui/material/Tooltip";
+import API_BASE_URL from '../../config/apiConfig';
 const override = css`
   display: block;
   margin: 0 auto;
@@ -72,7 +73,7 @@ const DelegatePackageList = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/deligatepackageslist`, requestOptions)
+    fetch(`${API_BASE_URL}/admin1/deligatepackageslist`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (
@@ -200,7 +201,7 @@ const DelegatePackageList = () => {
         body: finalData,
       };
       fetch(
-        "https://www.australia.lithium-downstream-summit.com/admin1/deletedelegatepackage",
+        `${API_BASE_URL}/admin1/deletedelegatepackage`,
         requestOptions
       )
         .then((response) => response.json())

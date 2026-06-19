@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+﻿import React, { useState, useEffect } from "react";
 import {
   Container,
   Row,
@@ -17,6 +17,7 @@ import {
 import BreadCrumb from "../../Components/Common/BreadCrumb";
 import { useParams, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
+import API_BASE_URL from '../../config/apiConfig';
 
 const EditRolePermissions = () => {
   const { id } = useParams();
@@ -37,7 +38,7 @@ const EditRolePermissions = () => {
   }, [id]);
 
   const fetchRoleData = () => {
-    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/rolepermissions?id=${id}`)
+    fetch(`${API_BASE_URL}/admin1/rolepermissions?id=${id}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.status) {
@@ -48,7 +49,7 @@ const EditRolePermissions = () => {
   };
 
   const fetchPermissionList = () => {
-    fetch("https://www.australia.lithium-downstream-summit.com/admin1/permissionlist")
+    fetch(`${API_BASE_URL}/admin1/permissionlist`)
       .then((res) => res.json())
       .then((data) => {
         if (data.status) {
@@ -86,7 +87,7 @@ const EditRolePermissions = () => {
   };
 
   const handleSave = () => {
-    fetch("https://www.australia.lithium-downstream-summit.com/admin1/updaterolepermissions", {
+    fetch(`${API_BASE_URL}/admin1/updaterolepermissions`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

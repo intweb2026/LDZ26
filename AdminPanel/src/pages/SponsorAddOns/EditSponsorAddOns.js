@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+﻿import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Modal, ModalHeader, Form, ModalBody, Label, Input } from "reactstrap";
 import "../../assets/css/ApplicationMain.css";
@@ -13,6 +13,7 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import Select from "react-select";
 import Flatpickr from "react-flatpickr";
 import moment from "moment";
+import API_BASE_URL from '../../config/apiConfig';
 const override = css`
   display: block;
   margin: 0 auto;
@@ -63,7 +64,7 @@ const EditSponsorAddOns = ({
       method: "GET",
     };
     fetch(
-      `https://www.australia.lithium-downstream-summit.com/admin1/sponsorpackageaddontypes`,
+      `${API_BASE_URL}/admin1/sponsorpackageaddontypes`,
       requestOptions
     )
       .then((response) => response.json())
@@ -162,7 +163,7 @@ const EditSponsorAddOns = ({
         body: finalData,
       };
       fetch(
-        "https://www.australia.lithium-downstream-summit.com/admin1/editsponsoraddons",
+        `${API_BASE_URL}/admin1/editsponsoraddons`,
         requestOptions
       )
         .then((response) => response.json())

@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect, useCallback } from "react";
+﻿import React, { useMemo, useState, useEffect, useCallback } from "react";
 import {
   Card,
   CardBody,
@@ -19,6 +19,7 @@ import "react-toastify/dist/ReactToastify.css";
 import DeleteModal from "../../src/Components/Common/DeleteModal";
 import ViewUserPassRegistration from "./ViewUserPassRegistration";
 import Tooltip from "@mui/material/Tooltip";
+import API_BASE_URL from '../config/apiConfig';
 const override = css`
   display: block;
   margin: 0 auto;
@@ -66,7 +67,7 @@ const UserPassRegistration = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/usrpassresponses`, requestOptions)
+    fetch(`${API_BASE_URL}/admin1/usrpassresponses`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (
@@ -191,7 +192,7 @@ const UserPassRegistration = () => {
         body: finalData,
       };
       fetch(
-        "https://www.australia.lithium-downstream-summit.com/admin1/deleteuserpassrequest",
+        `${API_BASE_URL}/admin1/deleteuserpassrequest`,
         requestOptions
       )
         .then((response) => response.json())

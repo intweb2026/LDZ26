@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+﻿import React, { useState } from "react";
 import { json, useNavigate } from "react-router-dom";
 import { Modal, ModalHeader, Form, ModalBody, Label, Input } from "reactstrap";
 import "../../assets/css/ApplicationMain.css";
@@ -10,6 +10,7 @@ import "../../assets/css/dropzone.css";
 import "../../assets/css/ckeditor.css";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import API_BASE_URL from '../../config/apiConfig';
 
 const override = css`
   display: block;
@@ -109,7 +110,7 @@ const AddFaq = (props) => {
         method: "POST",
         body: finalData,
       };
-      fetch("https://www.australia.lithium-downstream-summit.com/admin1/addfaq", requestOptions)
+      fetch(`${API_BASE_URL}/admin1/addfaq`, requestOptions)
         .then((response) => response.json())
         .then((data) => {
           if (

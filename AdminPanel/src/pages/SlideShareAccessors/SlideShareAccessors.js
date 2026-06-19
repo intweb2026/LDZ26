@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback, useState, useEffect } from "react";
+﻿import React, { useMemo, useCallback, useState, useEffect } from "react";
 import {
     Card,
     CardBody,
@@ -20,6 +20,7 @@ import AddSlideShareAccessor from "./AddSlideShareAccess";
 // import EditSlideShareAttandee from "./EditSlideShareAttandee";
 import DeleteModal from "../../Components/Common/DeleteModal";
 import Tooltip from "@mui/material/Tooltip";
+import API_BASE_URL from '../../config/apiConfig';
 const override = css`
   display: block;
   margin: 0 auto;
@@ -77,7 +78,7 @@ const SlideShareAccessors = () => {
         const requestOptions = {
             method: "GET",
         };
-        fetch(`https://www.australia.lithium-downstream-summit.com/admin1/getslideShareAccess`, requestOptions)
+        fetch(`${API_BASE_URL}/admin1/getslideShareAccess`, requestOptions)
             .then((response) => response.json())
             .then((data) => {
                 if (
@@ -193,7 +194,7 @@ const SlideShareAccessors = () => {
                 body: finalData,
             };
             fetch(
-                'https://www.australia.lithium-downstream-summit.com/admin1/deleteslideShareAccess',
+                `${API_BASE_URL}/admin1/deleteslideShareAccess`,
                 requestOptions
             )
                 .then((response) => response.json())

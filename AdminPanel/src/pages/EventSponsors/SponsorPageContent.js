@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback, useState, useEffect } from "react";
+﻿import React, { useMemo, useCallback, useState, useEffect } from "react";
 import {
   Card,
   CardBody,
@@ -22,6 +22,7 @@ import DeleteModal from "../../Components/Common/DeleteModal";
 import "../../assets/css/ckeditor.css";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import API_BASE_URL from '../../config/apiConfig';
 const override = css`
   display: block;
   margin: 0 auto;
@@ -60,7 +61,7 @@ const SponsorPageContent = () => {
       method: "GET",
     };
     fetch(
-      `https://www.australia.lithium-downstream-summit.com/admin1/getsponsorpagedata`,
+      `${API_BASE_URL}/admin1/getsponsorpagedata`,
       requestOptions
     )
       .then((response) => response.json())

@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect, useCallback } from "react";
+﻿import React, { useMemo, useState, useEffect, useCallback } from "react";
 import {
   Card,
   CardBody,
@@ -19,6 +19,7 @@ import "react-toastify/dist/ReactToastify.css";
 import DeleteModal from "../../src/Components/Common/DeleteModal";
 import ViewBecomeSpeakerResponse from "./ViewBecomeSpeakerResponse";
 import Tooltip from "@mui/material/Tooltip";
+import API_BASE_URL from '../config/apiConfig';
 const override = css`
   display: block;
   margin: 0 auto;
@@ -71,7 +72,7 @@ const BecomeSpeakerResponse = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/becomespeakerresponses`, requestOptions)
+    fetch(`${API_BASE_URL}/admin1/becomespeakerresponses`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (
@@ -182,7 +183,7 @@ const BecomeSpeakerResponse = () => {
         body: finalData,
       };
       fetch(
-        "https://www.australia.lithium-downstream-summit.com/admin1/deletebecomespeakerrequest",
+        `${API_BASE_URL}/admin1/deletebecomespeakerrequest`,
         requestOptions
       )
         .then((response) => response.json())

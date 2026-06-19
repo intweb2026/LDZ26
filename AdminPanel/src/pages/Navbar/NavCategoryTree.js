@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
+﻿import React, { useState, useEffect, useRef } from "react";
 import { Form } from "reactstrap";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ClipLoader from "react-spinners/ClipLoader";
+import API_BASE_URL from '../../config/apiConfig';
 
-const BASE_URL = "https://www.australia.lithium-downstream-summit.com/admin1";
 
 const NavCategoryTree = () => {
   const [mainCategories, setMainCategories] = useState([]);
@@ -18,8 +18,8 @@ const NavCategoryTree = () => {
   const fetchAllData = () => {
     setLoading(true);
     Promise.all([
-      fetch(`${BASE_URL}/navmaincategories`).then((r) => r.json()),
-      fetch(`${BASE_URL}/navsubcategories`).then((r) => r.json()),
+      fetch(`${API_BASE_URL}/navmaincategories`).then((r) => r.json()),
+      fetch(`${API_BASE_URL}/navsubcategories`).then((r) => r.json()),
     ])
       .then(([mData, sData]) => {
         const mains = mData?.navMainategories || [];
@@ -139,7 +139,7 @@ const NavCategoryTree = () => {
     finalData.append("mainCategories", JSON.stringify(mainPayload));
     finalData.append("subCategories",  JSON.stringify(subPayload));
 
-    fetch(`${BASE_URL}/savenavcheckstatus`, {
+    fetch(`${API_BASE_URL}/savenavcheckstatus`, {
       method: "POST",
       body: finalData,
     })

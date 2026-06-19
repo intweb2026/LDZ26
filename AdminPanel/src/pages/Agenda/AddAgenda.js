@@ -1,4 +1,4 @@
-// import React, { useState, useEffect } from "react";
+﻿// import React, { useState, useEffect } from "react";
 // import BreadCrumb from "../../../src/Components/Common/BreadCrumb";
 // import { Link, useNavigate } from "react-router-dom";
 // import {
@@ -61,7 +61,7 @@
 //   { label: "No", value: "no" },
 // ];
 
-// const BASE_URL = "https://www.australia.lithium-downstream-summit.com"; // USE LOCAL FOR DEBUGGING
+// const BASE_URL = `${API_BASE_URL}`; // USE LOCAL FOR DEBUGGING
 
 // const AddAgenda = () => {
 //   const navigate = useNavigate();
@@ -235,7 +235,7 @@
 //   }, []);
 
 //   const callAgendaCountApi = () => {
-//     fetch(`${BASE_URL}/admin1/getagenda`)
+//     fetch(`${API_BASE_URL}/admin1/getagenda`)
 //       .then((response) => response.json())
 //       .then((data) => {
 //         if (data && data.status !== false) {
@@ -306,7 +306,7 @@
 //     const requestOptions = {
 //       method: "GET",
 //     };
-//     fetch(`${BASE_URL}/admin1/eventindustrytrends`, requestOptions)
+//     fetch(`${API_BASE_URL}/admin1/eventindustrytrends`, requestOptions)
 //       .then((response) => response.json())
 //       .then((data) => {
 //         if (
@@ -357,7 +357,7 @@
 //     const requestOptions = {
 //       method: "GET",
 //     };
-//     fetch(`${BASE_URL}/admin1/eventspeakers`, requestOptions)
+//     fetch(`${API_BASE_URL}/admin1/eventspeakers`, requestOptions)
 //       .then((response) => response.json())
 //       .then((data) => {
 //         if (
@@ -437,7 +437,7 @@
 
 //     try {
 //       const response = await fetch(
-//         `${BASE_URL}/admin1/upload`,
+//         `${API_BASE_URL}/admin1/upload`,
 //         requestOptions
 //       );
 //       const data = await response.json();
@@ -570,7 +570,7 @@
 //         method: "POST",
 //         body: formDataObj,
 //       };
-//       fetch(`${BASE_URL}/admin1/addagenda`, requestOptions)
+//       fetch(`${API_BASE_URL}/admin1/addagenda`, requestOptions)
 //         .then((response) => response.json())
 //         .then((data) => {
 //           if (data.status) {
@@ -1715,6 +1715,7 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import Select from "react-select";
 import Flatpickr from "react-flatpickr";
 import { Trash2, Plus } from "lucide-react";
+import API_BASE_URL from '../../config/apiConfig';
 
 const override = css`
   display: block;
@@ -1748,7 +1749,6 @@ const moderatorOptions = [
   { label: "No", value: "no" },
 ];
 
-const BASE_URL = "https://www.australia.lithium-downstream-summit.com"; // USE LOCAL FOR DEBUGGING
 
 const AddAgenda = () => {
   const navigate = useNavigate();
@@ -1929,7 +1929,7 @@ const AddAgenda = () => {
   }, []);
 
   const callAgendaCountApi = () => {
-    fetch(`${BASE_URL}/admin1/getagenda`)
+    fetch(`${API_BASE_URL}/admin1/getagenda`)
       .then((response) => response.json())
       .then((data) => {
         if (data && data.status !== false) {
@@ -1997,7 +1997,7 @@ const AddAgenda = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`${BASE_URL}/admin1/eventindustrytrends`, requestOptions)
+    fetch(`${API_BASE_URL}/admin1/eventindustrytrends`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (
@@ -2048,7 +2048,7 @@ const AddAgenda = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`${BASE_URL}/admin1/eventspeakers`, requestOptions)
+    fetch(`${API_BASE_URL}/admin1/eventspeakers`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (
@@ -2149,7 +2149,7 @@ const AddAgenda = () => {
 
     try {
       const response = await fetch(
-        `${BASE_URL}/admin1/upload`,
+        `${API_BASE_URL}/admin1/upload`,
         requestOptions
       );
       const data = await response.json();
@@ -2286,7 +2286,7 @@ const AddAgenda = () => {
         method: "POST",
         body: formDataObj,
       };
-      fetch(`${BASE_URL}/admin1/addagenda`, requestOptions)
+      fetch(`${API_BASE_URL}/admin1/addagenda`, requestOptions)
         .then((response) => response.json())
         .then((data) => {
           if (data.status) {

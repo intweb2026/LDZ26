@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+﻿import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Modal, ModalHeader, Form, ModalBody, Label, Input } from "reactstrap";
 import "../../assets/css/ApplicationMain.css";
@@ -8,6 +8,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 import { css } from "@emotion/react";
 import "../../assets/css/dropzone.css";
 import "../../assets/css/ckeditor.css";
+import API_BASE_URL from '../../config/apiConfig';
 const override = css`
   display: block;
   margin: 0 auto;
@@ -61,7 +62,7 @@ const AddAddOns = (props) => {
         method: "POST",
         body: finalData,
       };
-      fetch("https://www.australia.lithium-downstream-summit.com/admin1/adddelegatepackageaddons", requestOptions)
+      fetch(`${API_BASE_URL}/admin1/adddelegatepackageaddons`, requestOptions)
         .then((response) => response.json())
         .then((data) => {
           if (

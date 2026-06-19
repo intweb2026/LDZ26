@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+﻿import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Modal, ModalHeader, Form, ModalBody, Label, Input } from "reactstrap";
 import "../../assets/css/ApplicationMain.css";
@@ -11,6 +11,7 @@ import "../../assets/css/ckeditor.css";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import Select from "react-select";
+import API_BASE_URL from '../../config/apiConfig';
 const override = css`
   display: block;
   margin: 0 auto;
@@ -92,7 +93,7 @@ const EditVenueContain = (props) => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/getvenuedata`, requestOptions)
+    fetch(`${API_BASE_URL}/admin1/getvenuedata`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (
@@ -130,7 +131,7 @@ const EditVenueContain = (props) => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/venuegalleryimages`, requestOptions)
+    fetch(`${API_BASE_URL}/admin1/venuegalleryimages`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (
@@ -195,7 +196,7 @@ const EditVenueContain = (props) => {
 
     try {
       const response = await fetch(
-        "https://www.australia.lithium-downstream-summit.com/admin1/upload",
+        `${API_BASE_URL}/admin1/upload`,
         requestOptions
       );
       const data = await response.json();
@@ -353,7 +354,7 @@ const EditVenueContain = (props) => {
         body: finalData,
       };
       fetch(
-        "https://www.australia.lithium-downstream-summit.com/admin1/addvenuepagestaticdata",
+        `${API_BASE_URL}/admin1/addvenuepagestaticdata`,
         requestOptions
       )
         .then((response) => response.json())

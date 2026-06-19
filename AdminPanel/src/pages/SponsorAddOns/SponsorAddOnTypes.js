@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback, useState, useEffect } from "react";
+﻿import React, { useMemo, useCallback, useState, useEffect } from "react";
 import {
   Card,
   CardBody,
@@ -20,6 +20,7 @@ import AddSponsorAddOnType from "./AddSponsorAddOnType";
 import EditSponsorAddOnType from "./EditSponsorAddOnType";
 import DeleteModal from "../../Components/Common/DeleteModal";
 import Tooltip from "@mui/material/Tooltip";
+import API_BASE_URL from '../../config/apiConfig';
 const override = css`
   display: block;
   margin: 0 auto;
@@ -71,7 +72,7 @@ const SponsorAddOnTypes = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/sponsorpackageaddontypes`, requestOptions)
+    fetch(`${API_BASE_URL}/admin1/sponsorpackageaddontypes`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (
@@ -171,7 +172,7 @@ const SponsorAddOnTypes = () => {
         body: finalData,
       };
       fetch(
-        'https://www.australia.lithium-downstream-summit.com/admin1/deletesponsoraddontype',
+        `${API_BASE_URL}/admin1/deletesponsoraddontype`,
         requestOptions
       )
         .then((response) => response.json())

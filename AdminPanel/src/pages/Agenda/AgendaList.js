@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback, useState, useEffect } from "react";
+﻿import React, { useMemo, useCallback, useState, useEffect } from "react";
 import {
   Card,
   CardBody,
@@ -18,6 +18,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import DeleteModal from "../../Components/Common/DeleteModal";
 import Tooltip from "@mui/material/Tooltip";
+import API_BASE_URL from '../../config/apiConfig';
 const override = css`
   display: block;
   margin: 0 auto;
@@ -25,7 +26,6 @@ const override = css`
   height: 100%;
 `;
 
-const BASE_URL = "https://www.australia.lithium-downstream-summit.com"; // USE LOCAL FOR DEBUGGING
 
 const AgendaList = () => {
   const navigate = useNavigate();
@@ -73,7 +73,7 @@ const AgendaList = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`${BASE_URL}/admin1/getagenda`, requestOptions)
+    fetch(`${API_BASE_URL}/admin1/getagenda`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (
@@ -200,7 +200,7 @@ const AgendaList = () => {
         method: "POST",
         body: finalData,
       };
-      fetch(`${BASE_URL}/admin1/deleteagenda`, requestOptions)
+      fetch(`${API_BASE_URL}/admin1/deleteagenda`, requestOptions)
         .then((response) => response.json())
         .then((data) => {
           if (
@@ -283,7 +283,7 @@ const AgendaList = () => {
       body: JSON.stringify(requestData),
     };
 
-    fetch(`${BASE_URL}/admin1/reorder-agenda`, requestOptions)
+    fetch(`${API_BASE_URL}/admin1/reorder-agenda`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (data.status === false) {

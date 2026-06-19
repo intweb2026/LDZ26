@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect } from "react";
+﻿import React, { useMemo, useState, useEffect } from "react";
 import {
   Card,
   CardBody,
@@ -17,6 +17,7 @@ import { css } from "@emotion/react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Tooltip from "@mui/material/Tooltip";
+import API_BASE_URL from '../config/apiConfig';
 const override = css`
   display: block;
   margin: 0 auto;
@@ -66,7 +67,7 @@ const CalenderSubscribers = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/calendersubscribers`, requestOptions)
+    fetch(`${API_BASE_URL}/admin1/calendersubscribers`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (

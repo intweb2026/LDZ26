@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+﻿import React, { useState, useEffect } from "react";
 import BreadCrumb from "../../../src/Components/Common/BreadCrumb";
 import { Link, useNavigate } from "react-router-dom";
 import {
@@ -22,6 +22,7 @@ import "react-toastify/dist/ReactToastify.css";
 import ClipLoader from "react-spinners/ClipLoader";
 import { css } from "@emotion/react";
 import "../../assets/css/dropzone.css";
+import API_BASE_URL from '../../config/apiConfig';
 const override = css`
   display: block;
   margin: 0 auto;
@@ -52,7 +53,7 @@ const AddSocialMediaOption = () => {
       method: "GET",
     };
     fetch(
-      `https://www.australia.lithium-downstream-summit.com/admin1/footersocialmediaoptions`,
+      `${API_BASE_URL}/admin1/footersocialmediaoptions`,
       requestOptions
     )
       .then((response) => response.json())
@@ -110,7 +111,7 @@ const AddSocialMediaOption = () => {
       method: "POST",
       body: formDataObj,
     };
-    fetch("https://www.australia.lithium-downstream-summit.com/admin1/addfootersocialmediaoptions", requestOptions)
+    fetch(`${API_BASE_URL}/admin1/addfootersocialmediaoptions`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (data.status) {

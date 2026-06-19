@@ -1,4 +1,4 @@
-// import React, { useState, useEffect } from "react";
+﻿// import React, { useState, useEffect } from "react";
 // import BreadCrumb from "../../../src/Components/Common/BreadCrumb";
 // import { Link, useNavigate } from "react-router-dom";
 // import {
@@ -78,7 +78,7 @@
 //     const requestOptions = {
 //       method: "GET",
 //     };
-//     fetch(`https://www.australia.lithium-downstream-summit.com/admin1/homepagedata`, requestOptions)
+//     fetch(`${API_BASE_URL}/admin1/homepagedata`, requestOptions)
 //       .then((response) => response.json())
 //       .then((data) => {
 //         if (
@@ -173,7 +173,7 @@
 
 //     try {
 //       const response = await fetch(
-//         "https://www.australia.lithium-downstream-summit.com/admin1/upload",
+//         `${API_BASE_URL}/admin1/upload`,
 //         requestOptions
 //       );
 //       const data = await response.json();
@@ -257,7 +257,7 @@
 //       method: "POST",
 //       body: formDataObj,
 //     };
-//     fetch("https://www.australia.lithium-downstream-summit.com/admin1/addeventdata", requestOptions)
+//     fetch(`${API_BASE_URL}/admin1/addeventdata`, requestOptions)
 //       .then((response) => response.json())
 //       .then((data) => {
 //         if (data.status) {
@@ -829,6 +829,7 @@ import { css } from "@emotion/react";
 import "../../assets/css/dropzone.css";
 import Select from "react-select";
 import currencyList from "currency-list";
+import API_BASE_URL from '../../config/apiConfig';
 const override = css`
   display: block;
   margin: 0 auto;
@@ -951,7 +952,7 @@ const AddEventData = () => {
     setloading(true);
     const requestOptions = { method: "GET" };
     fetch(
-      `https://www.australia.lithium-downstream-summit.com/admin1/homepagedata`,
+      `${API_BASE_URL}/admin1/homepagedata`,
       requestOptions,
     )
       .then((response) => response.json())
@@ -1095,7 +1096,7 @@ const AddEventData = () => {
     const requestOptions = { method: "POST", body: finalData };
     try {
       const response = await fetch(
-        "https://www.australia.lithium-downstream-summit.com/admin1/upload",
+        `${API_BASE_URL}/admin1/upload`,
         requestOptions,
       );
       const data = await response.json();
@@ -1202,7 +1203,7 @@ const AddEventData = () => {
 
     const requestOptions = { method: "POST", body: formDataObj };
     fetch(
-      "https://www.australia.lithium-downstream-summit.com/admin1/addeventdata",
+      `${API_BASE_URL}/admin1/addeventdata`,
       requestOptions,
     )
       .then((response) => response.json())

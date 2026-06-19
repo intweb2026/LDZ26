@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+﻿import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Modal, ModalHeader, Form, ModalBody, Label, Input } from "reactstrap";
 import "../../assets/css/ApplicationMain.css";
@@ -9,6 +9,7 @@ import { css } from "@emotion/react";
 import Select from "react-select";
 import Flatpickr from "react-flatpickr";
 import moment from "moment";
+import API_BASE_URL from '../../config/apiConfig';
 const override = css`
   display: block;
   margin: 0 auto;
@@ -145,7 +146,7 @@ const EditDelegatePackage = ({
         method: "POST",
         body: finalData,
       };
-      fetch("https://www.australia.lithium-downstream-summit.com/admin1/editdelegatepackage", requestOptions)
+      fetch(`${API_BASE_URL}/admin1/editdelegatepackage`, requestOptions)
         .then((response) => response.json())
         .then((data) => {
           if (

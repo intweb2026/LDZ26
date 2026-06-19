@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect } from "react";
+﻿import React, { useMemo, useState, useEffect } from "react";
 import {
   Card,
   CardBody,
@@ -18,6 +18,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import DeleteModal from "../../src/Components/Common/DeleteModal"
 import Tooltip from "@mui/material/Tooltip";
+import API_BASE_URL from '../config/apiConfig';
 const override = css`
   display: block;
   margin: 0 auto;
@@ -68,7 +69,7 @@ const EventSubscriber = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/subscriberslist`, requestOptions)
+    fetch(`${API_BASE_URL}/admin1/subscriberslist`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (
@@ -155,7 +156,7 @@ const EventSubscriber = () => {
         method: "POST",
         body: finalData,
       };
-      fetch("https://www.australia.lithium-downstream-summit.com/admin1/deletesubscriber", requestOptions)
+      fetch(`${API_BASE_URL}/admin1/deletesubscriber`, requestOptions)
         .then((response) => response.json())
         .then((data) => {
           if (

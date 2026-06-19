@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback, useState, useEffect } from "react";
+﻿import React, { useMemo, useCallback, useState, useEffect } from "react";
 import {
   Card,
   CardBody,
@@ -25,6 +25,7 @@ import Tooltip from "@mui/material/Tooltip";
 import "../../assets/css/ckeditor.css";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import API_BASE_URL from '../../config/apiConfig';
 const override = css`
   display: block;
   margin: 0 auto;
@@ -97,7 +98,7 @@ const Tagline_Contain = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/taglinedata`, requestOptions)
+    fetch(`${API_BASE_URL}/admin1/taglinedata`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (
@@ -226,7 +227,7 @@ const Tagline_Contain = () => {
   //       body: finalData,
   //     };
   //     fetch(
-  //       'https://www.australia.lithium-downstream-summit.com/admin1/deletesponsor',
+  //       `${API_BASE_URL}/admin1/deletesponsor`,
   //       requestOptions
   //     )
   //       .then((response) => response.json())

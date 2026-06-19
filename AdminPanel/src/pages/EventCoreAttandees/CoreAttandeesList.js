@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback, useState, useEffect } from "react";
+﻿import React, { useMemo, useCallback, useState, useEffect } from "react";
 import {
   Card,
   CardBody,
@@ -20,6 +20,7 @@ import AddCoreAttandee from "./AddCoreAttandee";
 import EditCoreAttandee from "./EditCoreAttandee";
 import DeleteModal from "../../Components/Common/DeleteModal";
 import Tooltip from "@mui/material/Tooltip";
+import API_BASE_URL from '../../config/apiConfig';
 const override = css`
   display: block;
   margin: 0 auto;
@@ -71,7 +72,7 @@ const CoreAttandeesList = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/eventcoreattandees`, requestOptions)
+    fetch(`${API_BASE_URL}/admin1/eventcoreattandees`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (
@@ -171,7 +172,7 @@ const CoreAttandeesList = () => {
         body: finalData,
       };
       fetch(
-        'https://www.australia.lithium-downstream-summit.com/admin1/deleteeventcoreattandee',
+        `${API_BASE_URL}/admin1/deleteeventcoreattandee`,
         requestOptions
       )
         .then((response) => response.json())

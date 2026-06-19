@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback, useState, useEffect } from "react";
+﻿import React, { useMemo, useCallback, useState, useEffect } from "react";
 import { Card, CardBody, CardHeader, Col, Row, Container } from "reactstrap";
 import BreadCrumb from "../../Components/Common/BreadCrumb";
 import TableContainer from "../../Components/Common/TableContainer";
@@ -11,6 +11,7 @@ import DeleteModal from "../../Components/Common/DeleteModal";
 import AddEventKeyPoint from "./AddEventKeyPoint";
 import ViewEventKeyPoint from "./ViewEventKeyPoint";
 import EditEventKeyPoint from "./EditEventKeyPoint";
+import API_BASE_URL from '../../config/apiConfig';
 const override = css`
   display: block;
   margin: 0 auto;
@@ -43,7 +44,7 @@ const EventKeyPointList = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/eventkeypoints`, requestOptions)
+    fetch(`${API_BASE_URL}/admin1/eventkeypoints`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (
@@ -153,7 +154,7 @@ const EventKeyPointList = () => {
         method: "POST",
         body: finalData,
       };
-      fetch("https://www.australia.lithium-downstream-summit.com/admin1/deletekeypoint", requestOptions)
+      fetch(`${API_BASE_URL}/admin1/deletekeypoint`, requestOptions)
         .then((response) => response.json())
         .then((data) => {
           if (

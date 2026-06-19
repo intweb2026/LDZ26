@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback, useState, useEffect } from "react";
+﻿import React, { useMemo, useCallback, useState, useEffect } from "react";
 import {
   Card,
   CardBody,
@@ -20,6 +20,7 @@ import AddRelatedEvent from "./AddRelatedEvent";
 import EditRelatedEvent from "./EditRelatedEvent";
 import DeleteModal from "../../Components/Common/DeleteModal";
 import Tooltip from "@mui/material/Tooltip";
+import API_BASE_URL from '../../config/apiConfig';
 const override = css`
   display: block;
   margin: 0 auto;
@@ -71,7 +72,7 @@ const RelatedEvents = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/relatedevents`, requestOptions)
+    fetch(`${API_BASE_URL}/admin1/relatedevents`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (
@@ -190,7 +191,7 @@ const RelatedEvents = () => {
         body: finalData,
       };
       fetch(
-        'https://www.australia.lithium-downstream-summit.com/admin1/deleterelatedevent',
+        `${API_BASE_URL}/admin1/deleterelatedevent`,
         requestOptions
       )
         .then((response) => response.json())

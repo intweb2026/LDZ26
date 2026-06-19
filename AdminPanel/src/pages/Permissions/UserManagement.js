@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+﻿import React, { useState, useEffect, useMemo } from "react";
 import {
     Container,
     Row,
@@ -13,6 +13,7 @@ import TableContainer from "../../Components/Common/TableContainer";
 import { toast, ToastContainer } from "react-toastify";
 import AddUserModal from "./AddUserModal";
 import { useNavigate } from "react-router-dom";
+import API_BASE_URL from '../../config/apiConfig';
 
 const UserManagement = () => {
     document.title = "User Management | Admin Panel";
@@ -34,7 +35,7 @@ const UserManagement = () => {
 
     const fetchUsers = () => {
         setLoading(true);
-        fetch("https://www.australia.lithium-downstream-summit.com/admin1/userlist")
+        fetch(`${API_BASE_URL}/admin1/userlist`)
             .then((res) => res.json())
             .then((data) => {
                 if (data.status) {
@@ -56,7 +57,7 @@ const UserManagement = () => {
 
     const handleDeleteUser = (id) => {
         if (window.confirm("Are you sure you want to delete this user?")) {
-            fetch("https://www.australia.lithium-downstream-summit.com/admin1/deleteuser", {
+            fetch(`${API_BASE_URL}/admin1/deleteuser`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ id }),

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+﻿import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Modal, ModalHeader, Form, ModalBody, Label, Input } from "reactstrap";
 import "../../assets/css/ApplicationMain.css";
@@ -12,6 +12,7 @@ import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import Select from "react-select";
 import { useApiData } from "../../../src/Components/Common/ApiContext.js";
+import API_BASE_URL from '../../config/apiConfig';
 const override = css`
   display: block;
   margin: 0 auto;
@@ -89,7 +90,7 @@ const EditEventSponsor = ({
 
     try {
       const response = await fetch(
-        "https://www.australia.lithium-downstream-summit.com/admin1/upload",
+        `${API_BASE_URL}/admin1/upload`,
         requestOptions
       );
       const data = await response.json();
@@ -196,7 +197,7 @@ const EditEventSponsor = ({
         method: "POST",
         body: finalData,
       };
-      fetch("https://www.australia.lithium-downstream-summit.com/admin1/editsponsor", requestOptions)
+      fetch(`${API_BASE_URL}/admin1/editsponsor`, requestOptions)
         .then((response) => response.json())
         .then((data) => {
           if (

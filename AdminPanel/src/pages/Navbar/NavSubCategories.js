@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback, useState, useEffect } from "react";
+﻿import React, { useMemo, useCallback, useState, useEffect } from "react";
 import {
   Card,
   CardBody,
@@ -20,6 +20,7 @@ import AddNavSubCategory from "./AddNavSubCategory";
 import EditNavSubCategory from "./EditNavSubategory";
 import DeleteModal from "../../Components/Common/DeleteModal";
 import Tooltip from "@mui/material/Tooltip";
+import API_BASE_URL from '../../config/apiConfig';
 const override = css`
   display: block;
   margin: 0 auto;
@@ -77,7 +78,7 @@ const NavSubCategories = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(`https://www.australia.lithium-downstream-summit.com/admin1/navsubcategories`, requestOptions)
+    fetch(`${API_BASE_URL}/admin1/navsubcategories`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (
@@ -189,7 +190,7 @@ const NavSubCategories = () => {
         method: "POST",
         body: finalData,
       };
-      fetch("https://www.australia.lithium-downstream-summit.com/admin1/deletenavsubcategory", requestOptions)
+      fetch(`${API_BASE_URL}/admin1/deletenavsubcategory`, requestOptions)
         .then((response) => response.json())
         .then((data) => {
           if (
