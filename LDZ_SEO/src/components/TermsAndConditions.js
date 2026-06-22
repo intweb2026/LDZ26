@@ -1,4 +1,4 @@
-﻿import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import Navbar from "./Navbar";
 import Footer from "../Footer";
 import "../assets/css/TermsAndConditions.css";
@@ -54,7 +54,7 @@ const TermsAndConditions = () => {
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content={seoTitle} />
         <meta name="twitter:description" content={seoDescription} />
-        <link rel="canonical" href=`${API_BASE_URL}/terms-and-conditions` />
+        <link rel="canonical" href={`${API_BASE_URL}/terms-and-conditions`} />
       </Helmet>
       <div style={{ marginTop: windowWidth > 1024 ? "120px" : "" }}>
         <Navbar forceScrolled />

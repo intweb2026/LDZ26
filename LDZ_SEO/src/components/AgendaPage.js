@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "../../src/assets/css/agenda.css";
 import Navbar from "./Navbar";
 import SubscribeForm from "./SubscribeForm";
@@ -169,7 +169,7 @@ const Agenda = () => {
         {seoImage && <meta name="twitter:image" content={seoImage} />}
         <link
           rel="canonical"
-          href=`${API_BASE_URL}/agenda-page`
+          href={`${API_BASE_URL}/agenda-page`}
         />
       </Helmet>
       <Navbar forceScrolled />

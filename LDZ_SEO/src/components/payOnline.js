@@ -1,4 +1,4 @@
-﻿import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../src/assets/css/payOnline.css";
 import Navbar from "./Navbar";
@@ -199,7 +199,7 @@ const PayOnline = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={seoTitle} />
         {seoImage && <meta name="twitter:image" content={seoImage} />}
-        <link rel="canonical" href=`${API_BASE_URL}/pay-online` />
+        <link rel="canonical" href={`${API_BASE_URL}/pay-online`} />
       </Helmet>
       <Navbar forceScrolled />
       <div style={{ marginTop: windowWidth > 1024 ? "120px" : "" }}>

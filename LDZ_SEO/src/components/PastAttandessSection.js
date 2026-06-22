@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Pointer } from "lucide-react";
 import "../assets/css/PastAttandessSection.css";
@@ -87,7 +87,7 @@ const PastAttandessSection = () => {
       <p><strong>Thank you for subscribing!</strong></p>
       <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
       <p><u><strong>Quick Access</strong></u><br/>
-      Link: <a href=`${API_BASE_URL}`>{API_BASE_URL}</a></p>
+      Link: <a href={`${API_BASE_URL}`}>{API_BASE_URL}</a></p>
     `;
 
     const emailPayload = {

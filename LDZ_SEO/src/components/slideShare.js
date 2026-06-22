@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import Navbar from "./Navbar";
@@ -234,7 +234,7 @@ const SlideShare = () => {
                 <meta name="twitter:title" content={seoTitle} />
                 <link
                     rel="canonical"
-                    href=`${API_BASE_URL}/sponsors`
+                    href={`${API_BASE_URL}/sponsors`}
                 />
             </Helmet> */}
 

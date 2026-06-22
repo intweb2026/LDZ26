@@ -1,4 +1,4 @@
-﻿// import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 // import icon from "/images/group-icon.png";
 // import lunch from "/images/icon-luncheon.png";
 // import fullaccess from "/images/icon-full-access.png";
@@ -915,7 +915,7 @@ const Register = () => {
         <meta name="twitter:title" content={seoTitle} />
         <meta name="twitter:description" content={seoDesc} />
         {seoImage && <meta name="twitter:image" content={seoImage} />}
-        <link rel="canonical" href=`${API_BASE_URL}/booking` />
+        <link rel="canonical" href={`${API_BASE_URL}/booking`} />
       </Helmet>
       <Navbar forceScrolled />
       <div style={{ marginTop: windowWidth > 1024 ? "120px" : "" }}>

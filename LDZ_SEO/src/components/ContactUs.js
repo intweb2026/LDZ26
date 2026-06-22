@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import SubscribeForm from "./SubscribeForm";
 import Footer from "../Footer";
@@ -591,7 +591,7 @@ const ContactUs = () => {
       <p style="font-weight: 700">
         <span style="text-decoration: underline">Quick Access</span>
         <br />
-        Link: <a style="font-weight: 500" target="_blank" href=`${API_BASE_URL}`>{API_BASE_URL}</a>
+        Link: <a style="font-weight: 500" target="_blank" href={`${API_BASE_URL}`}>{API_BASE_URL}</a>
       </p>
     `;
 
@@ -870,7 +870,7 @@ const ContactUs = () => {
         {seoImage && <meta name="twitter:image" content={seoImage} />}
         <link
           rel="canonical"
-          href=`${API_BASE_URL}/contact-us`
+          href={`${API_BASE_URL}/contact-us`}
         />
       </Helmet>
       <Navbar forceScrolled />

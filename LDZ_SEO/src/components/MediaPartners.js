@@ -1,4 +1,4 @@
-﻿import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "../../src/assets/css/MediaPartners.css";
 import Footer from "../Footer";
 import Navbar from "./Navbar";
@@ -87,7 +87,7 @@ const MediaPartners = () => {
         <meta name="twitter:title" content={seoTitle} />
         <meta name="twitter:description" content={seoDesc} />
         {seoImage && <meta name="twitter:image" content={seoImage} />}
-        <link rel="canonical" href=`${API_BASE_URL}/media-partners` />
+        <link rel="canonical" href={`${API_BASE_URL}/media-partners`} />
       </Helmet>
       <Navbar forceScrolled />
       <div style={{ opacity: 1 }}>

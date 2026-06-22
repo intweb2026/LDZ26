@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../src/assets/css/ExhibitorPackages.css";
 import Navbar from "./Navbar";
@@ -393,7 +393,7 @@ const ExhibitorPackages = () => {
         {seoImage && <meta name="twitter:image" content={seoImage} />}
         <link
           rel="canonical"
-          href=`${API_BASE_URL}/sponsor-packages`
+          href={`${API_BASE_URL}/sponsor-packages`}
         />
       </Helmet>
       <Navbar forceScrolled />

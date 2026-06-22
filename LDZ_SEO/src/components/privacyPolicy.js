@@ -1,4 +1,4 @@
-﻿import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import Footer from "../Footer";
 import "../assets/css/privacyPolicy.css";
@@ -37,7 +37,7 @@ const PrivacyPolicy = () => {
         <meta name="twitter:title" content={seoTitle} />
         <meta name="twitter:description" content={seoDesc} />
         {seoImage && <meta name="twitter:image" content={seoImage} />}
-        <link rel="canonical" href=`${API_BASE_URL}/privacy-policy` />
+        <link rel="canonical" href={`${API_BASE_URL}/privacy-policy`} />
       </Helmet>
       <div style={{ marginTop: windowWidth > 1024 ? "120px" : "" }}>
         <Navbar forceScrolled />

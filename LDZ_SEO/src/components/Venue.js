@@ -1,4 +1,4 @@
-﻿// src/components/Venue.js
+// src/components/Venue.js
 // All data comes from SSR window.__INITIAL_DATA__. No client-side fetch.
 import { useState, useEffect, useRef } from "react";
 import { Helmet } from "react-helmet-async";
@@ -164,7 +164,7 @@ const Venue = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={seoTitle} />
         <meta name="twitter:description" content={seoDesc} />
-        <link rel="canonical" href=`${API_BASE_URL}/venue` />
+        <link rel="canonical" href={`${API_BASE_URL}/venue`} />
       </Helmet>
       <Navbar forceScrolled />
       <div style={{ opacity: 1 }}>

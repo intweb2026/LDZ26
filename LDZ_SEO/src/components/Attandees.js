@@ -1,4 +1,4 @@
-﻿import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer from "../Footer";
@@ -355,7 +355,7 @@ const Attandees = () => {
         <meta name="twitter:title" content={seoTitle} />
         <meta name="twitter:description" content={seoDesc} />
         {seoImage && <meta name="twitter:image" content={seoImage} />}
-        <link rel="canonical" href=`${API_BASE_URL}/attendees` />
+        <link rel="canonical" href={`${API_BASE_URL}/attendees`} />
       </Helmet>
       <Navbar forceScrolled />
       <div style={{ opacity: 1 }}>

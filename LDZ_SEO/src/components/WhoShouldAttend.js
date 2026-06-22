@@ -1,4 +1,4 @@
-﻿import React from "react";
+import React from "react";
 import { useState, useEffect, useCallback } from "react";
 import Navbar from "./Navbar";
 import SubscribeForm from "./SubscribeForm";
@@ -319,7 +319,7 @@ const WhoShouldAttend = () => {
         <meta name="twitter:description" content={seoDescription} />
         <link
           rel="canonical"
-          href=`${API_BASE_URL}/who-should-attend`
+          href={`${API_BASE_URL}/who-should-attend`}
         />
       </Helmet>
       <Navbar forceScrolled />

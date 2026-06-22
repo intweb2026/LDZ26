@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../assets/css/SubscribeForm.css"
@@ -38,7 +38,7 @@ const SubscribeForm = () => {
   <p><strong>Thank you for subscribing!</strong></p>
   <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
   <p><u><strong>Quick Access</strong></u><br/>
-  Link: <a href=`${API_BASE_URL}`>{API_BASE_URL}</a></p>
+  Link: <a href={`${API_BASE_URL}`}>{API_BASE_URL}</a></p>
 `;
 
     const emailPayload = {
