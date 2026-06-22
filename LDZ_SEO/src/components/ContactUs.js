@@ -591,7 +591,7 @@ const ContactUs = () => {
       <p style="font-weight: 700">
         <span style="text-decoration: underline">Quick Access</span>
         <br />
-        Link: <a style="font-weight: 500" target="_blank" href={`${API_BASE_URL}`}>{API_BASE_URL}</a>
+        Link: ${'<a style="font-weight: 500" target="_blank" href="' + API_BASE_URL + '">' + API_BASE_URL + '</a>'}
       </p>
     `;
 
