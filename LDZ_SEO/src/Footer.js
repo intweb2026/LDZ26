@@ -1,11 +1,11 @@
-﻿import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import "./assets/css/footer.css";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useSSRData } from "./common/useSSRData";
 import { useApiData } from "../src/common/ApiContext";
-import API_BASE_URL from './config/apiConfig';
+import API_BASE_URL, { mediaUrl } from './config/apiConfig';
 const emailImage =
   "/images/WebCommonImages/icon-mail.png";
 const linkedInIcon =
@@ -180,7 +180,7 @@ const Footer = () => {
             <div className="lazyload-wrapper ">
               <a href="/" style={{ textDecoration: "none", color: "inherit" }}>
                 <img
-                  src={navLogos?.whiteLogo}
+                  src={mediaUrl(navLogos?.whiteLogo)}
                   alt="LDZ Logo"
                   height={64}
                 />

@@ -9,7 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Error404 from "./Error404";
 import { Helmet } from "react-helmet-async";
 import { useSSRData } from "../common/useSSRData";
-import API_BASE_URL from '../config/apiConfig';
+import API_BASE_URL, { mediaUrl } from '../config/apiConfig';
 const linkedInLogo = "/images/WebCommonImages/share-linkedIn.png";
 const whatsappLogo = "/images/WebCommonImages/share-whatsapp.png";
 const emailLogo = "/images/WebCommonImages/share-email.png";
@@ -406,7 +406,7 @@ Read the full article: ${currentUrl}`);
             <div className="NewsDetails_lowerPart__F5RRQ">
               <div className="NewsDetails_left__SL1Qe">
                 <div className="NewsDetails_content__0+gd8">
-                  <img src={newsData[0]?.newsImage} alt={newsData[0]?.newsImageAltText}></img>
+                  <img src={mediaUrl(newsData[0]?.newsImage)} alt={newsData[0]?.newsImageAltText}></img>
                   <p
                     lang="en"
                     dangerouslySetInnerHTML={{

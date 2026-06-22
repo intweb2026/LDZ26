@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import API_BASE_URL, { mediaUrl } from '../config/apiConfig';
 import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
 import Footer from "../Footer";
@@ -183,7 +184,7 @@ const Home = () => {
                               onClick={item?.sponsorType !== "Dummy" ? handleClick : undefined}
                               style={{ cursor: item?.sponsorType !== "Dummy" ? "pointer" : "default" }}
                             >
-                              <img src={item?.sponsorComapnyLogo} alt={`Sponsor ${i + 1}`} />
+                              <img src={mediaUrl(item?.sponsorComapnyLogo)} alt={`Sponsor ${i + 1}`} />
                               {item?.sponsorType !== "Dummy" && (
                                 <div className="SponsorCards_overlay__7MT16">
                                   <h4>{item?.sponsorComapnyName}</h4>
@@ -223,7 +224,7 @@ const Home = () => {
                                 }}
                               >
                                 <img
-                                  src={item?.sponsorComapnyLogo}
+                                  src={mediaUrl(item?.sponsorComapnyLogo)}
                                   alt={`Sponsor ${i + 1}`}
                                   loading="lazy"
                                 />
@@ -259,7 +260,7 @@ const Home = () => {
                                 }}
                               >
                                 <img
-                                  src={item?.sponsorComapnyLogo}
+                                  src={mediaUrl(item?.sponsorComapnyLogo)}
                                   alt={`Sponsor ${i + 1}`}
                                   loading="lazy"
                                 />
@@ -296,7 +297,7 @@ const Home = () => {
                           //     }}
                           //   >
                           //     <img
-                          //       src={item?.sponsorComapnyLogo}
+                          //       src={mediaUrl(item?.sponsorComapnyLogo)}
                           //       alt={`Sponsor ${i + 1}`}
                           //     />
                           //     {item?.sponsorType !== "Dummy" && (

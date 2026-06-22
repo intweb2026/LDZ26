@@ -1,6 +1,7 @@
 // src/components/HomeSpeakerSlider.js
 // Data now comes from SSR (window.__INITIAL_DATA__.speakers). No client-side fetch.
 import { useState, useRef, useEffect } from "react";
+import { mediaUrl } from '../config/apiConfig';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -100,7 +101,7 @@ const HomeSpeakerSlider = () => {
           <Slider {...sliderMagnify}>
             {speakerList.map((speaker, index) => (
               <div key={index} className="magnify-slide with-gradient">
-                <img src={speaker.eventSpeakerHomePageImage} alt={speaker.eventSpeakerName} loading="lazy" />
+                <img src={mediaUrl(speaker.eventSpeakerHomePageImage)} alt={speaker.eventSpeakerName} loading="lazy" />
                 <div className="speaker-details">
                   <div>
                     <p className="fadeText">{speaker.eventSpeakerName}</p>
@@ -139,7 +140,7 @@ const HomeSpeakerSlider = () => {
           <Slider {...settings}>
             {speakerList.map((speaker, index) => (
               <div key={index} className="slide-box with-gradient" onClick={() => setActiveOverlayIndex(null)}>
-                <img src={speaker.eventSpeakerHomePageImage} alt={speaker.eventSpeakerName} loading="lazy" />
+                <img src={mediaUrl(speaker.eventSpeakerHomePageImage)} alt={speaker.eventSpeakerName} loading="lazy" />
                 <div>
                   <p>{speaker.eventSpeakerName}</p>
                   <p>{speaker.eventSpeakerCompany}</p>

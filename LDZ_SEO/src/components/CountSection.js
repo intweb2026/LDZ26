@@ -5,7 +5,7 @@ import "../assets/css//CountSection.css";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useApiData } from "../../src/common/ApiContext";
-import API_BASE_URL from '../config/apiConfig';
+import API_BASE_URL, { mediaUrl } from '../config/apiConfig';
 
 const CountSection = () => {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 });
@@ -52,7 +52,7 @@ const CountSection = () => {
       className="HomeScreen_statSection__2npwm"
       ref={ref}
       style={{
-        backgroundImage: `url(${homeVideoSettings?.eventStataticsBackImage})`,
+        backgroundImage: `url(${mediaUrl(homeVideoSettings?.eventStataticsBackImage)})`,
       }}
     >
       <div className="HomeScreen_statsContainer__ah6rE">

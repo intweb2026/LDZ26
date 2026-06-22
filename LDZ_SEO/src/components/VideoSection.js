@@ -1,5 +1,6 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
+import { mediaUrl } from '../config/apiConfig';
 import "../../src/assets/css/video.css";
 import { useApiData } from "../../src/common/ApiContext";
 const arrowIcon = "/images/WebCommonImages/up-arrow-white.png";
@@ -31,7 +32,7 @@ const VideoSection = () => {
           <link
             rel="preload"
             as="image"
-            href={homeVideoSettings.eventDetailBackImage}
+            href={mediaUrl(homeVideoSettings.eventDetailBackImage)}
             fetchpriority="high"
           />
         </Helmet>
@@ -48,14 +49,14 @@ const VideoSection = () => {
                 loop
                 playsInline
                 preload="none"
-                poster={homeVideoSettings.videoReplaceImage}
+                poster={mediaUrl(homeVideoSettings.videoReplaceImage)}
               >
                 <source
-                  src={homeVideoSettings.videoLinkwebm}
+                  src={mediaUrl(homeVideoSettings.videoLinkwebm)}
                   type="video/webm"
                 />
                 <source
-                  src={homeVideoSettings.videoLinkmp4}
+                  src={mediaUrl(homeVideoSettings.videoLinkmp4)}
                   type="video/mp4"
                 />
                 Your browser does not support the video tag.
@@ -70,7 +71,7 @@ const VideoSection = () => {
               <div
                 className="text custom-style-header-text"
                 style={{
-                  "--header-image": `url(${homeVideoSettings?.eventDetailBackImage})`,
+                  "--header-image": `url(${mediaUrl(homeVideoSettings?.eventDetailBackImage)})`,
                 }}
               >
                 <div>

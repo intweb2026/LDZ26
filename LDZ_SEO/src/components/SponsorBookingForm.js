@@ -1,4 +1,4 @@
-﻿import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import "../../src/assets/css/BookingForm.css";
 import { useNavigate, useLocation } from "react-router-dom";
 import "../assets/css/SponsorBookingPay.css";
@@ -9,7 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useSSRData } from "../common/useSSRData";
 import { Helmet } from "react-helmet-async";
 import { usePageSeo } from "../common/usePageSeo";
-import API_BASE_URL from '../config/apiConfig';
+import API_BASE_URL, { mediaUrl } from '../config/apiConfig';
 const toggle = "/images/WebCommonImages/toggle.png";
 const cardLabel = "/images/WebCommonImages/card-labels.png";
 const lockIcon = "/images/WebCommonImages/lock.png";
@@ -864,7 +864,7 @@ const SponsorBookingForm = () => {
               className="PageForm_headerInner__sdlhn"
               style={{ maxWidth: "1280px" }}
             >
-              <img onClick={() => { window.location.href = "/"; }} src={navLogos?.whiteLogo} alt="Site logo"></img>
+              <img onClick={() => { window.location.href = "/"; }} src={mediaUrl(navLogos?.whiteLogo)} alt="Site logo"></img>
             </div>
           </div>
           <div className="SponsorFormV2_container__d5aHK">
@@ -1048,7 +1048,7 @@ const SponsorBookingForm = () => {
                               <script xmlns=""></script>
                             </svg>
                             <div className="SponsorFormV2_ticketLogo__Nm2y4">
-                              <img src={navLogos?.whiteLogo} alt="logo img"></img>
+                              <img src={mediaUrl(navLogos?.whiteLogo)} alt="logo img"></img>
                             </div>
                           </div>
                         </div>
@@ -1214,7 +1214,7 @@ const SponsorBookingForm = () => {
                             <script xmlns=""></script>
                           </svg>
                           <div className="SponsorFormV2_ticketLogo__Nm2y4">
-                            <img src={navLogos?.whiteLogo} alt="logo img"></img>
+                            <img src={mediaUrl(navLogos?.whiteLogo)} alt="logo img"></img>
                           </div>
                         </div>
                       </div>

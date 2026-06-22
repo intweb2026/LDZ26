@@ -7,7 +7,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../assets/css/FeaturedSpeaker.css";
 import { useSSRData } from "../common/useSSRData";
-import API_BASE_URL from '../config/apiConfig';
+import API_BASE_URL, { mediaUrl } from '../config/apiConfig';
 const leftArrowIcon = "/images/WebCommonImages/icon-arrow-left.png";
 const rightArrowIcon = "/images/WebCommonImages/icon-arrow-right.png";
 
@@ -94,7 +94,7 @@ const FeaturedSpeaker = ({ title }) => {
                 onClick={() => handleClick(member)}
               >
                 <img
-                  src={member.eventSpeakerFeaturedPageImage || "/placeholder.svg"}
+                  src={mediaUrl(member.eventSpeakerFeaturedPageImage) || "/placeholder.svg"}
                   alt={member.eventSpeakerName}
                   loading="lazy"
                   width="200"

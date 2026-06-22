@@ -1,4 +1,4 @@
-﻿// src/components/TrendDescriptionPage.js
+// src/components/TrendDescriptionPage.js
 import { useState, useEffect, useRef } from "react";
 import { useLocation, useParams, useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
@@ -15,7 +15,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { Helmet } from "react-helmet-async";
 import { useSSRData } from "../common/useSSRData";
 import { useApiData } from "../common/ApiContext";
-import API_BASE_URL from '../config/apiConfig';
+import API_BASE_URL, { mediaUrl } from '../config/apiConfig';
 const leftArrowIcon = "/images/WebCommonImages/icon-arrow-left.png";
 const rightArrowIcon = "/images/WebCommonImages/icon-arrow-right.png";
 
@@ -438,7 +438,7 @@ const TrendDescriptionPage = () => {
                                   }}
                                 >
                                   <img
-                                    src={item?.sponsorComapnyLogo}
+                                    src={mediaUrl(item?.sponsorComapnyLogo)}
                                     alt={`Sponsor ${i + 1}`}
                                   />
                                   {item?.sponsorType !== "Dummy" && (
@@ -473,7 +473,7 @@ const TrendDescriptionPage = () => {
                                   }}
                                 >
                                   <img
-                                    src={item?.sponsorComapnyLogo}
+                                    src={mediaUrl(item?.sponsorComapnyLogo)}
                                     alt={`Sponsor ${i + 1}`}
                                   />
                                   {item?.sponsorType !== "Dummy" && (

@@ -2,6 +2,7 @@
 // Data now comes from SSR (window.__INITIAL_DATA__.news). No client-side fetch.
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { mediaUrl } from '../config/apiConfig';
 import "../assets/css/LatestNews.css";
 import { useSSRData } from "../common/useSSRData";
 
@@ -87,7 +88,7 @@ const LatestNews = () => {
                 >
                   <h3>{featuredLatestArticle?.newsTitle}</h3>
                   <img
-                    src={featuredLatestArticle?.newsImage}
+                    src={mediaUrl(featuredLatestArticle?.newsImage)}
                     alt={featuredLatestArticle?.newsImageAltText}
                     loading="lazy"
                     style={{ maxWidth: "100%", height: "auto", objectFit: "cover" }}

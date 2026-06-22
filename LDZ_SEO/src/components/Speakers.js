@@ -10,7 +10,7 @@ import "../assets/css/speakers.css";
 import "../assets/css/form.css";
 import { Helmet } from "react-helmet-async";
 import { usePageSeo } from "../common/usePageSeo";
-import API_BASE_URL from '../config/apiConfig';
+import API_BASE_URL, { mediaUrl } from '../config/apiConfig';
 const Speakers = () => {
   const navigate = useNavigate();
   const [windowWidth, setWindowWidth] = useState(
@@ -370,7 +370,7 @@ const Speakers = () => {
                   style={{ textDecoration: "none", color: "inherit" }}
                 >
                   <img
-                    src={speaker.eventSpeakerFeaturedPageImage}
+                    src={mediaUrl(speaker.eventSpeakerFeaturedPageImage)}
                     alt={speaker.eventSpeakerName}
                     loading="lazy"
                     width="300"

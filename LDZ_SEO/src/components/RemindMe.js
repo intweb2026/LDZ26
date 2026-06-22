@@ -14,7 +14,7 @@ import { FormControl, FormHelperText } from "@mui/material";
 import { Helmet } from "react-helmet-async";
 import { useApiData } from "../common/ApiContext";
 import { usePageSeo } from "../common/usePageSeo";
-import API_BASE_URL from '../config/apiConfig';
+import API_BASE_URL, { mediaUrl } from '../config/apiConfig';
 const countries = getNames();
 
 const RemindMeLater = () => {
@@ -300,7 +300,7 @@ const RemindMeLater = () => {
             className="PageForm_headerInner__sdlhn"
             style={{ maxWidth: "1070px" }}
           >
-            <img onClick={() => { window.location.href = "/"; }} src={navLogos?.whiteLogo} alt="site logo"></img>
+            <img onClick={() => { window.location.href = "/"; }} src={mediaUrl(navLogos?.whiteLogo)} alt="site logo"></img>
           </div>
         </div>
         <div className="RemindMeLater_container__vWyw0">

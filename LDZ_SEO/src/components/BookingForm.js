@@ -1,4 +1,4 @@
-﻿import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import "../../src/assets/css/BookingForm.css";
 import { useNavigate, useLocation } from "react-router-dom";
 import SimpleStripeForm from "./PaymentForm";
@@ -6,7 +6,7 @@ import { useApiData } from "../../src/common/ApiContext";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useSSRData } from "../common/useSSRData";
-import API_BASE_URL from '../config/apiConfig';
+import API_BASE_URL, { mediaUrl } from '../config/apiConfig';
 const toggle = "/images/WebCommonImages/toggle.png";
 const cardLabel = "/images/WebCommonImages/card-labels.png";
 const lockIcon = "/images/WebCommonImages/lock.png";
@@ -725,7 +725,7 @@ const BookingForm = () => {
           >
             <img
               onClick={() => { window.location.href = "/"; }}
-              src={navLogos?.whiteLogo}
+              src={mediaUrl(navLogos?.whiteLogo)}
               alt="site logo"
             ></img>
           </div>
@@ -874,7 +874,7 @@ const BookingForm = () => {
                             <script xmlns=""></script>
                           </svg>
                           <div className="BookingFormV2_ticketLogo__wN5Ja">
-                            <img src={navLogos?.whiteLogo} alt="logo img"></img>
+                            <img src={mediaUrl(navLogos?.whiteLogo)} alt="logo img"></img>
                           </div>
                         </div>
                       </div>
@@ -1041,7 +1041,7 @@ const BookingForm = () => {
                           <script xmlns=""></script>
                         </svg>
                         <div className="BookingFormV2_ticketLogo__wN5Ja">
-                          <img src={navLogos?.whiteLogo} alt="logo img"></img>
+                          <img src={mediaUrl(navLogos?.whiteLogo)} alt="logo img"></img>
                         </div>
                       </div>
                     </div>

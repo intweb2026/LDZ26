@@ -10,7 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { Helmet } from "react-helmet-async";
 import { usePageSeo } from "../common/usePageSeo";
 import { useApiData } from "../common/ApiContext";
-import API_BASE_URL from '../config/apiConfig';
+import API_BASE_URL, { mediaUrl } from '../config/apiConfig';
 const leftArrowIcon = "/images/WebCommonImages/icon-arrow-left.png";
 const rightArrowIcon = "/images/WebCommonImages/icon-arrow-right.png";
 
@@ -273,7 +273,7 @@ const News = () => {
                     <div className="NewsCard_innerContainer__8EUva">
                       <div className="NewsCard_upperContainer__FPKzO">
                         <img
-                          src={featuredArticle?.newsImage}
+                          src={mediaUrl(featuredArticle?.newsImage)}
                           alt={featuredArticle?.newsImageAltText}
                         />
                       </div>
@@ -312,7 +312,7 @@ const News = () => {
                         <div className="NewsCard_innerContainer__8EUva">
                           <div className="NewsCard_upperContainer__FPKzO">
                             <img
-                              src={news?.newsImage}
+                              src={mediaUrl(news?.newsImage)}
                               alt={news?.newsImageAltText}
                               style={{ height: "208px" }}
                               loading="lazy"
@@ -374,7 +374,7 @@ const News = () => {
                         >
                           <h3>{featuredLatestArticle?.newsTitle}</h3>
                           <img
-                            src={featuredLatestArticle?.newsImage}
+                            src={mediaUrl(featuredLatestArticle?.newsImage)}
                             alt={featuredLatestArticle?.newsImageAltText}
                             loading="lazy"
                             style={{
@@ -416,7 +416,7 @@ const News = () => {
                 >
                   <div className="NewsListingCard_left__qswsn">
                     <img
-                      src={article.newsImage}
+                      src={mediaUrl(article.newsImage)}
                       alt={article.newsImageAltText}
                       loading="lazy"
                     ></img>

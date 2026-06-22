@@ -16,7 +16,7 @@ import TestimonialCarousel from "./TestimonialCarousel";
 import { useSSRData } from "../common/useSSRData";
 import { usePageSeo } from "../common/usePageSeo";
 import { useApiData } from "../common/ApiContext";
-import API_BASE_URL from '../config/apiConfig';
+import API_BASE_URL, { mediaUrl } from '../config/apiConfig';
 const leftArrowIcon = "/images/WebCommonImages/icon-arrow-left.png";
 const rightArrowIcon = "/images/WebCommonImages/icon-arrow-right.png";
 const emailIcon = "/images/WebCommonImages/msg.png";
@@ -553,7 +553,7 @@ const Sponsors = () => {
                                     }}
                                   >
                                     <img
-                                      src={item?.sponsorComapnyLogo}
+                                      src={mediaUrl(item?.sponsorComapnyLogo)}
                                       alt={`Sponsor ${i + 1}`}
                                     />
                                     {item?.sponsorType !== "Dummy" && (
@@ -595,7 +595,7 @@ const Sponsors = () => {
                                       }}
                                     >
                                       <img
-                                        src={item?.sponsorComapnyLogo}
+                                        src={mediaUrl(item?.sponsorComapnyLogo)}
                                         alt={`Sponsor ${i + 1}`}
                                       />
                                       {item?.sponsorType !== "Dummy" && (
@@ -630,7 +630,7 @@ const Sponsors = () => {
                                       }}
                                     >
                                       <img
-                                        src={item?.sponsorComapnyLogo}
+                                        src={mediaUrl(item?.sponsorComapnyLogo)}
                                         alt={`Sponsor ${i + 1}`}
                                       />
                                       {item?.sponsorType !== "Dummy" && (
@@ -671,7 +671,7 @@ const Sponsors = () => {
                                 //     }}
                                 //   >
                                 //     <img
-                                //       src={item?.sponsorComapnyLogo}
+                                //       src={mediaUrl(item?.sponsorComapnyLogo)}
                                 //       alt={`Sponsor ${i + 1}`}
                                 //     />
                                 //     {item?.sponsorType !== "Dummy" && (

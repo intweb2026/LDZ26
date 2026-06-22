@@ -1,6 +1,7 @@
 // src/components/LogoCarousel.js
 // Data now comes from SSR (window.__INITIAL_DATA__.logoCarousel). No client-side fetch.
 import React, { useRef } from "react";
+import { mediaUrl } from '../config/apiConfig';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -54,7 +55,7 @@ const LogoCarousel = () => {
             {logoList?.map((logo, index) => (
               <img
                 key={index}
-                src={logo?.logoLink}
+                src={mediaUrl(logo?.logoLink)}
                 alt="Sponsor's Logo"
                 loading="lazy"
                 width="200"

@@ -16,7 +16,7 @@ import Slider from "react-slick";
 import { Helmet } from "react-helmet-async";
 import { usePageSeo } from "../common/usePageSeo";
 import { useApiData } from "../common/ApiContext";
-import API_BASE_URL from '../config/apiConfig';
+import API_BASE_URL, { mediaUrl } from '../config/apiConfig';
 
 const allTopics = [
   {
@@ -374,7 +374,7 @@ const Attandees = () => {
                             className="PastAttendees_card__vhIWG"
                           >
                             <img
-                              src={group.pastAttandeeLogo}
+                              src={mediaUrl(group.pastAttandeeLogo)}
                               alt={group.pastAttandeeName}
                             ></img>
                             <div className="PastAttendees_overlay__IOoZm">
@@ -440,7 +440,7 @@ const Attandees = () => {
                             {leader.items.map((data, dataIndex) => (
                               <div key={dataIndex} className="Operators_card__YB2Bt">
                                 <img
-                                  src={data.leaderLogo}
+                                  src={mediaUrl(data.leaderLogo)}
                                   alt={data.leaderName}
                                 ></img>
                                 <div className="Operators_overlay__A7m4i">

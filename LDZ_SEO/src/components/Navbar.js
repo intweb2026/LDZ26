@@ -361,7 +361,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import "../assets/css/navbar.css";
 import GoogleTranslate from "./GoogleTranslate";
 import { useSSRData } from "../common/useSSRData";
-import API_BASE_URL from '../config/apiConfig';
+import API_BASE_URL, { mediaUrl } from '../config/apiConfig';
 const closeBtn = '/images/WebCommonImages/close-white.png';
 const hamburger = '/images/WebCommonImages/navbar-toggle.png';
 const leftArrowIcon = '/images/WebCommonImages/icon-arrow-left.png';
@@ -526,7 +526,7 @@ const Navbar = ({ disableScrollEffect = false, forceScrolled = false }) => {
             <span className="sr-only">Home</span>
             {navLogos ? (
               <img
-                src={showWhiteNavbar ? navLogos.blackLogo : navLogos.whiteLogo}
+                src={mediaUrl(showWhiteNavbar ? navLogos.blackLogo : navLogos.whiteLogo)}
                 alt="website-logo"
                 height={50}
                 width={200}

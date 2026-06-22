@@ -15,7 +15,7 @@ import TestimonialCarousel from "./TestimonialCarousel";
 import { Helmet } from "react-helmet-async";
 import { useApiData } from "../common/ApiContext";
 import { usePageSeo } from "../common/usePageSeo";
-import API_BASE_URL from '../config/apiConfig';
+import API_BASE_URL, { mediaUrl } from '../config/apiConfig';
 const leftArrowIcon = "/images/WebCommonImages/icon-arrow-left.png";
 const rightArrowIcon = "/images/WebCommonImages/icon-arrow-right.png";
 const emailIcon = "/images/WebCommonImages/msg.png";
@@ -1134,7 +1134,7 @@ const ExhibitorPackages = () => {
                     {logoList.map((logo, index) => (
                       <img
                         key={index}
-                        src={logo?.logoLink}
+                        src={mediaUrl(logo?.logoLink)}
                         alt="Sponsor's Logo"
                         loading="lazy"
                         width="200"

@@ -11,7 +11,7 @@ import Error404 from "./Error404";
 import { Helmet } from "react-helmet-async";
 import { useSSRData } from "../common/useSSRData";
 import "../../src/assets/css/form.css";
-import API_BASE_URL from '../config/apiConfig';
+import API_BASE_URL, { mediaUrl } from '../config/apiConfig';
 const SpeakerProfile = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
@@ -326,7 +326,7 @@ const SpeakerProfile = () => {
                 <div
                   className="DetailsContainer_imageContainer__ncJwH"
                   style={{
-                    backgroundImage: `url(${speakerData[0]?.eventSpeakerProfilePageImage})`,
+                    backgroundImage: `url(${mediaUrl(speakerData[0]?.eventSpeakerProfilePageImage)})`,
                     backgroundSize: "cover",
                   }}
                 ></div>

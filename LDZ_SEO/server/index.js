@@ -1,4 +1,23 @@
 // server/index.js
+
+// Load .env from the project root before anything else
+(function loadEnv() {
+  const fs = require('fs');
+  const path = require('path');
+  const envPath = path.resolve(__dirname, '..', '.env');
+  try {
+    const lines = fs.readFileSync(envPath, 'utf8').split('\n');
+    for (const line of lines) {
+      const trimmed = line.trim();
+      if (!trimmed || trimmed.startsWith('#') || !trimmed.includes('=')) continue;
+      const eqIdx = trimmed.indexOf('=');
+      const key = trimmed.slice(0, eqIdx).trim();
+      const value = trimmed.slice(eqIdx + 1).trim();
+      if (!(key in process.env)) process.env[key] = value;
+    }
+  } catch (_) {}
+})();
+
 // 🧩 Ignore all non-JavaScript imports for SSR
 require("ignore-styles").default([
   ".css", ".scss", ".sass", ".less", ".styl"

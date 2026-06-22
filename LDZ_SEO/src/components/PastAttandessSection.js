@@ -5,7 +5,7 @@ import "../assets/css/PastAttandessSection.css";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useApiData } from "../../src/common/ApiContext";
-import API_BASE_URL from '../config/apiConfig';
+import API_BASE_URL, { mediaUrl } from '../config/apiConfig';
 const PastAttandessSection = () => {
   const navigate = useNavigate();
   const [subscriberName, setSubscriberName] = useState("");
@@ -188,7 +188,7 @@ const PastAttandessSection = () => {
   return (
     <article
       className="HomeScreen_registerSection__LKEHw"
-      style={{ backgroundImage: `url(${homeVideoSettings?.eventExpertSpeakerBackImage})` }}
+      style={{ backgroundImage: `url(${mediaUrl(homeVideoSettings?.eventExpertSpeakerBackImage)})` }}
     >
       <div className="HomeScreen_registerContainer__X9V4n">
         <div className="HomeScreen_expertSpeakers__Zs1Eo">

@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import "react-phone-number-input/style.css";
 import { useNavigate } from "react-router-dom";
@@ -18,7 +18,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Helmet } from "react-helmet-async";
 import { usePageSeo } from "../common/usePageSeo";
-import API_BASE_URL from '../config/apiConfig';
+import API_BASE_URL, { mediaUrl } from '../config/apiConfig';
 const plusIcon = "/images/WebCommonImages/plus.png";
 const closeBtn = "/images/WebCommonImages/del-cross.png";
 const toggle = "/images/WebCommonImages/toggle.png";
@@ -1239,7 +1239,7 @@ const CompanyRegistrationForm = () => {
                   onClick={() => {
                     window.location.href = "/";
                   }}
-                  src={navLogos?.whiteLogo}
+                  src={mediaUrl(navLogos?.whiteLogo)}
                   alt="Site logo"
                 ></img>
               </div>
@@ -1289,7 +1289,7 @@ const CompanyRegistrationForm = () => {
                                 </div>
                                 <div>
                                   <img
-                                    src={navLogos?.whiteLogo}
+                                    src={mediaUrl(navLogos?.whiteLogo)}
                                     alt="Logo Image"
                                   ></img>
                                 </div>
@@ -1315,7 +1315,7 @@ const CompanyRegistrationForm = () => {
                               </div>
                               <div>
                                 <img
-                                  src={navLogos?.blackLogo}
+                                  src={mediaUrl(navLogos?.blackLogo)}
                                   alt="Logo Image"
                                 ></img>
                               </div>
@@ -1419,7 +1419,7 @@ const CompanyRegistrationForm = () => {
                   onClick={() => {
                     window.location.href = "/";
                   }}
-                  src={navLogos?.whiteLogo}
+                  src={mediaUrl(navLogos?.whiteLogo)}
                   alt="site logo"
                 ></img>
               </div>
@@ -1473,7 +1473,7 @@ const CompanyRegistrationForm = () => {
                               <TicketSVG />
                               <div className="BookingFormV2_ticketLogo__wN5Ja">
                                 <img
-                                  src={navLogos?.whiteLogo}
+                                  src={mediaUrl(navLogos?.whiteLogo)}
                                   alt="logo img"
                                 ></img>
                               </div>
@@ -1547,7 +1547,7 @@ const CompanyRegistrationForm = () => {
                             <TicketSVG />
                             <div className="BookingFormV2_ticketLogo__wN5Ja">
                               <img
-                                src={navLogos?.whiteLogo}
+                                src={mediaUrl(navLogos?.whiteLogo)}
                                 alt="logo img"
                               ></img>
                             </div>
@@ -1608,7 +1608,7 @@ const CompanyRegistrationForm = () => {
                 onClick={() => {
                   window.location.href = "/";
                 }}
-                src={navLogos?.whiteLogo}
+                src={mediaUrl(navLogos?.whiteLogo)}
                 alt="site logo"
               ></img>
             </div>

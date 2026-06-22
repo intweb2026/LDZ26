@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "react-phone-number-input/style.css";
 import countryList from "react-select-country-list";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -19,7 +19,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Helmet } from "react-helmet-async";
 import { usePageSeo } from "../common/usePageSeo";
-import API_BASE_URL from '../config/apiConfig';
+import API_BASE_URL, { mediaUrl } from '../config/apiConfig';
 const plusIcon = "/images/WebCommonImages/plus.png";
 const closeBtn = "/images/WebCommonImages/del-cross.png";
 const toggle = "/images/WebCommonImages/toggle.png";
@@ -1247,7 +1247,7 @@ const AddSponsorDelegateForm = () => {
                   onClick={() => {
                     window.location.href = "/";
                   }}
-                  src={navLogos?.whiteLogo}
+                  src={mediaUrl(navLogos?.whiteLogo)}
                   alt="Site logo"
                 ></img>
               </div>
@@ -1297,7 +1297,7 @@ const AddSponsorDelegateForm = () => {
                                 </div>
                                 <div>
                                   <img
-                                    src={navLogos?.whiteLogo}
+                                    src={mediaUrl(navLogos?.whiteLogo)}
                                     alt="Logo Image"
                                   ></img>
                                 </div>
@@ -1323,7 +1323,7 @@ const AddSponsorDelegateForm = () => {
                               </div>
                               <div>
                                 <img
-                                  src={navLogos?.blackLogo}
+                                  src={mediaUrl(navLogos?.blackLogo)}
                                   alt="Logo Image"
                                 ></img>
                               </div>
@@ -1427,7 +1427,7 @@ const AddSponsorDelegateForm = () => {
                   onClick={() => {
                     window.location.href = "/";
                   }}
-                  src={navLogos?.whiteLogo}
+                  src={mediaUrl(navLogos?.whiteLogo)}
                   alt="Site logo"
                 ></img>
               </div>
@@ -1523,7 +1523,7 @@ const AddSponsorDelegateForm = () => {
                               <TicketSVG />
                               <div className="SponsorFormV2_ticketLogo__Nm2y4">
                                 <img
-                                  src={navLogos?.whiteLogo}
+                                  src={mediaUrl(navLogos?.whiteLogo)}
                                   alt="logo img"
                                 ></img>
                               </div>
@@ -1599,7 +1599,7 @@ const AddSponsorDelegateForm = () => {
                             <TicketSVG />
                             <div className="SponsorFormV2_ticketLogo__Nm2y4">
                               <img
-                                src={navLogos?.whiteLogo}
+                                src={mediaUrl(navLogos?.whiteLogo)}
                                 alt="logo img"
                               ></img>
                             </div>
@@ -1636,7 +1636,7 @@ const AddSponsorDelegateForm = () => {
                 onClick={() => {
                   window.location.href = "/";
                 }}
-                src={navLogos?.whiteLogo}
+                src={mediaUrl(navLogos?.whiteLogo)}
                 alt="site logo"
               ></img>
             </div>
