@@ -10,11 +10,11 @@ import Route from "./Routes";
 // import { initFirebaseBackend } from "./helpers/firebase_helper";
 
 // Fake Backend
-import fakeBackend from "./helpers/AuthType/fakeBackend";
+// import fakeBackend from "./helpers/AuthType/fakeBackend";
 import { ToastContainer } from "react-toastify";
 import { ApiDataProvider } from "../src/Components/Common/ApiContext.js";
 // Activating fake backend
-fakeBackend();
+// fakeBackend();
 
 // const firebaseConfig = {
 //   apiKey: process.env.REACT_APP_APIKEY,
