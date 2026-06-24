@@ -96,7 +96,8 @@
     "swiper": "^11.1.14",
     "web-vitals": "^4.2.3",
     "yet-another-react-lightbox": "^3.21.6",
-    "yup": "^1.4.0"
+    "yup": "^1.4.0",
+    "serve": "^14.2.6"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -11,21 +11,17 @@ const RESEND_SECONDS = 60;
 const Login = () => {
   const navigate = useNavigate();
 
-  // login step state
-  const [step, setStep] = useState("login"); // "login" | "otp"
+  const [step, setStep] = useState("login");
   const [userId, setUserId] = useState(null);
 
-  // login form
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordShow, setPasswordShow] = useState(false);
 
-  // otp form
   const [otp, setOtp] = useState("");
   const [resendTimer, setResendTimer] = useState(0);
   const timerRef = useRef(null);
 
-  // shared
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -48,43 +44,58 @@ const Login = () => {
   };
 
   const handleLoginSubmit = async (e) => {
-    e.preventDefault();
-    setMessage("");
-    setLoading(true);
-    try {
-      const response = await axios.post(BASE_URL + "/admin1/customlogin", { email, password });
-      if (response.otp_sent) {
-        setUserId(response.user_id);
-        setStep("otp");
-        startResendTimer();
-        setMessage("");
-      } else {
-        setMessage("❌ " + (response.message || "Invalid credentials"));
-      }
-    } catch (error) {
-      setMessage("❌ Invalid email or password");
-    } finally {
-      setLoading(false);
+  e.preventDefault();
+  setMessage("");
+  setLoading(true);
+  try {
+    const response = await axios.post(
+      API_BASE_URL + "/admin1/customlogin",
+      { email, password },
+      { headers: { "Content-Type": "application/json" } }
+    );
+
+    const data = response.data;
+    console.log('data: ', data);
+
+    // ← REMOVED the guard block that was blocking everything
+
+    if (data.otp_sent) {
+      setUserId(data.user_id);
+      setStep("otp");
+      startResendTimer();
+      setMessage("");
+    } else {
+      setMessage("❌ " + (data.message || "Invalid credentials"));
     }
-  };
+  } catch (error) {
+    console.error("Login error:", error);
+    const errMsg = error?.response?.data?.message || error?.message || "Invalid email or password";
+    setMessage("❌ " + errMsg);
+  } finally {
+    setLoading(false);
+  }
+};
 
   const handleOtpSubmit = async (e) => {
     e.preventDefault();
     setMessage("");
     setLoading(true);
     try {
-      const response = await axios.post(BASE_URL + "/admin1/verifyotp", { user_id: userId, otp });
-      if (response.status) {
-        localStorage.setItem("authUser", JSON.stringify(response.user));
-        localStorage.setItem("permissions", JSON.stringify(response.permissions));
-        localStorage.setItem("detailed_permissions", JSON.stringify(response.detailed_permissions));
+      const response = await axios.post(API_BASE_URL + "/admin1/verifyotp", { user_id: userId, otp });
+      const data = response.data;
+
+      if (data.status) {
+        localStorage.setItem("authUser", JSON.stringify(data.user));
+        localStorage.setItem("permissions", JSON.stringify(data.permissions));
+        localStorage.setItem("detailed_permissions", JSON.stringify(data.detailed_permissions));
         localStorage.setItem("loginTime", new Date().getTime().toString());
         localStorage.setItem("token", "custom-auth-token");
 
         try {
-          const navResponse = await axios.get(BASE_URL + "/admin1/getnavbardata");
-          if (navResponse.status) {
-            localStorage.setItem("navbarData", JSON.stringify(navResponse.navbarData));
+          const navResponse = await axios.get(API_BASE_URL + "/admin1/getnavbardata");
+          const navData = navResponse.data;
+          if (navData.status) {
+            localStorage.setItem("navbarData", JSON.stringify(navData.navbarData));
           }
         } catch (navError) {
           console.error("Error fetching navbar data:", navError);
@@ -93,10 +104,12 @@ const Login = () => {
         setMessage("✅ Login Successful!");
         navigate("/dashboard");
       } else {
-        setMessage("❌ " + (response.message || "Invalid OTP"));
+        setMessage("❌ " + (data.message || "Invalid OTP"));
       }
     } catch (error) {
-      setMessage("❌ " + (error || "Invalid OTP"));
+      console.error("OTP error:", error);
+      const errMsg = error?.response?.data?.message || error?.message || "Invalid OTP";
+      setMessage("❌ " + errMsg);
     } finally {
       setLoading(false);
     }
@@ -106,13 +119,15 @@ const Login = () => {
     setMessage("");
     setLoading(true);
     try {
-      const response = await axios.post(BASE_URL + "/admin1/customlogin", { email, password });
-      if (response.otp_sent) {
+      const response = await axios.post(API_BASE_URL + "/admin1/customlogin", { email, password });
+      const data = response.data;
+
+      if (data.otp_sent) {
         startResendTimer();
         setOtp("");
         setMessage("✅ A new OTP has been sent to your email.");
       } else {
-        setMessage("❌ " + (response.message || "Could not resend OTP"));
+        setMessage("❌ " + (data.message || "Could not resend OTP"));
       }
     } catch (error) {
       setMessage("❌ Could not resend OTP. Please go back and try again.");
@@ -160,7 +175,7 @@ const Login = () => {
                         </div>
 
                         {message && (
-                          <Alert color={message.includes("Successful") ? "success" : "danger"}>
+                          <Alert color={message.includes("✅") ? "success" : "danger"}>
                             {message}
                           </Alert>
                         )}

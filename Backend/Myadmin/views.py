@@ -25,6 +25,7 @@ import requests
 import jwt
 from django.conf import settings
 from django.contrib.auth.hashers import make_password, check_password
+from django.utils import timezone 
 #---------------------------- Api For Upload Media ----------------------------#
 @api_view(['POST'])
 def upload_media(request):
@@ -5993,7 +5994,7 @@ def customLoginFun(request):
         if check_password(password, user.password):
             otp = str(random.randint(100000, 999999))
             user.otp_code = otp
-            user.otp_created_at = datetime.now()
+            user.otp_created_at = timezone.now()
             user.save(update_fields=['otp_code', 'otp_created_at'])
 
             html_content = f"""
@@ -6014,11 +6015,11 @@ def customLoginFun(request):
             msg.attach_alternative(html_content, "text/html")
             msg.send()
 
-            return JsonResponse({'status': True, 'otp_sent': True, 'user_id': user.id})
+            return Response({'status': True, 'otp_sent': True, 'user_id': user.id})
         else:
-            return JsonResponse({'status': False, 'message': 'Invalid password'}, status=401)
+            return Response({'status': False, 'message': 'Invalid password'}, status=401)
     except AdminUser.DoesNotExist:
-        return JsonResponse({'status': False, 'message': 'User not found'}, status=404)
+        return Response({'status': False, 'message': 'User not found'}, status=404)
 
 
 @api_view(['POST'])
@@ -6028,30 +6029,31 @@ def verifyOTPFun(request):
     otp = request.data.get('otp')
 
     if not user_id or not otp:
-        return JsonResponse({'status': False, 'message': 'user_id and otp are required'}, status=400)
+        return Response({'status': False, 'message': 'user_id and otp are required'}, status=400)
 
     try:
         user = AdminUser.objects.get(id=user_id, isDelete="No")
     except AdminUser.DoesNotExist:
-        return JsonResponse({'status': False, 'message': 'User not found'}, status=404)
+        return Response({'status': False, 'message': 'User not found'}, status=404)
 
     if not user.otp_code or not user.otp_created_at:
-        return JsonResponse({'status': False, 'message': 'No OTP requested. Please login again.'}, status=400)
+        return Response({'status': False, 'message': 'No OTP requested. Please login again.'}, status=400)
 
     expiry = user.otp_created_at + timedelta(minutes=10)
-    if datetime.now() > expiry:
+    if timezone.now() > expiry:
         user.otp_code = None
         user.otp_created_at = None
         user.save(update_fields=['otp_code', 'otp_created_at'])
-        return JsonResponse({'status': False, 'message': 'OTP has expired. Please login again.'}, status=400)
+        return Response({'status': False, 'message': 'OTP has expired. Please login again.'}, status=400)
 
     if user.otp_code != str(otp):
-        return JsonResponse({'status': False, 'message': 'Invalid OTP'}, status=400)
+        return Response({'status': False, 'message': 'Invalid OTP'}, status=400)
 
     user.otp_code = None
     user.otp_created_at = None
     user.save(update_fields=['otp_code', 'otp_created_at'])
 
+    # ✅ Build detailed permissions (was missing — caused 'detailed' not defined error)
     detailed = {}
     if user.role:
         detailed = user.role.detailed_permissions.copy()
@@ -6077,7 +6079,7 @@ def verifyOTPFun(request):
         if key not in detailed:
             detailed[key] = []
 
-    return JsonResponse({
+    return Response({
         'status': True,
         'user': {
             'id': user.id,
@@ -6086,6 +6088,7 @@ def verifyOTPFun(request):
             'email': user.email,
             'role': user.role.name if user.role else "No Role"
         },
+        'permissions': detailed,            # ✅ added — Login.js needs this key
         'detailed_permissions': detailed
     })
 

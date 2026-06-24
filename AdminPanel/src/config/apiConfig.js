@@ -1,5 +1,3 @@
-const API_BASE_URL =
-  process.env.REACT_APP_API_BASE_URL ||
-  "https://www.australia.lithium-downstream-summit.com";
+const API_BASE_URL = "https://zrllhlpnzplxns1nrchqiksc.37.59.208.18.sslip.io";
 
 export default API_BASE_URL;
