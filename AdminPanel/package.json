@@ -102,7 +102,7 @@
   "scripts": {
     "start": "serve -s build -l 3000",
     "dev": "react-scripts start",
-    "build": "CI=false GENERATE_SOURCEMAP=false NODE_OPTIONS=--max-old-space-size=4096 react-scripts build",
+    "build": "CI=false GENERATE_SOURCEMAP=false react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
