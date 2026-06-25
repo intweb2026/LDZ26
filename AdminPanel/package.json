@@ -2,7 +2,7 @@
   "name": "default-velzon-thunk",
   "version": "4.3.0",
   "private": true,
-  "homepage": "/",
+  "homepage": "/adminpanel",
   "dependencies": {
     "@ckeditor/ckeditor5-build-classic": "^43.2.0",
     "@ckeditor/ckeditor5-react": "^9.3.0",
@@ -103,6 +103,7 @@
     "start": "serve -s build -l 3000",
     "dev": "react-scripts start",
     "build": "CI=false GENERATE_SOURCEMAP=false react-scripts build",
+    "postbuild": "node -e \"const {mkdirSync,cpSync,readdirSync,statSync,copyFileSync}=require('fs');mkdirSync('build/adminpanel',{recursive:true});cpSync('build/static','build/adminpanel/static',{recursive:true});readdirSync('build').filter(f=>statSync('build/'+f).isFile()).forEach(f=>{try{copyFileSync('build/'+f,'build/adminpanel/'+f)}catch(e){}})\"",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
