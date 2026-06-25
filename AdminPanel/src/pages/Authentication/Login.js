@@ -54,7 +54,7 @@ const Login = () => {
       { headers: { "Content-Type": "application/json" } }
     );
 
-    const data = response.data;
+    const data = response?.data ?? response;
     console.log('data: ', data);
 
     // ← REMOVED the guard block that was blocking everything
@@ -82,7 +82,7 @@ const Login = () => {
     setLoading(true);
     try {
       const response = await axios.post(API_BASE_URL + "/admin1/verifyotp", { user_id: userId, otp });
-      const data = response.data;
+      const data = response?.data ?? response;
 
       if (data.status) {
         localStorage.setItem("authUser", JSON.stringify(data.user));
@@ -93,7 +93,7 @@ const Login = () => {
 
         try {
           const navResponse = await axios.get(API_BASE_URL + "/admin1/getnavbardata");
-          const navData = navResponse.data;
+          const navData = navResponse?.data ?? navResponse;
           if (navData.status) {
             localStorage.setItem("navbarData", JSON.stringify(navData.navbarData));
           }
@@ -120,7 +120,7 @@ const Login = () => {
     setLoading(true);
     try {
       const response = await axios.post(API_BASE_URL + "/admin1/customlogin", { email, password });
-      const data = response.data;
+      const data = response?.data ?? response;
 
       if (data.otp_sent) {
         startResendTimer();
