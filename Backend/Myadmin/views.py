@@ -6039,7 +6039,10 @@ def verifyOTPFun(request):
     if not user.otp_code or not user.otp_created_at:
         return Response({'status': False, 'message': 'No OTP requested. Please login again.'}, status=400)
 
-    expiry = user.otp_created_at + timedelta(minutes=10)
+    otp_created_at = user.otp_created_at
+    if timezone.is_naive(otp_created_at):
+        otp_created_at = timezone.make_aware(otp_created_at)
+    expiry = otp_created_at + timedelta(minutes=10)
     if timezone.now() > expiry:
         user.otp_code = None
         user.otp_created_at = None
