@@ -18,6 +18,8 @@ import Popup from "reactjs-popup";
 import "../assets/css/popUp.css";
 import { Helmet } from "react-helmet-async";
 import { usePageSeo } from "../common/usePageSeo";
+import { useApiData } from "../common/ApiContext";
+import { downloadIcsFile } from "../common/calendarUtils";
 import API_BASE_URL from '../config/apiConfig';
 const callingSpeakerBg = "/images/WebImages/calling-all-speakers.webp";
 const beAPartOfOurBg = "/images/WebImages/be-a-part-of-our-multi-disciplined-agenda.webp";
@@ -26,6 +28,7 @@ const iconLearn = "/images/WebCommonImages/icon-learn.png";
 const iconLeadGeneration = "/images/WebCommonImages/icon-lead-generation.png";
 const iconAmplify = "/images/WebCommonImages/icon-amplify.png";
 const CallForPresentation = () => {
+  const { eventDetails } = useApiData();
   const [speakerPageData, setSpeakerPageData] = useState([]);
   const [paraOne, setParaOne] = useState("");
   const [paraTwo, setParaTwo] = useState("");
@@ -692,6 +695,7 @@ const CallForPresentation = () => {
                             }),
                           },
                         );
+                        downloadIcsFile(eventDetails);
                       } catch (error) {
                         console.error(
                           "Failed to save calendar subscriber:",

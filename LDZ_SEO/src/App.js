@@ -48,7 +48,7 @@ import "./assets/css/payOnline.css";
 import "./assets/css/SponsorBookingPay.css";
 import "./assets/css/Error404.css";
 import "./assets/css/popUp.css";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import ScrollToTop from "./ScrollToTop";
 import { ApiDataProvider } from "./common/ApiContext";
@@ -172,6 +172,7 @@ function App({ ssrData }) {
               <Route path="thank-you" element={<ThankYouPage />} />
               <Route path="securelogin" element={<SlideShare />} />
               <Route path="pay-online" element={<PayOnline />} />
+              <Route path="pay_online" element={<Navigate to="/pay-online" replace />} />
               <Route path="404" element={<Error404 />} />
               <Route path="*" element={<Error404 />} />
             </Route>

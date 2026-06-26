@@ -97,6 +97,10 @@ app.get("/featuredSpeaker", (req, res) => {
   res.redirect(301, "/featured-speakers");
 });
 
+app.get("/pay_online", (req, res) => {
+  res.redirect(301, "/pay-online");
+});
+
 /* -------------------- SSR ROUTE -------------------- */
 app.get("*", async (req, res) => {
   const staticFileRegex =

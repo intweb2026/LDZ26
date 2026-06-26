@@ -1228,7 +1228,7 @@ const ExhibitorPackages = () => {
                     <p>
                       <img src={emailIcon} alt="emil icon"></img>
                       <a
-                        href={`mailto:${item?.companyPersonEmail}?subject=Lithium &amp; Downstream Summit 2026`}
+                        href={`mailto:${item?.companyPersonEmail}?subject=Lithium Downstream Summit 2026`}
                         className="MediaScreen_email__vpDbe"
                       >
                         {item?.companyPersonEmail}
