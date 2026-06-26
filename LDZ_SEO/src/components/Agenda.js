@@ -10,6 +10,7 @@ import FeaturedSpeaker from "./FeaturedSpeaker";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { useApiData } from "../common/ApiContext";
+import { useSSRData } from "../common/useSSRData";
 import { usePageSeo } from "../common/usePageSeo";
 import "../../src/assets/css/form.css";
 import API_BASE_URL from '../config/apiConfig';
@@ -187,6 +188,8 @@ const Agenda = () => {
   const [personProposedTitleErrorMessage, setPersonProposedTitleErrorMessage] = useState("");
   const [personEmailErrorMessage, setPersonEmailErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const toEmails = useSSRData("toEmails") || "benny.scott@iq-hub.com";
 
   const {
     eventDetails,
@@ -267,12 +270,11 @@ const Agenda = () => {
     if (hasError) return;
   };
 
-  const submitBtnClk = (e) => {
+  const submitBtnClk = async (e) => {
     e.preventDefault();
 
     let hasError = false;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
 
     setPersonNameError(false);
     setPersonCompanyError(false);
@@ -280,39 +282,36 @@ const Agenda = () => {
     setPersonProposedTitleError(false);
 
     if (!personName || personName.trim() === "") {
-      setPersonNameErrorMessage(<p>Full name is required</p>)
+      setPersonNameErrorMessage(<p>Full name is required</p>);
       setPersonNameError(true);
       hasError = true;
     }
 
     if (!personCompany || personCompany.trim() === "") {
-      setPersonCompanyErrorMessage(<p>Company name is required</p>)
+      setPersonCompanyErrorMessage(<p>Company name is required</p>);
       setPersonCompanyError(true);
       hasError = true;
     }
 
     if (!personEmail || personEmail.trim() === "") {
-      setPersonEmailErrorMessage(<p>Email address is required</p>)
+      setPersonEmailErrorMessage(<p>Email address is required</p>);
       setPersonEmailError(true);
       hasError = true;
     } else if (!emailRegex.test(personEmail)) {
-      setPersonEmailErrorMessage(<p>Please enter a valid email address</p>)
+      setPersonEmailErrorMessage(<p>Please enter a valid email address</p>);
       setPersonEmailError(true);
       hasError = true;
     }
 
     if (!personProposedTitle || personProposedTitle.trim() === "") {
-      setPersonProposedTitleErrorMessage(<p>Proposed title is required</p>)
+      setPersonProposedTitleErrorMessage(<p>Proposed title is required</p>);
       setPersonProposedTitleError(true);
       hasError = true;
     }
 
     if (hasError) return;
 
-    setSuccessMessage(<p style={{ color: 'green', textAlign: 'center', marginTop: '10px' }}>Submitted Successfully</p>)
-    setTimeout(() => {
-      setSuccessMessage("");
-    }, 5000);
+    setIsSubmitting(true);
 
     const finalData = new FormData();
     finalData.append("contactPersonName", personName);
@@ -321,29 +320,65 @@ const Agenda = () => {
     finalData.append("contactProposedTitle", personProposedTitle);
     finalData.append("contactPersonBriefOutline", briefoutline);
 
-    const requestOptions = {
-      method: "POST",
-      body: finalData,
-    };
-    fetch(
-      `${API_BASE_URL}/admin1/addcontactusrequest`,
-      requestOptions,
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.status) {
-          setPersonName("");
-          setPersonCompany("");
-          setPersonEmail("");
-          setPersonProposedTitle("");
-          setBriefOutline("");
-        } else {
-          // toast.error(data?.briefoutline);
-        }
-      })
-      .catch((error) => {
-        console.log("error: ", error);
-      });
+    try {
+      const response = await fetch(
+        `${API_BASE_URL}/admin1/addcontactusrequest`,
+        { method: "POST", body: finalData }
+      );
+      const data = await response.json();
+      if (data.status) {
+        setPersonName("");
+        setPersonCompany("");
+        setPersonEmail("");
+        setPersonProposedTitle("");
+        setBriefOutline("");
+
+        const html = `
+          <h3>Speaker Proposal:</h3>
+          <div style="width:60%;background-color:transparent;color:black;">
+            <table style="width:100%;border-collapse:collapse;">
+              <tr><td style="padding:6px;border:1px solid #ddd;"><b>Full Name:</b></td><td style="padding:6px;border:1px solid #ddd;">${personName}</td></tr>
+              <tr><td style="padding:6px;border:1px solid #ddd;"><b>Company Name:</b></td><td style="padding:6px;border:1px solid #ddd;">${personCompany}</td></tr>
+              <tr><td style="padding:6px;border:1px solid #ddd;"><b>Email:</b></td><td style="padding:6px;border:1px solid #ddd;">${personEmail}</td></tr>
+              <tr><td style="padding:6px;border:1px solid #ddd;"><b>Proposed Title:</b></td><td style="padding:6px;border:1px solid #ddd;">${personProposedTitle}</td></tr>
+              ${briefoutline ? `<tr><td style="padding:6px;border:1px solid #ddd;"><b>Brief Outline:</b></td><td style="padding:6px;border:1px solid #ddd;">${briefoutline}</td></tr>` : ""}
+            </table>
+          </div>
+          <p style="font-weight: 700">
+            <span style="text-decoration: underline">Quick Access</span>
+            <br />
+            Link: ${'<a style="font-weight: 500" target="_blank" href="' + API_BASE_URL + '">' + API_BASE_URL + '</a>'}
+          </p>
+        `;
+
+        await fetch(
+          `${API_BASE_URL}/admin1/sendmail`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              toemail: toEmails,
+              cc: "",
+              subject: `SPEAKER PROPOSAL - ${eventDetails?.eventName}`,
+              html,
+            }),
+          }
+        );
+
+        setSuccessMessage(
+          <p style={{ color: "green", textAlign: "center", marginTop: "10px" }}>
+            Submitted Successfully
+          </p>
+        );
+        setTimeout(() => {
+          setSuccessMessage("");
+        }, 5000);
+      }
+    } catch (error) {
+      console.log("error: ", error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const checkOnChangeEmail = async () => {
@@ -2844,10 +2879,11 @@ const Agenda = () => {
                       <button
                         style={submitButtonStyle}
                         type="submit"
+                        disabled={isSubmitting}
                         onMouseEnter={(e) => handleSubmitHover(e, true)}
                         onMouseLeave={(e) => handleSubmitHover(e, false)}
                       >
-                        get back to me
+                        {isSubmitting ? "Please Wait" : "get back to me"}
                       </button>
                     </div>
                   </form>

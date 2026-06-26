@@ -684,6 +684,7 @@ const Register = () => {
     eventGeneralSettings,
     themeSettings,
   } = useApiData();
+  const toEmails = useSSRData("toEmails") || "benny.scott@iq-hub.com";
 
   const [formData, setFormData] = useState({
     name: "",
@@ -782,7 +783,7 @@ const Register = () => {
   };
 
   // Submit form
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validateForm()) return;
 
@@ -790,37 +791,64 @@ const Register = () => {
     setIsSubmittingMessage(true);
 
     const finalData = new FormData();
-    setTimeout(() => {
-      finalData.append("userName", formData.name);
-      finalData.append("userCompany", formData.company);
-      finalData.append("userEmail", formData.email);
-      finalData.append("userMobile", `${formData.countryCode}${formData.phone}`);
-      finalData.append("userInterest", formData.interest);
-      finalData.append("noOfAttandees", formData.attendees);
-      if (formData.message.length > 0) {
-        finalData.append("userMessage", JSON.stringify(formData.message));
-      }
-      setIsSubmittingMessage(false);
-    }, 2000);
+    finalData.append("userName", formData.name);
+    finalData.append("userCompany", formData.company);
+    finalData.append("userEmail", formData.email);
+    finalData.append("userMobile", `${formData.countryCode}${formData.phone}`);
+    finalData.append("userInterest", formData.interest);
+    finalData.append("noOfAttandees", formData.attendees);
+    if (formData.message.length > 0) {
+      finalData.append("userMessage", JSON.stringify(formData.message));
+    }
 
-    setTimeout(() => {
-      setIsSubmittedMessage(true);
-      fetch(`${API_BASE_URL}/admin1/adduserpassrequest`, {
-        method: "POST",
-        body: finalData,
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          if (data.status) {
-            // toast.success("Record Added Successfully!");
-            closePopup();
-          } else {
-            // toast.error(data.message || "Submission failed.");
+    try {
+      const response = await fetch(
+        `${API_BASE_URL}/admin1/adduserpassrequest`,
+        { method: "POST", body: finalData }
+      );
+      const data = await response.json();
+      if (data.status) {
+        const html = `
+          <h3>Operator Pass Program</h3>
+          <div style="width:60%;background-color:transparent;color:black;">
+            <table style="width:100%;border-collapse:collapse;">
+              <tr><td style="padding:6px;border:1px solid #ddd;"><b>Name:</b></td><td style="padding:6px;border:1px solid #ddd;">${formData.name}</td></tr>
+              <tr><td style="padding:6px;border:1px solid #ddd;"><b>Company:</b></td><td style="padding:6px;border:1px solid #ddd;">${formData.company}</td></tr>
+              <tr><td style="padding:6px;border:1px solid #ddd;"><b>Email:</b></td><td style="padding:6px;border:1px solid #ddd;">${formData.email}</td></tr>
+              <tr><td style="padding:6px;border:1px solid #ddd;"><b>Phone:</b></td><td style="padding:6px;border:1px solid #ddd;">${formData.countryCode}${formData.phone}</td></tr>
+              <tr><td style="padding:6px;border:1px solid #ddd;"><b>Primary Interest:</b></td><td style="padding:6px;border:1px solid #ddd;">${formData.interest}</td></tr>
+              <tr><td style="padding:6px;border:1px solid #ddd;"><b>No. of Attendees:</b></td><td style="padding:6px;border:1px solid #ddd;">${formData.attendees}</td></tr>
+              ${formData.message ? `<tr><td style="padding:6px;border:1px solid #ddd;"><b>Message:</b></td><td style="padding:6px;border:1px solid #ddd;">${formData.message}</td></tr>` : ""}
+            </table>
+          </div>
+          <p style="font-weight: 700">
+            <span style="text-decoration: underline">Quick Access</span>
+            <br />
+            Link: ${'<a style="font-weight: 500" target="_blank" href="' + API_BASE_URL + '">' + API_BASE_URL + '</a>'}
+          </p>
+        `;
+        await fetch(
+          `${API_BASE_URL}/admin1/sendmail`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              toemail: toEmails,
+              cc: "",
+              subject: `END-USER INQUIRY:${eventDetails?.eventName}`,
+              html,
+            }),
           }
-        })
-        .catch(() => console.log('Error'))
-        .finally(() => { setIsSubmitting(false); setIsSubmittingMessage(false); setIsSubmittedMessage(false); });
-    }, 2000)
+        );
+        setIsSubmittedMessage(true);
+        closePopup();
+      }
+    } catch (error) {
+      console.log("error: ", error);
+    } finally {
+      setIsSubmitting(false);
+      setIsSubmittingMessage(false);
+    }
   };
 
   // ESC key to close popup
@@ -1262,8 +1290,9 @@ const Register = () => {
                     <button
                       type="submit"
                       className="BookingLanding_button__YtJxy"
+                      disabled={isSubmitting}
                     >
-                      Submit
+                      {isSubmitting ? "Please Wait" : "Submit"}
                     </button>
                   </div>
                 </form>

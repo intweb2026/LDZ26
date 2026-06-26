@@ -14,6 +14,7 @@ import { FormControl, FormHelperText } from "@mui/material";
 import { Helmet } from "react-helmet-async";
 import { useApiData } from "../common/ApiContext";
 import { usePageSeo } from "../common/usePageSeo";
+import { useSSRData } from "../common/useSSRData";
 import API_BASE_URL, { mediaUrl } from '../config/apiConfig';
 const countries = getNames();
 
@@ -272,12 +273,112 @@ const RemindMeLater = () => {
     }
   };
 
+  const toEmails = useSSRData("toEmails") || "benny.scott@iq-hub.com";
+
+  // "not registered because" checkboxes
+  const [cb1, setCb1] = useState(false);
+  const [cb2, setCb2] = useState(false);
+  const [cb3, setCb3] = useState(false);
+  const [cbOthers, setCbOthers] = useState(false);
+  const [othersText, setOthersText] = useState("");
+
+  // "mostly interested in" checkboxes
+  const [cb4, setCb4] = useState(false);
+  const [cb5, setCb5] = useState(false);
+  const [cb6, setCb6] = useState(false);
+
+  // email field
+  const [remindEmail, setRemindEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+
   const [showTextarea, setShowTextarea] = useState(false);
 
   const pageSeo = usePageSeo("remind-me");
   const seoTitle = pageSeo.pageMetaTitle;
   const seoDesc = pageSeo.pageMetaDescription;
   const seoImage = pageSeo.pageOgImage || null;
+
+  const handleRemindMeSubmit = async (e) => {
+    e.preventDefault();
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!remindEmail.trim()) {
+      setEmailError("Email is required");
+      return;
+    }
+    if (!emailRegex.test(remindEmail)) {
+      setEmailError("Invalid email address");
+      return;
+    }
+    setEmailError("");
+    setIsSubmitting(true);
+
+    const reasons = [
+      cb1 && "I'm checking my diary to see if I am available",
+      cb2 && "I'm waiting on colleagues to confirm their attendance",
+      cb3 && "I'll be booking closer to the time",
+      cbOthers && `Others: ${othersText}`,
+    ].filter(Boolean);
+
+    const interests = [
+      cb4 && "Speaking opportunities",
+      cb5 && "Sponsorships and exhibition booths",
+      cb6 && "Delegate passes only",
+    ].filter(Boolean);
+
+    const html = `
+      <h3>Remind Me Later Request</h3>
+      <div style="width:60%;background-color:transparent;color:black;">
+        <table style="width:100%;border-collapse:collapse;">
+          <tr>
+            <td style="width:50%;padding:8px;"><b>Email:</b></td>
+            <td style="width:50%;padding:8px;">${remindEmail}</td>
+          </tr>
+          ${reasons.length ? `
+          <tr><td colspan="2" style="padding:8px;"><b>Not registered yet, because:</b></td></tr>
+          ${reasons.map(r => `<tr><td colspan="2" style="padding:4px 16px;">• ${r}</td></tr>`).join("")}
+          ` : ""}
+          ${interests.length ? `
+          <tr><td colspan="2" style="padding:8px;"><b>Mostly interested in:</b></td></tr>
+          ${interests.map(i => `<tr><td colspan="2" style="padding:4px 16px;">• ${i}</td></tr>`).join("")}
+          ` : ""}
+        </table>
+      </div>
+      <p style="font-weight: 700">
+        <span style="text-decoration: underline">Quick Access</span>
+        <br />
+        Link: ${'<a style="font-weight: 500" target="_blank" href="' + API_BASE_URL + '">' + API_BASE_URL + '</a>'}
+      </p>
+    `;
+
+    try {
+      const res = await fetch(
+        `${API_BASE_URL}/admin1/sendmail`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            toemail: toEmails,
+            cc: "",
+            subject: `${eventDetails?.eventName} - Remind Me Later Request`,
+            html,
+          }),
+        }
+      );
+      const data = await res.json();
+      if (data.status === "success") {
+        setSubmitError("");
+      } else {
+        setSubmitError("Something went wrong. Please try again.");
+      }
+    } catch {
+      setSubmitError("Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div id="root">
@@ -310,35 +411,35 @@ const RemindMeLater = () => {
               <h2>Your thoughts on attending?</h2>.
             </div>
             <div className="cmxform" id="developForm">
-              <form id="LDZ-(Remind me Later 2026)" data-hs-cf-bound="true">
+              <form id="LDZ-(Remind me Later 2026)" data-hs-cf-bound="true" onSubmit={handleRemindMeSubmit}>
                 <div className="RemindMeLater_addOnsInner__aBNYF">
                   <div>
                     <h2>I have not registered yet, because:</h2>
                     <div>
                       <div>
-                        <input type="checkbox" name="checkbox1"></input>
+                        <input type="checkbox" name="checkbox1" checked={cb1} onChange={(e) => setCb1(e.target.checked)} />
                         <label>I'm checking my diary to see if I am available</label>
                       </div>
                     </div>
                     <div>
                       <div>
-                        <input type="checkbox" name="checkbox2"></input>
+                        <input type="checkbox" name="checkbox2" checked={cb2} onChange={(e) => setCb2(e.target.checked)} />
                         <label>I'm waiting on colleagues to confirm their attendance</label>
                       </div>
                     </div>
                     <div>
                       <div>
-                        <input type="checkbox" name="checkbox3"></input>
+                        <input type="checkbox" name="checkbox3" checked={cb3} onChange={(e) => setCb3(e.target.checked)} />
                         <label>I'll be booking closer to the time</label>
                       </div>
                     </div>
                     <div className="RemindMeLater_otherContainer__y+rku">
                       <div>
-                        <input type="checkbox" name="others" checked={showTextarea} onChange={(e) => setShowTextarea(e.target.checked)}></input>
+                        <input type="checkbox" name="others" checked={cbOthers} onChange={(e) => { setCbOthers(e.target.checked); setShowTextarea(e.target.checked); }} />
                         <label>Others</label>
                       </div>
                       {showTextarea && (
-                        <textarea name="others"></textarea>
+                        <textarea name="others" value={othersText} onChange={(e) => setOthersText(e.target.value)}></textarea>
                       )}
                     </div>
                   </div>
@@ -346,28 +447,37 @@ const RemindMeLater = () => {
                     <h2 style={{ marginTop: '20px' }}>I am mostly interested in:</h2>
                     <div>
                       <div>
-                        <input type="checkbox" name="checkbox4"></input>
+                        <input type="checkbox" name="checkbox4" checked={cb4} onChange={(e) => setCb4(e.target.checked)} />
                         <label>Speaking opportunities</label>
                       </div>
                     </div>
                     <div>
                       <div>
-                        <input type="checkbox" name="checkbox5"></input>
+                        <input type="checkbox" name="checkbox5" checked={cb5} onChange={(e) => setCb5(e.target.checked)} />
                         <label>Sponsorships and exhibition booths</label>
                       </div>
                     </div>
                     <div>
                       <div>
-                        <input type="checkbox" name="checkbox6"></input>
+                        <input type="checkbox" name="checkbox6" checked={cb6} onChange={(e) => setCb6(e.target.checked)} />
                         <label>Delegate passes only</label>
                       </div>
                     </div>
                   </div>
                   <div className="RemindMeLater_emailContainer__GGz3-">
                     <div>
-                      <input type="text" name="email" placeholder="Email Address (Required)"></input>
+                      <input
+                        type="text"
+                        name="email"
+                        placeholder="Email Address (Required)"
+                        value={remindEmail}
+                        onChange={(e) => { setRemindEmail(e.target.value); if (emailError) setEmailError(""); }}
+                      />
+                      {emailError && <p>{emailError}</p>}
                     </div>
-                    <button type="submit">Remind Me</button>
+                    <button type="submit" disabled={isSubmitting}>
+                      {isSubmitting ? "Please Wait" : "Remind Me"}
+                    </button>
                   </div>
                 </div>
               </form>

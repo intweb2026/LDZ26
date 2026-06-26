@@ -53,6 +53,8 @@ const Sponsors = () => {
   const [mobileErrorMessage, setMobileErrorMessage] = useState("");
   const [emailErrorMessage, setEmailErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const toEmails = useSSRData("toEmails") || "benny.scott@iq-hub.com";
   const {
     homeVideoSettings,
     eventDetails,
@@ -115,12 +117,11 @@ const Sponsors = () => {
     if (hasError) return;
   };
 
-  const submitBtnClk = (e) => {
+  const submitBtnClk = async (e) => {
     e.preventDefault();
 
     let hasError = false;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
 
     setFullNameErr(false);
     setCompanyNameErr(false);
@@ -128,47 +129,44 @@ const Sponsors = () => {
     setMobileErr(false);
 
     if (!fullName || fullName.trim() === "") {
-      setFullNameErrorMessage(<p>Full name is required</p>)
+      setFullNameErrorMessage(<p>Full name is required</p>);
       setFullNameErr(true);
       hasError = true;
     } else {
-      setFullNameErrorMessage("")
+      setFullNameErrorMessage("");
     }
 
     if (!companyName || companyName.trim() === "") {
-      setCompanyNameErrorMessage(<p>Company name is required</p>)
+      setCompanyNameErrorMessage(<p>Company name is required</p>);
       setCompanyNameErr(true);
       hasError = true;
     } else {
-      setCompanyNameErrorMessage("")
+      setCompanyNameErrorMessage("");
     }
 
     if (!email || email.trim() === "") {
-      setEmailErrorMessage(<p>Email address is required</p>)
+      setEmailErrorMessage(<p>Email address is required</p>);
       setEmailErr(true);
       hasError = true;
     } else if (!emailRegex.test(email)) {
-      setEmailErrorMessage(<p>Please enter a valid email address</p>)
+      setEmailErrorMessage(<p>Please enter a valid email address</p>);
       setEmailErr(true);
       hasError = true;
     } else {
-      setEmailErrorMessage("")
+      setEmailErrorMessage("");
     }
 
     if (!mobile || mobile.trim() === "") {
-      setMobileErrorMessage(<p>Mobile number is required</p>)
+      setMobileErrorMessage(<p>Mobile number is required</p>);
       setMobileErr(true);
       hasError = true;
     } else {
-      setMobileErrorMessage("")
+      setMobileErrorMessage("");
     }
 
     if (hasError) return;
 
-    setSuccessMessage(<p style={{ color: 'green', textAlign: 'center', marginTop: '10px' }}>Submitted Successfully</p>)
-    setTimeout(() => {
-      setSuccessMessage("");
-    }, 5000);
+    setIsSubmitting(true);
 
     const finalData = new FormData();
     finalData.append("requesterName", fullName);
@@ -179,31 +177,70 @@ const Sponsors = () => {
       finalData.append("requesterMessage", JSON.stringify(message));
     }
 
-    const requestOptions = {
-      method: "POST",
-      body: finalData,
-    };
-    fetch(`${API_BASE_URL}/admin1/addcrowdformrequest`, requestOptions)
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.status) {
-          setFullName("");
-          setFullNameErr(false);
-          setCompanyName("");
-          setCompanyNameErr(false);
-          setMobile("");
-          setMobileErr(false);
-          setEmail("");
-          setEmailErr(false);
-          setEmailErrMsg("");
-          setMessage("");
-        } else {
-          // toast.error(data?.message);
-        }
-      })
-      .catch((error) => {
-        console.log("error: ", error);
-      });
+    try {
+      const response = await fetch(
+        `${API_BASE_URL}/admin1/addcrowdformrequest`,
+        { method: "POST", body: finalData }
+      );
+      const data = await response.json();
+      if (data.status) {
+        setFullName("");
+        setFullNameErr(false);
+        setCompanyName("");
+        setCompanyNameErr(false);
+        setMobile("");
+        setMobileErr(false);
+        setEmail("");
+        setEmailErr(false);
+        setEmailErrMsg("");
+        setMessage("");
+
+        const html = `
+          <h3>Stand Out From The Crowd:</h3>
+          <div style="width:60%;background-color:transparent;color:black;">
+            <table style="width:100%;border-collapse:collapse;">
+              <tr><td style="padding:6px;border:1px solid #ddd;"><b>Full Name:</b></td><td style="padding:6px;border:1px solid #ddd;">${fullName}</td></tr>
+              <tr><td style="padding:6px;border:1px solid #ddd;"><b>Company Name:</b></td><td style="padding:6px;border:1px solid #ddd;">${companyName}</td></tr>
+              <tr><td style="padding:6px;border:1px solid #ddd;"><b>Mobile Number:</b></td><td style="padding:6px;border:1px solid #ddd;">${mobile}</td></tr>
+              <tr><td style="padding:6px;border:1px solid #ddd;"><b>Email:</b></td><td style="padding:6px;border:1px solid #ddd;">${email}</td></tr>
+              ${message ? `<tr><td style="padding:6px;border:1px solid #ddd;"><b>Comments:</b></td><td style="padding:6px;border:1px solid #ddd;">${message}</td></tr>` : ""}
+            </table>
+          </div>
+          <p style="font-weight: 700">
+            <span style="text-decoration: underline">Quick Access</span>
+            <br />
+            Link: ${'<a style="font-weight: 500" target="_blank" href="' + API_BASE_URL + '">' + API_BASE_URL + '</a>'}
+          </p>
+        `;
+
+        await fetch(
+          `${API_BASE_URL}/admin1/sendmail`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              toemail: toEmails,
+              cc: "",
+              subject: `STAND OUT FROM THE CROWD - ${eventDetails?.eventName}`,
+              html,
+            }),
+          }
+        );
+
+        setSuccessMessage(
+          <p style={{ color: "green", textAlign: "center", marginTop: "10px" }}>
+            Submitted Successfully
+          </p>
+        );
+        setTimeout(() => {
+          setSuccessMessage("");
+        }, 5000);
+      }
+    } catch (error) {
+      console.log("error: ", error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleResize = () => {
@@ -969,7 +1006,7 @@ const Sponsors = () => {
                             }}
                           ></textarea>
                         </div>
-                        <button type="submit">submit</button>
+                        <button type="submit" disabled={isSubmitting}>{isSubmitting ? "Please Wait" : "submit"}</button>
                       </div>
                     </form>
                     {successMessage}

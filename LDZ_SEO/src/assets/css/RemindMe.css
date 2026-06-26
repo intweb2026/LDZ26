@@ -142,6 +142,15 @@
     width: 98%;
 }
 
+.RemindMeLater_container__vWyw0 .RemindMeLater_addOns__nEVDz .RemindMeLater_addOnsInner__aBNYF .RemindMeLater_emailContainer__GGz3- div p {
+    color: red;
+    font-size: 12px;
+    font-weight: 500;
+    margin: 0;
+    padding: 5px 0 0;
+    text-align: left;
+}
+
 .RemindMeLater_container__vWyw0 .RemindMeLater_addOns__nEVDz .RemindMeLater_addOnsInner__aBNYF .RemindMeLater_emailContainer__GGz3- button {
     background-color: initial;
     background-color: var(--secondary-color);

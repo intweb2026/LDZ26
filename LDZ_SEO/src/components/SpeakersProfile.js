@@ -10,6 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Error404 from "./Error404";
 import { Helmet } from "react-helmet-async";
 import { useSSRData } from "../common/useSSRData";
+import { useApiData } from "../common/ApiContext";
 import "../../src/assets/css/form.css";
 import API_BASE_URL, { mediaUrl } from '../config/apiConfig';
 const SpeakerProfile = () => {
@@ -43,6 +44,10 @@ const SpeakerProfile = () => {
   const [proposedTitleErrorMessage, setProposedTitleErrorMessage] = useState("");
   const [emailErrorMessage, setEmailErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const { eventDetails } = useApiData();
+  const toEmails = useSSRData("toEmails") || "benny.scott@iq-hub.com";
 
   useEffect(() => {
     // Reset for every navigation so stale data never shows
@@ -198,12 +203,11 @@ const SpeakerProfile = () => {
     if (hasError) return;
   };
 
-  const submitBtnClk = (e) => {
+  const submitBtnClk = async (e) => {
     e.preventDefault();
 
     let hasError = false;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
 
     setFullNameErr(false);
     setCompanyNameErr(false);
@@ -211,47 +215,44 @@ const SpeakerProfile = () => {
     setProposedTitleErr(false);
 
     if (!fullName || fullName.trim() === "") {
-      setFullNameErrorMessage(<p>Full name is required</p>)
+      setFullNameErrorMessage(<p>Full name is required</p>);
       setFullNameErr(true);
       hasError = true;
     } else {
-      setFullNameErrorMessage("")
+      setFullNameErrorMessage("");
     }
 
     if (!companyName || companyName.trim() === "") {
-      setCompanyNameErrorMessage(<p>Company name is required</p>)
+      setCompanyNameErrorMessage(<p>Company name is required</p>);
       setCompanyNameErr(true);
       hasError = true;
     } else {
-      setCompanyNameErrorMessage("")
+      setCompanyNameErrorMessage("");
     }
 
     if (!email || email.trim() === "") {
-      setEmailErrorMessage(<p>Email address is required</p>)
+      setEmailErrorMessage(<p>Email address is required</p>);
       setEmailErr(true);
       hasError = true;
     } else if (!emailRegex.test(email)) {
-      setEmailErrorMessage(<p>Please enter a valid email address</p>)
+      setEmailErrorMessage(<p>Please enter a valid email address</p>);
       setEmailErr(true);
       hasError = true;
     } else {
-      setEmailErrorMessage("")
+      setEmailErrorMessage("");
     }
 
     if (!proposedTitle || proposedTitle.trim() === "") {
-      setProposedTitleErrorMessage(<p>Proposed title is required</p>)
+      setProposedTitleErrorMessage(<p>Proposed title is required</p>);
       setProposedTitleErr(true);
       hasError = true;
     } else {
-      setProposedTitleErrorMessage("")
+      setProposedTitleErrorMessage("");
     }
 
     if (hasError) return;
 
-    setSuccessMessage(<p style={{ color: 'green', textAlign: 'center', marginTop: '10px' }}>Submitted Successfully</p>)
-    setTimeout(() => {
-      setSuccessMessage("");
-    }, 5000);
+    setIsSubmitting(true);
 
     const finalData = new FormData();
     finalData.append("requesterName", fullName);
@@ -262,34 +263,70 @@ const SpeakerProfile = () => {
       finalData.append("requesterMessage", JSON.stringify(message));
     }
 
-    const requestOptions = {
-      method: "POST",
-      body: finalData,
-    };
-    fetch(
-      `${API_BASE_URL}/admin1/addquickproposalrequest`,
-      requestOptions,
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.status) {
-          setFullName("");
-          setFullNameErr(false);
-          setCompanyName("");
-          setCompanyNameErr(false);
-          setProposedTitle("");
-          setProposedTitleErr(false);
-          setEmail("");
-          setEmailErr(false);
-          setEmailErrMsg("");
-          setMessage("");
-        } else {
-          // toast.error(data?.message);
-        }
-      })
-      .catch((error) => {
-        console.log("error: ", error);
-      });
+    try {
+      const response = await fetch(
+        `${API_BASE_URL}/admin1/addquickproposalrequest`,
+        { method: "POST", body: finalData }
+      );
+      const data = await response.json();
+      if (data.status) {
+        setFullName("");
+        setFullNameErr(false);
+        setCompanyName("");
+        setCompanyNameErr(false);
+        setProposedTitle("");
+        setProposedTitleErr(false);
+        setEmail("");
+        setEmailErr(false);
+        setEmailErrMsg("");
+        setMessage("");
+
+        const html = `
+          <h3>Speaker Proposal:</h3>
+          <div style="width:60%;background-color:transparent;color:black;">
+            <table style="width:100%;border-collapse:collapse;">
+              <tr><td style="padding:6px;border:1px solid #ddd;"><b>Full Name:</b></td><td style="padding:6px;border:1px solid #ddd;">${fullName}</td></tr>
+              <tr><td style="padding:6px;border:1px solid #ddd;"><b>Company Name:</b></td><td style="padding:6px;border:1px solid #ddd;">${companyName}</td></tr>
+              <tr><td style="padding:6px;border:1px solid #ddd;"><b>Proposed Title:</b></td><td style="padding:6px;border:1px solid #ddd;">${proposedTitle}</td></tr>
+              <tr><td style="padding:6px;border:1px solid #ddd;"><b>Email:</b></td><td style="padding:6px;border:1px solid #ddd;">${email}</td></tr>
+              ${message ? `<tr><td style="padding:6px;border:1px solid #ddd;"><b>Brief Outline:</b></td><td style="padding:6px;border:1px solid #ddd;">${message}</td></tr>` : ""}
+            </table>
+          </div>
+          <p style="font-weight: 700">
+            <span style="text-decoration: underline">Quick Access</span>
+            <br />
+            Link: ${'<a style="font-weight: 500" target="_blank" href="' + API_BASE_URL + '">' + API_BASE_URL + '</a>'}
+          </p>
+        `;
+
+        await fetch(
+          `${API_BASE_URL}/admin1/sendmail`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              toemail: toEmails,
+              cc: "",
+              subject: `SPEAKER PROPOSAL - ${eventDetails?.eventName}`,
+              html,
+            }),
+          }
+        );
+
+        setSuccessMessage(
+          <p style={{ color: "green", textAlign: "center", marginTop: "10px" }}>
+            Submitted Successfully
+          </p>
+        );
+        setTimeout(() => {
+          setSuccessMessage("");
+        }, 5000);
+      }
+    } catch (error) {
+      console.log("error: ", error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const speaker = speakerData[0];
@@ -442,7 +479,7 @@ const SpeakerProfile = () => {
                           }}
                         ></textarea>
                       </div>
-                      <button type="submit">get back to me</button>
+                      <button type="submit" disabled={isSubmitting}>{isSubmitting ? "Please Wait" : "get back to me"}</button>
                     </div>
                   </form>
                   {successMessage}

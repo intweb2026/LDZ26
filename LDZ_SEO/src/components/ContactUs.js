@@ -579,15 +579,17 @@ const ContactUs = () => {
     reason.map((r) => reasonLabelMap[r] || r).join("; ");
 
   async function sendContactUsEmail(email) {
-    const htmlContent = `<h2>Contact Us form:</h2>
-      <table style="width:max-content;">
-      <tr><td style="text-align:right; font-weight:700;">Name:</td><td style="padding-left:15px;">${personName}</td></tr>
-      <tr><td style="text-align:right; font-weight:700;">Company:</td><td style="padding-left:15px;">${personCompany}</td></tr>
-      <tr><td style="text-align:right; font-weight:700;">Email:</td><td style="padding-left:15px;">${personEmail}</td></tr>
-      <tr><td style="text-align:right; font-weight:700;">Mobile:</td><td style="padding-left:15px;">${personMobile}</td></tr>
-      <tr><td style="text-align:right; font-weight:700;">Tell me more:</td><td style="padding-left:15px;">${reason.join(", ")}</td></tr>
-      <tr><td style="text-align:right; font-weight:700;">Message:</td><td style="padding-left:15px;">${message}</td></tr>
-      </table>
+    const htmlContent = `<h3>Contact Us form:</h3>
+      <div style="width:60%;background-color:transparent;color:black;">
+        <table style="width:100%;border-collapse:collapse;">
+          <tr><td style="padding:6px;border:1px solid #ddd;"><b>Name:</b></td><td style="padding:6px;border:1px solid #ddd;">${personName}</td></tr>
+          <tr><td style="padding:6px;border:1px solid #ddd;"><b>Company:</b></td><td style="padding:6px;border:1px solid #ddd;">${personCompany}</td></tr>
+          <tr><td style="padding:6px;border:1px solid #ddd;"><b>Email:</b></td><td style="padding:6px;border:1px solid #ddd;">${personEmail}</td></tr>
+          <tr><td style="padding:6px;border:1px solid #ddd;"><b>Mobile:</b></td><td style="padding:6px;border:1px solid #ddd;">${personMobile}</td></tr>
+          ${reason.length > 0 ? `<tr><td style="padding:6px;border:1px solid #ddd;"><b>Tell Me More About:</b></td><td style="padding:6px;border:1px solid #ddd;">${reason.join(", ")}</td></tr>` : ""}
+          ${message ? `<tr><td style="padding:6px;border:1px solid #ddd;"><b>Message:</b></td><td style="padding:6px;border:1px solid #ddd;">${message}</td></tr>` : ""}
+        </table>
+      </div>
       <p style="font-weight: 700">
         <span style="text-decoration: underline">Quick Access</span>
         <br />
