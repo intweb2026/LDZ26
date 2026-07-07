@@ -18,7 +18,7 @@ const ViewQuickProposal = ({ row, viewModal, onCloseModal }) => {
       setEmail(row?.requesterEmail);
       setProposedTitle(row?.proposedTitle);
       if (row?.requesterMessage.length > 0) {
-        setMessage(row?.requesterMessage.replace(/^"(.*)"$/, "$1"));
+        setMessage(row?.requesterMessage?.replace(/^"(.*)"$/, "$1") || "");
       }else{
         setMessage("");
       }

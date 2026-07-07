@@ -4,7 +4,7 @@ import "../../src/assets/css/relatedevent.css";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Slider from "react-slick";
-import API_BASE_URL from '../config/apiConfig';
+import API_BASE_URL, { mediaUrl }  from '../config/apiConfig';
 const leftArrowIcon = "/images/WebCommonImages/icon-arrow-left.png";
 const rightArrowIcon = "/images/WebCommonImages/icon-arrow-right.png";
 const calenderIcon = "/images/WebCommonImages/icon-calendar.png";
@@ -147,8 +147,8 @@ const RelatedEventsSection = () => {
                       event?.eventImage !== "null" &&
                       event?.eventImage !== null && (
                         <img
-                          src={event?.eventImage}
-                          alt={event?.eventImage}
+                          src={mediaUrl(event?.eventImage)}
+                          alt={event?.eventName}
                           loading="lazy"
                           className={`${
                             hoveredIndex === index
@@ -158,7 +158,7 @@ const RelatedEventsSection = () => {
                         />
                       )}
                     <img
-                      src={event?.eventHoverImage}
+                      src={mediaUrl(event?.eventHoverImage)}
                       alt={event?.eventName}
                       loading="lazy"
                       className={`${

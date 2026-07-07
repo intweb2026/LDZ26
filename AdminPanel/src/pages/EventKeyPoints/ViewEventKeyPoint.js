@@ -16,7 +16,7 @@ const ViewEventKeyPoint = ({ row, viewEventKeyPointModal, onCloseModal }) => {
     if (row) {
       setTopic(row?.pointLabel);
       setTopicDescription(
-        row?.pointDescription?.replace(/^"(.*)"$/, "$1")
+        row?.pointDescription?.replace(/^"(.*)"$/, "$1") || ""
       );
     }
   }, [location]);

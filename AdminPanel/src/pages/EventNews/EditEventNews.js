@@ -72,9 +72,9 @@ const EditEventNews = ({
       };
       setSelectedNewsCategory(newsCategoryObj);
       setNewsShortDescription(
-        row?.newsShortDescription?.replace(/^"(.*)"$/, "$1")
+        row?.newsShortDescription?.replace(/^"(.*)"$/, "$1") || ""
       );
-      setNewsDescription(row?.newsDescription?.replace(/^"(.*)"$/, "$1"));
+      setNewsDescription(row?.newsDescription?.replace(/^"(.*)"$/, "$1") || "");
       if (row?.newsCreatedDate) {
         const formattedDate = moment(row.newsCreatedDate, "YYYY-MM-DD").format(
           "DD-MM-YYYY"

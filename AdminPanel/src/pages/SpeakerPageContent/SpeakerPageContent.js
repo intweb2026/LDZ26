@@ -101,10 +101,10 @@ const SpeakerPageContent = () => {
   useEffect(() => {
     if (speakerPageData?.length > 0) {
       setParaOne(
-        speakerPageData[0]?.sectionFirstDescription?.replace(/^"(.*)"$/, "$1")
+        speakerPageData[0]?.sectionFirstDescription?.replace(/^"(.*)"$/, "$1") || ""
       );
       setParaTwo(
-        speakerPageData[0]?.sectionSecondDescription?.replace(/^"(.*)"$/, "$1")
+        speakerPageData[0]?.sectionSecondDescription?.replace(/^"(.*)"$/, "$1") || ""
       );
     }
     // eslint-disable-next-line

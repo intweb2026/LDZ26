@@ -1,3 +1,35 @@
+.img-skeleton-wrapper {
+  display: block;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.img-skeleton-wrapper img {
+  transition: opacity 0.3s ease;
+}
+
+.img-skeleton-shimmer {
+  animation: img-skeleton-shimmer-move 1.4s ease-in-out infinite;
+  background: linear-gradient(90deg, #e2e2e2 25%, #f5f5f5 50%, #e2e2e2 75%);
+  background-size: 200% 100%;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+@keyframes img-skeleton-shimmer-move {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
 /* .article-card {
   background: white;
   overflow: hidden;

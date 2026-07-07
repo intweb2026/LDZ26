@@ -27,6 +27,11 @@ const VideoSection = () => {
 
   return (
     <>
+    {themeSettings?.editorStyle && (
+        <Helmet>
+          <style type="text/css">{themeSettings.editorStyle}</style>
+        </Helmet>
+      )}
       {homeVideoSettings?.eventDetailBackImage && (
         <Helmet>
           <link

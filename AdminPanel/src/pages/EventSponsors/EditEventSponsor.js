@@ -65,7 +65,7 @@ const EditEventSponsor = ({
       setSponsorType({ label: row?.sponsorType, value: row?.sponsorType });
       setSponsorWebsite(row?.sponsorWebsite);
       setSponsorComapnyBioDescription(
-        row?.sponsorComapnyBioDescription?.replace(/^"(.*)"$/, "$1")
+        row?.sponsorComapnyBioDescription?.replace(/^"(.*)"$/, "$1") || ""
       );
       setSponsorComapnyLogo(row?.sponsorComapnyLogo);
       if (eventDetails?.isSeoEnable === "Yes") {

@@ -74,7 +74,7 @@ const EditTagline_Contain = (props) => {
     if (taglineData.length > 0) {
       setTagline(taglineData[0]?.thirdSectionFirstTitle);
       setTaglineDescription(
-        taglineData[0]?.thirdSectionDescription?.replace(/^"(.*)"$/, "$1")
+        taglineData[0]?.thirdSectionDescription?.replace(/^"(.*)"$/, "$1") || ""
       );
       setTaglineBackImg(taglineData[0]?.thirdSectionBackgroundImage);
     }

@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link, useLocation, useParams, useNavigate } from "react-router-dom";
 import ".././assets/css/News.css";
+import ImageWithSkeleton from "./ImageWithSkeleton";
 import Navbar from "./Navbar";
 import SubscribeForm from "./SubscribeForm";
 import Footer from "../Footer";
@@ -127,7 +128,9 @@ const News = () => {
   // };
 
   const formatDate = (dateString) => {
+    if (!dateString) return "";
     const date = new Date(dateString);
+    if (isNaN(date.getTime())) return "";
 
     const day = date.toLocaleDateString("en-GB", { day: "2-digit" });
     const month = date
@@ -264,40 +267,42 @@ const News = () => {
               <h1 className="NewsListing_top_news_heding__ffzau">Top News</h1>
               <div className="NewsListing_topNewsContainer__kFBcy">
                 <div className="NewsListing_left__JLN1s">
-                  <Link
-                    to={getNewsUrl(featuredArticle)}
-                    state={featuredArticle}
-                    className="NewsCard_container__njErT"
-                    style={{ textDecoration: "none", color: "inherit" }}
-                  >
-                    <div className="NewsCard_innerContainer__8EUva">
-                      <div className="NewsCard_upperContainer__FPKzO">
-                        <img
-                          src={mediaUrl(featuredArticle?.newsImage)}
-                          alt={featuredArticle?.newsImageAltText}
-                        />
-                      </div>
-                      <div className="NewsCard_lowerContainer__Jsamo">
-                        <div className="NewsCard_nameDate__JcfXL NewsListing_left_sub__176br">
-                          <p>{featuredArticle?.newsCategoryDetails?.newsCategory}</p>
-                          <p>{formatDate(featuredArticle?.newsCreatedDate)}</p>
+                  {featuredArticle && (
+                    <Link
+                      to={getNewsUrl(featuredArticle)}
+                      state={featuredArticle}
+                      className="NewsCard_container__njErT"
+                      style={{ textDecoration: "none", color: "inherit" }}
+                    >
+                      <div className="NewsCard_innerContainer__8EUva">
+                        <div className="NewsCard_upperContainer__FPKzO">
+                          <ImageWithSkeleton
+                            src={mediaUrl(featuredArticle?.newsImage)}
+                            alt={featuredArticle?.newsImageAltText}
+                          />
                         </div>
-                        <div className="NewsCard_titleDescContainer__PExXU">
-                          <h2>{featuredArticle?.newsTitle}</h2>
-                          <p
-                            lang="en"
-                            dangerouslySetInnerHTML={{
-                              __html:
-                                featuredArticle?.newsShortDescription.replace(
-                                  /^"(.*)"$/,
-                                  "$1"
-                                ),
-                            }}
-                          ></p>
+                        <div className="NewsCard_lowerContainer__Jsamo">
+                          <div className="NewsCard_nameDate__JcfXL NewsListing_left_sub__176br">
+                            <p>{featuredArticle?.newsCategoryDetails?.newsCategory}</p>
+                            <p>{formatDate(featuredArticle?.newsCreatedDate)}</p>
+                          </div>
+                          <div className="NewsCard_titleDescContainer__PExXU">
+                            <h2>{featuredArticle?.newsTitle}</h2>
+                            <p
+                              lang="en"
+                              dangerouslySetInnerHTML={{
+                                __html:
+                                  featuredArticle?.newsShortDescription?.replace(
+                                    /^"(.*)"$/,
+                                    "$1"
+                                  ),
+                              }}
+                            ></p>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </Link>
+                    </Link>
+                  )}
                 </div>
                 <div className="NewsListing_right__onLH8">
                   <div className="NewsListing_rightTop__K0nYw">
@@ -311,10 +316,10 @@ const News = () => {
                       >
                         <div className="NewsCard_innerContainer__8EUva">
                           <div className="NewsCard_upperContainer__FPKzO">
-                            <img
+                            <ImageWithSkeleton
                               src={mediaUrl(news?.newsImage)}
                               alt={news?.newsImageAltText}
-                              style={{ height: "208px" }}
+                              imgStyle={{ height: "208px" }}
                               loading="lazy"
                             />
                           </div>
@@ -373,16 +378,18 @@ const News = () => {
                           style={{ textDecoration: "none", color: "inherit" }}
                         >
                           <h3>{featuredLatestArticle?.newsTitle}</h3>
-                          <img
-                            src={mediaUrl(featuredLatestArticle?.newsImage)}
-                            alt={featuredLatestArticle?.newsImageAltText}
-                            loading="lazy"
-                            style={{
-                              maxWidth: "100%",
-                              height: "auto",
-                              objectFit: "cover",
-                            }}
-                          />
+                          {mediaUrl(featuredLatestArticle?.newsImage) && (
+                            <img
+                              src={mediaUrl(featuredLatestArticle?.newsImage)}
+                              alt={featuredLatestArticle?.newsImageAltText}
+                              loading="lazy"
+                              style={{
+                                maxWidth: "100%",
+                                height: "auto",
+                                objectFit: "cover",
+                              }}
+                            />
+                          )}
                           <div className="NewsSection_featuredcategoryAndDate__WZuqu">
                             <p>{featuredLatestArticle?.newsCategoryDetails?.newsCategory}</p>
                             <p>{formatDate(featuredLatestArticle?.newsCreatedDate)}</p>
@@ -390,7 +397,7 @@ const News = () => {
                           <p
                             lang="en"
                             dangerouslySetInnerHTML={{
-                              __html: featuredLatestArticle?.newsShortDescription.replace(/^"(.*)"$/, "$1"),
+                              __html: featuredLatestArticle?.newsShortDescription?.replace(/^"(.*)"$/, "$1"),
                             }}
                           ></p>
                         </Link>
@@ -415,11 +422,13 @@ const News = () => {
                   style={{ cursor: "pointer", textDecoration: "none", color: "inherit", display: "flex" }}
                 >
                   <div className="NewsListingCard_left__qswsn">
-                    <img
-                      src={mediaUrl(article.newsImage)}
-                      alt={article.newsImageAltText}
-                      loading="lazy"
-                    ></img>
+                    {mediaUrl(article.newsImage) && (
+                      <img
+                        src={mediaUrl(article.newsImage)}
+                        alt={article.newsImageAltText}
+                        loading="lazy"
+                      ></img>
+                    )}
                   </div>
                   <div className="NewsListingCard_right__RDYVn">
                     <div className="NewsListingCard_categoryContainer__qknlO">
@@ -430,7 +439,7 @@ const News = () => {
                     <p
                       lang="en"
                       dangerouslySetInnerHTML={{
-                        __html: article.newsShortDescription.replace(
+                        __html: article.newsShortDescription?.replace(
                           /^"(.*)"$/,
                           "$1"
                         ),

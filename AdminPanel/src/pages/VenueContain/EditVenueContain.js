@@ -167,12 +167,12 @@ const EditVenueContain = (props) => {
     if (venueData.length > 0) {
       // setVenuePlace(venueData[0]?.venueFirstSectionFirstTitle);
       setVenueDescription(
-        venueData[0]?.venueFirstSectionDescription?.replace(/^"(.*)"$/, "$1")
+        venueData[0]?.venueFirstSectionDescription?.replace(/^"(.*)"$/, "$1") || ""
       );
-      setVenueWebsiteLink(venueData[0]?.venueAddressLink?.replace(/^"(.*)"$/, "$1"));
-      setVenueLocation(venueData[0]?.venueLocation?.replace(/^"(.*)"$/, "$1"));
-      setVenueContact(venueData[0]?.venueContact?.replace(/^"(.*)"$/, "$1"));
-      setVenueMapLink(venueData[0]?.venueMapLink?.replace(/^"(.*)"$/, "$1"));
+      setVenueWebsiteLink(venueData[0]?.venueAddressLink?.replace(/^"(.*)"$/, "$1") || "");
+      setVenueLocation(venueData[0]?.venueLocation?.replace(/^"(.*)"$/, "$1") || "");
+      setVenueContact(venueData[0]?.venueContact?.replace(/^"(.*)"$/, "$1") || "");
+      setVenueMapLink(venueData[0]?.venueMapLink?.replace(/^"(.*)"$/, "$1") || "");
       // setVenueWebAddress(venueData[0]?.venueWebsiteAddress);
     }
     if (venueGalleryData?.length > 0) {

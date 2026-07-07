@@ -18,8 +18,8 @@ const NavCategoryTree = () => {
   const fetchAllData = () => {
     setLoading(true);
     Promise.all([
-      fetch(`${API_BASE_URL}/navmaincategories`).then((r) => r.json()),
-      fetch(`${API_BASE_URL}/navsubcategories`).then((r) => r.json()),
+      fetch(`${API_BASE_URL}/admin1/navmaincategories`).then((r) => r.json()),
+      fetch(`${API_BASE_URL}/admin1/navsubcategories`).then((r) => r.json()),
     ])
       .then(([mData, sData]) => {
         const mains = mData?.navMainategories || [];
@@ -139,7 +139,7 @@ const NavCategoryTree = () => {
     finalData.append("mainCategories", JSON.stringify(mainPayload));
     finalData.append("subCategories",  JSON.stringify(subPayload));
 
-    fetch(`${API_BASE_URL}/savenavcheckstatus`, {
+    fetch(`${API_BASE_URL}/admin1/savenavcheckstatus`, {
       method: "POST",
       body: finalData,
     })

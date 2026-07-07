@@ -54,10 +54,10 @@ const EditIndustryTrend = ({
     if (row) {
       setTrendTitle(row?.trendTitle);
       setTrendShortDescription(
-        row?.trendShortDescription?.replace(/^"(.*)"$/, "$1")
+        row?.trendShortDescription?.replace(/^"(.*)"$/, "$1") || ""
       );
       setTrendLongDescription(
-        row?.trendLongDescription?.replace(/^"(.*)"$/, "$1")
+        row?.trendLongDescription?.replace(/^"(.*)"$/, "$1") || ""
       );
       if (eventDetails?.isSeoEnable === "Yes") {
         setTrendMetaTitle(row?.trendMetaTitle || "");

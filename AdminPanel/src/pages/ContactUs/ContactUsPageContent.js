@@ -101,7 +101,7 @@ const ContactUsPageContent = () => {
   useEffect(() => {
     if (contactUsPageData?.length > 0) {
       setEmailDes(
-        contactUsPageData[0]?.sectionShortParagraph?.replace(/^"(.*)"$/, "$1")
+        contactUsPageData[0]?.sectionShortParagraph?.replace(/^"(.*)"$/, "$1") || ""
       );
     }
     // eslint-disable-next-line
