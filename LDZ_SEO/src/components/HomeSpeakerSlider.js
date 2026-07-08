@@ -1,6 +1,7 @@
 // src/components/HomeSpeakerSlider.js
 // Data now comes from SSR (window.__INITIAL_DATA__.speakers). No client-side fetch.
 import { useState, useRef, useEffect } from "react";
+import { cleanHtml } from "../utils/cleanHtml";
 import { mediaUrl } from '../config/apiConfig';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -121,7 +122,7 @@ const HomeSpeakerSlider = () => {
                     <div
                       className="dangerous_text_b"
                       dangerouslySetInnerHTML={{
-                        __html: speaker.eventSpeakerShortDescription?.replace(/^"(.*)"$/, "$1"),
+                        __html: cleanHtml(speaker.eventSpeakerShortDescription),
                       }}
                     />
                   </div>

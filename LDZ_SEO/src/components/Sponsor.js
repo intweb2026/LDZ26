@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { cleanHtml } from "../utils/cleanHtml";
 import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
 import "../../src/assets/css/sponsor.css";
@@ -252,22 +253,6 @@ const Sponsors = () => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-
-  const cleanHtml = (html) => {
-    if (!html) return "";
-    let cleaned = html.replace(/^"(.*)"$/, "$1");
-    cleaned = cleaned.replace(/\\"/g, '"');
-    cleaned = cleaned.replace(
-      /<a\s+href=["']([^"']+)["'][^>]*>/gi,
-      (match, url) => {
-        if (url.startsWith("http://") || url.startsWith("https://")) {
-          return `<a href="${url}" target="_blank" rel="noopener noreferrer">`;
-        }
-        return match;
-      },
-    );
-    return cleaned;
-  };
 
   function chunkArray(array, size) {
     return Array.from({ length: Math.ceil(array.length / size) }, (_, i) =>

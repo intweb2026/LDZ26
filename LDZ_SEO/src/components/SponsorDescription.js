@@ -1,4 +1,5 @@
 ﻿import { useState, useEffect } from "react";
+import { cleanHtml } from "../utils/cleanHtml";
 import { useLocation, useParams, useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 import SubscribeForm from "./SubscribeForm";
@@ -448,9 +449,7 @@ const SponsorDescription = () => {
             <div className="SponsorBio_textContainer__YsXyt">
               <div
                 dangerouslySetInnerHTML={{
-                  __html: sponsorData[0]?.sponsorComapnyBioDescription
-                    ?.replace(/^"(.*)"$/, "$1")
-                    ?.replace(/<p>(\s|&nbsp;)*<\/p>/g, ""),
+                  __html: cleanHtml(sponsorData[0]?.sponsorComapnyBioDescription)?.replace(/<p>(\s|&nbsp;)*<\/p>/g, ""),
                 }}
               ></div>
               <button onClick={() => navigate("/agenda-page")}>view program</button>

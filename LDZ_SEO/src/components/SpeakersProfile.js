@@ -1,4 +1,5 @@
 ﻿import React, { useState, useEffect } from "react";
+import { cleanHtml } from "../utils/cleanHtml";
 import { useLocation, useParams, useNavigate } from "react-router-dom";
 import "../../src/assets/css/speakerProfile.css";
 import Navbar from "./Navbar";
@@ -382,9 +383,7 @@ const SpeakerProfile = () => {
                       </h3>
                       <div
                         dangerouslySetInnerHTML={{
-                          __html: speakerData[0]?.eventSpeakerDescription
-                            ?.replace(/^"(.*)"$/, "$1")
-                            ?.replace(/<p>(\s|&nbsp;)*<\/p>/g, ""),
+                          __html: cleanHtml(speakerData[0]?.eventSpeakerDescription)?.replace(/<p>(\s|&nbsp;)*<\/p>/g, ""),
                         }}
                       ></div>
                     </div>

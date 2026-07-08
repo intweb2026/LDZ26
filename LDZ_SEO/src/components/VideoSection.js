@@ -1,4 +1,5 @@
 import React from "react";
+import { cleanHtml } from "../utils/cleanHtml";
 import { Helmet } from "react-helmet-async";
 import { mediaUrl } from '../config/apiConfig';
 import "../../src/assets/css/video.css";
@@ -79,10 +80,10 @@ const VideoSection = () => {
                   {/* <span>
                     4
                     <sup>th</sup>
-                    Annual
+                    {" "}Annual
                   </span> */}
                   <h1 dangerouslySetInnerHTML={{
-                    __html: themeSettings?.headerContent
+                    __html: cleanHtml(themeSettings?.headerContent)
                   }}>
                   </h1>
                 </div>

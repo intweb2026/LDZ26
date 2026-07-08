@@ -1,5 +1,6 @@
 // src/components/TrendDescriptionPage.js
 import { useState, useEffect, useRef } from "react";
+import { cleanHtml } from "../utils/cleanHtml";
 import { useLocation, useParams, useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 import FeaturedSpeaker from "./FeaturedSpeaker";
@@ -365,7 +366,7 @@ const TrendDescriptionPage = () => {
                   <h2>{currentTab.trendTitle}</h2>
                   <span
                     dangerouslySetInnerHTML={{
-                      __html: currentTab.trendShortDescription,
+                      __html: cleanHtml(currentTab.trendShortDescription),
                     }}
                   />
                   <p
@@ -392,7 +393,7 @@ const TrendDescriptionPage = () => {
                 <div style={{ display: !isExpanded ? "none" : "" }}>
                   <span
                     dangerouslySetInnerHTML={{
-                      __html: currentTab.trendLongDescription,
+                      __html: cleanHtml(currentTab.trendLongDescription),
                     }}
                   />
                 </div>

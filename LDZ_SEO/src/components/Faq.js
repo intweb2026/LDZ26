@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { cleanHtml } from "../utils/cleanHtml";
 import Navbar from "./Navbar";
 import SubscribeForm from "./SubscribeForm";
 import Footer from "../Footer";
@@ -59,30 +60,6 @@ const Faq = () => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-
-  const cleanHtml = (html) => {
-    if (!html) return "";
-
-    // Remove outer quotes and unescape HTML
-    let cleaned = html.replace(/^"(.*)"$/, "$1");
-
-    // Unescape quotes
-    cleaned = cleaned.replace(/\\"/g, '"');
-
-    // Ensure all external links have proper attributes
-    cleaned = cleaned.replace(
-      /<a\s+href=["']([^"']+)["'][^>]*>/gi,
-      (match, url) => {
-        // Check if URL is external (starts with http/https)
-        if (url.startsWith("http://") || url.startsWith("https://")) {
-          return `<a href="${url}" target="_blank" rel="noopener noreferrer">`;
-        }
-        return match;
-      }
-    );
-
-    return cleaned;
-  };
 
   const pageSeo = usePageSeo("faq");
   const seoTitle = pageSeo.pageMetaTitle;

@@ -1,4 +1,5 @@
 ﻿import React, { useState, useEffect } from "react";
+import { cleanHtml } from "../utils/cleanHtml";
 import "../assets/css/ForumSection.css";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -62,10 +63,7 @@ const ForumSection = () => {
             <div
               lang="en"
               dangerouslySetInnerHTML={{
-                __html: taglineData[0]?.thirdSectionDescription?.replace(
-                  /^"(.*)"$/,
-                  "$1",
-                ),
+                __html: cleanHtml(taglineData[0]?.thirdSectionDescription),
               }}
             ></div>
           </span>

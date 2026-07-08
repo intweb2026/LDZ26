@@ -1,4 +1,5 @@
 ﻿import React, { useState, useEffect } from "react";
+import { cleanHtml } from "../utils/cleanHtml";
 import { useNavigate } from "react-router-dom";
 import "../assets/css/keytopics.css";
 import { toast } from "react-toastify";
@@ -57,7 +58,7 @@ const KeyTopics = () => {
             <div
               lang="en"
               dangerouslySetInnerHTML={{
-                __html: topic.pointDescription.replace(/^"(.*)"$/, "$1"),
+                __html: cleanHtml(topic.pointDescription),
               }}
             ></div>
           </div>

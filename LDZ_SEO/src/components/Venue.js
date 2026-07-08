@@ -1,6 +1,7 @@
 // src/components/Venue.js
 // All data comes from SSR window.__INITIAL_DATA__. No client-side fetch.
 import { useState, useEffect, useRef } from "react";
+import { cleanHtml } from "../utils/cleanHtml";
 import { Helmet } from "react-helmet-async";
 import Navbar from "./Navbar";
 import SubscribeForm from "./SubscribeForm";
@@ -110,30 +111,6 @@ const Venue = () => {
       });
     }, 100);
   }, []);
-
-  const cleanHtml = (html) => {
-    if (!html) return "";
-    // Iteratively unescape until string stops changing (handles multi-level escaping)
-    let cleaned = html;
-    let prev = null;
-    while (prev !== cleaned) {
-      prev = cleaned;
-      cleaned = cleaned
-        .replace(/^"(.*)"$/s, "$1")
-        .replace(/\\"/g, '"')
-        .replace(/\\\\/g, "\\");
-    }
-    // Rebuild every <a> tag: directly extract the https?:// URL from it
-    // regardless of how many layers of escaping still surround the href value
-    cleaned = cleaned.replace(/<a\b[^>]*>/gi, (aTag) => {
-      const urlMatch = aTag.match(/https?:\/\/[^\s"'\\>]+/);
-      if (urlMatch) {
-        return `<a href="${urlMatch[0]}" target="_blank" rel="noopener noreferrer">`;
-      }
-      return aTag;
-    });
-    return cleaned;
-  };
 
   const scrollToContact = (e) => {
     e.preventDefault();

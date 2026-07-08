@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { cleanHtml } from "../utils/cleanHtml";
 import { Link, useLocation, useParams, useNavigate } from "react-router-dom";
 import ".././assets/css/News.css";
 import Navbar from "./Navbar";
@@ -287,11 +288,7 @@ const News = () => {
                           <p
                             lang="en"
                             dangerouslySetInnerHTML={{
-                              __html:
-                                featuredArticle?.newsShortDescription.replace(
-                                  /^"(.*)"$/,
-                                  "$1"
-                                ),
+                              __html: cleanHtml(featuredArticle?.newsShortDescription),
                             }}
                           ></p>
                         </div>
@@ -390,7 +387,7 @@ const News = () => {
                           <p
                             lang="en"
                             dangerouslySetInnerHTML={{
-                              __html: featuredLatestArticle?.newsShortDescription.replace(/^"(.*)"$/, "$1"),
+                              __html: cleanHtml(featuredLatestArticle?.newsShortDescription),
                             }}
                           ></p>
                         </Link>
@@ -430,10 +427,7 @@ const News = () => {
                     <p
                       lang="en"
                       dangerouslySetInnerHTML={{
-                        __html: article.newsShortDescription.replace(
-                          /^"(.*)"$/,
-                          "$1"
-                        ),
+                        __html: cleanHtml(article.newsShortDescription),
                       }}
                     ></p>
                   </div>
