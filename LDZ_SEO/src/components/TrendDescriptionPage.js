@@ -298,7 +298,7 @@ const TrendDescriptionPage = () => {
   const seoTitle =
     activeTrend?.trendMetaTitle ||
     activeTrend?.trendTitle ||
-    "Bitcoin Conference 2026";
+    "Litihium Downstream Summit 2026";
   const seoDesc = activeTrend?.trendMetaDescription || "";
   const canonicalUrl = `${API_BASE_URL}/trend/${slug}`;
 

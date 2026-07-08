@@ -13,6 +13,8 @@ import Slider from "react-slick";
 import Popup from "reactjs-popup";
 import { Helmet } from "react-helmet-async";
 import { usePageSeo } from "../common/usePageSeo";
+import { useApiData } from "../common/ApiContext";
+import { downloadIcsFile } from "../common/calendarUtils";
 import "../assets/css/popUp.css";
 import API_BASE_URL from '../config/apiConfig';
 const benefitsBg = "/images/WebImages/benefits-who-should-attend.webp";
@@ -25,6 +27,7 @@ const arrowDownIcon = "/images/WebCommonImages/arrow-down-black.png";
 //   "https://www.desalination-resource-recovery.com/images/icons/arrow-down-black.png";
 
 const WhoShouldAttend = () => {
+  const { eventDetails } = useApiData();
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = React.useState("core");
   const [whoShouldAttendData, setWhoShouldAttendData] = useState([]);
@@ -427,6 +430,7 @@ const WhoShouldAttend = () => {
                                 }),
                               },
                             );
+                            downloadIcsFile(eventDetails);
                           } catch (error) {
                             console.error(
                               "Failed to save calendar subscriber:",

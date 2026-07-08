@@ -99,7 +99,7 @@ const SponsorPageContent = () => {
   useEffect(() => {
     if (sponsorPageData?.length > 0) {
       setParaDes(
-        sponsorPageData[0]?.introParaDescription?.replace(/^"(.*)"$/, "$1")
+        sponsorPageData[0]?.introParaDescription?.replace(/^"(.*)"$/, "$1") || ""
       );
     }
     // eslint-disable-next-line

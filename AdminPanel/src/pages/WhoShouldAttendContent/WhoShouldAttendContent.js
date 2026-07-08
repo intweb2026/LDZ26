@@ -104,19 +104,19 @@ const WhoShouldAttendContent = () => {
   useEffect(() => {
     if (whoShouldAttendData?.length > 0) {
       setBenifits(
-        whoShouldAttendData[0]?.sectionFirstPoints?.replace(/^"(.*)"$/, "$1")
+        whoShouldAttendData[0]?.sectionFirstPoints?.replace(/^"(.*)"$/, "$1") || ""
       );
       setKeyTakeaways(
-        whoShouldAttendData[0]?.sectionSecondPoints?.replace(/^"(.*)"$/, "$1")
+        whoShouldAttendData[0]?.sectionSecondPoints?.replace(/^"(.*)"$/, "$1") || ""
       );
       setWhoAttend(
-        whoShouldAttendData[0]?.sectionThreeDescription?.replace(/^"(.*)"$/, "$1")
+        whoShouldAttendData[0]?.sectionThreeDescription?.replace(/^"(.*)"$/, "$1") || ""
       );
       setCoreAttendeeDes(
-        whoShouldAttendData[0]?.sectionThreeTabOneDescription?.replace(/^"(.*)"$/, "$1")
+        whoShouldAttendData[0]?.sectionThreeTabOneDescription?.replace(/^"(.*)"$/, "$1") || ""
       );
       setIndustriesDes(
-        whoShouldAttendData[0]?.sectionThreeTabTwoDescription?.replace(/^"(.*)"$/, "$1")
+        whoShouldAttendData[0]?.sectionThreeTabTwoDescription?.replace(/^"(.*)"$/, "$1") || ""
       );
     }
     // eslint-disable-next-line

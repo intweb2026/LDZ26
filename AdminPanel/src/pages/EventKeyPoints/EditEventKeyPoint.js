@@ -46,7 +46,7 @@ const EditEventKeyPoint = ({
   useEffect(() => {
     if (row) {
       setTopic(row?.pointLabel);
-      setTopicDescription(row?.pointDescription?.replace(/^"(.*)"$/, "$1"));
+      setTopicDescription(row?.pointDescription?.replace(/^"(.*)"$/, "$1") || "");
     }
   }, [location]);
 

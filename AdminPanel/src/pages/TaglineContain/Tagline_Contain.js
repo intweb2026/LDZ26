@@ -85,7 +85,7 @@ const Tagline_Contain = () => {
     if (taglineData.length > 0) {
       setTagline(taglineData[0]?.thirdSectionFirstTitle);
       setTaglineDescription(
-        taglineData[0]?.thirdSectionDescription?.replace(/^"(.*)"$/, "$1")
+        taglineData[0]?.thirdSectionDescription?.replace(/^"(.*)"$/, "$1") || ""
       );
       setTaglineBackImage(taglineData[0]?.thirdSectionBackgroundImage);
     }

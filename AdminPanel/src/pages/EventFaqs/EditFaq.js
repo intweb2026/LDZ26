@@ -63,7 +63,7 @@ const EditFaq = ({ row, editFaqModal, onCloseModal, onModalSubmitBtnClk }) => {
   useEffect(() => {
     if (row) {
       setQuestion(row?.faqQuestion);
-      setAnswer(row?.faqAnswer?.replace(/^"(.*)"$/, "$1"));
+      setAnswer(row?.faqAnswer?.replace(/^"(.*)"$/, "$1") || "");
     }
   }, [location]);
 

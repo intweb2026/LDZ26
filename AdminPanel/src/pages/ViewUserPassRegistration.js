@@ -22,7 +22,7 @@ const ViewUserPassRegistration = ({ row, viewModal, onCloseModal }) => {
       setInterest(row?.userInterest);
       setAttandees(row?.noOfAttandees);
       if (row?.userMessage?.length > 0) {
-        setMessage(row?.userMessage.replace(/^"(.*)"$/, "$1"));
+        setMessage(row?.userMessage?.replace(/^"(.*)"$/, "$1") || "");
       } else {
         setMessage("");
       }

@@ -65,9 +65,9 @@ const EditEventSpeaker = ({
       setSpeakerName(row?.eventSpeakerName);
       setSpeakerCompany(row?.eventSpeakerCompany);
       setSpeakerShortBio(
-        row?.eventSpeakerShortDescription?.replace(/^"(.*)"$/, "$1")
+        row?.eventSpeakerShortDescription?.replace(/^"(.*)"$/, "$1") || ""
       );
-      setSpeakerBio(row?.eventSpeakerDescription?.replace(/^"(.*)"$/, "$1"));
+      setSpeakerBio(row?.eventSpeakerDescription?.replace(/^"(.*)"$/, "$1") || "");
       setGreyBgUrl(row?.eventSpeakerProfilePageImage);
       setWhiteBgUrl(row?.eventSpeakerFeaturedPageImage);
       setOriginalPhotoUrl(row?.eventSpeakerHomePageImage);

@@ -29,7 +29,7 @@ const ViewContactUsResponse = ({ row, viewContactusModal, onCloseModal }) => {
       if (Array.isArray(parsedReason)) {
         setReason(parsedReason.join(", "));
       } else {
-        setReason(parsedReason?.replace(/^"(.*)"$/, "$1"));
+        setReason(parsedReason?.replace(/^"(.*)"$/, "$1") || "");
       }
     }
   }, [location]);

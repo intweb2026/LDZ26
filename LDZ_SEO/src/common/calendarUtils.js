@@ -1,4 +1,6 @@
-const DOMAIN = "https://www.australia.lithium-downstream-summit.com";
+import API_BASE_URL from '../config/apiConfig';
+
+const DOMAIN = `${API_BASE_URL}`;
 
 function toYYYYMMDD(date) {
   const y = date.getFullYear();
