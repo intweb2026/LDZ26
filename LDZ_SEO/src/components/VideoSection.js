@@ -82,11 +82,11 @@ const VideoSection = () => {
               >
                 <div>
                   {/* Annual code */}
-                  {/* <span>
-                    4
-                    <sup>th</sup>
+                  <span>
+                    2
+                    <sup>nd</sup>
                     {" "}Annual
-                  </span> */}
+                  </span>
                   <h1 dangerouslySetInnerHTML={{
                     __html: cleanHtml(themeSettings?.headerContent)
                   }}>
