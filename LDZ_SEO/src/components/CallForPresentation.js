@@ -663,7 +663,7 @@ const CallForPresentation = () => {
         <div className="Speakers_addToCakendar__foKTF">
           <div className="Speakers_reverse__8rkCE">
             <div className="Speakers_textContainer__UsgLs">
-              <h2>be a part of our multi_disciplined agenda...</h2>
+              <h2>be a part of our multi-disciplined agenda...</h2>
               <div className="Speakers_innerContent__ZoIKd">
                 <span
                   dangerouslySetInnerHTML={{
