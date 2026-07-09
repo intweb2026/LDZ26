@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from "react";
-import { cleanHtml } from "../utils/cleanHtml";
 import { Link, useLocation, useParams, useNavigate } from "react-router-dom";
 import ".././assets/css/News.css";
 import ImageWithSkeleton from "./ImageWithSkeleton";
@@ -282,14 +281,24 @@ const News = () => {
                             alt={featuredArticle?.newsImageAltText}
                           />
                         </div>
-                        <div className="NewsCard_titleDescContainer__PExXU">
-                          <h2>{featuredArticle?.newsTitle}</h2>
-                          <p
-                            lang="en"
-                            dangerouslySetInnerHTML={{
-                              __html: cleanHtml(featuredArticle?.newsShortDescription),
-                            }}
-                          ></p>
+                        <div className="NewsCard_lowerContainer__Jsamo">
+                          <div className="NewsCard_nameDate__JcfXL NewsListing_left_sub__176br">
+                            <p>{featuredArticle?.newsCategoryDetails?.newsCategory}</p>
+                            <p>{formatDate(featuredArticle?.newsCreatedDate)}</p>
+                          </div>
+                          <div className="NewsCard_titleDescContainer__PExXU">
+                            <h2>{featuredArticle?.newsTitle}</h2>
+                            <p
+                              lang="en"
+                              dangerouslySetInnerHTML={{
+                                __html:
+                                  featuredArticle?.newsShortDescription?.replace(
+                                    /^"(.*)"$/,
+                                    "$1"
+                                  ),
+                              }}
+                            ></p>
+                          </div>
                         </div>
                       </div>
                     </Link>
@@ -388,7 +397,7 @@ const News = () => {
                           <p
                             lang="en"
                             dangerouslySetInnerHTML={{
-                              __html: cleanHtml(featuredLatestArticle?.newsShortDescription),
+                              __html: featuredLatestArticle?.newsShortDescription?.replace(/^"(.*)"$/, "$1"),
                             }}
                           ></p>
                         </Link>
@@ -430,7 +439,10 @@ const News = () => {
                     <p
                       lang="en"
                       dangerouslySetInnerHTML={{
-                        __html: cleanHtml(article.newsShortDescription),
+                        __html: article.newsShortDescription?.replace(
+                          /^"(.*)"$/,
+                          "$1"
+                        ),
                       }}
                     ></p>
                   </div>
