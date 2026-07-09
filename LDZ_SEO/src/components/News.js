@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { cleanHtml } from "../utils/cleanHtml";
 import { Link, useLocation, useParams, useNavigate } from "react-router-dom";
 import ".././assets/css/News.css";
 import ImageWithSkeleton from "./ImageWithSkeleton";
@@ -11,7 +12,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { Helmet } from "react-helmet-async";
 import { usePageSeo } from "../common/usePageSeo";
 import { useApiData } from "../common/ApiContext";
-import API_BASE_URL, { mediaUrl } from '../config/apiConfig';
+import API_BASE_URL, { mediaUrl } from "../config/apiConfig";
 const leftArrowIcon = "/images/WebCommonImages/icon-arrow-left.png";
 const rightArrowIcon = "/images/WebCommonImages/icon-arrow-right.png";
 
@@ -19,9 +20,7 @@ const News = () => {
   const navigate = useNavigate();
   const [newsList, setNewsList] = useState([]);
   const [agendaList, setAgendaList] = useState(null);
-  const {
-    eventDetails,
-  } = useApiData();
+  const { eventDetails } = useApiData();
   const agendaVersion = eventDetails?.agendaVersion;
 
   useEffect(() => {
@@ -34,10 +33,7 @@ const News = () => {
     const requestOptions = {
       method: "GET",
     };
-    fetch(
-      `${API_BASE_URL}/admin1/getagenda`,
-      requestOptions,
-    )
+    fetch(`${API_BASE_URL}/admin1/getagenda`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (
@@ -154,7 +150,8 @@ const News = () => {
     },
     {
       id: 2,
-      title: "FROM CODE TO CAPITAL: HOW BITCOIN INNOVATION IS RESHAPING FINANCIAL MARKETS",
+      title:
+        "FROM CODE TO CAPITAL: HOW BITCOIN INNOVATION IS RESHAPING FINANCIAL MARKETS",
       day: "Day 1",
       date: "WEDNESDAY, 1 JULY, 2026",
       time: "13:30 - 13:55",
@@ -163,7 +160,8 @@ const News = () => {
     },
     {
       id: 3,
-      title: "BITCOIN BEYOND CURRENCY: DRIVING INNOVATION ACROSS GLOBAL FINANCIAL SYSTEMS",
+      title:
+        "BITCOIN BEYOND CURRENCY: DRIVING INNOVATION ACROSS GLOBAL FINANCIAL SYSTEMS",
       day: "Day 1",
       date: "WEDNESDAY, 1 JULY, 2026",
       time: "14:00 - 14:25",
@@ -181,11 +179,11 @@ const News = () => {
   const startIndex = (currentPage - 1) * articlesPerPage;
   const currentArticles = newsList.slice(
     startIndex,
-    startIndex + articlesPerPage
+    startIndex + articlesPerPage,
   );
 
   const [windowWidth, setWindowWidth] = useState(
-    typeof window !== "undefined" ? window.innerWidth : 1200
+    typeof window !== "undefined" ? window.innerWidth : 1200,
   );
 
   useEffect(() => {
@@ -227,8 +225,6 @@ const News = () => {
     shouldScrollRef.current = true;
     if (currentPage < totalPages) setCurrentPage(currentPage + 1);
   };
-
-
 
   const getNewsUrl = (item) => {
     if (!item) return "#";
@@ -283,21 +279,24 @@ const News = () => {
                         </div>
                         <div className="NewsCard_lowerContainer__Jsamo">
                           <div className="NewsCard_nameDate__JcfXL NewsListing_left_sub__176br">
-                            <p>{featuredArticle?.newsCategoryDetails?.newsCategory}</p>
-                            <p>{formatDate(featuredArticle?.newsCreatedDate)}</p>
+                            <p>
+                              {
+                                featuredArticle?.newsCategoryDetails
+                                  ?.newsCategory
+                              }
+                            </p>
+                            <p>
+                              {formatDate(featuredArticle?.newsCreatedDate)}
+                            </p>
                           </div>
                           <div className="NewsCard_titleDescContainer__PExXU">
                             <h2>{featuredArticle?.newsTitle}</h2>
                             <p
-                              lang="en"
-                              dangerouslySetInnerHTML={{
-                                __html:
-                                  featuredArticle?.newsShortDescription?.replace(
-                                    /^"(.*)"$/,
-                                    "$1"
-                                  ),
-                              }}
-                            ></p>
+                            lang="en"
+                            dangerouslySetInnerHTML={{
+                              __html: cleanHtml(featuredArticle?.newsShortDescription),
+                            }}
+                          ></p>
                           </div>
                         </div>
                       </div>
@@ -329,7 +328,9 @@ const News = () => {
                               <p>{formatDate(news?.newsCreatedDate)}</p>
                             </div>
                             <div className="NewsCard_titleDescContainer__PExXU">
-                              <h2 style={{ fontSize: "18px", lineHeight: "24px" }}>
+                              <h2
+                                style={{ fontSize: "18px", lineHeight: "24px" }}
+                              >
                                 {news?.newsTitle}
                               </h2>
                             </div>
@@ -353,7 +354,10 @@ const News = () => {
                             <Link
                               to={getNewsUrl(item)}
                               state={item}
-                              style={{ textDecoration: "none", color: "inherit" }}
+                              style={{
+                                textDecoration: "none",
+                                color: "inherit",
+                              }}
                             >
                               <div className="NewsSection_categoryAndDate__WBz4R">
                                 <p>{item?.newsCategoryDetails?.newsCategory}</p>
@@ -391,13 +395,22 @@ const News = () => {
                             />
                           )}
                           <div className="NewsSection_featuredcategoryAndDate__WZuqu">
-                            <p>{featuredLatestArticle?.newsCategoryDetails?.newsCategory}</p>
-                            <p>{formatDate(featuredLatestArticle?.newsCreatedDate)}</p>
+                            <p>
+                              {
+                                featuredLatestArticle?.newsCategoryDetails
+                                  ?.newsCategory
+                              }
+                            </p>
+                            <p>
+                              {formatDate(
+                                featuredLatestArticle?.newsCreatedDate,
+                              )}
+                            </p>
                           </div>
                           <p
                             lang="en"
                             dangerouslySetInnerHTML={{
-                              __html: featuredLatestArticle?.newsShortDescription?.replace(/^"(.*)"$/, "$1"),
+                              __html: cleanHtml(featuredLatestArticle?.newsShortDescription),
                             }}
                           ></p>
                         </Link>
@@ -419,7 +432,12 @@ const News = () => {
                   to={getNewsUrl(article)}
                   state={article}
                   className="NewsListingCard_container__s0wuY"
-                  style={{ cursor: "pointer", textDecoration: "none", color: "inherit", display: "flex" }}
+                  style={{
+                    cursor: "pointer",
+                    textDecoration: "none",
+                    color: "inherit",
+                    display: "flex",
+                  }}
                 >
                   <div className="NewsListingCard_left__qswsn">
                     {mediaUrl(article.newsImage) && (
@@ -439,10 +457,7 @@ const News = () => {
                     <p
                       lang="en"
                       dangerouslySetInnerHTML={{
-                        __html: article.newsShortDescription?.replace(
-                          /^"(.*)"$/,
-                          "$1"
-                        ),
+                        __html: cleanHtml(article.newsShortDescription),
                       }}
                     ></p>
                   </div>
@@ -461,8 +476,9 @@ const News = () => {
                 {Array.from({ length: totalPages }, (_, i) => (
                   <button
                     key={i}
-                    className={`pagination-button ${currentPage === i + 1 ? "active" : ""
-                      }`}
+                    className={`pagination-button ${
+                      currentPage === i + 1 ? "active" : ""
+                    }`}
                     onClick={() => handlePageClick(i + 1)}
                   >
                     {i + 1}
@@ -478,7 +494,8 @@ const News = () => {
               </button>
             </div>
           </div>
-          {agendaVersion !== 'ReleasedSoon' && agendaVersion !== 'RollingOutSoon' ? (
+          {agendaVersion !== "ReleasedSoon" &&
+          agendaVersion !== "RollingOutSoon" ? (
             <div className="TopicsOnAgenda_container__86lkR">
               <div className="TopicsOnAgenda_agendaContainer__TBsgc">
                 <div>
@@ -491,7 +508,9 @@ const News = () => {
                           <p>
                             {topic?.day}: {dayItem?.heading}
                           </p>
-                          <p>{topic.startTime} - {topic.endTime}</p>
+                          <p>
+                            {topic.startTime} - {topic.endTime}
+                          </p>
                         </div>
                       </div>
                     ))}
