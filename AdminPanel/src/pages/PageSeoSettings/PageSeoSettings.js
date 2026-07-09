@@ -85,7 +85,7 @@ const PageSeoSettings = () => {
 
   const fetchAllSeoData = () => {
     setListLoading(true);
-    fetch(`${API_BASE_URL}/pageseo`, { method: "GET" })
+    fetch(`${API_BASE_URL}/admin1/pageseo`, { method: "GET" })
       .then((r) => r.json())
       .then((data) => {
         if (checkAuth(data)) return;
@@ -189,7 +189,7 @@ const PageSeoSettings = () => {
 
     if (isEdit) formData.append("id", recordId);
 
-    fetch(`${API_BASE_URL}/${endpoint}`, { method, body: formData })
+    fetch(`${API_BASE_URL}/admin1/${endpoint}`, { method, body: formData })
       .then((r) => r.json())
       .then((data) => {
         if (checkAuth(data)) return;
