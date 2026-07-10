@@ -9,6 +9,7 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import Flatpickr from "react-flatpickr";
 import moment from "moment";
 import { useApiData } from "../../../src/Components/Common/ApiContext.js";
+import { getMediaUrl } from '../../config/apiConfig';
 const ViewEventNews = ({ row, viewEventNewsModal, onCloseModal }) => {
   console.log("row: ", row);
   const location = useLocation();
@@ -163,7 +164,7 @@ const ViewEventNews = ({ row, viewEventNewsModal, onCloseModal }) => {
               {newsImage?.length > 0 && (
                 <div className="mt-2">
                   <img
-                    src={newsImage}
+                    src={getMediaUrl(newsImage)}
                     alt="uploaded-Logo"
                     height={100}
                     width={100}

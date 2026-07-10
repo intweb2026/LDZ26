@@ -7,6 +7,7 @@ import "../../assets/css/ckeditor.css";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { useApiData } from "../../../src/Components/Common/ApiContext.js";
+import { getMediaUrl } from '../../config/apiConfig';
 const ViewEventSpeaker = ({ row, viewSpeakerModal, onCloseModal }) => {
   const {
     homeVideoSettings,
@@ -155,7 +156,7 @@ const ViewEventSpeaker = ({ row, viewSpeakerModal, onCloseModal }) => {
                   {originalPhotoUrl?.length > 0 && (
                     <div className="mt-2">
                       <img
-                        src={originalPhotoUrl}
+                        src={getMediaUrl(originalPhotoUrl)}
                         alt="uploaded-Logo"
                         height={100}
                         width={100}
@@ -168,7 +169,7 @@ const ViewEventSpeaker = ({ row, viewSpeakerModal, onCloseModal }) => {
                   {whiteBgUrl?.length > 0 && (
                     <div className="mt-2">
                       <img
-                        src={whiteBgUrl}
+                        src={getMediaUrl(whiteBgUrl)}
                         alt="uploaded-Logo"
                         height={100}
                         width={100}
@@ -181,7 +182,7 @@ const ViewEventSpeaker = ({ row, viewSpeakerModal, onCloseModal }) => {
                   {greyBgUrl?.length > 0 && (
                     <div className="mt-2">
                       <img
-                        src={greyBgUrl}
+                        src={getMediaUrl(greyBgUrl)}
                         alt="uploaded-Logo"
                         height={100}
                         width={100}

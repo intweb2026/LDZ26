@@ -11,7 +11,7 @@ import "../../assets/css/ckeditor.css";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import Select from "react-select";
-import API_BASE_URL from '../../config/apiConfig';
+import API_BASE_URL, { getMediaUrl } from '../../config/apiConfig';
 const override = css`
   display: block;
   margin: 0 auto;
@@ -250,7 +250,7 @@ const EditEventLeader = ({
               {leaderLogo?.length > 0 && (
                 <div className="mt-2">
                   <img
-                    src={leaderLogo}
+                    src={getMediaUrl(leaderLogo)}
                     alt="uploaded-Logo"
                     height={100}
                     width={100}

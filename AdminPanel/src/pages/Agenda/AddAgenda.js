@@ -1715,7 +1715,7 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import Select from "react-select";
 import Flatpickr from "react-flatpickr";
 import { Trash2, Plus } from "lucide-react";
-import API_BASE_URL from '../../config/apiConfig';
+import API_BASE_URL, { getMediaUrl } from '../../config/apiConfig';
 
 const override = css`
   display: block;
@@ -2639,7 +2639,7 @@ const AddAgenda = () => {
                           {singleSpeakerAgendaImage?.length > 0 && (
                             <div className="mt-2">
                               <img
-                                src={singleSpeakerAgendaImage}
+                                src={getMediaUrl(singleSpeakerAgendaImage)}
                                 alt="uploaded-Logo"
                                 height={100}
                                 width={100}
@@ -2674,7 +2674,7 @@ const AddAgenda = () => {
                           {singleSpeakerCompanyLogo?.length > 0 && (
                             <div className="mt-2">
                               <img
-                                src={singleSpeakerCompanyLogo}
+                                src={getMediaUrl(singleSpeakerCompanyLogo)}
                                 alt="uploaded-Logo"
                                 height={100}
                                 width={100}
@@ -2881,7 +2881,7 @@ const AddAgenda = () => {
                             />
                             {speaker1AgendaImage?.length > 0 && (
                               <div className="mt-2">
-                                <img src={speaker1AgendaImage} alt="speaker1-agenda" height={100} width={100} />
+                                <img src={getMediaUrl(speaker1AgendaImage)} alt="speaker1-agenda" height={100} width={100} />
                               </div>
                             )}
                           </div>
@@ -2905,7 +2905,7 @@ const AddAgenda = () => {
                             />
                             {speaker1CompanyLogo?.length > 0 && (
                               <div className="mt-2">
-                                <img src={speaker1CompanyLogo} alt="speaker1-company" height={100} width={100} />
+                                <img src={getMediaUrl(speaker1CompanyLogo)} alt="speaker1-company" height={100} width={100} />
                               </div>
                             )}
                           </div>
@@ -2975,7 +2975,7 @@ const AddAgenda = () => {
                             />
                             {speaker2AgendaImage?.length > 0 && (
                               <div className="mt-2">
-                                <img src={speaker2AgendaImage} alt="speaker2-agenda" height={100} width={100} />
+                                <img src={getMediaUrl(speaker2AgendaImage)} alt="speaker2-agenda" height={100} width={100} />
                               </div>
                             )}
                           </div>
@@ -2999,7 +2999,7 @@ const AddAgenda = () => {
                             />
                             {speaker2CompanyLogo?.length > 0 && (
                               <div className="mt-2">
-                                <img src={speaker2CompanyLogo} alt="speaker2-company" height={100} width={100} />
+                                <img src={getMediaUrl(speaker2CompanyLogo)} alt="speaker2-company" height={100} width={100} />
                               </div>
                             )}
                           </div>
@@ -3141,7 +3141,7 @@ const AddAgenda = () => {
                                 />
                                 {speaker.agendaImage?.length > 0 && (
                                   <div className="mt-2">
-                                    <img src={speaker.agendaImage} alt="agenda" height={100} width={100} style={{ objectFit: "cover" }} />
+                                    <img src={getMediaUrl(speaker.agendaImage)} alt="agenda" height={100} width={100} style={{ objectFit: "cover" }} />
                                   </div>
                                 )}
                               </div>

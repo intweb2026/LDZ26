@@ -11,7 +11,7 @@ import "../../assets/css/ckeditor.css";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { useApiData } from "../../../src/Components/Common/ApiContext.js";
-import API_BASE_URL from '../../config/apiConfig';
+import API_BASE_URL, { getMediaUrl } from '../../config/apiConfig';
 const override = css`
   display: block;
   margin: 0 auto;
@@ -562,7 +562,7 @@ const EditEventSpeaker = ({
               {originalPhotoUrl?.length > 0 && (
                 <div className="mt-2">
                   <img
-                    src={originalPhotoUrl}
+                    src={getMediaUrl(originalPhotoUrl)}
                     alt="uploaded-Logo"
                     height={100}
                     width={100}
@@ -586,7 +586,7 @@ const EditEventSpeaker = ({
               {whiteBgUrl?.length > 0 && (
                 <div className="mt-2">
                   <img
-                    src={whiteBgUrl}
+                    src={getMediaUrl(whiteBgUrl)}
                     alt="uploaded-Logo"
                     height={100}
                     width={100}
@@ -610,7 +610,7 @@ const EditEventSpeaker = ({
               {greyBgUrl?.length > 0 && (
                 <div className="mt-2">
                   <img
-                    src={greyBgUrl}
+                    src={getMediaUrl(greyBgUrl)}
                     alt="uploaded-Logo"
                     height={100}
                     width={100}

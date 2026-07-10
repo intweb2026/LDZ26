@@ -14,7 +14,7 @@ import Select from "react-select";
 import Flatpickr from "react-flatpickr";
 import moment from "moment";
 import { useApiData } from "../../../src/Components/Common/ApiContext.js";
-import API_BASE_URL from '../../config/apiConfig';
+import API_BASE_URL, { getMediaUrl } from '../../config/apiConfig';
 const override = css`
   display: block;
   margin: 0 auto;
@@ -526,7 +526,7 @@ const EditEventNews = ({
               {newsImage?.length > 0 && (
                 <div className="mt-2">
                   <img
-                    src={newsImage}
+                    src={getMediaUrl(newsImage)}
                     alt="uploaded-Logo"
                     height={100}
                     width={100}

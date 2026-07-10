@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import ClipLoader from "react-spinners/ClipLoader";
 import { css } from "@emotion/react";
 import "../../assets/css/dropzone.css";
-import API_BASE_URL from '../../config/apiConfig';
+import API_BASE_URL, { getMediaUrl } from '../../config/apiConfig';
 const override = css`
   display: block;
   margin: 0 auto;
@@ -370,7 +370,7 @@ const EditRelatedEvent = ({
                 {eventImage?.length > 0 && (
                   <div className="mt-2">
                     <img
-                      src={eventImage}
+                      src={getMediaUrl(eventImage)}
                       alt="uploaded-Logo"
                       height={100}
                       width={100}
@@ -396,7 +396,7 @@ const EditRelatedEvent = ({
                 {eventHoverImage?.length > 0 && (
                   <div className="mt-2">
                     <img
-                      src={eventHoverImage}
+                      src={getMediaUrl(eventHoverImage)}
                       alt="uploaded-Logo"
                       height={100}
                       width={100}

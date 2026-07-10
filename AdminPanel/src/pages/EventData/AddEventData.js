@@ -829,7 +829,7 @@ import { css } from "@emotion/react";
 import "../../assets/css/dropzone.css";
 import Select from "react-select";
 import currencyList from "currency-list";
-import API_BASE_URL from '../../config/apiConfig';
+import API_BASE_URL, { getMediaUrl } from '../../config/apiConfig';
 const override = css`
   display: block;
   margin: 0 auto;
@@ -1411,7 +1411,7 @@ const AddEventData = () => {
                     {navWhiteLogo?.length > 0 && (
                       <div className="mt-2">
                         <img
-                          src={navWhiteLogo}
+                          src={getMediaUrl(navWhiteLogo)}
                           alt="white-logo"
                           height={100}
                           width={100}
@@ -1433,7 +1433,7 @@ const AddEventData = () => {
                     {navBlackLogo?.length > 0 && (
                       <div className="mt-2">
                         <img
-                          src={navBlackLogo}
+                          src={getMediaUrl(navBlackLogo)}
                           alt="black-logo"
                           height={100}
                           width={100}
@@ -1459,7 +1459,7 @@ const AddEventData = () => {
                     {favicon?.length > 0 && (
                       <div className="mt-2">
                         <img
-                          src={favicon}
+                          src={getMediaUrl(favicon)}
                           alt="favicon"
                           height={50}
                           width={50}
@@ -1518,7 +1518,7 @@ const AddEventData = () => {
                     {eventDetailBackImage?.length > 0 && (
                       <div className="mt-2">
                         <img
-                          src={eventDetailBackImage}
+                          src={getMediaUrl(eventDetailBackImage)}
                           alt="event-detail-back"
                           height={100}
                           width={100}
@@ -1540,7 +1540,7 @@ const AddEventData = () => {
                     {stataticBgPattern?.length > 0 && (
                       <div className="mt-2">
                         <img
-                          src={stataticBgPattern}
+                          src={getMediaUrl(stataticBgPattern)}
                           alt="statatic-bg"
                           height={100}
                           width={100}
@@ -1567,7 +1567,7 @@ const AddEventData = () => {
                     {expertSpeakerBgPattern?.length > 0 && (
                       <div className="mt-2">
                         <img
-                          src={expertSpeakerBgPattern}
+                          src={getMediaUrl(expertSpeakerBgPattern)}
                           alt="expert-speaker-bg"
                           height={100}
                           width={100}
@@ -1707,7 +1707,7 @@ const AddEventData = () => {
                     {videoReplaceImage?.length > 0 && (
                       <div className="mt-2">
                         <img
-                          src={videoReplaceImage}
+                          src={getMediaUrl(videoReplaceImage)}
                           alt="video-replace"
                           height={100}
                           width={100}

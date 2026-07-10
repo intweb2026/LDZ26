@@ -11,7 +11,7 @@ import "../../assets/css/ckeditor.css";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import Select from "react-select";
-import API_BASE_URL from '../../config/apiConfig';
+import API_BASE_URL, { getMediaUrl } from '../../config/apiConfig';
 const override = css`
   display: block;
   margin: 0 auto;
@@ -699,7 +699,7 @@ const EditVenueContain = (props) => {
                 {venueGalleryImg1?.length > 0 && (
                   <div className="mt-2">
                     <img
-                      src={venueGalleryImg1}
+                      src={getMediaUrl(venueGalleryImg1)}
                       alt="uploaded-Logo"
                       height={100}
                       width={100}
@@ -709,7 +709,7 @@ const EditVenueContain = (props) => {
                 {venueGalleryImg2?.length > 0 && (
                   <div className="mt-2">
                     <img
-                      src={venueGalleryImg2}
+                      src={getMediaUrl(venueGalleryImg2)}
                       alt="uploaded-Logo"
                       height={100}
                       width={100}
@@ -719,7 +719,7 @@ const EditVenueContain = (props) => {
                 {venueGalleryImg3?.length > 0 && (
                   <div className="mt-2">
                     <img
-                      src={venueGalleryImg3}
+                      src={getMediaUrl(venueGalleryImg3)}
                       alt="uploaded-Logo"
                       height={100}
                       width={100}
@@ -729,7 +729,7 @@ const EditVenueContain = (props) => {
                 {venueGalleryImg4?.length > 0 && (
                   <div className="mt-2">
                     <img
-                      src={venueGalleryImg4}
+                      src={getMediaUrl(venueGalleryImg4)}
                       alt="uploaded-Logo"
                       height={100}
                       width={100}
@@ -739,7 +739,7 @@ const EditVenueContain = (props) => {
                 {venueGalleryImg5?.length > 0 && (
                   <div className="mt-2">
                     <img
-                      src={venueGalleryImg5}
+                      src={getMediaUrl(venueGalleryImg5)}
                       alt="uploaded-Logo"
                       height={100}
                       width={100}
@@ -749,7 +749,7 @@ const EditVenueContain = (props) => {
                 {venueGalleryImg6?.length > 0 && (
                   <div className="mt-2">
                     <img
-                      src={venueGalleryImg6}
+                      src={getMediaUrl(venueGalleryImg6)}
                       alt="uploaded-Logo"
                       height={100}
                       width={100}

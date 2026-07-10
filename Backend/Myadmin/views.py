@@ -39,8 +39,8 @@ def upload_media(request):
     return JsonResponse({'status': True, "message": "Record Updated Successfully", "uploadedURL": uploaded_file_url})
 
 #---------------------------- Api For Home Page Data ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def homePageDataFun(request):
     theme_list = themeColorSettings.objects.all().filter(isDelete='No').order_by('-id')
     themeSettingsData = []
@@ -163,8 +163,8 @@ def homePageDataFun(request):
     return JsonResponse({'homePageSettings': y, 'status': True})
 
 #---------------------------- Api For Home Page Companies Logo Data ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def homePageCompaniesListFun(request):
     logo_list = companiesLogoSection.objects.all().filter(isDelete='No')
     logoData = []
@@ -182,8 +182,8 @@ def homePageCompaniesListFun(request):
     return JsonResponse({'homePageCompaniesList': logoData, 'status': True})
 
 #---------------------------- Api For Home Page Navbar Main Categories ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def navMainCategoriesFun(request):
     mainCategory_list = homePageNavMainCategories.objects.all().filter(isDelete='No').order_by('id')
     dataMainCategory = []
@@ -202,8 +202,8 @@ def navMainCategoriesFun(request):
     return JsonResponse({'navMainategories': dataMainCategory, 'status': True})
 
 #---------------------------- Api For Home Page Navbar Sub Categories ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def navSubCategoriesFun(request):
     subCategory_list = homePageNavSubCategories.objects.all().filter(isDelete='No').order_by('id')
     dataSubCategory = []
@@ -231,8 +231,8 @@ def navSubCategoriesFun(request):
     return JsonResponse({'navSubCategories': dataSubCategory, 'status': True})
 
 #---------------------------- Api For Speaker List ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def speakersListFun(request):
     speaker_list = eventSpeakers.objects.all().filter(isDelete='No').order_by('-eventSpeakerLinkedinFollowers')
     speakerData = []
@@ -264,8 +264,8 @@ def speakersListFun(request):
     return JsonResponse({'eventSpeakersList': speakerData, 'status': True})
 
 #---------------------------- Api For Testimonial List ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def testimonialListFun(request):
     testimonial_list = eventTestimonials.objects.all().filter(isDelete='No').order_by('-id')
     testimonialData = []
@@ -311,8 +311,8 @@ def testimonialListFun(request):
 #         sponsorData.append(x)
 #     return JsonResponse({'eventSponsors': sponsorData, 'status': True})
 
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def sponsorListFun(request):
     SPONSOR_TYPE_ORDER = {
         'Lead': 1,
@@ -353,8 +353,8 @@ def sponsorListFun(request):
     return JsonResponse({'eventSponsors': sponsorData, 'status': True})
 
 #---------------------------- Api For Industry Trend List ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def industryTrendListFun(request):
     industryTrend_list = eventIndustryTrends.objects.all().filter(isDelete='No')
     industryTrendData = []
@@ -377,8 +377,8 @@ def industryTrendListFun(request):
 
 
 #---------------------------- Api For Get Past Attandee List ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def pastAttandeeListFun(request):
     pastAttandees_Data = eventPastAttandees.objects.all().filter(isDelete='No')
     pastAttandeesOptions = []
@@ -396,8 +396,8 @@ def pastAttandeeListFun(request):
     return JsonResponse({'pastAttandees': pastAttandeesOptions, 'status': True})
 
 #---------------------------- Api For Related Event List ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def relatedEventListFun(request):
     relatedEvent_list = relatedEvents.objects.all().filter(isDelete='No')
     relatedEventsData = []
@@ -419,8 +419,8 @@ def relatedEventListFun(request):
     return JsonResponse({'relatedEvents': relatedEventsData, 'status': True})
 
 #---------------------------- Api For Register Page Static Data ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def registerPageDataFun(request):
     registerPageData_list = registerPageSettings.objects.all().filter(isDelete='No').order_by('-id')
     registerPageData = []
@@ -442,8 +442,8 @@ def registerPageDataFun(request):
 
 
 #---------------------------- Api For Get Delegate Package List ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def delegatePackagesListFun(request):
     delegatePackage_list = eventDeligatePackages.objects.all().filter(isDelete='No').order_by('-id')
     delegatePackagesListData = []
@@ -464,8 +464,8 @@ def delegatePackagesListFun(request):
     return JsonResponse({'delegatePackages': delegatePackagesListData, 'status': True})
 
 #---------------------------- Api For Get Delegate Package Inclusion List ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def delegatePackageInclusionsListFun(request):
     delegatePackageInclusions_list = deligatePackageInclusionPoints.objects.all().filter(isDelete='No').order_by('-id')
     delegatePackageInclusionsListData = []
@@ -525,8 +525,8 @@ def delegatePackageInclusionsListFun(request):
 #     return JsonResponse({'agendaList': agendaListData, 'status': True})
 
 #---------------------------- Api For Get Who Should Attend Page Static Data ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def whoShouldAttendPageDataFun(request):
     whoShouldAttendPageData_list = whoShouldAttendPageData.objects.all().filter(isDelete='No').order_by('-id')
     whoShouldAttendPageDataArr = []
@@ -559,8 +559,8 @@ def whoShouldAttendPageDataFun(request):
     return JsonResponse({'whoShouldAttendPageData': whoShouldAttendPageDataArr, 'status': True})
 
 #---------------------------- Api For Get Event Core Attandees ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def eventCoreAttendeesFun(request):
     coreAttandees_list = eventCoreAttandees.objects.all().filter(isDelete='No')
     coreAttandeesList = []
@@ -577,8 +577,8 @@ def eventCoreAttendeesFun(request):
     return JsonResponse({'coreAttandees': coreAttandeesList, 'status': True})
 
 #---------------------------- Api For Get Event Participated Industries ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def eventParticipatedIndustriesFun(request):
     industry_list = eventParticipatedIndustries.objects.all().filter(isDelete='No')
     industryList = []
@@ -595,8 +595,8 @@ def eventParticipatedIndustriesFun(request):
     return JsonResponse({'participatedIndustries': industryList, 'status': True})
 
 #---------------------------- Api For Get Speaker Page Static Data ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def speakerPageStaticDataFun(request):
     speakerPageStaticData_list = speakerPageData.objects.all().filter(isDelete='No').order_by('-id')
     speakerPageStaticDataList = []
@@ -622,8 +622,8 @@ def speakerPageStaticDataFun(request):
     return JsonResponse({'speakerPageStaticData': speakerPageStaticDataList, 'status': True})
 
 #---------------------------- Api For Get Speaker Page Section Three Static Points ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def speakerPageSecThreePointsFun(request):
     speakerPageSecThreePoints_list = speakerPageSectionThreePoints.objects.all().filter(isDelete='No').order_by('-id')
     speakerPageSecThreePointsList = []
@@ -642,8 +642,8 @@ def speakerPageSecThreePointsFun(request):
     return JsonResponse({'speakerPageSecThreePoints': speakerPageSecThreePointsList, 'status': True})
 
 #---------------------------- Api For Get Sponsor Page Static Data ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def sponsorPageStaticDataFun(request):
     sponsorPageStaticData_list = sponsorPageData.objects.all().filter(isDelete='No').order_by('-id')
     sponsorPageStaticDataList = []
@@ -679,8 +679,8 @@ def sponsorPageStaticDataFun(request):
     return JsonResponse({'sponsorPageStaticData': sponsorPageStaticDataList, 'status': True})
 
 #---------------------------- Api For Get Sponsor Page Bullet Points ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def sponsorPageBulletPointsFun(request):
     sponsorPageBulletPoints_list = sponsorPageBulletData.objects.all().filter(isDelete='No').order_by('-id')
     sponsorPageBulletPointsList = []
@@ -698,8 +698,8 @@ def sponsorPageBulletPointsFun(request):
     return JsonResponse({'sponsorPageBulletPoints': sponsorPageBulletPointsList, 'status': True})
 
 #---------------------------- Api For Get Venue Page Static Data ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def venuePageStaticDataFun(request):
     venuePageStaticData_list = venuePageData.objects.all().filter(isDelete='No').order_by('-id')
     venuePageStaticDataList = []
@@ -727,8 +727,8 @@ def venuePageStaticDataFun(request):
     return JsonResponse({'venuePageStaticData': venuePageStaticDataList, 'status': True})
 
 #---------------------------- Api For Get Venue Page Gallery Images  ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def venuePageGalleryImagesFun(request):
     venuePageGalleryImages_list = venuePageGallery.objects.all().filter(isDelete='No').order_by('-id')
     venuePageGalleryImagesList = []
@@ -750,8 +750,8 @@ def venuePageGalleryImagesFun(request):
     return JsonResponse({'venueGalleryImages': venuePageGalleryImagesList, 'status': True})
 
 #---------------------------- Api For Get News Categories  ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def newsCategoriesFun(request):
     newsCategories_list = newsCategory.objects.all().filter(isDelete='No').order_by('-id')
     newsCategoriesList = []
@@ -768,8 +768,8 @@ def newsCategoriesFun(request):
     return JsonResponse({'newsCategories': newsCategoriesList, 'status': True})
 
 #---------------------------- Api For Get General News  ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def generalNewsFun(request):
     generalNews_list = generalNewsPoint.objects.all().filter(isDelete='No').order_by("-newsCreatedDate")
     generalNewsList = []
@@ -802,8 +802,8 @@ def generalNewsFun(request):
     return JsonResponse({'generalNews': generalNewsList, 'status': True})
 
 #---------------------------- Api For Get Latest News  ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def latestNewsFun(request):
     latestNews_list = latestNews.objects.all().filter(isDelete='No').order_by('-id')
     latestNewsList = []
@@ -837,8 +837,8 @@ def latestNewsFun(request):
     return JsonResponse({'latestNews': latestNewsList, 'status': True})
 
 #---------------------------- Api For Get Top News  ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def alltopNewsListFun(request):
     alltopNews_list = topNews.objects.all().filter(isDelete='No').order_by('-id')
     topNewsList = []
@@ -872,8 +872,8 @@ def alltopNewsListFun(request):
     return JsonResponse({'topNewsPoints': topNewsList, 'status': True})
 
 #---------------------------- Api For Get Subscribers  ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def subscribersFun(request):
     subscriber_list = subscribers.objects.all().filter(isDelete='No').order_by('-id')
     subscriberList = []
@@ -891,8 +891,8 @@ def subscribersFun(request):
     return JsonResponse({'subscribersList': subscriberList, 'status': True})
 
 #---------------------------- Api For Get Event Faqs List  ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def eventFaqsFun(request):
     faqs_list = eventFaqs.objects.all().filter(isDelete='No').order_by('id')
     faqsList = []
@@ -910,8 +910,8 @@ def eventFaqsFun(request):
     return JsonResponse({'faqsList': faqsList, 'status': True})
 
 #------------------- Api For Get Contact Us Contact Data List  -------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def contatusContactsFun(request):
     contacts_list = contactUsData.objects.all().filter(isDelete='No').order_by('-id')
     contactsList = []
@@ -942,8 +942,8 @@ def delete_contactUs_contact(request):
     return JsonResponse({'status': True, "message": "Record Updated Successfully"})
 
 #------------------- Api For Get Contact Us Page Static Data  -------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def contatusDataFun(request):
     contactsUsData_list = contactUsPageData.objects.all().filter(isDelete='No').order_by('-id')
     contactUsDataList = []
@@ -962,8 +962,8 @@ def contatusDataFun(request):
     return JsonResponse({'contatusPageStaticData': contactUsDataList, 'status': True})
 
 #------------------- Api For Get Contact Us Page Helpers Data  -------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def contatusHelpersDataFun(request):
     contactsUsHelperData_list = contactUsHelpData.objects.all().filter(isDelete='No').order_by('id')
     contactUsHelperDataList = []
@@ -983,8 +983,8 @@ def contatusHelpersDataFun(request):
     return JsonResponse({'contactUsHelpers': contactUsHelperDataList, 'status': True})
 
 #------------------- Api For Get Press Media Page Static Data  -------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def pressMediaDataFun(request):
     pressMediaData_list = pressMediaPageData.objects.all().filter(isDelete='No').order_by('-id')
     pressMediaDataList = []
@@ -1004,8 +1004,8 @@ def pressMediaDataFun(request):
     return JsonResponse({'pressMediaStaticData': pressMediaDataList, 'status': True})
 
 #------------------- Api For Get Press Media Page Box Data  -------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def pressMediaBoxDataFun(request):
     pressMediaBoxData_list = pressMediaPageBoxData.objects.all().filter(isDelete='No').order_by('-id')
     pressMediaBoxDataList = []
@@ -1024,8 +1024,8 @@ def pressMediaBoxDataFun(request):
 
 
 #---------------------------- Api For get List of Registered Companies  ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def registeredCompaniesFun(request):
     registeredCompanies_list = registeredCompanyDetails.objects.all().filter(isDelete='No').order_by('-id')
     registeredCompaniesList = []
@@ -1056,8 +1056,8 @@ def registeredCompaniesFun(request):
     return JsonResponse({'registeredCompanies': registeredCompaniesList, 'status': True})
 
 #---------------------------- Api For get List of Registered Delegates  ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def registeredDelegatesFun(request):
     registeredDelegates_list = registeredDelegates.objects.all().filter(isDelete='No').order_by('-id')
     registeredDelegatesList = []
@@ -1086,8 +1086,8 @@ def registeredDelegatesFun(request):
     return JsonResponse({'registeredDelegates': registeredDelegatesList, 'status': True})
 
 #---------------------------- Api For get List of Delegate Package Add Ons  ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def delegateAddOnsFun(request):
     delegateAddOns_list = delegatesAddOns.objects.all().filter(isDelete='No')
     delegateAddOnsList = []
@@ -1105,8 +1105,8 @@ def delegateAddOnsFun(request):
     return JsonResponse({'delegateAddOns': delegateAddOnsList, 'status': True})
 
 #---------------------------- Api For get List of Payment Option Image  ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def paymentOptionImagesFun(request):
     paymentOptionImages_list = paymentOptionImage.objects.all().filter(isDelete='No').order_by('-id')
     paymentOptionImagesList = []
@@ -1123,8 +1123,8 @@ def paymentOptionImagesFun(request):
     return JsonResponse({'paymentImages': paymentOptionImagesList, 'status': True})
 
 #---------------------------- Api For get List of Offer Coupons  ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def offerCouponsFun(request):
     offerCoupons_list = offerCoupon.objects.all().filter(isDelete='No')
     offerCouponsList = []
@@ -1145,8 +1145,8 @@ def offerCouponsFun(request):
     return JsonResponse({'offerCoupons': offerCouponsList, 'status': True})
 
 #---------------------------- Api For get Delegate Transections  ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def delegateTransectionsFun(request):
     delegateTransections_list = delegateTransectionData.objects.all().filter(isDelete='No').order_by('-id')
     delegateTransectionsList = []
@@ -1177,8 +1177,8 @@ def delegateTransectionsFun(request):
     return JsonResponse({'delegateTransectionsList': delegateTransectionsList, 'status': True})
 
 #---------------------------- Api For get Event General Settings  ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def eventGeneralSettingsFun(request):
     eventGeneralSettings_list = eventGeneralSettings.objects.all().filter(isDelete='No').order_by('-id')
     eventGeneralSettingsList = []
@@ -1196,8 +1196,8 @@ def eventGeneralSettingsFun(request):
     return JsonResponse({'eventGeneralSettings': eventGeneralSettingsList, 'status': True})
 
 #---------------------------- Api For get Offer Coupon Usage History  ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def offerCouponistoryFun(request):
     offerCouponistory_list = offerCouponHistory.objects.all().filter(isDelete='No').order_by('-id')
     offerCouponistoryList = []
@@ -1227,8 +1227,8 @@ def offerCouponistoryFun(request):
     return JsonResponse({'offerCouponUsageHistory': offerCouponistoryList, 'status': True})
 
 #---------------------------- Api For get Add Ons Purchase History  ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def addOnPurchaseHistoryFun(request):
     addOnPurchaseHistory_list = addOnsHistory.objects.all().filter(isDelete='No').order_by('-id')
     addOnPurchaseHistoryList = []
@@ -1277,8 +1277,8 @@ def addOnPurchaseHistoryFun(request):
 #     return JsonResponse({'sponsorPackageBenifits': sponsorBenifitsList, 'status': True})
 
 #---------------------------- Api For get List Of Sponsor Package Types  ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def sponsorPackageTypesFun(request):
     sponsorPackageTypes_list = sponsorPackageTypes.objects.all().filter(isDelete='No')
     sponsorPackageTypesList = []
@@ -1336,8 +1336,8 @@ def sponsorPackageTypesFun(request):
 #     return JsonResponse({'sponsorPackageInclusions': sponsorPackageInclusionsList, 'status': True})
 
 #---------------------------- Api For get List Of Sponsor Package Add On Types  ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def sponsorPackageAddonTypesFun(request):
     sponsorPackageAddonTypes_list = sponsorPackageAddOnTypes.objects.all().filter(isDelete='No')
     sponsorPackageAdonTypesList = []
@@ -1354,8 +1354,8 @@ def sponsorPackageAddonTypesFun(request):
     return JsonResponse({'sponsorPackageAddOnTypes': sponsorPackageAdonTypesList, 'status': True})
 
 #---------------------------- Api For get List Of Sponsor Package Add Ons  ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def sponsorPackageAddonsFun(request):
     sponsorPackageAddons_list = sponsorPackageAddOns.objects.all().filter(isDelete='No')
     sponsorPackageAddonsList = []
@@ -1413,8 +1413,8 @@ def sponsorPackageAddonsFun(request):
 #     return JsonResponse({'sponsoredCompanies': sponsoredCompaniesList, 'status': True})
 
 #---------------------------- Api For get List Of Sponsored Delegates  ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def sponsoredDelegatesFun(request):
     sponsoredDelegates_list = registeredSponseredDelegates.objects.all().filter(isDelete='No').order_by('-id')
     sponsoredDelegatesList = []
@@ -1442,8 +1442,8 @@ def sponsoredDelegatesFun(request):
     return JsonResponse({'sponsoredDelegates': sponsoredDelegatesList, 'status': True})
 
 #---------------------------- Api For get List Of Sponsored Company Add Ons  ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def sponsoredCompanyAddOnsFun(request):
     sponsoredCompanyAddOns_list = sponsoredCompanyAddOnsDetails.objects.all().filter(isDelete='No').order_by('-id')
     sponsoredCompanyAddOnsList = []
@@ -1474,8 +1474,8 @@ def sponsoredCompanyAddOnsFun(request):
     return JsonResponse({'sponsoredCompanyAddOns': sponsoredCompanyAddOnsList, 'status': True})
 
 #---------------------------- Api For get List Of Sponsored Company Transections  ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def sponsoredCompanyTransectionsFun(request):
     sponsoredCompanyTransections_list = sponsorCompanyTransectionData.objects.all().filter(isDelete='No').order_by('-id')
     sponsoredCompanyTransectionsList = []
@@ -1506,8 +1506,8 @@ def sponsoredCompanyTransectionsFun(request):
     return JsonResponse({'sponsoredCompanyTransections': sponsoredCompanyTransectionsList, 'status': True})
 
 #------------------- Api For Get Group Pass Registration Request Data  -------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def groupPassRegistrationRequestDataFun(request):
     groupPassRegistrationRequestData_list = groupPassRegistrationRequestData.objects.all().filter(isDelete='No').order_by('-id')
     groupPassRegistrationRequestDataList = []
@@ -1530,8 +1530,8 @@ def groupPassRegistrationRequestDataFun(request):
     return JsonResponse({'pressMediaBoxData': groupPassRegistrationRequestDataList, 'status': True})
 
 #------------------- Api For Get Tagline Data  -------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def taglineDataFun(request):
     taglineData_list = homePageThirdSection.objects.all().filter(isDelete='No').order_by('-id')
     tglineData = []
@@ -1856,8 +1856,8 @@ def add_home_keyPointSectionData(request):
     return JsonResponse({'status': True, "message": "Record Updated Successfully"})
 
 #-----------Api For Key Points List-----------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def keyPointsListFun(request):
     keyPoints_Data = keyPointsSectionPoints.objects.all().filter(isDelete='No').order_by('-id')
     keyPointsOptions = []
@@ -2109,8 +2109,8 @@ def delete_pastAttandee(request):
     return JsonResponse({'status': True, "message": "Record Updated Successfully"})
 
 #---------------------------- Api For Get Event Expert Speakers ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def eventExpertSpeakersFun(request):
     eventExpertSpeakers_Data = eventExpertSpeakers.objects.all().filter(isDelete='No')
     eventExpertSpeakersOptions = []
@@ -2205,8 +2205,8 @@ def add_footerFirstSecOptions(request):
     return JsonResponse({'status': True, "message": "Record Updated Successfully"})
 
 #---------------------------- Api For Footer Social Media Options ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def footerSocialMediaOptionsFun(request):
     socMedia_list = footerSocialMediaOptions.objects.all().filter(isDelete='No')
     dataSocialOptions = []
@@ -3911,8 +3911,8 @@ def delete_contactUsPageHelper(request):
     return JsonResponse({'status': True, "message": "Record Updated Successfully"})
 
 #------------------- Api For Get Media Page Helpers -------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def mediaPageHelpersFun(request):
     mediaPageHelpers_list = mediaPageHelpers.objects.all().filter(isDelete='No')
     mediaPageHelpersList = []
@@ -4459,8 +4459,8 @@ def add_standOutCrowdRequest(request):
     return JsonResponse({'status': True, "message": "Record Updated Successfully"})
 
 #------------------- Api For Get Stand Out Crowd Request Data List  -------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def standOutCrowdRequestListFun(request):
     standCrowd_list = standOutCrowdRequestData.objects.all().filter(isDelete='No').order_by('-id')
     StandCrowdList = []
@@ -4518,8 +4518,8 @@ def add_becomeSpeakerRequest(request):
     return JsonResponse({'status': True, "message": "Record Updated Successfully"})
 
 #------------------- Api For Get Become Speaker Form Request List  -------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def becomeSpeakerFormRequestListFun(request):
     becomeSpeaker_list = becomeSpeakerRequestData.objects.all().filter(isDelete='No').order_by('-id')
     becomeSpeakerList = []
@@ -4577,8 +4577,8 @@ def add_quickProposalRequest(request):
     return JsonResponse({'status': True, "message": "Record Updated Successfully"})
 
 #------------------- Api For Get Become Speaker Form Request List  -------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def quickProposalFormRequestListFun(request):
     quickProposal_list = quickProposalRequestData.objects.all().filter(isDelete='No').order_by('-id')
     quickProposalList = []
@@ -4643,8 +4643,8 @@ def add_endUserPassRegistrationRequest(request):
     return JsonResponse({'status': True, "message": "Record Updated Successfully"})
 
 #------------------- Api For Get End User Pass Registration Request List  -------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def endUserPassRegistrationListFun(request):
     registration_list = endUserPassRegistrationRequestData.objects.all().filter(isDelete='No').order_by('-id')
     registrationList = []
@@ -4691,8 +4691,8 @@ def add_homePastAttandee(request):
     return JsonResponse({'status': True, "message": "Record Updated Successfully"})
 
 #------------------- Api For Get Home Past Attandees-------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def homePastAttandeeListFun(request):
     homeAttandee_list = pastAttandeeHomeData.objects.all().filter(isDelete='No')
     homeAttandeeList = []
@@ -4732,8 +4732,8 @@ def edit_homePastAttandee(request):
     return JsonResponse({'status': True, "message": "Record Updated Successfully"})
 
 #---------------------------- Api For Get Leader List ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def eventLeaderListFun(request):
     leaders_Data = eventLeaders.objects.all().filter(isDelete='No')
     leadersList = []
@@ -4866,8 +4866,8 @@ def getNewsDataById(request):
     return JsonResponse({'NewsData': NewsData, 'status': True})
 
 #---------------------------- Api For Get Nav Items ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def navItemsFun(request):
     mainCategoriesList = homePageNavMainCategories.objects.all().filter(isDelete='No').order_by('id')
     nav_items = []
@@ -5259,8 +5259,8 @@ def verify_payment(request):
         }, status=500)
     
 #------------------- Api For Get list of joined companies  -------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def joinedCompaniesFun(request):
     company_list = registeredCompanyDetails.objects.all().filter(isDelete='No').order_by('-id')
     joinedCompanyList = []
@@ -5291,8 +5291,8 @@ def joinedCompaniesFun(request):
     return JsonResponse({'joiedCompanies': joinedCompanyList, 'status': True})
 
 #------------------- Api For Get list of joined Delegates  -------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def joinedDelegatesFun(request):
     delegate_list = registeredDelegates.objects.all().filter(isDelete='No').order_by('-id')
     joinedDelegateList = []
@@ -5320,8 +5320,8 @@ def joinedDelegatesFun(request):
     return JsonResponse({'joiedDelegates': joinedDelegateList, 'status': True})
 
 #------------------- Api For Get list of Company Transections  -------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def companyTransectionsFun(request):
     transection_list = delegateTransectionData.objects.all().filter(isDelete='No').order_by('-id')
     transectionList = []
@@ -5351,8 +5351,8 @@ def companyTransectionsFun(request):
         transectionList.append(x)
     return JsonResponse({'companyTransections': transectionList, 'status': True})
 #---------------------------- Api For Get Active Delegate Package ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def getActiveDelegatePackageFun(request):
     activeDelegatePackage_list = eventDeligatePackages.objects.all().filter(isDelete='No',deligatePackageStatus="available").order_by('-id')
     activeDelegatePackagesListData = []
@@ -5373,8 +5373,8 @@ def getActiveDelegatePackageFun(request):
     return JsonResponse({'activeDelegatePackage': activeDelegatePackagesListData, 'status': True})
 
 #------------------- Api For Get list of joined Sponsor Companies  -------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def sponsoredCompaniesFun(request):
     sponsor_company_list = sponseredCompanyDetails.objects.all().filter(isDelete='No').order_by('-id')
     joinedSponsorCompanyList = []
@@ -5408,8 +5408,8 @@ def sponsoredCompaniesFun(request):
     return JsonResponse({'joiedSponsorCompanies': joinedSponsorCompanyList, 'status': True})
 
 #------------------- Api For Get list of joined Delegates  -------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def joinedSponsorDelegatesFun(request):
     sponsor_delegate_list = registeredSponseredDelegates.objects.all().filter(isDelete='No').order_by('-id')
     joinedSponsorDelegateList = []
@@ -5437,8 +5437,8 @@ def joinedSponsorDelegatesFun(request):
     return JsonResponse({'joiedSponsorDelegates': joinedSponsorDelegateList, 'status': True})
 
 #------------------- Api For Get list of Company Transections  -------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def sponsorCompanyTransectionsFun(request):
     sponsor_transection_list = sponsorCompanyTransectionData.objects.all().filter(isDelete='No').order_by('-id')
     sponsorTransectionList = []
@@ -5501,8 +5501,8 @@ def getSponsorDataById(request):
     return JsonResponse({'sponsorData': sponsorProfileData, 'status': True})
 
 #---------------------------- Api For Get Theme ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def getThemeFun(request):
     theme = themeColorSettings.objects.filter(isDelete='No').first()
     if not theme:
@@ -6196,8 +6196,8 @@ def delete_slideShare(request):
     return JsonResponse({'status': True, "message": "Record Updated Successfully"})
 
 #---------------------------- Api For Get Slide Share List ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def slideShareListFun(request):
     slideShares_Data = eventSlideShares.objects.all().filter(isDelete='No')
     slideSharesOptions = []
@@ -6284,8 +6284,8 @@ def delete_slideShare_attandee(request):
     return JsonResponse({'status': True, "message": "Record Updated Successfully"})
 
 #---------------------------- Api For Get Slide Share Attandee List ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def slideShareAttandeeListFun(request):
     slideSharesAttandee_Data = eventSlideSharesAttandees.objects.all().filter(isDelete='No')
     slideSharesAttandees = []
@@ -6345,8 +6345,8 @@ def delete_slideShare_access(request):
     return JsonResponse({'status': True, "message": "Record Updated Successfully"})
 
 #---------------------------- Api For Get Slide Share Access List ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def slideShareAccessListFun(request):
     slideSharesAccess_Data = slideSharesAccessPersons.objects.all().filter(isDelete='No')
     slideSharesAccess = []
@@ -6459,8 +6459,8 @@ def secure_login_slideShare(request):
 #             return JsonResponse({"invoiceNo": invoice_no})
 
 #---------------------------- Api For Get Pay Online Transection List ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def payOnlineTransectionListFun(request):
     payOnlineTransection_Data = payOnlineTransectionData.objects.all().filter(isDelete='No')
     payOnlineTransections = []
@@ -6563,8 +6563,8 @@ def delete_blockDomain(request):
     return JsonResponse({'status': True, "message": "Record Updated Successfully"})
 
 #---------------------------- Api For Get Block Domain List ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def blockDomainListFun(request):
     blockDomain_Data = blockedEmailDomains.objects.all().filter(isDelete='No')
     blockDomains = []
@@ -6581,8 +6581,8 @@ def blockDomainListFun(request):
     return JsonResponse({'blockDomains': blockDomains, 'status': True})
 
 #---------------------------- Api For Page SEO Settings ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def pageSeoListFun(request):
     seo_list = pageSeoSettings.objects.filter(isDelete='No').order_by('pageName')
     data = []
@@ -6598,8 +6598,8 @@ def pageSeoListFun(request):
         })
     return JsonResponse({'pageSeoSettings': data, 'status': True})
 
-@permission_classes((AllowAny,))
 @api_view(['POST'])
+@permission_classes((AllowAny,))
 def add_pageSeo(request):
     response = request.data
     pageName = response.get('pageName', '')
@@ -6617,8 +6617,8 @@ def add_pageSeo(request):
     obj.save()
     return JsonResponse({'status': True, 'message': 'Page SEO added successfully', 'id': obj.id})
 
-@permission_classes((AllowAny,))
 @api_view(['PATCH'])
+@permission_classes((AllowAny,))
 def edit_pageSeo(request):
     response = request.data
     seo_id = response.get('id')
@@ -6638,8 +6638,8 @@ def edit_pageSeo(request):
     obj.save()
     return JsonResponse({'status': True, 'message': 'Page SEO updated successfully'})
 
-@permission_classes((AllowAny,))
 @api_view(['DELETE'])
+@permission_classes((AllowAny,))
 def delete_pageSeo(request):
     seo_id = request.data.get('id')
     try:
@@ -6719,8 +6719,8 @@ def delete_footerOption(request):
     return JsonResponse({'status': True, "message": "Record Updated Successfully"})
 
 #---------------------------- Api For Get Footer Options ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def footerOptionsFun(request):
     footerOption_list = footerOptions.objects.all().filter(isDelete='No').order_by('id')
     footerOptionsArr = []
@@ -6815,8 +6815,8 @@ def add_agendaSubscriber(request):
     return JsonResponse({'status': True, "message": "Record Updated Successfully"})
 
 #---------------------------- Api For List Agenda Subscriber ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def agendaSubscriberListFun(request):
     agendaSubscriber_list = agendaSubscriber.objects.all().filter(isDelete='No')
     agendaSubscriberArr = []
@@ -6848,8 +6848,8 @@ def add_calenderSubscriber(request):
     return JsonResponse({'status': True, "message": "Record Updated Successfully"})
 
 #---------------------------- Api For List Agenda Subscriber ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def calenderSubscriberListFun(request):
     calenderSubscriber_list = calenderSubscriber.objects.all().filter(isDelete='No')
     calenderSubscriberArr = []
@@ -6866,8 +6866,8 @@ def calenderSubscriberListFun(request):
     return JsonResponse({'calenderSubscribers': calenderSubscriberArr, 'status': True})
 
 #---------------------------- Api For get List of Spnsor Offer Coupons  ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def sponsorOfferCouponsFun(request):
     sponsorOfferCoupons_list = sponsorOfferCoupon.objects.all().filter(isDelete='No')
     sponsorOfferCouponsList = []
@@ -6985,8 +6985,8 @@ def sponsorOfferCouponByCodeFun(request):
         return JsonResponse({'status': False, 'message': 'Invalid Coupon Code'})
     
 #---------------------------- Api For Get Event Projects ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def eventProjectListFun(request):
     projects_Data = eventProject.objects.all().filter(isDelete='No')
     projectList = []
@@ -7048,8 +7048,8 @@ def delete_eventProject(request):
     return JsonResponse({'status': True, "message": "Record Updated Successfully"})
 
 #---------------------------- Api For List Sponser Cards ----------------------------#
-@permission_classes((AllowAny,))
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def sponsorCardsListFun(request):
     cards_list = sponsorCards.objects.all().filter(isDelete='No')
     cardsData = []

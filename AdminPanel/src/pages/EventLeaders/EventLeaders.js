@@ -20,7 +20,7 @@ import AddEventLeader from "./AddEventLeader";
 import EditEventLeader from "./EditEventLeader";
 import DeleteModal from "../../Components/Common/DeleteModal";
 import Tooltip from "@mui/material/Tooltip";
-import API_BASE_URL from '../../config/apiConfig';
+import API_BASE_URL, { getMediaUrl } from '../../config/apiConfig';
 const override = css`
   display: block;
   margin: 0 auto;
@@ -135,7 +135,7 @@ const EventLeaders = () => {
               <div className="flex-shrink-0 me-3">
                 <div className="avatar-md bg-light rounded p-1 d-flex align-center justify-content-center">
                   <img
-                    src={cell.row.original.leaderLogo}
+                    src={getMediaUrl(cell.row.original.leaderLogo)}
                     alt=""
                     className="img-fluid d-block"
                   />

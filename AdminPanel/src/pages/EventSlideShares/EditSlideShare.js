@@ -14,7 +14,7 @@ import Select from "react-select";
 import Flatpickr from "react-flatpickr";
 import moment from "moment";
 import { useApiData } from "../../../src/Components/Common/ApiContext.js";
-import API_BASE_URL from '../../config/apiConfig';
+import API_BASE_URL, { getMediaUrl } from '../../config/apiConfig';
 const override = css`
   display: block;
   margin: 0 auto;
@@ -161,7 +161,7 @@ const EditSlideShare = ({
       }
 
       if (data.uploadedURL) {
-        slideShareFile(data.uploadedURL);
+        setSlideShareFile(data.uploadedURL);
       }
     } catch (error) {
       console.error("Upload error:", error);
@@ -548,7 +548,7 @@ const EditSlideShare = ({
               {slideShareFile?.length > 0 && (
                 <div className="mt-2">
                   <img
-                    src={slideShareFile}
+                    src={getMediaUrl(slideShareFile)}
                     alt="uploaded-Logo"
                     height={100}
                     width={100}

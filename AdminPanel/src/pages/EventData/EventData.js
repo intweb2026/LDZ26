@@ -22,7 +22,7 @@ import "../../assets/css/ckeditor.css";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import Tooltip from "@mui/material/Tooltip";
-import API_BASE_URL from '../../config/apiConfig';
+import API_BASE_URL, { getMediaUrl } from '../../config/apiConfig';
 const override = css`
   display: block;
   margin: 0 auto;
@@ -544,7 +544,7 @@ const EventData = () => {
                     {navWhiteLogo?.length > 0 && (
                       <div className="mt-2">
                         <img
-                          src={navWhiteLogo}
+                          src={getMediaUrl(navWhiteLogo)}
                           alt="uploaded-Logo"
                           height={100}
                           width={100}
@@ -570,7 +570,7 @@ const EventData = () => {
                     {navBlackLogo?.length > 0 && (
                       <div className="mt-2">
                         <img
-                          src={navBlackLogo}
+                          src={getMediaUrl(navBlackLogo)}
                           alt="uploaded-Logo"
                           height={100}
                           width={100}
@@ -594,7 +594,7 @@ const EventData = () => {
                     {favicon?.length > 0 && (
                       <div className="mt-2">
                         <img
-                          src={favicon}
+                          src={getMediaUrl(favicon)}
                           alt="favicon"
                           height={50}
                           width={50}
@@ -656,7 +656,7 @@ const EventData = () => {
                     {eventDetailBackImage?.length > 0 && (
                       <div className="mt-2">
                         <img
-                          src={eventDetailBackImage}
+                          src={getMediaUrl(eventDetailBackImage)}
                           alt="uploaded-Logo"
                           height={100}
                           width={100}
@@ -682,7 +682,7 @@ const EventData = () => {
                     {stataticBgPattern?.length > 0 && (
                       <div className="mt-2">
                         <img
-                          src={stataticBgPattern}
+                          src={getMediaUrl(stataticBgPattern)}
                           alt="uploaded-Logo"
                           height={100}
                           width={100}
@@ -708,7 +708,7 @@ const EventData = () => {
                     {expertSpeakerBgPattern?.length > 0 && (
                       <div className="mt-2">
                         <img
-                          src={expertSpeakerBgPattern}
+                          src={getMediaUrl(expertSpeakerBgPattern)}
                           alt="uploaded-Logo"
                           height={100}
                           width={100}
@@ -880,7 +880,7 @@ const EventData = () => {
                     {videoReplaceImage?.length > 0 && (
                       <div className="mt-2">
                         <img
-                          src={videoReplaceImage}
+                          src={getMediaUrl(videoReplaceImage)}
                           alt="uploaded-Logo"
                           height={100}
                           width={100}

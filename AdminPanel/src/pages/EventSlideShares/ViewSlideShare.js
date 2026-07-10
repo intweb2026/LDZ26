@@ -9,6 +9,7 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import Flatpickr from "react-flatpickr";
 import moment from "moment";
 import { useApiData } from "../../../src/Components/Common/ApiContext.js";
+import { getMediaUrl } from "../../config/apiConfig";
 const ViewSlideShare = ({ row, viewSlideShareModal, onCloseModal }) => {
     console.log("row: ", row);
     const location = useLocation();
@@ -145,7 +146,7 @@ const ViewSlideShare = ({ row, viewSlideShareModal, onCloseModal }) => {
                             {slideShareFile?.length > 0 && (
                                 <div className="mt-2">
                                     <img
-                                        src={slideShareFile}
+                                        src={getMediaUrl(slideShareFile)}
                                         alt="uploaded-Logo"
                                         height={100}
                                         width={100}

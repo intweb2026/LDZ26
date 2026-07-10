@@ -6,7 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import ClipLoader from "react-spinners/ClipLoader";
 import { css } from "@emotion/react";
 import { useNavigate } from "react-router-dom";
-import API_BASE_URL from '../../config/apiConfig';
+import API_BASE_URL, { getMediaUrl } from '../../config/apiConfig';
 
 const override = css`
   display: block;
@@ -415,7 +415,7 @@ const PageSeoSettings = () => {
                               }}
                             >
                               <img
-                                src={ogImagePreview}
+                                src={getMediaUrl(ogImagePreview)}
                                 alt="OG Preview"
                                 style={{
                                   width: "100%",
