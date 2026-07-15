@@ -401,7 +401,6 @@ const SpeakerProfile = () => {
                   <form
                     id="LDZ-(become a speaker & join the conversation 2026)"
                     method="POST"
-                    data-hs-cf-bound="true"
                     onSubmit={submitBtnClk}
                   >
                     <div className="LDZ_2026_quick_proposal Form_form__nhNBc form_LDZ">

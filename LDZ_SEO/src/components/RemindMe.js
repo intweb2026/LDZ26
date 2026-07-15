@@ -411,7 +411,7 @@ const RemindMeLater = () => {
               <h2>Your thoughts on attending?</h2>.
             </div>
             <div className="cmxform" id="developForm">
-              <form id="LDZ-(Remind me Later 2026)" data-hs-cf-bound="true" onSubmit={handleRemindMeSubmit}>
+              <form id="LDZ-(Remind me Later 2026)" onSubmit={handleRemindMeSubmit}>
                 <div className="RemindMeLater_addOnsInner__aBNYF">
                   <div>
                     <h2>I have not registered yet, because:</h2>

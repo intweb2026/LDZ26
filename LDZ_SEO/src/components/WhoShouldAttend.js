@@ -442,7 +442,6 @@ const WhoShouldAttend = () => {
                         }}
                         enctype="multipart/form-data"
                         method="POST"
-                        data-hs-cf-bound="true"
                       >
                         <input
                           type="email"

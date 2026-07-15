@@ -189,7 +189,6 @@ const Agenda = () => {
                 id="LDZ-(View the Program 2026)"
                 encType="multipart/form-data"
                 method="POST"
-                data-hs-cf-bound="true"
                 onSubmit={emailSubmitBtnClk}
               >
                 <div>

@@ -406,7 +406,6 @@ const PastAttandessSection = () => {
               id="LDZ-(Subscribe For Updates 2026)"
               enctype="multipart/form-data"
               method="POST"
-              data-hs-cf-bound="true"
               onSubmit={submitBtnClk}
             >
               <input

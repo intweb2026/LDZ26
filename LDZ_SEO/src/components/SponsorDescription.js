@@ -462,7 +462,6 @@ const SponsorDescription = () => {
                 <form
                   id="LDZ-(Quick Proposal 2026)"
                   method="POST"
-                  data-hs-cf-bound="true"
                   onSubmit={submitBtnClk}
                 >
                   <div className="LDZ_2026_sponsor_form Form_form__nhNBc form_LDZ">

@@ -253,7 +253,7 @@ const PayOnline = () => {
                 <h2>pay online</h2>
                 <p>We accept all major credit and debit cards.</p>
                 <div className="LDZ_2026_payonline_form PayOnline_form__O6V2c form_LDZ">
-                  <form id="LDZ-(Pay Online 2026)" data-hs-cf-bound="true">
+                  <form id="LDZ-(Pay Online 2026)">
                     <div className="PayOnline_inputs__r1BVt">
                       <input
                         type="number"
