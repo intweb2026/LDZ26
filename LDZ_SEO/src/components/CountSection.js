@@ -1,51 +1,22 @@
-﻿import React, { useMemo, useCallback, useState, useEffect } from "react";
+﻿import React from "react";
 import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
 import "../assets/css//CountSection.css";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { useApiData } from "../../src/common/ApiContext";
-import API_BASE_URL, { mediaUrl } from '../config/apiConfig';
+import { useSSRData } from "../common/useSSRData";
+import { mediaUrl } from '../config/apiConfig';
 
 const CountSection = () => {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 });
-  const [eventStataticsList, setEventStataticsList] = useState([]);
+  // ✅ SSR data — no client-side API call
+  const ssrEventStatatics = useSSRData("eventStatatics");
+  const eventStataticsList = ssrEventStatatics || [];
   const {
     homeVideoSettings,
     eventDetails,
     eventGeneralSettings,
     themeSettings,
   } = useApiData();
-  useEffect(() => {
-    callStataticsListApi();
-    // eslint-disable-next-line
-  }, []);
-
-  const callStataticsListApi = () => {
-    const requestOptions = {
-      method: "GET",
-    };
-    fetch(`${API_BASE_URL}/admin1/eventstatatics`, requestOptions)
-      .then((response) => response.json())
-      .then((data) => {
-        if (data && data.status) {
-          setEventStataticsList(data["eventStatatics"]);
-        }
-      })
-      .catch((error) => {
-        setTimeout(() => {
-          toast.error("There was an error, Please try again later.", {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
-        }, 1000);
-      });
-  };
 
   return (
     <div

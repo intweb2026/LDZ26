@@ -1,11 +1,9 @@
 ﻿import { useState, useEffect } from "react";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import '../assets/css/TestimonialCarousel.css'
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import API_BASE_URL from '../config/apiConfig';
+import { useSSRData } from "../common/useSSRData";
 const testimonialImg1 = "/images/WebImages/testimonial-top-1.webp";
 const testimonialImg2 = "/images/WebImages/testimonial-top-2.webp";
 const testimonialImg3 = "/images/WebImages/testimonial-center-left-1.webp";
@@ -33,39 +31,9 @@ export default function TestimonialCarousel() {
   //   Testimonials5,
   //   Testimonials6,
   // ];
-  const [testimonialList, setTestimonialList] = useState([]);
-
-  useEffect(() => {
-    callTestimonialListApi();
-    // eslint-disable-next-line
-  }, []);
-
-  const callTestimonialListApi = () => {
-    const requestOptions = {
-      method: "GET",
-    };
-    fetch(`${API_BASE_URL}/admin1/eventtestimonials`, requestOptions)
-      .then((response) => response.json())
-      .then((data) => {
-        if (data && data.status) {
-          setTestimonialList(data["eventTestimonials"]);
-          // setTotalCount(data?.paginationDetails?.count);
-        }
-      })
-      .catch((error) => {
-        setTimeout(() => {
-          toast.error("There was an error, Please try again later.", {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
-        }, 1000);
-      });
-  };
+  // ✅ SSR data — no client-side API call
+  const ssrTestimonials = useSSRData("eventTestimonials");
+  const testimonialList = ssrTestimonials || [];
 
   // const allowedRow1and3Indexes = [0, 3];
   // const allowedRow2Indexes = [1, 2];

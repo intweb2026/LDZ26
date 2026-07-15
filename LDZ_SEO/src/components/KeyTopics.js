@@ -1,53 +1,12 @@
-﻿import React, { useState, useEffect } from "react";
+﻿import React from "react";
 import { cleanHtml } from "../utils/cleanHtml";
-import { useNavigate } from "react-router-dom";
 import "../assets/css/keytopics.css";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import API_BASE_URL from '../config/apiConfig';
+import { useSSRData } from "../common/useSSRData";
 
 const KeyTopics = () => {
-  const [keyPointList, setKeyPointList] = useState([]);
-  useEffect(() => {
-    callEventKeyPointListApi();
-    // eslint-disable-next-line
-  }, []);
-
-  const callEventKeyPointListApi = () => {
-    const requestOptions = {
-      method: "GET",
-    };
-    fetch(`${API_BASE_URL}/admin1/eventkeypoints`, requestOptions)
-      .then((response) => response.json())
-      .then((data) => {
-        if (
-          data &&
-          (data.detail === "The Token is expired" ||
-            data.message === "Invalid token")
-        ) {
-          localStorage.clear();
-          navigate("/logout");
-        }
-        if (data && data.status) {
-          setKeyPointList(data["keyPointsList"]);
-        }
-      })
-      .catch((error) => {
-        setTimeout(() => {
-          toast.error("There was an error, Please try again later.", {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
-        }, 1000);
-      });
-  };
-
-  const navigate = useNavigate();
+  // ✅ SSR data — no client-side API call
+  const ssrKeyPointList = useSSRData("eventKeyPoints");
+  const keyPointList = ssrKeyPointList || [];
   return (
     <article className="TopicSection_topicSection__Tc8jF">
       <h2>key topics for 2026</h2>

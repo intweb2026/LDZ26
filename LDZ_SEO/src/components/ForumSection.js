@@ -1,9 +1,7 @@
-﻿import React, { useState, useEffect } from "react";
+﻿import React, { useState } from "react";
 import { cleanHtml } from "../utils/cleanHtml";
 import "../assets/css/ForumSection.css";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import API_BASE_URL from '../config/apiConfig';
+import { useSSRData } from "../common/useSSRData";
 const speakerVideo = "/images/WebVideo/iq-hub-video.mp4";
 const homePageIqHubVideo = "/images/WebVideo/iq-hub-video.mp4";
 const homePageIqHubVideoPoster = "/images/WebImages/home-video-poster.jpg";
@@ -11,38 +9,10 @@ const homePageIqHubVideoPoster = "/images/WebImages/home-video-poster.jpg";
 //   "https://www.desalination-resource-recovery.com/api/images/1742798974985.png";
 
 const ForumSection = () => {
-  const [taglineData, setTaglineData] = useState([]);
+  // ✅ SSR data — no client-side API call
+  const ssrTaglineData = useSSRData("taglineData");
+  const taglineData = ssrTaglineData || [];
   const [isClickPlay, setClickPlay] = useState(false);
-  useEffect(() => {
-    callTaglineListApi();
-    // eslint-disable-next-line
-  }, []);
-  const callTaglineListApi = () => {
-    const requestOptions = {
-      method: "GET",
-    };
-    fetch(`${API_BASE_URL}/admin1/taglinedata`, requestOptions)
-      .then((response) => response.json())
-      .then((data) => {
-        if (data && data.status) {
-          setTaglineData(data["taglineData"]);
-          // setTotalCount(data?.paginationDetails?.count);
-        }
-      })
-      .catch((error) => {
-        setTimeout(() => {
-          toast.error("There was an error, Please try again later.", {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
-        }, 1000);
-      });
-  };
   return (
     <article
       className="ForumSction_forumSection__Rvsvv"

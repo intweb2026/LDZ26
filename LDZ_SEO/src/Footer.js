@@ -1,30 +1,29 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
 import "./assets/css/footer.css";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { useSSRData } from "./common/useSSRData";
 import { useApiData } from "../src/common/ApiContext";
-import API_BASE_URL, { mediaUrl } from './config/apiConfig';
+import { mediaUrl } from './config/apiConfig';
 const emailImage =
   "/images/WebCommonImages/icon-mail.png";
 const linkedInIcon =
   "/images/WebCommonImages/icon-linkedin.png";
 
 const Footer = () => {
-  const navigate = useNavigate();
   const [windowWidth, setWindowWidth] = useState(
     typeof window !== "undefined" ? window.innerWidth : 1200,
   );
-  const [socialMediaData, setSocialMediaData] = useState([]);
-  const [relatedEventList, setRelatedEventList] = useState([]);
+  // ✅ SSR data — no client-side API calls
+  const socialMediaData = useSSRData("footerSocialMediaOptions") || [];
+  const relatedEventList = useSSRData("relatedEvents") || [];
   const [linkedin, setLinkedin] = useState("");
   const [email, setEmail] = useState("");
   const sponsors = useSSRData("sponsors") || [];
   const news = useSSRData("news") || [];
   const speakers = useSSRData("speakers") || [];
   const trends = useSSRData("trends") || [];
-  const [footerNavOptions, setFooterNavOptions] = useState([]);
+  const footerNavOptions = (useSSRData("footerOptions") || []).filter(
+    (item) => item.isChecked === "Yes",
+  );
   const { eventDetails, eventGeneralSettings, navLogos } = useApiData();
   const iqHubRef = useRef(null);
   const IQ_HUB_URL = "https://iq-hub.com/";
@@ -57,107 +56,6 @@ const Footer = () => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-
-  useEffect(() => {
-    callSocialMediaOptionsApi();
-    callRelatedEventListApi();
-    callFooterOptionsApi();
-    // eslint-disable-next-line
-  }, []);
-  const callSocialMediaOptionsApi = () => {
-    const requestOptions = {
-      method: "GET",
-    };
-    fetch(
-      `${API_BASE_URL}/admin1/footersocialmediaoptions`,
-      requestOptions,
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        if (
-          data &&
-          (data.detail === "The Token is expired" ||
-            data.message === "Invalid token")
-        ) {
-          navigate("/logout");
-        }
-        if (data && data.status) {
-          setSocialMediaData(data["footerSocialMediaOptions"]);
-        } else {
-          toast.error(data?.message);
-        }
-      })
-      .catch((error) => {
-        setTimeout(() => {
-          toast.error("There was an error, Please try again later.", {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
-        }, 1000);
-      });
-  };
-
-  const callRelatedEventListApi = () => {
-    const requestOptions = {
-      method: "GET",
-    };
-    fetch(`${API_BASE_URL}/admin1/relatedevents`, requestOptions)
-      .then((response) => response.json())
-      .then((data) => {
-        if (data && data.status) {
-          setRelatedEventList(data["relatedEvents"]);
-          // setTotalCount(data?.paginationDetails?.count);
-        }
-      })
-      .catch((error) => {
-        setTimeout(() => {
-          toast.error("There was an error, Please try again later.", {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
-        }, 1000);
-      });
-  };
-
-  const callFooterOptionsApi = () => {
-    fetch(`${API_BASE_URL}/admin1/footeroptions`, {
-      method: "GET",
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data && data.status) {
-          const checked = data.footerOptions.filter(
-            (item) => item.isChecked === "Yes",
-          );
-          setFooterNavOptions(checked);
-        } else {
-          toast.error(data?.message);
-        }
-      })
-      .catch(() => {
-        setTimeout(() => {
-          toast.error("There was an error, Please try again later.", {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
-        }, 1000);
-      });
-  };
 
   useEffect(() => {
     setLinkedin(socialMediaData[0]?.linkedinLink);

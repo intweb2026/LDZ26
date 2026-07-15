@@ -271,6 +271,53 @@ async function fetchDelegatePackages() {
   return d?.status ? d.delegatePackages : [];
 }
 
+/* ---- Homepage CSR blocks migrated to SSR ---- */
+async function fetchTaglineData() {
+  const d = await get("taglinedata");
+  return d?.status ? d.taglineData : [];
+}
+
+async function fetchEventKeyPoints() {
+  const d = await get("eventkeypoints");
+  return d?.status ? d.keyPointsList : [];
+}
+
+async function fetchEventStatatics() {
+  const d = await get("eventstatatics");
+  return d?.status ? d.eventStatatics : [];
+}
+
+async function fetchEventTestimonials() {
+  const d = await get("eventtestimonials");
+  return d?.status ? d.eventTestimonials : [];
+}
+
+async function fetchExpertSpeakers() {
+  const d = await get("expertspeakers");
+  return d?.status ? d.expertSpeakers : [];
+}
+
+async function fetchHomePastAttandees() {
+  const d = await get("homepastattandees");
+  return d?.status ? d.homePastAttandees : [];
+}
+
+/* ---- Footer blocks (rendered on every page) migrated to SSR ---- */
+async function fetchRelatedEvents() {
+  const d = await get("relatedevents");
+  return d?.status ? d.relatedEvents : [];
+}
+
+async function fetchFooterSocialMediaOptions() {
+  const d = await get("footersocialmediaoptions");
+  return d?.status ? d.footerSocialMediaOptions : [];
+}
+
+async function fetchFooterOptions() {
+  const d = await get("footeroptions");
+  return d?.status ? d.footerOptions : [];
+}
+
 /* -------- main export -------- */
 /**
  * @param {string} pathname  - req.path e.g. "/", "/venue", "/speaker/john-doe"
@@ -282,28 +329,83 @@ async function fetchSSRData(pathname) {
   // parallel fetch burst ensures the server is alive and returning JSON.
   await get("toemails"); // lightweight endpoint, just to wake the process
 
-  // Always fetch theme + logoCarousel + navLogos + navItems + home + toEmails (needed on every page)
-  const [theme, logoCarousel, navLogos, navItems, toEmails, home] = await Promise.all([
+  // Always fetch theme + logoCarousel + navLogos + navItems + home + toEmails
+  // + the Footer's data blocks (needed on every page since Footer renders globally)
+  const [
+    theme,
+    logoCarousel,
+    navLogos,
+    navItems,
+    toEmails,
+    home,
+    relatedEvents,
+    footerSocialMediaOptions,
+    footerOptions,
+  ] = await Promise.all([
     fetchTheme(),
     fetchLogoCarousel(),
     fetchNavLogos(),
     fetchNavItems(),
     fetchToEmails(),
     fetchHomeData(),
+    fetchRelatedEvents(),
+    fetchFooterSocialMediaOptions(),
+    fetchFooterOptions(),
   ]);
 
-  const base = { theme, logoCarousel, navLogos, navItems, toEmails, home };
+  const base = {
+    theme,
+    logoCarousel,
+    navLogos,
+    navItems,
+    toEmails,
+    home,
+    relatedEvents,
+    footerSocialMediaOptions,
+    footerOptions,
+  };
 
   // ---- HOME ----
   if (pathname === "/" || pathname === "") {
-    const [home, sponsors, speakers, news, trends] = await Promise.all([
+    const [
+      home,
+      sponsors,
+      speakers,
+      news,
+      trends,
+      taglineData,
+      eventKeyPoints,
+      eventStatatics,
+      eventTestimonials,
+      expertSpeakers,
+      homePastAttandees,
+    ] = await Promise.all([
       fetchHomeData(),
       fetchSponsors(),
       fetchSpeakers(),
       fetchNews(),
       fetchTrends(),
+      fetchTaglineData(),
+      fetchEventKeyPoints(),
+      fetchEventStatatics(),
+      fetchEventTestimonials(),
+      fetchExpertSpeakers(),
+      fetchHomePastAttandees(),
     ]);
-    return { ...base, home, sponsors, speakers, news, trends };
+    return {
+      ...base,
+      home,
+      sponsors,
+      speakers,
+      news,
+      trends,
+      taglineData,
+      eventKeyPoints,
+      eventStatatics,
+      eventTestimonials,
+      expertSpeakers,
+      homePastAttandees,
+    };
   }
 
   // ---- VENUE ----

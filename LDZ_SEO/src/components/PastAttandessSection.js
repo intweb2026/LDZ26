@@ -1,85 +1,26 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 import { Pointer } from "lucide-react";
 import "../assets/css/PastAttandessSection.css";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { useApiData } from "../../src/common/ApiContext";
+import { useSSRData } from "../common/useSSRData";
 import API_BASE_URL, { mediaUrl } from '../config/apiConfig';
 const PastAttandessSection = () => {
-  const navigate = useNavigate();
   const [subscriberName, setSubscriberName] = useState("");
   const [subscriberNameError, setSubscriberNameError] = useState("");
   const [subscriberErrorMessage, setSubscriberErrorMessage] = useState("");
   const [subscriberEmail, setSubscriberEmail] = useState("");
   const [subscriberEmailError, setSubscriberEmailError] = useState("");
-  const [expertSpeakerList, setExpertSpeakerList] = useState([]);
-  const [homePastAttandeeList, setHomePastAttandeeList] = useState([]);
+  // ✅ SSR data — no client-side API calls
+  const ssrExpertSpeakers = useSSRData("expertSpeakers");
+  const expertSpeakerList = ssrExpertSpeakers || [];
+  const ssrHomePastAttandees = useSSRData("homePastAttandees");
+  const homePastAttandeeList = ssrHomePastAttandees || [];
   const {
     homeVideoSettings,
     eventDetails,
     eventGeneralSettings,
     themeSettings,
   } = useApiData();
-  useEffect(() => {
-    callExpertSpeakerListApi();
-    callHomePastAttandeeListApi();
-    // eslint-disable-next-line
-  }, []);
-
-  const callExpertSpeakerListApi = () => {
-    const requestOptions = {
-      method: "GET",
-    };
-    fetch(`${API_BASE_URL}/admin1/expertspeakers`, requestOptions)
-      .then((response) => response.json())
-      .then((data) => {
-        if (data && data.status) {
-          setExpertSpeakerList(data["expertSpeakers"]);
-          // setTotalCount(data?.paginationDetails?.count);
-        }
-      })
-      .catch((error) => {
-        setTimeout(() => {
-          toast.error("There was an error, Please try again later.", {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
-        }, 1000);
-      });
-  };
-
-  const callHomePastAttandeeListApi = () => {
-    const requestOptions = {
-      method: "GET",
-    };
-    fetch(`${API_BASE_URL}/admin1/homepastattandees`, requestOptions)
-      .then((response) => response.json())
-      .then((data) => {
-        if (data && data.status) {
-          setHomePastAttandeeList(data["homePastAttandees"]);
-          // setTotalCount(data?.paginationDetails?.count);
-        }
-      })
-      .catch((error) => {
-        setTimeout(() => {
-          toast.error("There was an error, Please try again later.", {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
-        }, 1000);
-      });
-  };
 
   // ✅ Subscription email function
   async function sendSubscriptionEmail(email) {

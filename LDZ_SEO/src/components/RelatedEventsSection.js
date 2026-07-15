@@ -1,10 +1,9 @@
 ﻿import React, { useState, useEffect, useRef } from "react";
 import img from "../../src/assets/images/last.jpg"; // Ensure this path points to your actual image file
 import "../../src/assets/css/relatedevent.css";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import Slider from "react-slick";
-import API_BASE_URL, { mediaUrl }  from '../config/apiConfig';
+import { mediaUrl } from '../config/apiConfig';
+import { useSSRData } from "../common/useSSRData";
 const leftArrowIcon = "/images/WebCommonImages/icon-arrow-left.png";
 const rightArrowIcon = "/images/WebCommonImages/icon-arrow-right.png";
 const calenderIcon = "/images/WebCommonImages/icon-calendar.png";
@@ -20,7 +19,9 @@ const locationIcon = "/images/WebCommonImages/icon-location.png";
 //   "https://www.desalination-resource-recovery.com/images/icons/icon-location.png";
 
 const RelatedEventsSection = () => {
-  const [relatedEventList, setRelatedEventList] = useState([]);
+  // ✅ SSR data — no client-side API call
+  const ssrRelatedEvents = useSSRData("relatedEvents");
+  const relatedEventList = ssrRelatedEvents || [];
   const [hoveredIndex, setIsHovered] = useState(null);
   const [windowWidth, setWindowWidth] = useState(
     typeof window !== "undefined" ? window.innerWidth : 1920,
@@ -72,39 +73,6 @@ const RelatedEventsSection = () => {
     ],
   };
 
-  useEffect(() => {
-    // ✅ Only fetch on client side
-    if (typeof window !== "undefined") {
-      callRelatedEventListApi();
-    }
-    // eslint-disable-next-line
-  }, []);
-  const callRelatedEventListApi = () => {
-    const requestOptions = {
-      method: "GET",
-    };
-    fetch(`${API_BASE_URL}/admin1/relatedevents`, requestOptions)
-      .then((response) => response.json())
-      .then((data) => {
-        if (data && data.status) {
-          setRelatedEventList(data["relatedEvents"]);
-          // setTotalCount(data?.paginationDetails?.count);
-        }
-      })
-      .catch((error) => {
-        setTimeout(() => {
-          toast.error("There was an error, Please try again later.", {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
-        }, 1000);
-      });
-  };
   return (
     <article className="EventSlider_slider__n4iwF event-slider">
       <h2>related events in the series</h2>
