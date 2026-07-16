@@ -44,6 +44,15 @@ const Venue = () => {
     return urlMatch ? urlMatch[0] : "";
   };
 
+  const getCleanTelLink = (raw) => {
+    if (!raw) return "";
+    // Directly extract the tel: URI — stops at the closing quote/tag, but
+    // (unlike getCleanUrl) allows spaces since phone numbers in the DB
+    // contain them, e.g. tel:+6139485 1000
+    const telMatch = raw.match(/tel:[^"'\\>]*/i);
+    return telMatch ? telMatch[0].trim() : "";
+  };
+
   const venuePlace = venueData[0]?.venueFirstSectionFirstTitle || "";
   const venueDescription =
     venueData[0]?.venueFirstSectionDescription?.replace(/^"(.*)"$/, "$1") || "";
@@ -64,6 +73,12 @@ const Venue = () => {
       .replace(/\\"/g, "")
       .replace(/"/g, "")
       .trim() || "";
+  // Prefer an explicit tel: link embedded in the raw field; some venue
+  // records only store the plain number, so fall back to building one from
+  // the already-cleaned digits instead of leaving the anchor with no href.
+  const venueContactTel =
+    getCleanTelLink(venueData[0]?.venueContact) ||
+    (venueContact ? `tel:${venueContact.replace(/[^\d+]/g, "")}` : "");
   const venueMapLink = getCleanUrl(venueData[0]?.venueMapLink);
   const venueWebAddress = getCleanUrl(venueData[0]?.venueWebsiteAddress);
 
@@ -293,7 +308,7 @@ const Venue = () => {
                   <h5>Contact</h5>
                   <p style={{ marginTop: "auto" }}>
                     <img src={phoneIcon} alt="phone icon" />
-                    <a href="tel:+97142281111">{venueContact}</a>
+                    <a href={venueContactTel}>{venueContact}</a>
                   </p>
                   <p>
                     <img src={webIcon} alt="web icon" />
