@@ -28,7 +28,7 @@ const IndustryTrend = () => {
                   // <p key={index} onClick={() => handleClick(trend)}>
                   //   {trend?.trendTitle}
                   // </p>
-                  <a href={`/trend/${trend?.trendTitle.replace(/\s+/g, "-").toLowerCase()}`}>{trend?.trendTitle}</a>
+                  <a key={index} href={`/trend/${trend?.trendTitle.replace(/\s+/g, "-").toLowerCase()}`}>{trend?.trendTitle}</a>
                 ) : null
               )}
             </div>
@@ -38,7 +38,7 @@ const IndustryTrend = () => {
                   // <p key={index} onClick={() => handleClick(trend)}>
                   //   {trend?.trendTitle}
                   // </p>
-                  <a href={`/trend/${trend?.trendTitle.replace(/\s+/g, "-").toLowerCase()}`}>{trend?.trendTitle}</a>
+                  <a key={index} href={`/trend/${trend?.trendTitle.replace(/\s+/g, "-").toLowerCase()}`}>{trend?.trendTitle}</a>
                 ) : null
               )}
             </div>

@@ -183,7 +183,7 @@ const PastAttandessSection = () => {
                 <svg
                   stroke="currentColor"
                   fill="var(--secondary-color)"
-                  stroke-width="0"
+                  strokeWidth="0"
                   viewBox="0 0 512 512"
                   height="1em"
                   width="1em"
@@ -404,7 +404,7 @@ const PastAttandessSection = () => {
             <h3>subscribe for updates</h3>
             <form
               id="LDZ-(Subscribe For Updates 2026)"
-              enctype="multipart/form-data"
+              encType="multipart/form-data"
               method="POST"
               onSubmit={submitBtnClk}
             >

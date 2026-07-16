@@ -10,11 +10,10 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../../src/assets/css/logoslider.css";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import TestimonialCarousel from "./TestimonialCarousel";
 import { Helmet } from "react-helmet-async";
 import { useApiData } from "../common/ApiContext";
+import { useSSRData } from "../common/useSSRData";
 import { usePageSeo } from "../common/usePageSeo";
 import API_BASE_URL, { mediaUrl } from '../config/apiConfig';
 const leftArrowIcon = "/images/WebCommonImages/icon-arrow-left.png";
@@ -31,75 +30,14 @@ const ExhibitorPackages = () => {
   const [goldActiveTab, setGoldActiveTab] = useState(false);
   const [platinumActiveTab, setPlatinumActiveTab] = useState(false);
 
-  const [sponsorPackageList, setSponsorPackageList] = useState([]);
-  const [sponsorCardsList, setSponsorCardsList] = useState([]);
-  const [sponsorPageData, setSponsorPageData] = useState([]);
-  const [mediaPageHelpersList, setMediaPageHelpersList] = useState([]);
-  const [paraDes, setParaDes] = useState("");
-  const [logoList, setLogoList] = useState([]);
-
-  useEffect(() => {
-    callLogoListApi();
-    callSponsorCardsListApi();
-    // eslint-disable-next-line
-  }, []);
-
-  const callLogoListApi = () => {
-    const requestOptions = {
-      method: "GET",
-    };
-    fetch(
-      `${API_BASE_URL}/admin1/homepagecompanieslogo`,
-      requestOptions,
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        if (data && data.status) {
-          setLogoList(data["homePageCompaniesList"]);
-          // setTotalCount(data?.paginationDetails?.count);
-        }
-      })
-      .catch((error) => {
-        setTimeout(() => {
-          toast.error("There was an error, Please try again later.", {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
-        }, 1000);
-      });
-  };
-
-  const callSponsorCardsListApi = () => {
-    const requestOptions = {
-      method: "GET",
-    };
-    fetch(`${API_BASE_URL}/admin1/sponsorcards`, requestOptions)
-      .then((response) => response.json())
-      .then((data) => {
-        if (data && data.status) {
-          setSponsorCardsList(data["sponsorCardsList"]);
-          // setTotalCount(data?.paginationDetails?.count);
-        }
-      })
-      .catch((error) => {
-        setTimeout(() => {
-          toast.error("There was an error, Please try again later.", {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
-        }, 1000);
-      });
-  };
+  // ✅ SSR data — no client-side GET requests
+  const logoList = useSSRData("logoCarousel") || [];
+  const sponsorCardsList = useSSRData("sponsorCards") || [];
+  const sponsorPackageList = useSSRData("sponsorPackageTypes") || [];
+  const mediaPageHelpersList = useSSRData("mediaPartners") || [];
+  const sponsorPageData = useSSRData("sponsorPageData") || [];
+  const paraDes =
+    sponsorPageData[0]?.introParaDescription?.replace(/^"(.*)"$/, "$1") || "";
 
   const silverToggleBox = () => {
     setSilverActiveTab((prev) => !prev);
@@ -112,13 +50,6 @@ const ExhibitorPackages = () => {
   const platinumToggleBox = () => {
     setPlatinumActiveTab((prev) => !prev);
   };
-
-  useEffect(() => {
-    callSponsorPackageListApi();
-    callSponsorPageDataApi();
-    callMediaHelperListApi();
-    // eslint-disable-next-line
-  }, []);
 
   const exhibitorPackageSectionRef = useRef(null);
 
@@ -134,105 +65,6 @@ const ExhibitorPackages = () => {
       });
     }
   };
-
-  const callMediaHelperListApi = () => {
-    const requestOptions = {
-      method: "GET",
-    };
-    fetch(
-      `${API_BASE_URL}/admin1/mediapagehelpers`,
-      requestOptions,
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        if (data && data.status) {
-          setMediaPageHelpersList(data["mediaPageHelpers"]);
-          // setTotalCount(data?.paginationDetails?.count);
-        }
-      })
-      .catch((error) => {
-        setTimeout(() => {
-          toast.error("There was an error, Please try again later.", {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
-        }, 1000);
-      });
-  };
-
-  const callSponsorPackageListApi = () => {
-    const requestOptions = {
-      method: "GET",
-    };
-    fetch(
-      `${API_BASE_URL}/admin1/sponsorpackages`,
-      requestOptions,
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        if (data && data.status) {
-          setSponsorPackageList(data["sponsorPackageTypes"]);
-          // setTotalCount(data?.paginationDetails?.count);
-        }
-      })
-      .catch((error) => {
-        setTimeout(() => {
-          toast.error("There was an error, Please try again later.", {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
-        }, 1000);
-      });
-  };
-
-  const callSponsorPageDataApi = () => {
-    const requestOptions = {
-      method: "GET",
-    };
-    fetch(
-      `${API_BASE_URL}/admin1/getsponsorpagedata`,
-      requestOptions,
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        if (data && data.status) {
-          setSponsorPageData(data["sponsorPageStaticData"]);
-          // setTotalCount(data?.paginationDetails?.count);
-        }
-      })
-      .catch((error) => {
-        setTimeout(() => {
-          toast.error("There was an error, Please try again later.", {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
-        }, 1000);
-      });
-  };
-
-  useEffect(() => {
-    if (sponsorPageData?.length > 0) {
-      setParaDes(
-        sponsorPageData[0]?.introParaDescription?.replace(/^"(.*)"$/, "$1"),
-      );
-    }
-    // eslint-disable-next-line
-  }, [sponsorPageData]);
 
   const sliderRef = useRef(null);
   const settings = {

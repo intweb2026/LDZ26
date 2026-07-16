@@ -28,7 +28,7 @@ const CountSection = () => {
     >
       <div className="HomeScreen_statsContainer__ah6rE">
         {eventStataticsList.map((stat, i) => (
-          <div>
+          <div key={stat.id ?? i}>
             <div>
               <span>
                 {inView ? <CountUp end={stat.topicCount} duration={1.7} /> : 0}

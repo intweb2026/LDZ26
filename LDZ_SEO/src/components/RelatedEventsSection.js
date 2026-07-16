@@ -92,6 +92,7 @@ const RelatedEventsSection = () => {
           <Slider ref={sliderRef} {...settings}>
             {relatedEventList.map((event, index) => (
               <a
+                key={event?.id ?? index}
                 target="_blank"
                 href={event?.eventWebsiteLink}
                 style={{ pointerEvents: "auto" }}

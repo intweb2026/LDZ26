@@ -57,7 +57,7 @@ const ForumSection = () => {
               width="100%"
               height="100%"
               poster={homePageIqHubVideoPoster}
-              playsinline
+              playsInline
               controls={isClickPlay}
             >
               <source src={homePageIqHubVideo} type="video/mp4" />

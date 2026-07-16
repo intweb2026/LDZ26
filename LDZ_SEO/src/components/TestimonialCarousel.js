@@ -174,8 +174,8 @@ export default function TestimonialCarousel() {
               <div className="Testimonials_column__LabYB undefined ">
                 <div className="slider-card" style={{ borderTopRightRadius: "2px" }}>
                   <Slider {...settings1}>
-                    {testimonialContentRow1.map((testimonialItem) => (
-                      <div className="slide">
+                    {testimonialContentRow1.map((testimonialItem, i) => (
+                      <div className="slide" key={testimonialItem?.id ?? i}>
                         <img src={quotationIcon} alt="Quotation icon"></img>
                         <p>{testimonialItem?.personMessage}</p>
                         <h5>{testimonialItem?.personName}</h5>
@@ -200,8 +200,8 @@ export default function TestimonialCarousel() {
               <div className="Testimonials_column__LabYB undefined ">
                 <div className="slider-card" style={{ borderTopRightRadius: "2px" }}>
                   <Slider {...settings2}>
-                    {testimonialContentRow2.map((testimonialItem) => (
-                      <div className="slide">
+                    {testimonialContentRow2.map((testimonialItem, i) => (
+                      <div className="slide" key={testimonialItem?.id ?? i}>
                         <img src={quotationIcon} alt="Quotation icon"></img>
                         <p>{testimonialItem?.personMessage}</p>
                         <h5>{testimonialItem?.personName}</h5>
@@ -226,8 +226,8 @@ export default function TestimonialCarousel() {
               <div className="Testimonials_column__LabYB undefined ">
                 <div className="slider-card" style={{ borderTopRightRadius: "2px" }}>
                   <Slider {...settings3}>
-                    {testimonialContentRow3.map((testimonialItem) => (
-                      <div className="slide">
+                    {testimonialContentRow3.map((testimonialItem, i) => (
+                      <div className="slide" key={testimonialItem?.id ?? i}>
                         <img src={quotationIcon} alt="Quotation icon"></img>
                         <p>{testimonialItem?.personMessage}</p>
                         <h5>{testimonialItem?.personName}</h5>

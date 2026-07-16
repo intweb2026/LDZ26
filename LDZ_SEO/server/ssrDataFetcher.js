@@ -266,6 +266,16 @@ async function fetchSponsorPageData() {
   return d?.status ? d.sponsorPageStaticData : [];
 }
 
+async function fetchSponsorCards() {
+  const d = await get("sponsorcards");
+  return d?.status ? d.sponsorCardsList : [];
+}
+
+async function fetchSponsorPackageTypes() {
+  const d = await get("sponsorpackages");
+  return d?.status ? d.sponsorPackageTypes : [];
+}
+
 async function fetchDelegatePackages() {
   const d = await get("deligatepackageslist");
   return d?.status ? d.delegatePackages : [];
@@ -329,8 +339,13 @@ async function fetchSSRData(pathname) {
   // parallel fetch burst ensures the server is alive and returning JSON.
   await get("toemails"); // lightweight endpoint, just to wake the process
 
+  const isHome = pathname === "/" || pathname === "";
+
   // Always fetch theme + logoCarousel + navLogos + navItems + home + toEmails
-  // + the Footer's data blocks (needed on every page since Footer renders globally)
+  // + the Footer's data blocks (needed on every page since Footer renders globally).
+  // For the home route, the home-only blocks are appended into this SAME
+  // Promise.all instead of a second sequential wave — one network round-trip
+  // instead of two, and fetchHomeData() is only called once.
   const [
     theme,
     logoCarousel,
@@ -341,6 +356,16 @@ async function fetchSSRData(pathname) {
     relatedEvents,
     footerSocialMediaOptions,
     footerOptions,
+    sponsors,
+    speakers,
+    news,
+    trends,
+    taglineData,
+    eventKeyPoints,
+    eventStatatics,
+    eventTestimonials,
+    expertSpeakers,
+    homePastAttandees,
   ] = await Promise.all([
     fetchTheme(),
     fetchLogoCarousel(),
@@ -351,6 +376,20 @@ async function fetchSSRData(pathname) {
     fetchRelatedEvents(),
     fetchFooterSocialMediaOptions(),
     fetchFooterOptions(),
+    ...(isHome
+      ? [
+          fetchSponsors(),
+          fetchSpeakers(),
+          fetchNews(),
+          fetchTrends(),
+          fetchTaglineData(),
+          fetchEventKeyPoints(),
+          fetchEventStatatics(),
+          fetchEventTestimonials(),
+          fetchExpertSpeakers(),
+          fetchHomePastAttandees(),
+        ]
+      : []),
   ]);
 
   const base = {
@@ -366,32 +405,7 @@ async function fetchSSRData(pathname) {
   };
 
   // ---- HOME ----
-  if (pathname === "/" || pathname === "") {
-    const [
-      home,
-      sponsors,
-      speakers,
-      news,
-      trends,
-      taglineData,
-      eventKeyPoints,
-      eventStatatics,
-      eventTestimonials,
-      expertSpeakers,
-      homePastAttandees,
-    ] = await Promise.all([
-      fetchHomeData(),
-      fetchSponsors(),
-      fetchSpeakers(),
-      fetchNews(),
-      fetchTrends(),
-      fetchTaglineData(),
-      fetchEventKeyPoints(),
-      fetchEventStatatics(),
-      fetchEventTestimonials(),
-      fetchExpertSpeakers(),
-      fetchHomePastAttandees(),
-    ]);
+  if (isHome) {
     return {
       ...base,
       home,
@@ -454,15 +468,23 @@ async function fetchSSRData(pathname) {
 
   // ---- SPONSORS ----
   if (pathname === "/sponsors") {
-    const [sponsors, sponsorPageData, mediaPartners, news, speakers, trends] =
-      await Promise.all([
-        fetchSponsors(),
-        fetchSponsorPageData(),
-        fetchMediaPartners(),
-        fetchNews(),
-        fetchSpeakers(),
-        fetchTrends(),
-      ]);
+    const [
+      sponsors,
+      sponsorPageData,
+      mediaPartners,
+      news,
+      speakers,
+      trends,
+      eventTestimonials,
+    ] = await Promise.all([
+      fetchSponsors(),
+      fetchSponsorPageData(),
+      fetchMediaPartners(),
+      fetchNews(),
+      fetchSpeakers(),
+      fetchTrends(),
+      fetchEventTestimonials(),
+    ]);
     return {
       ...base,
       sponsors,
@@ -471,6 +493,7 @@ async function fetchSSRData(pathname) {
       news,
       speakers,
       trends,
+      eventTestimonials,
     };
   }
 
@@ -493,8 +516,30 @@ async function fetchSSRData(pathname) {
 
   // ---- EXHIBITOR PACKAGES ----
   if (pathname === "/sponsor-packages") {
-    const sponsors = await fetchSponsors();
-    return { ...base, sponsors };
+    const [
+      sponsors,
+      eventTestimonials,
+      sponsorPageData,
+      mediaPartners,
+      sponsorCards,
+      sponsorPackageTypes,
+    ] = await Promise.all([
+      fetchSponsors(),
+      fetchEventTestimonials(),
+      fetchSponsorPageData(),
+      fetchMediaPartners(),
+      fetchSponsorCards(),
+      fetchSponsorPackageTypes(),
+    ]);
+    return {
+      ...base,
+      sponsors,
+      eventTestimonials,
+      sponsorPageData,
+      mediaPartners,
+      sponsorCards,
+      sponsorPackageTypes,
+    };
   }
 
   // ---- MEDIA PARTNERS ----
@@ -569,9 +614,12 @@ async function fetchSSRData(pathname) {
 
   // ---- WHO SHOULD ATTEND ----
   if (pathname === "/who-should-attend") {
-    const whoShouldAttend = await fetchWhoShouldAttend();
-    const speakers = await fetchSpeakers();
-    return { ...base, whoShouldAttend, speakers };
+    const [whoShouldAttend, speakers, eventTestimonials] = await Promise.all([
+      fetchWhoShouldAttend(),
+      fetchSpeakers(),
+      fetchEventTestimonials(),
+    ]);
+    return { ...base, whoShouldAttend, speakers, eventTestimonials };
   }
 
   // ---- ATTENDEES ----

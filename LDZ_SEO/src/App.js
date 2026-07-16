@@ -1,53 +1,26 @@
 // src/App.js
 import React, { useEffect, Suspense, lazy } from "react";
 import "./App.css";
-import "./assets/css/navbar.css";
-import "./assets/css/footer.css";
-import "./assets/css/home.css";
-import "./assets/css/video.css";
-import "./assets/css/form.css";
+// Most page-specific stylesheets used to be force-imported here, which put
+// every page's CSS into the main bundle on every route (including "/"). Each
+// of those files is already imported directly by the component that uses it
+// (e.g. Home.js imports home.css, ContactUs.js imports contactUs.css), so
+// removing the duplicates lets webpack code-split most lazy routes' CSS into
+// their own chunks instead of shipping it on every page load.
+//
+// These 7 are kept here on purpose: they reuse generic class names (e.g.
+// .sidebar, .benefit-item, .speaker-info) for DIFFERENT elements across
+// different pages. Splitting them let a stale, differently-ordered chunk
+// from a previously-visited page win the cascade after client-side
+// navigation. Importing them in this fixed order pins their precedence the
+// same way it always has.
 import "./assets/css/sponsor.css";
-import "./assets/css/speakerProfile.css";
-import "./assets/css/contactUs.css";
 import "./assets/css/agenda.css";
-import "./assets/css/venue.css";
 import "./assets/css/speakers.css";
-import "./assets/css/register.css";
-import "./assets/css/faq.css";
 import "./assets/css/News.css";
 import "./assets/css/attandees.css";
-import "./assets/css/BookingForm.css";
-import "./assets/css/AddDelegateForm.css";
-import "./assets/css/AddSponsorDelegateForm.css";
-import "./assets/css/ExhibitorPackages.css";
 import "./assets/css/MediaPartners.css";
 import "./assets/css/NewsDescription.css";
-import "./assets/css/TrendDescriptionPage.css";
-import "./assets/css/sponsorDescription.css";
-import "./assets/css/WhoShouldAttend.css";
-import "./assets/css/CallForPresentation.css";
-import "./assets/css/IndustryTrend.css";
-import "./assets/css/keytopics.css";
-import "./assets/css/homeSpeakerSlider.css";
-import "./assets/css/FeaturedSpeaker.css";
-import "./assets/css/LatestNews.css";
-import "./assets/css/TestimonialCarousel.css";
-import "./assets/css/PastAttandessSection.css";
-import "./assets/css/CountSection.css";
-import "./assets/css/ForumSection.css";
-import "./assets/css/logoslider.css";
-import "./assets/css/relatedevent.css";
-import "./assets/css/SubscribeForm.css";
-import "./assets/css/privacyPolicy.css";
-import "./assets/css/CookiePolicy.css";
-import "./assets/css/TermsAndConditions.css";
-import "./assets/css/thankYouPage.css";
-import "./assets/css/RemindMe.css";
-import "./assets/css/slideShare.css";
-import "./assets/css/payOnline.css";
-import "./assets/css/SponsorBookingPay.css";
-import "./assets/css/Error404.css";
-import "./assets/css/popUp.css";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import ScrollToTop from "./ScrollToTop";
