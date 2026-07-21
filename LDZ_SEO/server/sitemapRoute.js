@@ -63,16 +63,6 @@ function mountSitemapRoute(app) {
         res.send(xml);
     });
 
-    /* ---------- /robots.txt ---------- */
-    app.get("/robots.txt", (req, res) => {
-        const txt = `User-agent: *
-Allow: /
-
-Sitemap: ${DOMAIN}/sitemap.xml
-`;
-        res.setHeader("Content-Type", "text/plain");
-        res.send(txt);
-    });
 }
 
 module.exports = { mountSitemapRoute };

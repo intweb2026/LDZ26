@@ -57,17 +57,20 @@ app.use((req, res, next) => {
 // takes priority over any stale public/sitemap.xml static file.
 mountSitemapRoute(app);
 
+function setNoCacheForEditableFiles(res, filePath) {
+  // HTML and crawler-directive files change independently of a rebuild's
+  // hashed assets, so they must never inherit the 1y immutable cache below.
+  if (filePath.endsWith(".html") || filePath.endsWith(".txt") || filePath.endsWith(".xml")) {
+    res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+  }
+}
+
 app.use(
   express.static(path.resolve(__dirname, "../build"), {
     maxAge: "1y",
     immutable: true,
     index: false,
-    setHeaders(res, filePath) {
-      // HTML should never be cached — always fetch fresh
-      if (filePath.endsWith(".html")) {
-        res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-      }
-    },
+    setHeaders: setNoCacheForEditableFiles,
   })
 );
 
@@ -76,6 +79,7 @@ app.use(
     maxAge: "1y",
     immutable: true,
     index: false,
+    setHeaders: setNoCacheForEditableFiles,
   })
 );
 
