@@ -269,8 +269,10 @@ const CompanyRegistrationForm = () => {
         return;
       }
 
-      const disposition = "Confirmed";
-      const emailStatus = "Confirmed Old";
+      // const disposition = "Confirmed";
+      // const emailStatus = "Confirmed Old";
+      const contactStatus = "Confirmed AD";
+
 
       setSubmitBtnCheck(true);
 
@@ -291,8 +293,10 @@ const CompanyRegistrationForm = () => {
               { name: "jobtitle", value: delegate.position },
               { name: "email", value: delegate.email },
               { name: "invoice_number", value: invoiceNumber },
-              { name: "disposition_ldz_2026", value: disposition },
-              { name: "email_status_ldz_2026", value: emailStatus },
+              // { name: "disposition_ldz_2026", value: disposition },
+              // { name: "email_status_ldz_2026", value: emailStatus },
+              { name: "contact_status_ldz_2026", value: contactStatus },
+
             ],
             context: {
               pageUri: window.location.href,
