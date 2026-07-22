@@ -21,6 +21,8 @@ import "./assets/css/News.css";
 import "./assets/css/attandees.css";
 import "./assets/css/MediaPartners.css";
 import "./assets/css/NewsDescription.css";
+import "./assets/css/CallForPresentation.css";
+import "./assets/css/form.css";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import ScrollToTop from "./ScrollToTop";
