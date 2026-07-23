@@ -419,13 +419,17 @@ const Attandees = () => {
                 {/* Only render slider when data is loaded */}
                 {isDataLoaded && chunkedLeaders.length > 0 ? (
                   <div className="Operators_cardContainerOuter__A0koD">
-                    <button onClick={() => sliderRef.current.slickPrev()}>
+                    <button
+                      aria-label="Previous slide"
+                      onClick={() => sliderRef.current.slickPrev()}
+                    >
                       <svg
                         stroke="currentColor"
                         fill="#c9c9c9"
                         strokeWidth="0"
                         viewBox="0 0 512 512"
                         className="arrows"
+                        aria-hidden="true"
                         height="35"
                         width="35"
                         xmlns="http://www.w3.org/2000/svg"
@@ -454,13 +458,17 @@ const Attandees = () => {
                         ))}
                       </Slider>
                     </div>
-                    <button onClick={() => sliderRef.current.slickNext()}>
+                    <button
+                      aria-label="Next slide"
+                      onClick={() => sliderRef.current.slickNext()}
+                    >
                       <svg
                         stroke="currentColor"
                         fill="#c9c9c9"
                         strokeWidth="0"
                         viewBox="0 0 512 512"
                         className="arrows"
+                        aria-hidden="true"
                         height="1em"
                         width="1em"
                         xmlns="http://www.w3.org/2000/svg"

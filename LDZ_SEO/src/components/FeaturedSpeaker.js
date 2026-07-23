@@ -82,8 +82,8 @@ const FeaturedSpeaker = ({ title }) => {
       {/* <h1>{!title ? "MEET OUR FEATURED SPEAKERS" : title}</h1> */}
       <h1>{!title ? "HIGHLIGHTS FROM OUR LAST SHOW" : title}</h1>
       <div className="SpeakersSection_speakersSliderContainer__sW0Qj speaker-slick">
-        <button onClick={() => sliderRef.current.slickPrev()}>
-          <img src={leftArrowIcon} alt="left arrow icon" loading="lazy" width="20" height="20" />
+        <button aria-label="Previous slide" onClick={() => sliderRef.current.slickPrev()}>
+          <img src={leftArrowIcon} alt="" loading="lazy" width="20" height="20" />
         </button>
         <div>
           <Slider ref={sliderRef} {...settings}>
@@ -108,8 +108,8 @@ const FeaturedSpeaker = ({ title }) => {
             ))}
           </Slider>
         </div>
-        <button onClick={() => sliderRef.current.slickNext()}>
-          <img src={rightArrowIcon} alt="right arrow icon" loading="lazy" width="20" height="20" />
+        <button aria-label="Next slide" onClick={() => sliderRef.current.slickNext()}>
+          <img src={rightArrowIcon} alt="" loading="lazy" width="20" height="20" />
         </button>
       </div>
     </article>
