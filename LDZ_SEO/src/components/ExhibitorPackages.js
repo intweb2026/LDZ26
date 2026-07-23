@@ -584,7 +584,7 @@ const ExhibitorPackages = () => {
                       }}
                     >
                       {sponsorPackageList[0]?.sponsorPackageType}
-                      <img src={silverActiveTab ? arrowUp : arrowDown}></img>
+                      <img src={silverActiveTab ? arrowUp : arrowDown} alt="arrow down"></img>
                     </h4>
                     {silverActiveTab && (
                       <div className="SponsorLanding_body__rHcET">
@@ -699,7 +699,7 @@ const ExhibitorPackages = () => {
                       }}
                     >
                       {sponsorPackageList[1]?.sponsorPackageType}
-                      <img src={goldActiveTab ? arrowUp : arrowDown}></img>
+                      <img src={goldActiveTab ? arrowUp : arrowDown} alt="arrow down"></img>
                     </h4>
                     {goldActiveTab && (
                       <div className="SponsorLanding_body__rHcET">
@@ -735,7 +735,7 @@ const ExhibitorPackages = () => {
                               which attracts thousands of unique visitors
                             </span>
                           </p>
-                          <img src={tickImg} alt=""></img>
+                          <img src={tickImg} alt="Tick"></img>
                         </div>
                         <div className="SponsorLanding_detail__xSebI">
                           <p>
@@ -755,18 +755,18 @@ const ExhibitorPackages = () => {
                             Sponsorship level branding on event days
                             <span>Logo on signage and holding slides</span>
                           </p>
-                          <img src={tickImg} alt=""></img>
+                          <img src={tickImg} alt="Tick"></img>
                         </div>
                         <div className="SponsorLanding_detail__xSebI">
                           <p>Your Logo on Delegate Packs</p>
-                          <img src={tickImg} alt=""></img>
+                          <img src={tickImg} alt="Tick"></img>
                         </div>
                         <div className="SponsorLanding_detail__xSebI">
                           <p>
                             Literature Distribution in Delegate Packs
                             <span>(materials supplied by you)</span>
                           </p>
-                          <img src={tickImg} alt=""></img>
+                          <img src={tickImg} alt="Tick"></img>
                         </div>
                         <div className="SponsorLanding_detail__xSebI">
                           <p>
@@ -814,7 +814,7 @@ const ExhibitorPackages = () => {
                       }}
                     >
                       {sponsorPackageList[2]?.sponsorPackageType}
-                      <img src={platinumActiveTab ? arrowUp : arrowDown}></img>
+                      <img src={platinumActiveTab ? arrowUp : arrowDown} alt="arrow down"></img>
                     </h4>
                     {platinumActiveTab && (
                       <div className="SponsorLanding_body__rHcET">
@@ -841,7 +841,7 @@ const ExhibitorPackages = () => {
                               presentations viewer
                             </span>
                           </p>
-                          <img src={tickImg} alt=""></img>
+                          <img src={tickImg} alt="Tick"></img>
                         </div>
                         <div className="SponsorLanding_detail__xSebI">
                           <p>
@@ -850,7 +850,7 @@ const ExhibitorPackages = () => {
                               which attracts thousands of unique visitors
                             </span>
                           </p>
-                          <img src={tickImg} alt=""></img>
+                          <img src={tickImg} alt="Tick"></img>
                         </div>
                         <div className="SponsorLanding_detail__xSebI">
                           <p>
@@ -870,25 +870,25 @@ const ExhibitorPackages = () => {
                             Sponsorship level branding on event days
                             <span>Logo on signage and holding slides</span>
                           </p>
-                          <img src={tickImg} alt=""></img>
+                          <img src={tickImg} alt="Tick"></img>
                         </div>
                         <div className="SponsorLanding_detail__xSebI">
                           <p>Your Logo on Delegate Packs</p>
-                          <img src={tickImg} alt=""></img>
+                          <img src={tickImg} alt="Tick"></img>
                         </div>
                         <div className="SponsorLanding_detail__xSebI">
                           <p>
                             Literature Distribution in Delegate Packs
                             <span>(materials supplied by you)</span>
                           </p>
-                          <img src={tickImg} alt=""></img>
+                          <img src={tickImg} alt="Tick"></img>
                         </div>
                         <div className="SponsorLanding_detail__xSebI">
                           <p>
                             Speaking Slot: 30-minute presentation
                             <span>(subject to editorial approval)</span>
                           </p>
-                          <img src={tickImg} alt=""></img>
+                          <img src={tickImg} alt="Tick"></img>
                         </div>
                         <div className="SponsorLanding_detail__xSebI">
                           <p>
@@ -898,13 +898,13 @@ const ExhibitorPackages = () => {
                               (full scripts will be provided to assist)
                             </span>
                           </p>
-                          <img src={tickImg} alt=""></img>
+                          <img src={tickImg} alt="Tick"></img>
                         </div>
                         <div className="SponsorLanding_detail__xSebI">
                           <p>
                             Press Release Email Blast Announcement as Sponsor
                           </p>
-                          <img src={tickImg} alt=""></img>
+                          <img src={tickImg} alt="Tick"></img>
                         </div>
                         <div className="SponsorLanding_btn__QNo2m">
                           <a
