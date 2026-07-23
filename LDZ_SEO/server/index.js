@@ -45,7 +45,9 @@ require('@babel/register')({
     ['@babel/preset-react', { runtime: 'automatic' }]
   ],
   extensions: ['.js', '.jsx'],
-  ignore: [/(node_modules)/],
+  // ESM-only packages (no CommonJS entry point) must still be transpiled here,
+  // otherwise Node's require() throws ERR_REQUIRE_ESM and crashes the SSR render.
+  ignore: [/node_modules\/(?!(mui-tel-input|yet-another-react-lightbox)\/)/],
   cache: false
 });
 
