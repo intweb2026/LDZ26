@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, Suspense, lazy } from "react";
 import { useLocation } from "react-router-dom";
 import "react-phone-number-input/style.css";
 import { useNavigate } from "react-router-dom";
@@ -7,7 +7,6 @@ import "../../src/assets/css/BookingTicket.css";
 import TextField from "@mui/material/TextField";
 import { getNames } from "country-list";
 import Autocomplete from "@mui/material/Autocomplete";
-import { MuiTelInput } from "mui-tel-input";
 import Button from "@mui/material/Button";
 import { FormControl, FormHelperText } from "@mui/material";
 import { useApiData } from "../../src/common/ApiContext";
@@ -19,6 +18,14 @@ import "react-toastify/dist/ReactToastify.css";
 import { Helmet } from "react-helmet-async";
 import { usePageSeo } from "../common/usePageSeo";
 import API_BASE_URL, { mediaUrl } from '../config/apiConfig';
+
+// mui-tel-input ships ESM-only (no CommonJS entry point), which crashes
+// Node's require() during SSR — load it via dynamic import() instead, which
+// Node resolves natively for ESM packages regardless of module system.
+const MuiTelInput = lazy(() =>
+  import("mui-tel-input").then((m) => ({ default: m.MuiTelInput })),
+);
+
 const plusIcon = "/images/WebCommonImages/plus.png";
 const closeBtn = "/images/WebCommonImages/del-cross.png";
 const toggle = "/images/WebCommonImages/toggle.png";
@@ -2065,6 +2072,7 @@ const CompanyRegistrationForm = () => {
                                   />
                                 </div>
                                 <div className="BookingFormV2_inputRow__-6MII">
+                                  <Suspense fallback={null}>
                                   <MuiTelInput
                                     ref={phoneInputRef}
                                     variant="standard"
@@ -2181,6 +2189,7 @@ const CompanyRegistrationForm = () => {
                                       },
                                     }}
                                   />
+                                  </Suspense>
                                 </div>
                               </div>
                               <div className="BookingFormV2_formRow__06cJs">
