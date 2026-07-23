@@ -136,7 +136,7 @@ const Home = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={seoTitle} />
         {seoImage && <meta name="twitter:image" content={seoImage} />}
-        <link rel="canonical" href="/" />
+        <link rel="canonical" href={`${API_BASE_URL}/`} />
       </Helmet>
       <Navbar />
       <article className="HomeScreen_wholeContainer__oE8Au">

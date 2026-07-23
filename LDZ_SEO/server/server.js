@@ -52,6 +52,17 @@ app.use((req, res, next) => {
   next();
 });
 
+// Force HTTPS: Traefik/Coolify sets x-forwarded-proto to the scheme the
+// client actually used, since the app itself only ever sees plain HTTP
+// from the reverse proxy. Redirects any http:// request straight to https://
+// so a misconfigured or bypassed proxy can't leave HTTP unredirected.
+app.use((req, res, next) => {
+  if (req.headers["x-forwarded-proto"] === "http") {
+    return res.redirect(301, `https://${req.headers.host}${req.originalUrl}`);
+  }
+  next();
+});
+
 /* -------------------- SITEMAP + ROBOTS -------------------- */
 // Must be registered BEFORE express.static so the dynamic route
 // takes priority over any stale public/sitemap.xml static file.
