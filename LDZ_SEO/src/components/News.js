@@ -104,7 +104,9 @@ const News = () => {
   let featuredLatestArticle = null;
   let latestNewsItems = [];
 
-  const topNewsItems = newsList.filter((news) => news.isTopNews === "Yes");
+  const topNewsItems = newsList
+    .filter((news) => news.isTopNews === "Yes")
+    .slice(0, 3);
   if (topNewsItems?.length > 0) {
     featuredArticle = topNewsItems[0];
     sidebarItems = topNewsItems.slice(1);
