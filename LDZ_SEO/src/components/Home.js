@@ -155,11 +155,20 @@ const Home = () => {
             <div>
               <img
                 src={leftArrowIcon}
-                alt="left arrow icon"
+                alt=""
+                role="button"
+                tabIndex={0}
+                aria-label="Previous slide"
                 loading="lazy"
                 width="16"
                 onClick={() => sliderRef.current.slickPrev()}
-                style={{ display: isArrayDisplay }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    sliderRef.current.slickPrev();
+                  }
+                }}
+                style={{ display: isArrayDisplay, outline: "none" }}
               />
               <div className="SponsorCards_cardContainerOuter__yj9ca operatorSlider">
                 <div>
@@ -316,11 +325,20 @@ const Home = () => {
               </div>
               <img
                 src={rightArrowIcon}
-                alt="right arrow icon"
+                alt=""
+                role="button"
+                tabIndex={0}
+                aria-label="Next slide"
                 loading="lazy"
                 width="16"
                 onClick={() => sliderRef.current.slickNext()}
-                style={{ display: isArrayDisplay }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    sliderRef.current.slickNext();
+                  }
+                }}
+                style={{ display: isArrayDisplay, outline: "none" }}
               />
             </div>
           </div>

@@ -959,7 +959,7 @@ const ExhibitorPackages = () => {
 
                 {/* Right Button */}
                 <button
-                  aria-label="Move slider to left"
+                  aria-label="Move slider to right"
                   onClick={() => sliderRef.current.slickNext()}
                 >
                   <img

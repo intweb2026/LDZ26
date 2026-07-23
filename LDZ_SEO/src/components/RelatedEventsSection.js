@@ -77,15 +77,17 @@ const RelatedEventsSection = () => {
     <article className="EventSlider_slider__n4iwF event-slider">
       <h2>related events in the series</h2>
       <div className="EventSlider_sliderContainer__0yNvj sliderContainer">
-        <button>
+        <button
+          aria-label="Previous slide"
+          onClick={() => sliderRef.current.slickPrev()}
+          style={{ display: lessThen1231 ? "block" : "none" }}
+        >
           <img
             src={leftArrowIcon}
-            alt="left arrow icon"
+            alt=""
             loading="lazy"
             width="20"
             height="20"
-            onClick={() => sliderRef.current.slickPrev()}
-            style={{ display: lessThen1231 ? "block" : "none" }}
           />
         </button>
         <div>
@@ -170,15 +172,17 @@ const RelatedEventsSection = () => {
             ))}
           </Slider>
         </div>
-        <button>
+        <button
+          aria-label="Next slide"
+          onClick={() => sliderRef.current.slickNext()}
+          style={{ display: lessThen1231 ? "block" : "none" }}
+        >
           <img
             src={rightArrowIcon}
-            alt="left arrow icon"
+            alt=""
             loading="lazy"
             width="20"
             height="20"
-            onClick={() => sliderRef.current.slickNext()}
-            style={{ display: lessThen1231 ? "block" : "none" }}
           />
         </button>
       </div>

@@ -469,10 +469,11 @@ const News = () => {
             <div className="pagination">
               <button
                 className="pagination-button-arrow"
+                aria-label="Previous page"
                 onClick={handlePrev}
                 disabled={currentPage === 1}
               >
-                <img src={leftArrowIcon} alt="left arrow icon"></img>
+                <img src={leftArrowIcon} alt="" />
               </button>
               <div className="pagination-inner-container">
                 {Array.from({ length: totalPages }, (_, i) => (
@@ -489,10 +490,11 @@ const News = () => {
               </div>
               <button
                 className="pagination-button-arrow"
+                aria-label="Next page"
                 onClick={handleNext}
                 disabled={currentPage === totalPages}
               >
-                <img src={rightArrowIcon} alt="tight arrow icon"></img>
+                <img src={rightArrowIcon} alt="" />
               </button>
             </div>
           </div>
