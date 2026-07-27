@@ -1,35 +1,39 @@
-# Lithium Downstream Summit 2026 – Australia
+# Lithium Downstream Summit 2026
 
-> Official event site for the Lithium Downstream Summit 2026 (Australia edition), covering the conference agenda, speakers, sponsors, and registration for delegates and exhibitors in the lithium downstream and battery supply chain industry.
+> A two-day in-person summit in Melbourne, Australia focused on lithium refining, project bankability, capital deployment, and battery supply chain security. Organised by iQ-Hub.
 
-## Event
+- Location: Melbourne, Victoria, Australia
 
-- [Home](https://www.australia.lithium-downstream-summit.com/): Event overview, key dates, highlights, and sponsor showcase.
-- [Agenda](https://www.australia.lithium-downstream-summit.com/agenda): Full conference schedule and session topics.
-- [Who Should Attend](https://www.australia.lithium-downstream-summit.com/who-should-attend): Target audience and delegate profiles.
-- [Venue](https://www.australia.lithium-downstream-summit.com/venue): Event location and venue details.
-- [FAQ](https://www.australia.lithium-downstream-summit.com/faq): Answers to common attendee questions.
-- [News](https://www.australia.lithium-downstream-summit.com/news): Latest event and industry news.
+- Date: December 2026 (exact dates published on the Program page)
 
-## Speakers
+- Format: In-person conference
 
-- [Featured Speakers](https://www.australia.lithium-downstream-summit.com/featured-speakers): Confirmed speaker lineup and profiles.
-- [Become a Speaker](https://www.australia.lithium-downstream-summit.com/speakers): Call for presentations and speaker submission details.
+- Industry: Critical Minerals and Battery Supply Chain
 
-## Sponsors & Exhibitors
+## Key Pages
 
-- [Sponsors](https://www.australia.lithium-downstream-summit.com/sponsors): Current event sponsors and partners.
-- [Sponsor Packages](https://www.australia.lithium-downstream-summit.com/sponsor-packages): Sponsorship and exhibitor package options.
-- [Media Partners](https://www.australia.lithium-downstream-summit.com/media-partners): Official media partners.
+- Home (/): Event overview, themes, and highlights
 
-## Registration
+- Agenda (/agenda-page): Full event agenda and session details (requires email signup and verification)
 
-- [Register](https://www.australia.lithium-downstream-summit.com/booking): Delegate registration and ticket packages.
-- [Attendees](https://www.australia.lithium-downstream-summit.com/attendees): Past and expected attendee organizations.
-- [Contact Us](https://www.australia.lithium-downstream-summit.com/contact-us): General inquiries and event contact details.
+- Who Should Attend (/who-should-attend): Target audience and delegate benefits
 
-## Optional
+- Featured Speakers (/featured-speakers): Confirmed speaker lineup
 
-- [Privacy Policy](https://www.australia.lithium-downstream-summit.com/privacy-policy): Data privacy practices.
-- [Cookie Policy](https://www.australia.lithium-downstream-summit.com/cookie-policy): Cookie usage details.
-- [Terms and Conditions](https://www.australia.lithium-downstream-summit.com/terms-and-conditions): Site and registration terms.
+- Sponsors (/sponsors): Sponsorship partners and exhibitors
+
+- Venue (/venue): Location and logistics
+
+- News (/news): Industry news and event updates
+
+- Register (/booking): Delegate registration and booking
+
+## Organiser
+
+IQ-Hub organises more than 200 B2B events annually across 14 countries and 34 industry sectors.
+
+https://www.iq-hub.com
+
+## Sitemap
+
+https://www.australia.lithium-downstream-summit.com/sitemap.xml
