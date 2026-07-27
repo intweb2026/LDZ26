@@ -1,6 +1,6 @@
 // src/components/Venue.js
 // All data comes from SSR window.__INITIAL_DATA__. No client-side fetch.
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, Suspense, lazy } from "react";
 import { cleanHtml } from "../utils/cleanHtml";
 import { Helmet } from "react-helmet-async";
 import Navbar from "./Navbar";
@@ -8,12 +8,15 @@ import SubscribeForm from "./SubscribeForm";
 import Footer from "../Footer";
 import LogoCarousel from "./LogoCarousel";
 import "./../assets/css/venue.css";
-import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
-import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
 import { useSSRData } from "../common/useSSRData";
 import { usePageSeo } from "../common/usePageSeo";
 import API_BASE_URL from '../config/apiConfig';
+
+// yet-another-react-lightbox ships ESM-only (no CommonJS entry point), which
+// crashes Node's require() during SSR — load it via dynamic import() instead,
+// which Node resolves natively for ESM packages regardless of module system.
+const Lightbox = lazy(() => import("yet-another-react-lightbox"));
 const bgImage = "/images/WebImages/venue-main-image.webp";
 const locationIcon = "/images/WebCommonImages/location-pin.png";
 const phoneIcon = "/images/WebCommonImages/icon-phone.png";
@@ -36,6 +39,15 @@ const Venue = () => {
 
   const contactSectionRef = useRef(null);
   const [lightboxIndex, setLightboxIndex] = useState(-1);
+
+  // Loaded client-side only (see the lazy() import above for why) — the
+  // fullscreen button simply won't render until this resolves post-hydration.
+  const [FullscreenPlugin, setFullscreenPlugin] = useState(null);
+  useEffect(() => {
+    import("yet-another-react-lightbox/plugins/fullscreen").then((m) =>
+      setFullscreenPlugin(() => m.default),
+    );
+  }, []);
 
   const getCleanUrl = (raw) => {
     if (!raw) return "";
@@ -227,12 +239,13 @@ const Venue = () => {
                     </div>
                   </div>
                 </div>
+                <Suspense fallback={null}>
                 <Lightbox
                   open={lightboxIndex >= 0}
                   index={lightboxIndex}
                   close={() => setLightboxIndex(-1)}
                   slides={imgArr.map((src) => ({ src }))}
-                  plugins={[Fullscreen]}
+                  plugins={FullscreenPlugin ? [FullscreenPlugin] : []}
                   animation={{ fade: true, swipe: false }}
                   styles={{
                     container: { backgroundColor: "#292929d5" },
@@ -277,6 +290,7 @@ const Venue = () => {
                     ),
                   }}
                 />
+                </Suspense>
               </div>
             </div>
             <div

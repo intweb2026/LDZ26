@@ -2,6 +2,7 @@
 // Data now comes from SSR (window.__INITIAL_DATA__.speakers). No client-side fetch.
 import { useState, useRef, useEffect } from "react";
 import { cleanHtml } from "../utils/cleanHtml";
+import { fixSlickCloneFocus } from "../utils/fixSlickCloneFocus";
 import { mediaUrl } from '../config/apiConfig';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -29,6 +30,7 @@ const HomeSpeakerSlider = () => {
 
   const slider1 = useRef(null);
   const slider2 = useRef(null);
+  const innerContainerRef = useRef(null);
   const [nav1, setNav1] = useState(null);
   const [nav2, setNav2] = useState(null);
 
@@ -39,12 +41,25 @@ const HomeSpeakerSlider = () => {
     }
   }, []);
 
+  // react-slick's infinite-loop clones are aria-hidden but keep their
+  // interactive children tab-focusable — neutralize that after every
+  // render/re-init (see fixSlickCloneFocus for details).
+  const runCloneFocusFix = () => fixSlickCloneFocus(innerContainerRef.current);
+
+  useEffect(() => {
+    runCloneFocusFix();
+  }, [ssrSpeakerList]);
+
   const sliderMagnify = {
     asNavFor: nav2,
     ref: slider1,
     slidesToShow: 1,
     arrows: false,
+    speed: 0,
     className: "magnify-slider",
+    onInit: runCloneFocusFix,
+    onReInit: runCloneFocusFix,
+    afterChange: runCloneFocusFix,
   };
 
   const settings = {
@@ -56,7 +71,11 @@ const HomeSpeakerSlider = () => {
     focusOnSelect: true,
     centerMode: true,
     arrows: false,
+    speed: 500,
     className: "thumbnail-slider",
+    onInit: runCloneFocusFix,
+    onReInit: runCloneFocusFix,
+    afterChange: runCloneFocusFix,
     responsive: [
       { breakpoint: 1200, settings: { slidesToShow: 5, centerMode: true } },
       { breakpoint: 1024, settings: { slidesToShow: 3, centerMode: true } },
@@ -97,7 +116,7 @@ const HomeSpeakerSlider = () => {
           </svg>
         </button>
       </div>
-      <div className="inner-container">
+      <div className="inner-container" ref={innerContainerRef}>
         <div className="magnify">
           <Slider {...sliderMagnify}>
             {speakerList.map((speaker, index) => (
