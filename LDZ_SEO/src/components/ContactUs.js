@@ -11,6 +11,7 @@ import { usePageSeo } from "../common/usePageSeo";
 import "../assets/css/form.css";
 import { useSSRData } from "../common/useSSRData";
 import { useApiData } from "../../src/common/ApiContext";
+import { getHubspotUtk } from "../common/hubspotCookie";
 import API_BASE_URL from '../config/apiConfig';
 const emailImage = "/images/WebCommonImages/icon-email.png";
 const emailIcon = "/images/WebCommonImages/msg.png";
@@ -19,7 +20,7 @@ const ContactUs = () => {
   const [windowWidth, setWindowWidth] = useState(
     typeof window !== "undefined" ? window.innerWidth : 1200,
   );
-  const toEmails = useSSRData("toEmails") || "benny.scott@iq-hub.com";
+  const toEmails = useSSRData("toEmails") || "ken.peters@iq-hub.com,delegates@iq-hub.com,int.web@iq-hub.com";
   const { eventDetails, eventGeneralSettings, navLogos } = useApiData();
   const [helpersList, setHelpersList] = useState([]);
   const [personName, setPersonName] = useState("");
@@ -616,6 +617,7 @@ const ContactUs = () => {
         { name: "interested_for", value: getMappedReasons() },
       ],
       context: {
+        hutk: getHubspotUtk(),
         pageUri: window.location.href,
         pageName: document.title,
       },

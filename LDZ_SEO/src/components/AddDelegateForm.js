@@ -17,6 +17,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Helmet } from "react-helmet-async";
 import { usePageSeo } from "../common/usePageSeo";
+import { getHubspotUtk } from "../common/hubspotCookie";
 import API_BASE_URL, { mediaUrl } from '../config/apiConfig';
 
 // mui-tel-input ships ESM-only (no CommonJS entry point), which crashes
@@ -40,7 +41,7 @@ const CompanyRegistrationForm = () => {
   const selectedPackage = location?.state?.selectedCard;
   const selectedQty = location?.state?.quantity;
   const phoneInputRef = useRef(null);
-  const toEmails = useSSRData("toEmails") || "benny.scott@iq-hub.com";
+  const toEmails = useSSRData("toEmails") || "ken.peters@iq-hub.com,delegates@iq-hub.com,int.web@iq-hub.com";
   const { eventDetails, eventGeneralSettings, navLogos } = useApiData();
 
   // ─── Step transition state ─────────────────────────────────────────────────
@@ -306,6 +307,7 @@ const CompanyRegistrationForm = () => {
 
             ],
             context: {
+              hutk: getHubspotUtk(),
               pageUri: window.location.href,
               pageName: document.title,
             },
@@ -356,7 +358,7 @@ const CompanyRegistrationForm = () => {
         const emailPayload = {
           toemail: toEmails,
           cc: "",
-          subject: `${eventDetails?.eventShortCode} - Booking Form Step 1`,
+          subject: `${eventDetails?.eventShortCode || "LDZ"} - Booking Form Step 1`,
           html: htmlContent,
         };
         try {
@@ -783,7 +785,7 @@ const CompanyRegistrationForm = () => {
       const emailPayload = {
         toemail: toEmails,
         cc: "",
-        subject: `${eventDetails?.eventShortCode} - Booking Form Step 2`,
+        subject: `${eventDetails?.eventShortCode || "LDZ"} - Booking Form Step 2`,
         html: step2Html,
       };
       try {
@@ -912,7 +914,7 @@ const CompanyRegistrationForm = () => {
       const emailPayload = {
         toemail: toEmails,
         cc: "",
-        subject: `${eventDetails?.eventShortCode} - Booking Confirmation - Payment Successful`,
+        subject: `${eventDetails?.eventShortCode || "LDZ"} - Booking Confirmation - Payment Successful`,
         html: step3Html,
       };
       try {
