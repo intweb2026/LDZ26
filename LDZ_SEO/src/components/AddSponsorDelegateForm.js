@@ -97,6 +97,7 @@ const AddSponsorDelegateForm = () => {
 
   // ─── Step 2 state ─────────────────────────────────────────────────────────
   const paymentFormRef = useRef(null);
+  const [paymentError, setPaymentError] = useState("");
   const discountInputRef = useRef(null);
   const [sponsorAddOns, setSponsorAddOns] = useState([]);
   const [marketingAndLiterature, setMarketingAndLiterature] = useState([]);
@@ -565,6 +566,7 @@ const AddSponsorDelegateForm = () => {
 
   const handlePaymentClick = async () => {
     const prices = calculatePrices();
+    setPaymentError("");
     if (!prices.finalTotal || parseFloat(prices.finalTotal) <= 0) {
       console.log("Invalid payment amount.");
       return;
@@ -846,6 +848,7 @@ const AddSponsorDelegateForm = () => {
 
   const handlePaymentError = (error) => {
     console.error("Payment failed:", error);
+    setPaymentError(error);
   };
 
   // ─── Step 3: Finish button handler ────────────────────────────────────────
@@ -1592,6 +1595,11 @@ const AddSponsorDelegateForm = () => {
                             This is a secure AES-256 bit SSL Encrypted payment.
                             You're safe.
                           </p>
+                          {paymentError && (
+                            <div className="stripePaymentError">
+                              {paymentError}
+                            </div>
+                          )}
                         </div>
                       </div>
                     </div>

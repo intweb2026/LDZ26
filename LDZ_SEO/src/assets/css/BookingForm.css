@@ -531,8 +531,17 @@
         .stripeBtnContainer {
             align-items: center;
             display: flex;
+            flex-wrap: wrap;
             justify-content: flex-start;
             margin-top: 40px;
+        }
+
+        .stripeBtnContainer .stripePaymentError {
+            color: #d32f2f;
+            font-size: 14px;
+            font-weight: 500;
+            margin: 10px 0 0;
+            width: 100%;
         }
 
         .stripeBtnContainer .paymentButtonStripe {
@@ -573,6 +582,16 @@
             font-weight: 500;
             margin: 0 0 0 30px;
             width: 40%;
+        }
+
+        /* Left column is narrower here (two-column layout kicks in at 992px),
+           so let the text use the remaining row space instead of a fixed 40%
+           to avoid excessive wrapping while staying side-by-side with the button. */
+        @media only screen and (min-width: 992px) {
+            .stripeBtnContainer p {
+                flex: 1;
+                width: auto;
+            }
         }
 
         @media only screen and (max-width: 1339px) {

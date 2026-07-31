@@ -160,12 +160,7 @@ const CheckoutForm = forwardRef(
           <CardCvcElement id="card-cvc" options={cardElementOptions} />
         </div>
 
-        {/* Display messages */}
-        {error && (
-          <div style={{ color: "red", marginTop: "10px", fontSize: "14px" }}>
-            {error}
-          </div>
-        )}
+        {/* Error is surfaced to the parent via onPaymentError and rendered below the Pay button instead */}
         {/* {message && (
           <div style={{ color: "green", marginTop: "10px", fontSize: "14px" }}>
             {message}

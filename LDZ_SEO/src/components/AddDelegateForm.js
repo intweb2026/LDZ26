@@ -59,6 +59,7 @@ const CompanyRegistrationForm = () => {
   // ─── Step 2 state (from BookingForm) ──────────────────────────────────────
   const paymentFormRef = useRef(null);
   const discountInputRef = useRef(null);
+  const [paymentError, setPaymentError] = useState("");
   const [delegateAddOns, setDelegateAddOns] = useState([]);
   const [selectedAddOns, setSelectedAddOns] = useState([]);
   const [discountCode, setDiscountCode] = useState("");
@@ -724,6 +725,7 @@ const CompanyRegistrationForm = () => {
 
   const handlePaymentClick = async () => {
     const prices = calculatePrices();
+    setPaymentError("");
 
     if (!prices.finalTotal || parseFloat(prices.finalTotal) <= 0) {
       console.log("Invalid payment amount.");
@@ -999,6 +1001,7 @@ const CompanyRegistrationForm = () => {
 
   const handlePaymentError = (error) => {
     console.log("Payment failed:", error);
+    setPaymentError(error);
   };
 
   // ─── Step 3: Finish button handler ────────────────────────────────────────
@@ -1543,6 +1546,11 @@ const CompanyRegistrationForm = () => {
                             This is a secure AES-256 bit SSL Encrypted payment.
                             You're safe.
                           </p>
+                          {paymentError && (
+                            <div className="stripePaymentError">
+                              {paymentError}
+                            </div>
+                          )}
                         </div>
                       </div>
                     </div>
