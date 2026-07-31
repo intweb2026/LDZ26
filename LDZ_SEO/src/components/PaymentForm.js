@@ -13,7 +13,7 @@ import "../assets/css/SponsorBookingPay.css";
 import API_BASE_URL from '../config/apiConfig';
 
 const stripePromise = loadStripe(
-  "pk_test_51S3c3THQBCGmReEPZ3J0tA2mP81BvQxY9PptsUir5PYeqjj9XW7GveKj04umPQYxbaYiXix4avRlloUdo3ITsBsz00zfBxr700"
+  "pk_live_TGsn4YAPHW10U1qYRt74VAKS"
 );
 
 const CheckoutForm = forwardRef(
