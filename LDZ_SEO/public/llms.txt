@@ -12,28 +12,28 @@
 
 ## Key Pages
 
-- Home (/): Event overview, themes, and highlights
+- [Home](https://www.australia.lithium-downstream-summit.com/): Event overview, themes, and highlights
 
-- Agenda (/agenda-page): Full event agenda and session details (requires email signup and verification)
+- [Agenda](https://www.australia.lithium-downstream-summit.com/agenda-page): Full event agenda and session details (requires email signup and verification)
 
-- Who Should Attend (/who-should-attend): Target audience and delegate benefits
+- [Who Should Attend](https://www.australia.lithium-downstream-summit.com/who-should-attend): Target audience and delegate benefits
 
-- Featured Speakers (/featured-speakers): Confirmed speaker lineup
+- [Featured Speakers](https://www.australia.lithium-downstream-summit.com/featured-speakers): Confirmed speaker lineup
 
-- Sponsors (/sponsors): Sponsorship partners and exhibitors
+- [Sponsors](https://www.australia.lithium-downstream-summit.com/sponsors): Sponsorship partners and exhibitors
 
-- Venue (/venue): Location and logistics
+- [Venue](https://www.australia.lithium-downstream-summit.com/venue): Location and logistics
 
-- News (/news): Industry news and event updates
+- [News](https://www.australia.lithium-downstream-summit.com/news): Industry news and event updates
 
-- Register (/booking): Delegate registration and booking
+- [Register](https://www.australia.lithium-downstream-summit.com/booking): Delegate registration and booking
 
 ## Organiser
 
 IQ-Hub organises more than 200 B2B events annually across 14 countries and 34 industry sectors.
 
-https://www.iq-hub.com
+[iQ-Hub](https://www.iq-hub.com)
 
 ## Sitemap
 
-https://www.australia.lithium-downstream-summit.com/sitemap.xml
+[Sitemap](https://www.australia.lithium-downstream-summit.com/sitemap.xml)
