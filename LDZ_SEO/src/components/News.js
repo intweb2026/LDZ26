@@ -12,19 +12,27 @@ import "react-toastify/dist/ReactToastify.css";
 import { Helmet } from "react-helmet-async";
 import { usePageSeo } from "../common/usePageSeo";
 import { useApiData } from "../common/ApiContext";
+import { useSSRData } from "../common/useSSRData";
 import API_BASE_URL, { mediaUrl } from "../config/apiConfig";
 const leftArrowIcon = "/images/WebCommonImages/icon-arrow-left.png";
 const rightArrowIcon = "/images/WebCommonImages/icon-arrow-right.png";
 
 const News = () => {
   const navigate = useNavigate();
-  const [newsList, setNewsList] = useState([]);
+  // SSR data — pre-fetched by server.js before renderToString, so the news
+  // list is present in the crawlable HTML on first render (not just after
+  // the client fetch below), which is what keeps this route out of Soft 404.
+  const ssrNews = useSSRData("news");
+  const [newsList, setNewsList] = useState(ssrNews || []);
   const [agendaList, setAgendaList] = useState(null);
   const { eventDetails } = useApiData();
   const agendaVersion = eventDetails?.agendaVersion;
 
   useEffect(() => {
-    callNewsListApi();
+    // Only hit the API client-side if SSR didn't already provide the list
+    if (!ssrNews || ssrNews.length === 0) {
+      callNewsListApi();
+    }
     callAgendaListApi();
     // eslint-disable-next-line
   }, []);

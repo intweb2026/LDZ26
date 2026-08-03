@@ -8,12 +8,19 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Helmet } from "react-helmet-async";
 import { usePageSeo } from "../common/usePageSeo";
+import { useSSRData } from "../common/useSSRData";
 import API_BASE_URL from '../config/apiConfig';
 const Faq = () => {
-  const [faqList, setFaqList] = useState([]);
+  // SSR data — pre-fetched by server.js before renderToString, so the FAQ
+  // list is present in the crawlable HTML on first render.
+  const ssrFaqs = useSSRData("faqs");
+  const [faqList, setFaqList] = useState(ssrFaqs || []);
   const [activeIndex, setActiveIndex] = useState(null);
   useEffect(() => {
-    callFaqListApi();
+    // Only hit the API client-side if SSR didn't already provide the list
+    if (!ssrFaqs || ssrFaqs.length === 0) {
+      callFaqListApi();
+    }
     // eslint-disable-next-line
   }, []);
 
