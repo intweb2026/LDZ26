@@ -11,7 +11,7 @@ import "./../assets/css/venue.css";
 import "yet-another-react-lightbox/styles.css";
 import { useSSRData } from "../common/useSSRData";
 import { usePageSeo } from "../common/usePageSeo";
-import API_BASE_URL from '../config/apiConfig';
+import API_BASE_URL, { mediaUrl } from '../config/apiConfig';
 
 // yet-another-react-lightbox ships ESM-only (no CommonJS entry point), which
 // crashes Node's require() during SSR — load it via dynamic import() instead,
@@ -36,6 +36,7 @@ const Venue = () => {
   const venueData = ssrVenue || [];
   const ssrVenueGallery = useSSRData("venueGallery");
   const venueGalleryData = ssrVenueGallery || [];
+  console.log('venueGalleryData: ', venueGalleryData);
 
   const contactSectionRef = useRef(null);
   const [lightboxIndex, setLightboxIndex] = useState(-1);
@@ -94,16 +95,25 @@ const Venue = () => {
   const venueMapLink = getCleanUrl(venueData[0]?.venueMapLink);
   const venueWebAddress = getCleanUrl(venueData[0]?.venueWebsiteAddress);
 
-  const venueGalleryImg1 = venueGalleryData[0]?.gallerySectionOneBigImage || "";
-  const venueGalleryImg2 =
-    venueGalleryData[0]?.gallerySectionOneSmallImage || "";
-  const venueGalleryImg3 = venueGalleryData[0]?.gallerySectionTwoBigImage || "";
-  const venueGalleryImg4 =
-    venueGalleryData[0]?.gallerySectionTwoSmallImage || "";
-  const venueGalleryImg5 =
-    venueGalleryData[0]?.gallerySectionThreeBigImage || "";
-  const venueGalleryImg6 =
-    venueGalleryData[0]?.gallerySectionThreeSmallImage || "";
+  const venueGalleryImg1 = mediaUrl(
+    venueGalleryData[0]?.gallerySectionOneBigImage || "",
+  );
+  console.log('venueGalleryImg1: ', venueGalleryImg1);
+  const venueGalleryImg2 = mediaUrl(
+    venueGalleryData[0]?.gallerySectionOneSmallImage || "",
+  );
+  const venueGalleryImg3 = mediaUrl(
+    venueGalleryData[0]?.gallerySectionTwoBigImage || "",
+  );
+  const venueGalleryImg4 = mediaUrl(
+    venueGalleryData[0]?.gallerySectionTwoSmallImage || "",
+  );
+  const venueGalleryImg5 = mediaUrl(
+    venueGalleryData[0]?.gallerySectionThreeBigImage || "",
+  );
+  const venueGalleryImg6 = mediaUrl(
+    venueGalleryData[0]?.gallerySectionThreeSmallImage || "",
+  );
 
   const imgArr = [
     venueGalleryImg1,
@@ -112,7 +122,7 @@ const Venue = () => {
     venueGalleryImg4,
     venueGalleryImg5,
     venueGalleryImg6,
-  ];
+  ].filter(Boolean);
 
   const [windowWidth, setWindowWidth] = useState(
     typeof window !== "undefined" ? window.innerWidth : 1200,
