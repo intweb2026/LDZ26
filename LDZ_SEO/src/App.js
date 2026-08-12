@@ -53,6 +53,7 @@ import { Helmet } from "react-helmet-async";
 import ScrollToTop from "./ScrollToTop";
 import { ApiDataProvider } from "./common/ApiContext";
 import { ToastContainer } from "react-toastify";
+import { mediaUrl } from "./config/apiConfig";
 
 // Eagerly loaded – needed on every page
 import Home from "./components/Home";
@@ -109,7 +110,7 @@ function App({ ssrData }) {
 
   useEffect(() => {
     const faviconUrl =
-      initialData?.home?.homeVideoSctionEventDetails?.[0]?.favicon;
+      mediaUrl(initialData?.home?.homeVideoSctionEventDetails?.[0]?.favicon);
     if (faviconUrl) {
       setFavicon(faviconUrl);
     }
@@ -120,11 +121,11 @@ function App({ ssrData }) {
       <Helmet>
         <link
           rel="icon"
-          href={initialData?.home?.homeVideoSctionEventDetails?.[0]?.favicon}
+          href={mediaUrl(initialData?.home?.homeVideoSctionEventDetails?.[0]?.favicon)}
         />
         <link
           rel="apple-touch-icon"
-          href={initialData?.home?.homeVideoSctionEventDetails?.[0]?.favicon}
+          href={mediaUrl(initialData?.home?.homeVideoSctionEventDetails?.[0]?.favicon)}
         />
       </Helmet>
       <ApiDataProvider initialData={initialData}>
