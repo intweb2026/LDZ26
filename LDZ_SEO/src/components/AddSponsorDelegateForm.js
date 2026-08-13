@@ -42,6 +42,7 @@ const AddSponsorDelegateForm = () => {
   const navigate = useNavigate();
   const phoneInputRef = useRef(null);
   const selectedPackage = location?.state?.selectedPackage;
+  console.log('selectedPackage: ', selectedPackage);
 
   const { eventDetails, eventGeneralSettings, navLogos } = useApiData();
 
@@ -367,7 +368,7 @@ const AddSponsorDelegateForm = () => {
           year: "numeric",
         });
 
-        const pacPrice = activeDelPackageData[0]?.deligatePackagePrice || 0;
+        const pacPrice = selectedPackage?.sponsorPackagePrice || 0;
         const numDelegates = delegates?.length || 0;
         const preTaxAmount = pacPrice * numDelegates;
 
@@ -393,7 +394,7 @@ const AddSponsorDelegateForm = () => {
               TotalAmount: totalAmount,
               Date: dateFormatted,
               TaxAmount: taxAmount,
-              Packages: activeDelPackageData[0]?.deligatePackageName || "",
+              Package: selectedPackage?.sponsorPackageType || "",
               Currency: `${eventGeneralSettings?.currencySymbol}`,
               Eventname: `${eventDetails?.eventName}`,
               Country: formData.company.country || "",
@@ -406,7 +407,7 @@ const AddSponsorDelegateForm = () => {
               })),
               TotalAmountFormatted: totalAmount,
               InvoiceNumber: invoiceNumber,
-              FormName: "Booking Form",
+              FormName: "Sponsor Booking Form",
               FormURL: `${API_BASE_URL}/sponsor-booking`,
               AddOnsTotalAmount: "0",
               Eventcode: `${eventDetails?.eventShortCode}`,
@@ -429,14 +430,7 @@ const AddSponsorDelegateForm = () => {
               TotalAmount: totalAmount,
               Date: dateFormatted,
               TaxAmount: taxAmount,
-              Packages:
-                activeDelPackageData[0]?.deligatePackageName === "Super Early Bird"
-                  ? "SEB"
-                  : activeDelPackageData[0]?.deligatePackageName === "Early Bird"
-                    ? "EB"
-                    : activeDelPackageData[0]?.deligatePackageName === "Regular Price"
-                      ? "Regular"
-                      : "",
+              Package: selectedPackage?.sponsorPackageType,
               Currency: `${eventGeneralSettings?.currencySymbol}`,
               Eventname: `${eventDetails?.eventName}`,
               Country: formData.company.country || "",
