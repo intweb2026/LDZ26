@@ -443,7 +443,7 @@ const AddSponsorDelegateForm = () => {
               })),
               TotalAmountFormatted: totalAmount,
               InvoiceNumber: invoiceNumber,
-              FormName: "Booking Form",
+              FormName: "Sponsor Booking Form",
               FormURL: `${API_BASE_URL}/sponsor-booking`,
               AddOnsTotalAmount: "0",
               Eventcode: `${eventDetails?.eventShortCode}`,
