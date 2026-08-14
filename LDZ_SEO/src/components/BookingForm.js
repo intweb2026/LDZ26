@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import "../../src/assets/css/BookingForm.css";
 import { useNavigate, useLocation } from "react-router-dom";
 import SimpleStripeForm from "./PaymentForm";
+import { getCurrencyCode } from "../utils/currency";
 import { useApiData } from "../../src/common/ApiContext";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -906,6 +907,7 @@ const BookingForm = () => {
                           ""
                         }
                         companyName={companyDetails?.companyName || ""}
+                        currencyCode={getCurrencyCode(eventGeneralSettings?.currencyName)}
                         orderDescription={`Payment for ${delegates?.length || 1
                           } delegate pass(es) - ${selectedPackage?.deligatePackageName ||
                           "Delegate Package"

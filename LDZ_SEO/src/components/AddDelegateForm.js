@@ -13,6 +13,7 @@ import { useApiData } from "../../src/common/ApiContext";
 import { useSSRData } from "../common/useSSRData";
 import "../../src/assets/css/BookingForm.css";
 import SimpleStripeForm from "./PaymentForm";
+import { getCurrencyCode } from "../utils/currency";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Helmet } from "react-helmet-async";
@@ -1526,6 +1527,7 @@ const CompanyRegistrationForm = () => {
                               ""
                             }
                             companyName={companyDetails?.companyName || ""}
+                            currencyCode={getCurrencyCode(eventGeneralSettings?.currencyName)}
                             orderDescription={`Payment for ${delegates?.length || 1} delegate pass(es) - ${selectedPackage?.deligatePackageName || "Delegate Package"} - Event: ${eventDetails?.eventName || ""}`}
                             onPaymentSuccess={handlePaymentSuccess}
                             onPaymentError={handlePaymentError}

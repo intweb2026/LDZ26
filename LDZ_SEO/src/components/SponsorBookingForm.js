@@ -3,6 +3,7 @@ import "../../src/assets/css/BookingForm.css";
 import { useNavigate, useLocation } from "react-router-dom";
 import "../assets/css/SponsorBookingPay.css";
 import SimpleStripeForm from "./PaymentForm";
+import { getCurrencyCode } from "../utils/currency";
 import { useApiData } from "../../src/common/ApiContext";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -45,6 +46,9 @@ const SponsorBookingForm = () => {
     themeSettings,
     navLogos
   } = useApiData();
+
+  console.log("SponsorBookingForm eventGeneralSettings currencyName:", eventGeneralSettings?.currencyName);
+  console.log("SponsorBookingForm derived currencyCode:", getCurrencyCode(eventGeneralSettings?.currencyName));
 
   const pageSeo = usePageSeo("sponsor-booking");
   const seoTitle = pageSeo.pageMetaTitle;
@@ -1080,6 +1084,7 @@ const SponsorBookingForm = () => {
                             ""
                           }
                           companyName={companyDetails?.companyName || ""}
+                          currencyCode={getCurrencyCode(eventGeneralSettings?.currencyName)}
                           orderDescription={`Payment for Sponsor- ${companyDetails?.companyName
                             } - Type: ${selectedPackage?.sponsorPackageType
                             } - Event: ${eventDetails?.eventName || ""}`}

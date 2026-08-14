@@ -13,6 +13,7 @@ import "../assets/css/SponsorBookingPay.css";
 import { FormControl, FormHelperText } from "@mui/material";
 import { useSSRData } from "../common/useSSRData";
 import SimpleStripeForm from "./PaymentForm";
+import { getCurrencyCode } from "../utils/currency";
 import { useApiData } from "../common/ApiContext";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -1569,6 +1570,7 @@ const AddSponsorDelegateForm = () => {
                               ""
                             }
                             companyName={companyDetails?.companyName || ""}
+                            currencyCode={getCurrencyCode(eventGeneralSettings?.currencyName)}
                             orderDescription={`Payment for Sponsor- ${companyDetails?.companyName} - Type: ${selectedPackage?.sponsorPackageType} - Event: ${eventDetails?.eventName || ""}`}
                             onPaymentSuccess={handlePaymentSuccess}
                             onPaymentError={handlePaymentError}

@@ -9,6 +9,7 @@ import "react-phone-input-2/lib/style.css";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import SimpleStripeForm from "./PaymentForm";
+import { getCurrencyCode } from "../utils/currency";
 import { Helmet } from "react-helmet-async";
 import { useSSRData } from "../common/useSSRData";
 import { useApiData } from "../common/ApiContext";
@@ -302,6 +303,7 @@ const PayOnline = () => {
                     amount={parseFloat(payFormData.amount) || 0}
                     userEmail={payFormData.email}
                     companyName={payFormData.invoiceNumber}
+                    currencyCode={getCurrencyCode(eventGeneralSettings?.currencyName)}
                     orderDescription={`Payment for Invoice: ${payFormData.invoiceNumber}`}
                     onPaymentSuccess={handlePaymentSuccess}
                     onPaymentError={handlePaymentError}

@@ -18,7 +18,7 @@ const stripePromise = loadStripe(
 
 const CheckoutForm = forwardRef(
   (
-    { amount, userEmail, companyName, orderDescription, onPaymentSuccess, onPaymentError },
+    { amount, userEmail, companyName, orderDescription, currencyCode, onPaymentSuccess, onPaymentError },
     ref
   ) => {
     const stripe = useStripe();
@@ -65,6 +65,8 @@ const CheckoutForm = forwardRef(
         }
 
         // STEP 2: Send payment method to your Django backend
+        console.log("PaymentForm currencyCode prop received:", currencyCode);
+        console.log("PaymentForm currencyCode sent to backend:", currencyCode || "USD");
         const response = await fetch(
           `${API_BASE_URL}/admin1/stripe-client-secret`,
           {
@@ -75,7 +77,7 @@ const CheckoutForm = forwardRef(
             body: JSON.stringify({
               subTotalAmount: amount,
               paymentMethod: paymentMethod.id,
-              currencyCode: "USD",
+              currencyCode: currencyCode || "USD",
               // receiptemail: userEmail,
               paymentDescription: orderDescription || `Payment of $${amount}`,
             }),
@@ -183,6 +185,7 @@ const SimpleStripeForm = forwardRef(
       userEmail,
       companyName,
       orderDescription,
+      currencyCode,
       onPaymentSuccess,
       onPaymentError,
     },
@@ -196,6 +199,7 @@ const SimpleStripeForm = forwardRef(
           userEmail={userEmail}
           companyName={companyName}
           orderDescription={orderDescription}
+          currencyCode={currencyCode}
           onPaymentSuccess={onPaymentSuccess}
           onPaymentError={onPaymentError}
         />
