@@ -13,7 +13,7 @@ import { useApiData } from "../common/ApiContext";
 import { useSSRData } from "../common/useSSRData";
 import { usePageSeo } from "../common/usePageSeo";
 import "../../src/assets/css/form.css";
-import API_BASE_URL from '../config/apiConfig';
+import API_BASE_URL, { mediaUrl } from '../config/apiConfig';
 const speakerDummy = "/images/WebCommonImages/Speaker_dummy.jpg";
 const companyDummy = "/images/WebCommonImages/companyLogo_dummy.png";
 const Agenda = () => {
@@ -2389,7 +2389,7 @@ const Agenda = () => {
                                                   src={
                                                     !item.Speaker1CompanyImg
                                                       ? companyDummy
-                                                      : item.Speaker1CompanyImg
+                                                      : mediaUrl(item.Speaker1CompanyImg)
                                                   }
                                                   alt={item.speaker1CompanyName}
                                                   width="100"
@@ -2456,7 +2456,7 @@ const Agenda = () => {
                                                 src={
                                                   !item.Speaker1AgendaImg
                                                     ? speakerDummy
-                                                    : item.Speaker1AgendaImg
+                                                    : mediaUrl(item.Speaker1AgendaImg)
                                                 }
                                                 alt={item.speaker1Name}
                                                 width="100"
@@ -2470,7 +2470,7 @@ const Agenda = () => {
                                                   src={
                                                     !item.Speaker1CompanyImg
                                                       ? companyDummy
-                                                      : item.Speaker1CompanyImg
+                                                      : mediaUrl(item.Speaker1CompanyImg)
                                                   }
                                                   alt={item.speaker1CompanyName}
                                                   width="100"
@@ -2524,7 +2524,7 @@ const Agenda = () => {
                                                   src={
                                                     !item.Speaker2CompanyImg
                                                       ? companyDummy
-                                                      : item.Speaker2CompanyImg
+                                                      : mediaUrl(item.Speaker2CompanyImg)
                                                   }
                                                   alt={item.speaker2CompanyName}
                                                   width="100"
@@ -2569,7 +2569,7 @@ const Agenda = () => {
                                               src={
                                                 !item.Speaker2AgendaImg
                                                   ? speakerDummy
-                                                  : item.Speaker2AgendaImg
+                                                  : mediaUrl(item.Speaker2AgendaImg)
                                               }
                                               alt={item.speaker2Name}
                                               width="100"
@@ -2583,7 +2583,7 @@ const Agenda = () => {
                                                 src={
                                                   !item.Speaker2CompanyImg
                                                     ? companyDummy
-                                                    : item.Speaker2CompanyImg
+                                                    : mediaUrl(item.Speaker2CompanyImg)
                                                 }
                                                 alt={item.speaker2CompanyName}
                                                 width="100"
@@ -2653,7 +2653,7 @@ const Agenda = () => {
                                                   src={
                                                     !item.singleSpeakerCompanyImg
                                                       ? companyDummy
-                                                      : item.singleSpeakerCompanyImg
+                                                      : mediaUrl(item.singleSpeakerCompanyImg)
                                                   }
                                                   alt={
                                                     item.singleSpeakerCompanyName
@@ -2724,7 +2724,7 @@ const Agenda = () => {
                                                 src={
                                                   !item.singleSpeakerAgendaImg
                                                     ? speakerDummy
-                                                    : item.singleSpeakerAgendaImg
+                                                    : mediaUrl(item.singleSpeakerAgendaImg)
                                                 }
                                                 alt={item.singleSpeakerName}
                                                 width="100"
@@ -2738,7 +2738,7 @@ const Agenda = () => {
                                                   src={
                                                     !item.singleSpeakerCompanyImg
                                                       ? companyDummy
-                                                      : item.singleSpeakerCompanyImg
+                                                      : mediaUrl(item.singleSpeakerCompanyImg)
                                                   }
                                                   alt={
                                                     item.singleSpeakerCompanyName
