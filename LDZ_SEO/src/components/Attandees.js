@@ -16,6 +16,7 @@ import Slider from "react-slick";
 import { Helmet } from "react-helmet-async";
 import { usePageSeo } from "../common/usePageSeo";
 import { useApiData } from "../common/ApiContext";
+import { useSSRData } from "../common/useSSRData";
 import API_BASE_URL, { mediaUrl } from '../config/apiConfig';
 
 const allTopics = [
@@ -53,10 +54,15 @@ const Attandees = () => {
   const sliderRef = useRef(null);
 
   const navigate = useNavigate();
-  const [agendaList, setAgendaList] = useState(null);
-  const [pastAttandeeList, setPastAttandeeList] = useState([]);
-  const [leadersList, setLeadersList] = useState([]);
-  const [isDataLoaded, setIsDataLoaded] = useState(false);
+  const ssrEventLeaders = useSSRData("eventLeaders");
+  const [agendaList, setAgendaList] = useState(useSSRData("agendaList") || null);
+  const [pastAttandeeList, setPastAttandeeList] = useState(
+    useSSRData("pastAttandeeList") || [],
+  );
+  const [leadersList, setLeadersList] = useState(ssrEventLeaders || []);
+  const [isDataLoaded, setIsDataLoaded] = useState(
+    !!(ssrEventLeaders && ssrEventLeaders.length),
+  );
 
   const {
     eventDetails,

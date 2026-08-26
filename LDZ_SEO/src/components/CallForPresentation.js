@@ -33,7 +33,9 @@ const CallForPresentation = () => {
   const { eventDetails } = useApiData();
   const toEmails = useSSRData("toEmails") || "benny.scott@iq-hub.com";
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [speakerPageData, setSpeakerPageData] = useState([]);
+  const [speakerPageData, setSpeakerPageData] = useState(
+    useSSRData("speakerPageData") || [],
+  );
   const [paraOne, setParaOne] = useState("");
   const [paraTwo, setParaTwo] = useState("");
   const [fullName, setFullName] = useState("");

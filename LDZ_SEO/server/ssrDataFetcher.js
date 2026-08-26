@@ -241,14 +241,42 @@ async function fetchSponsorById(id) {
 
 /* ---- WhoShouldAttend / Attendees ---- */
 async function fetchWhoShouldAttend() {
-  // Use homepagedata which contains whoshouldattend info, or a dedicated endpoint if it exists
   const d = await get("whoshouldattendpagedata");
-  return d?.status ? d : null;
+  return d?.status ? d.whoShouldAttendPageData : [];
 }
 
-async function fetchAttendees() {
-  const d = await get("eventattendees");
-  return d?.status ? d : null;
+async function fetchCoreAttendees() {
+  const d = await get("eventcoreattandees");
+  return d?.status ? d.coreAttandees : [];
+}
+
+async function fetchParticipatedIndustries() {
+  const d = await get("eventparticipatedindustries");
+  return d?.status ? d.participatedIndustries : [];
+}
+
+async function fetchPastAttendees() {
+  const d = await get("pastAttandeelist");
+  return d?.status ? d.pastAttandees : [];
+}
+
+async function fetchEventLeaders() {
+  const d = await get("eventleaderlist");
+  return d?.status ? d.eventLeaders : [];
+}
+
+/* ---- Agenda ---- */
+async function fetchAgendaList() {
+  const d = await get("getagenda");
+  if (!d) return null;
+  if (d.status === false) return null;
+  return d.agendaList || (Array.isArray(d) ? d : null);
+}
+
+/* ---- Call for presentation / speaker page static content ---- */
+async function fetchSpeakerPageData() {
+  const d = await get("getspeakerpagedata");
+  return d?.status ? d.speakerPageStaticData : [];
 }
 
 async function fetchContactHelpers() {
@@ -439,8 +467,11 @@ async function fetchSSRData(pathname) {
 
   // ---- CALL FOR PRESENTATION / BECOME A SPEAKER ----
   if (pathname === "/speakers") {
-    const speakers = await fetchSpeakers();
-    return { ...base, speakers };
+    const [speakers, speakerPageData] = await Promise.all([
+      fetchSpeakers(),
+      fetchSpeakerPageData(),
+    ]);
+    return { ...base, speakers, speakerPageData };
   }
 
   // ---- SPEAKER PROFILE (dynamic) ----
@@ -548,10 +579,16 @@ async function fetchSSRData(pathname) {
     return { ...base, mediaPartners };
   }
 
-  // ---- AGENDA (uses homepagedata + custom agenda endpoint) ----
+  // ---- AGENDA GATE (email verify screen, only needs speakers for the highlights strip) ----
   if (pathname === "/agenda-page") {
     const speakers = await fetchSpeakers();
     return { ...base, speakers };
+  }
+
+  // ---- AGENDA (the actual program list) ----
+  if (pathname === "/agenda") {
+    const agendaList = await fetchAgendaList();
+    return { ...base, agendaList };
   }
 
   // ---- NEWS LIST ----
@@ -614,18 +651,37 @@ async function fetchSSRData(pathname) {
 
   // ---- WHO SHOULD ATTEND ----
   if (pathname === "/who-should-attend") {
-    const [whoShouldAttend, speakers, eventTestimonials] = await Promise.all([
+    const [
+      whoShouldAttend,
+      speakers,
+      eventTestimonials,
+      coreAttendees,
+      participatedIndustries,
+    ] = await Promise.all([
       fetchWhoShouldAttend(),
       fetchSpeakers(),
       fetchEventTestimonials(),
+      fetchCoreAttendees(),
+      fetchParticipatedIndustries(),
     ]);
-    return { ...base, whoShouldAttend, speakers, eventTestimonials };
+    return {
+      ...base,
+      whoShouldAttend,
+      speakers,
+      eventTestimonials,
+      coreAttendees,
+      participatedIndustries,
+    };
   }
 
   // ---- ATTENDEES ----
   if (pathname === "/attendees") {
-    const attendees = await fetchAttendees();
-    return { ...base, attendees };
+    const [agendaList, pastAttandeeList, eventLeaders] = await Promise.all([
+      fetchAgendaList(),
+      fetchPastAttendees(),
+      fetchEventLeaders(),
+    ]);
+    return { ...base, agendaList, pastAttandeeList, eventLeaders };
   }
 
   // ---- REGISTER ----

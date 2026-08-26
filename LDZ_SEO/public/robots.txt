@@ -48,6 +48,35 @@ User-agent: *
 Disallow: /adminpanel/
 Disallow: /api/admin/
 Disallow: /admin1/
+
+# Public content endpoints under /admin1/ that page components call at
+# load time to render crawlable content, kept open so Googlebot's renderer
+# can fetch them, more specific paths win over the Disallow above.
+Allow: /admin1/getagenda
+Allow: /admin1/whoshouldattendpagedata
+Allow: /admin1/eventtestimonials
+Allow: /admin1/eventcoreattandees
+Allow: /admin1/eventparticipatedindustries
+Allow: /admin1/getspeakerpagedata
+Allow: /admin1/eventspeakers
+Allow: /admin1/speakerbyid
+Allow: /admin1/sponsorbyid
+Allow: /admin1/eventsponsors
+Allow: /admin1/trendbyid
+Allow: /admin1/newsbyid
+Allow: /admin1/generalnews
+Allow: /admin1/eventfaqs
+Allow: /admin1/pastAttandeelist
+Allow: /admin1/eventleaderlist
+Allow: /admin1/contactushelpers
+Allow: /admin1/contactusstaticdata
+Allow: /admin1/mediapagehelpers
+Allow: /admin1/getnavlogos
+Allow: /admin1/deligatepackageslist
+Allow: /admin1/delegatepackageaddons
+Allow: /admin1/getactivedelegatepackage
+Allow: /admin1/sponsoraddons
+
 Allow: /
 
 Sitemap: https://www.australia.lithium-downstream-summit.com/sitemap.xml

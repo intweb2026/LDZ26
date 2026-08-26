@@ -14,6 +14,7 @@ import Popup from "reactjs-popup";
 import { Helmet } from "react-helmet-async";
 import { usePageSeo } from "../common/usePageSeo";
 import { useApiData } from "../common/ApiContext";
+import { useSSRData } from "../common/useSSRData";
 import { downloadIcsFile } from "../common/calendarUtils";
 import "../assets/css/popUp.css";
 import API_BASE_URL from '../config/apiConfig';
@@ -30,15 +31,23 @@ const WhoShouldAttend = () => {
   const { eventDetails } = useApiData();
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = React.useState("core");
-  const [whoShouldAttendData, setWhoShouldAttendData] = useState([]);
-  const [testimonialList, setTestimonialList] = useState([]);
+  const [whoShouldAttendData, setWhoShouldAttendData] = useState(
+    useSSRData("whoShouldAttend") || [],
+  );
+  const [testimonialList, setTestimonialList] = useState(
+    useSSRData("eventTestimonials") || [],
+  );
   const [benifits, setBenifits] = useState("");
   const [keyTakeaways, setKeyTakeaways] = useState("");
   const [whoAttend, setWhoAttend] = useState("");
   const [coreAttendeeDes, setCoreAttendeeDes] = useState("");
   const [industriesDes, setIndustriesDes] = useState("");
-  const [coreAttandeeList, setCoreAttandeeList] = useState([]);
-  const [industriesList, setIndustriesList] = useState([]);
+  const [coreAttandeeList, setCoreAttandeeList] = useState(
+    useSSRData("coreAttendees") || [],
+  );
+  const [industriesList, setIndustriesList] = useState(
+    useSSRData("participatedIndustries") || [],
+  );
   const [open, setOpen] = useState(false);
   const [calendarEmail, setCalendarEmail] = useState("");
   const [addToCalendarSuccessMessage, setAddToCalendarSuccessMessage] = useState("");

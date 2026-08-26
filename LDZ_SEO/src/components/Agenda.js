@@ -18,7 +18,8 @@ const speakerDummy = "/images/WebCommonImages/Speaker_dummy.jpg";
 const companyDummy = "/images/WebCommonImages/companyLogo_dummy.png";
 const Agenda = () => {
   const navigate = useNavigate();
-  const [agendaList, setAgendaList] = useState(null);
+  const ssrAgendaList = useSSRData("agendaList");
+  const [agendaList, setAgendaList] = useState(ssrAgendaList || null);
   const [blockedDomainError, setBlockedDomainError] = useState(false);
   useEffect(() => {
     callAgendaListApi();

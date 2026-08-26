@@ -18,7 +18,7 @@ const Speakers = () => {
   const [windowWidth, setWindowWidth] = useState(
     typeof window !== "undefined" ? window.innerWidth : 1200
   );
-  const [speakerList, setSprakerList] = useState([]);
+  const [speakerList, setSprakerList] = useState(useSSRData("speakers") || []);
   const [fullName, setFullName] = useState("");
   const [fullNameErr, setFullNameErr] = useState(false);
   const [companyName, setCompanyName] = useState("");
